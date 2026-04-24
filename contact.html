@@ -394,11 +394,12 @@
                   class="mt-1.5 w-full px-4 py-3 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3"
                   placeholder="e.g. Mama Lou's Kitchen">
               </label>
-              <button type="submit" :disabled="!answers.name || !answers.email"
-                :class="(!answers.name || !answers.email) ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-ember-hot'"
+              <button type="submit" :disabled="!answers.name || !answers.email || submitting"
+                :class="(!answers.name || !answers.email || submitting) ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-ember-hot'"
                 class="w-full sm:w-auto px-8 py-4 bg-ember text-bg-0 rounded-lg font-semibold transition-colors inline-flex items-center gap-2">
-                See my site preview
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                <span x-show="!submitting">See my site preview</span>
+                <span x-show="submitting" x-cloak>Sending…</span>
+                <svg x-show="!submitting" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
               </button>
             </form>
           </div>
@@ -474,9 +475,19 @@
 
   <!-- =================== APP JS =================== -->
   <script>
+    // To capture real leads via email:
+    //   1. sign up at https://formspree.io (free, 50/mo)
+    //   2. create a form, copy the "Your form's endpoint" URL
+    //   3. paste it below as FORMSPREE_ENDPOINT
+    // Until then, submit() opens the user's mail client pre-filled.
+    const FORMSPREE_ENDPOINT = '';
+    const LEAD_TO_EMAIL = 'motleytech.ai@gmail.com';
+
     function motleyForm() {
       return {
         step: 1,
+        submitting: false,
+        submitError: '',
         answers: { business: null, problems: [], vibe: null, name: '', email: '', businessName: '' },
 
         businessTypes: [
@@ -528,9 +539,59 @@
           if (i >= 0) this.answers.problems.splice(i, 1); else this.answers.problems.push(opt);
         },
         pickVibe(v) { this.answers.vibe = v; setTimeout(() => this.step = 4, 200); },
-        submit() {
-          this.step = 5;
-          console.log('[motley-tech] lead:', this.answers);
+        buildLeadBody() {
+          const a = this.answers;
+          const lines = [
+            `Business name: ${a.businessName || '(not provided)'}`,
+            `Type: ${a.business?.label || '(not picked)'}`,
+            `Vibe: ${a.vibe?.label || '(not picked)'}`,
+            `Problems: ${a.problems.map(p => p.label).join(' · ') || '(none selected)'}`,
+            '',
+            `From: ${a.name} <${a.email}>`,
+            `Suggested domain: ${this.previewDomain}`,
+            '',
+            '— sent from motleytech.com/contact',
+          ];
+          return lines.join('\n');
+        },
+        openMailtoFallback() {
+          const subject = `New build request — ${this.answers.businessName || this.answers.name}`;
+          const href = `mailto:${LEAD_TO_EMAIL}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(this.buildLeadBody())}`;
+          window.location.href = href;
+        },
+        async submit() {
+          if (this.submitting) return;
+          this.submitting = true;
+          this.submitError = '';
+          const payload = {
+            businessName: this.answers.businessName,
+            name: this.answers.name,
+            email: this.answers.email,
+            type: this.answers.business?.label || '',
+            vibe: this.answers.vibe?.label || '',
+            problems: this.answers.problems.map(p => p.label).join(' · '),
+            suggestedDomain: this.previewDomain,
+            _subject: `New build request — ${this.answers.businessName || this.answers.name}`,
+          };
+          if (FORMSPREE_ENDPOINT) {
+            try {
+              const res = await fetch(FORMSPREE_ENDPOINT, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+                body: JSON.stringify(payload),
+              });
+              if (!res.ok) throw new Error(`HTTP ${res.status}`);
+              this.step = 5;
+            } catch (err) {
+              this.submitError = 'Send failed — opening your email app as backup.';
+              this.openMailtoFallback();
+              this.step = 5;
+            }
+          } else {
+            this.openMailtoFallback();
+            this.step = 5;
+          }
+          this.submitting = false;
         },
         reset() {
           this.step = 1;
