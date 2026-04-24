@@ -203,7 +203,7 @@
     }
     .mini-dot { width: 8px; height: 8px; border-radius: 999px; background: #2A2A30; }
     /* Scroll-reveal — elements fade + rise into view when scrolled to */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
 
@@ -293,21 +293,16 @@
             <span class="mono text-[11px] text-text-1">[ MILLEDGEVILLE, GA · ACCEPTING BUILDS ]</span>
           </div>
 
-          <h1 class="display mt-8 text-5xl sm:text-7xl lg:text-[82px] leading-[0.95] tracking-tight font-semibold text-text-0">
-            Modern websites
-            <span class="block">for Milledgeville</span>
-            <span class="block">
-              <span class="relative">
-                <span class="text-ember">small business.</span>
-              </span>
-            </span>
+          <h1 class="display mt-7 text-5xl sm:text-6xl lg:text-[72px] leading-[0.88] tracking-tighter font-semibold text-text-0">
+            Modern websites for
+            <span class="text-ember">Milledgeville small business.</span>
           </h1>
 
-          <p class="mt-8 text-lg sm:text-xl text-text-1 max-w-xl leading-relaxed">
+          <p class="mt-7 text-lg sm:text-xl text-text-1 max-w-xl leading-relaxed">
             I build fast, custom sites the way Vercel, Linear, and Stripe do — and I build the whole thing <span class="text-text-0 font-semibold">free</span>. You only pay if you want to keep it.
           </p>
 
-          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+          <div class="mt-9 flex flex-col sm:flex-row gap-3">
             <a href="contact.html" class="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
               <span class="mono text-xs">$</span>
               Start my build
@@ -316,21 +311,6 @@
             <a href="#demos" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-bg-1 hover:bg-bg-2 border border-line hover:border-line-strong text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
               See what I ship
             </a>
-          </div>
-
-          <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg">
-            <div>
-              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Cost to start</div>
-              <div class="display text-2xl font-semibold mt-1">$0<span class="text-text-3 font-normal text-base">.00</span></div>
-            </div>
-            <div>
-              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Time to live</div>
-              <div class="display text-2xl font-semibold mt-1">~14<span class="text-text-3 font-normal text-base"> days</span></div>
-            </div>
-            <div>
-              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Lock-in</div>
-              <div class="display text-2xl font-semibold mt-1 text-lime">None</div>
-            </div>
           </div>
         </div>
 
@@ -873,7 +853,7 @@
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');
-            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+            child.style.transitionDelay = Math.min(i * 40, 200) + 'ms';
           }
         });
       });
