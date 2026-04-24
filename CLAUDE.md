@@ -371,15 +371,30 @@ When Grant lands an actual Milledgeville business:
 
 ---
 
+## Deployment (as of 2026-04-24)
+
+**Live at https://motley-tech.com** (custom domain purchased via Cloudflare Registrar).
+
+- **Repo**: https://github.com/gdmotley1/motley-tech (public, GitHub Pages from `main` root)
+- **CNAME** file binds the domain. **DNS** is Cloudflare; 4 apex A records (185.199.108–111.153) + www CNAME to `gdmotley1.github.io`, currently **proxied** (orange cloud). Cloudflare SSL mode should be **Full** (not Flexible).
+- **Deploy**: `git push` to `main`. Rebuild ~1 min.
+- **Canonical links**: every HTML page has `<link rel="canonical" href="https://motley-tech.com/...">`. The `gdmotley1.github.io/motley-tech/` URL is deliberately *not* the canonical.
+- **404.html**: on-brand dark-tech 404 at the repo root. GitHub auto-serves for missing paths.
+
+## Contact form wiring
+
+`contact.html` → `submit()`:
+- **Default**: opens user's mail client (mailto:) pre-filled to motleytech.ai@gmail.com with business name, type, vibe, problems, contact, suggested domain. Works with zero setup.
+- **Formspree swap-in**: set `FORMSPREE_ENDPOINT` (const at top of the script) to the endpoint from https://formspree.io; `submit()` switches to `fetch` POST with mailto as failure fallback. No other code changes.
+
 ## Open tasks / next steps
 
-1. **Wire the contact form to a real backend.** Currently `submit()` only `console.log`s. Options: Formspree, Vercel serverless `/api/contact`, or open `mailto:motleytech.ai@gmail.com` as a fallback (code for that already exists commented out in v1.0, may need to re-add in v2.0).
-2. **Deploy.** Not pushed anywhere yet. Options — GitHub Pages (same as `comvoy-fire`) or Vercel. Either way, one deploy covers the main site + all 4 demos.
-3. **Favicon + OG image** for social shares. None yet.
-4. **Replace placeholder phone numbers** if Grant wants a real one displayed. Currently `motleytech.ai@gmail.com` only — no phone on purpose.
-5. **Analytics** — not installed. Plausible or Vercel Analytics would fit.
-6. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
-7. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). If Unsplash rate-limits or the demo load ever matters for SEO, mirror to `demos/<vertical>/assets/` — the wrapper pattern already supports a drop-in swap.
+1. **Cloudflare Web Analytics** — toggle on in Cloudflare dashboard → Analytics & Logs → Web Analytics → copy snippet → paste into each HTML page's `<head>`. Privacy-friendly, no cookie banner. *Grant to flip the toggle, Claude to paste the snippet.*
+2. **"Always Use HTTPS"** — Cloudflare → SSL/TLS → Edge Certificates → toggle on. (Grant-side, 20 sec.)
+3. **Formspree signup + endpoint paste** — whenever Grant wants real lead capture instead of mailto.
+4. **Replace placeholder phone** if wanted. Currently email-only.
+5. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
+6. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). Mirror to `demos/<vertical>/assets/` if Unsplash rate-limits or demo load ever matters for SEO. Wrapper pattern already supports drop-in swap.
 
 ---
 
