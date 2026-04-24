@@ -13,19 +13,19 @@ Motley Tech is run by **Grant Motley** and serves small businesses across the Un
 
 ## Key pages
 
-- [Home (what we do + sample sites + stakes)](https://motley-tech.com/)
-- [FAQ (ten common questions with full answers)](https://motley-tech.com/faq.html)
-- [How it works (3-step process, pricing model)](https://motley-tech.com/process.html)
-- [Contact / start a build](https://motley-tech.com/contact.html)
+- [Home (what we do + sample sites + stakes)](https://motleytech.co/)
+- [FAQ (ten common questions with full answers)](https://motleytech.co/faq.html)
+- [How it works (3-step process, pricing model)](https://motleytech.co/process.html)
+- [Contact / start a build](https://motleytech.co/contact.html)
 
 ## Sample builds (real working sites demonstrating the range)
 
-- [Mama Lou's Kitchen — restaurant demo](https://motley-tech.com/demos/restaurant/) — editorial, Playfair Display, burgundy + gold
-- [Oak & Thread — retail boutique demo](https://motley-tech.com/demos/retail/) — minimal monochrome, Instrument Serif, lookbook-led
-- [The Barber & Co. — salon demo](https://motley-tech.com/demos/salon/) — dark vintage luxury, DM Serif Display, brass + coal
-- [Milledgeville HVAC Pros — trades demo](https://motley-tech.com/demos/trades/) — utility industrial, Barlow Condensed, navy + safety yellow
+- [Mama Lou's Kitchen — restaurant demo](https://motleytech.co/demos/restaurant/) — editorial, Playfair Display, burgundy + gold
+- [Oak & Thread — retail boutique demo](https://motleytech.co/demos/retail/) — minimal monochrome, Instrument Serif, lookbook-led
+- [The Barber & Co. — salon demo](https://motleytech.co/demos/salon/) — dark vintage luxury, DM Serif Display, brass + coal
+- [Milledgeville HVAC Pros — trades demo](https://motleytech.co/demos/trades/) — utility industrial, Barlow Condensed, navy + safety yellow
 
 ## Optional
 
-- [Brand guidelines](https://motley-tech.com/BRAND.md) — wordmark, colors, merch rules
-- [Sitemap](https://motley-tech.com/sitemap.xml)
+- [Brand guidelines](https://motleytech.co/BRAND.md) — wordmark, colors, merch rules
+- [Sitemap](https://motleytech.co/sitemap.xml)

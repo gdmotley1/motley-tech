@@ -58,4 +58,4 @@ User-agent: DuckDuckBot
 Allow: /
 
 # Sitemap
-Sitemap: https://motley-tech.com/sitemap.xml
+Sitemap: https://motleytech.co/sitemap.xml
