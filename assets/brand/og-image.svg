@@ -44,7 +44,7 @@
 
   <!-- bottom mono meta row -->
   <text x="80" y="560" font-family="JetBrains Mono, monospace" font-size="16" fill="#78716C" letter-spacing="1.5">
-    <tspan>&gt; motleytech.co</tspan>
+    <tspan>&gt; motley-tech.com</tspan>
     <tspan fill="#F97316" dx="24">▸</tspan>
     <tspan fill="#A8A29E" dx="12">14-day builds</tspan>
     <tspan fill="#F97316" dx="24">▸</tspan>
