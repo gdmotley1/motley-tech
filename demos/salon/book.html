@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book a Chair — The Barber &amp; Co.</title>
+  <meta name="description" content="Reserve a chair at The Barber &amp; Co. — by appointment only, Tue–Sat on Jefferson Street." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            coal:   '#0a0908',
+            ash:    '#1c1917',
+            charcoal:'#292524',
+            bone:   '#F5F0E5',
+            brass:  '#B88A44',
+            brassL: '#D4A94A',
+            cream:  '#E7D9BC',
+          },
+          fontFamily: {
+            display: ['DM Serif Display', 'Didot', 'serif'],
+            sans:    ['Montserrat', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Montserrat', sans-serif; background: #0a0908; color: #E7D9BC; }
+    h1, h2, h3, h4, .display { font-family: 'DM Serif Display', Didot, serif; letter-spacing: 0.005em; font-weight: 400; }
+
+    .rule-brass { height: 1px; background: linear-gradient(90deg, transparent 0%, #B88A44 30%, #D4A94A 50%, #B88A44 70%, transparent 100%); }
+
+    .stripe-blue {
+      background: repeating-linear-gradient(45deg, #1e3a8a 0 8px, #b91c1c 8px 16px, #f5f0e5 16px 24px);
+    }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- Motley Tech banner -->
+  <div class="bg-ash text-cream/60 text-[10px] text-center py-1.5 uppercase tracking-[0.3em]">
+    Sample site · built by <a href="../../index.html" class="text-brass hover:text-brassL">Motley Tech</a> · <a href="../../contact.html" class="text-brass hover:text-brassL">get yours →</a>
+  </div>
+
+  <div class="h-1.5 stripe-blue"></div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 bg-coal/85 backdrop-blur border-b border-charcoal">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3">
+        <svg class="w-7 h-7 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>
+        <span class="display text-lg text-cream tracking-[0.15em] uppercase">The Barber &amp; Co.</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 text-[11px] uppercase tracking-[0.3em] text-cream/80">
+        <a href="services.html" class="hover:text-brassL transition-colors">Services</a>
+        <a href="barbers.html" class="hover:text-brassL transition-colors">Barbers</a>
+        <a href="gallery.html" class="hover:text-brassL transition-colors">Gallery</a>
+        <a href="book.html" class="text-brassL underline underline-offset-8 transition-colors">Visit</a>
+      </div>
+      <a href="book.html" class="px-5 py-2.5 border border-brass text-brass text-[11px] uppercase tracking-[0.3em] hover:bg-brass hover:text-coal transition-colors">Book</a>
+    </div>
+  </nav>
+
+  <!-- BOOK -->
+  <section class="py-24 sm:py-32 bg-coal">
+    <div class="max-w-4xl mx-auto px-6 sm:px-10">
+      <div class="text-center">
+        <div class="text-[10px] uppercase tracking-[0.5em] text-brass">Reservations</div>
+        <h1 class="display text-cream text-6xl sm:text-8xl mt-4">Claim a chair.</h1>
+        <p class="mt-4 text-cream/60">We'll confirm by text within 30 minutes.</p>
+      </div>
+
+      <form class="mt-12 border border-brass/30 p-8 sm:p-12 bg-ash" onsubmit="event.preventDefault(); alert('Demo — in the real site this books your appointment.');">
+        <div class="grid sm:grid-cols-2 gap-x-8 gap-y-7">
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Name</span>
+            <input type="text" required class="mt-2 w-full bg-transparent border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL transition-colors">
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Phone</span>
+            <input type="tel" required class="mt-2 w-full bg-transparent border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL transition-colors">
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Service</span>
+            <select class="mt-2 w-full bg-ash border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL">
+              <option>Signature Cut · $38</option>
+              <option>Hot-Towel Shave · $45</option>
+              <option>The Works · $75</option>
+              <option>Beard Sculpt · $28</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Preferred Barber</span>
+            <select class="mt-2 w-full bg-ash border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL">
+              <option>First available</option>
+              <option>Eli Caldwell</option>
+              <option>Jackson Mabry</option>
+              <option>Remy Devereaux</option>
+            </select>
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Date</span>
+            <input type="date" class="mt-2 w-full bg-transparent border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL">
+          </label>
+          <label class="block">
+            <span class="text-[11px] uppercase tracking-[0.3em] text-brass">Time</span>
+            <select class="mt-2 w-full bg-ash border-b border-brass/40 py-2.5 text-cream focus:outline-none focus:border-brassL">
+              <option>Morning (9–12)</option><option>Afternoon (12–3)</option><option>Late (3–6)</option>
+            </select>
+          </label>
+        </div>
+        <div class="mt-10 flex justify-end">
+          <button type="submit" class="px-12 py-4 bg-brass text-coal text-xs font-semibold uppercase tracking-[0.3em] hover:bg-brassL transition-colors">Request Appointment</button>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section class="py-16 bg-ash border-t border-charcoal">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 grid md:grid-cols-3 gap-8 text-center">
+      <div>
+        <div class="text-[10px] uppercase tracking-[0.5em] text-brass">Find Us</div>
+        <div class="display text-2xl text-cream mt-2">112 S Jefferson St<br />Milledgeville, GA</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-[0.5em] text-brass">Hours</div>
+        <div class="display text-2xl text-cream mt-2">Tue – Fri · 9am – 7pm<br />Saturday · 8am – 3pm</div>
+      </div>
+      <div>
+        <div class="text-[10px] uppercase tracking-[0.5em] text-brass">Call</div>
+        <div class="display text-2xl text-cream mt-2">(478) 555-0199</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-8 bg-coal border-t border-charcoal">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-3 text-[11px] text-cream/50 uppercase tracking-[0.2em]">
+      <div>The Barber &amp; Co. · Est. 2016</div>
+      <div>Built by <a href="../../index.html" class="text-brass hover:text-brassL">Motley Tech</a> · sample site, not a real shop.</div>
+    </div>
+  </footer>
+
+  <div class="h-1.5 stripe-blue"></div>
+
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

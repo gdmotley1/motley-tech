@@ -1,0 +1,897 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motley Tech — Websites for Milledgeville businesses, built free.</title>
+  <meta name="description" content="I build modern custom websites for small businesses in Milledgeville, GA. Free to start — you only pay when you love it." />
+  <!-- Open Graph + Twitter Card -->
+  <meta property="og:title" content="Motley Tech — Custom websites for small businesses, built free.">
+  <meta property="og:description" content="I build modern, AI-discoverable websites for small businesses. Free to start — pay only if you love what I build.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/brand/og-image.svg">
+  <meta property="og:locale" content="en_US">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Motley Tech — Custom websites for small businesses, built free.">
+  <meta name="twitter:description" content="I build modern, AI-discoverable websites for small businesses. Free to start — pay only if you love what I build.">
+  <meta name="twitter:image" content="assets/brand/og-image.svg">
+
+  <!-- Structured data for search engines (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "ProfessionalService",
+        "@id": "#motleytech",
+        "name": "Motley Tech",
+        "alternateName": "motley.tech",
+        "description": "Custom-built websites for small businesses. I build the whole site free; you only pay if you keep it — monthly hosting or one-time buyout.",
+        "url": "https://motley-tech.com",
+        "email": "motleytech.ai@gmail.com",
+        "image": "https://motley-tech.com/assets/brand/og-image.svg",
+        "logo": "https://motley-tech.com/assets/brand/wordmark-dark.svg",
+        "founder": {"@type": "Person", "@id": "#grant-motley"},
+        "areaServed": {"@type": "Country", "name": "United States"},
+        "priceRange": "Free trial build · from $49/mo",
+        "serviceType": ["Web design", "Web development", "Website hosting", "SEO optimization"],
+        "knowsAbout": ["Small business websites", "Responsive web design", "SEO", "AI-discoverable websites", "Schema.org structured data", "Web hosting", "Custom web development"]
+      },
+      {
+        "@type": "Person",
+        "@id": "#grant-motley",
+        "name": "Grant Motley",
+        "jobTitle": "Web Developer & Founder",
+        "worksFor": {"@id": "#motleytech"},
+        "email": "motleytech.ai@gmail.com"
+      },
+      {
+        "@type": "Service",
+        "@id": "#free-build-service",
+        "name": "Free-First-Build Website Service",
+        "serviceType": "Custom Website Design and Development",
+        "provider": {"@id": "#motleytech"},
+        "description": "A full custom website built free. Keep it via monthly subscription ($49+/mo hosting & maintenance) or buy the code outright for a one-time fee. No lock-in, no hidden fees.",
+        "offers": [
+          {"@type": "Offer", "name": "Free Trial Build", "price": "0", "priceCurrency": "USD", "description": "Complete custom website — free until you decide to keep it. No credit card required."},
+          {"@type": "Offer", "name": "Hosted Subscription", "price": "49", "priceCurrency": "USD", "priceSpecification": {"@type": "UnitPriceSpecification", "billingDuration": "P1M", "price": "49", "priceCurrency": "USD"}, "description": "Ongoing hosting + maintenance + updates, founder's rate for early clients."},
+          {"@type": "Offer", "name": "One-time Buyout", "description": "Pay once and own the code — take it anywhere."}
+        ]
+      }
+    ]
+  }
+  </script>
+
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:       { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:     { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:     { DEFAULT: '#26262C', strong: '#36363E' },
+            ember:    { DEFAULT: '#F97316', hot: '#FB923C', soft: 'rgba(249,115,22,0.14)' },
+            lime:     { DEFAULT: '#A3E635', soft: 'rgba(163,230,53,0.14)' },
+            mint:     { DEFAULT: '#10B981' },
+            amber2:   { DEFAULT: '#FACC15' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+          boxShadow: {
+            'glow-ember': '0 0 0 1px rgba(249,115,22,0.25), 0 20px 60px -20px rgba(249,115,22,0.45)',
+            'glow-lime':  '0 0 0 1px rgba(163,230,53,0.25), 0 20px 60px -20px rgba(163,230,53,0.35)',
+            'card':       '0 1px 0 0 rgba(255,255,255,0.04) inset, 0 16px 48px -20px rgba(0,0,0,0.6)',
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: #0A0A0C;
+      color: #FAFAF9;
+      -webkit-font-smoothing: antialiased;
+    }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    /* Dot-grid background */
+    .dotgrid {
+      background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+    .dotgrid-bright {
+      background-image: radial-gradient(circle at 1px 1px, rgba(249,115,22,0.25) 1px, transparent 0);
+      background-size: 24px 24px;
+    }
+
+    /* Ember glow halo for hero */
+    .hero-halo {
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%);
+    }
+
+    /* Section tag (mono overline) */
+    .tag-mono {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #F97316;
+    }
+
+    /* Soft hr grid line */
+    .rule-grid { height: 1px; background: linear-gradient(90deg, transparent, #26262C 10%, #36363E 50%, #26262C 90%, transparent); }
+
+    /* Animated blinking status dot */
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .status-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    /* Fade-up intro */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-up { animation: fadeUp 500ms ease forwards; }
+
+    /* Gradient border for key cards */
+    .border-gradient {
+      position: relative;
+    }
+    .border-gradient::before {
+      content: '';
+      position: absolute; inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(249,115,22,0.5), rgba(163,230,53,0.2), transparent 60%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+
+    /* Kbd style */
+    .kbd {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-width: 1.5em; height: 1.5em;
+      padding: 0 0.4em;
+      border: 1px solid #36363E;
+      border-bottom-width: 2px;
+      border-radius: 4px;
+      background: #17171B;
+      color: #D6D3D1;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 500;
+    }
+
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; }
+      html { scroll-behavior: auto; }
+    }
+
+    /* Mini browser frame for hero preview */
+    .mini-frame {
+      border: 1px solid #26262C;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #0A0A0C;
+    }
+    .mini-bar {
+      display: flex; align-items: center; gap: 6px;
+      padding: 10px 14px;
+      background: #111114;
+      border-bottom: 1px solid #26262C;
+    }
+    .mini-dot { width: 8px; height: 8px; border-radius: 999px; background: #2A2A30; }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- =================== NAV =================== -->
+  <nav class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <button type="button" @click="open = !open" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+            Sample Sites
+            <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div x-show="open" x-cloak x-transition.opacity
+               class="absolute top-full right-0 mt-2 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+            <a href="#demos" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
+              <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
+              <div class="mt-0.5 font-medium text-text-0">Scroll to gallery →</div>
+            </a>
+            <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
+              <div>
+                <div class="font-medium text-text-0">Mama Lou's Kitchen</div>
+                <div class="mono text-[10px] text-text-3">restaurant/</div>
+              </div>
+            </a>
+            <a href="demos/retail/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #d6d3d1, #57534e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Oak &amp; Thread</div>
+                <div class="mono text-[10px] text-text-3">retail/</div>
+              </div>
+            </a>
+            <a href="demos/salon/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #0a0908, #B88A44);"></div>
+              <div>
+                <div class="font-medium text-text-0">The Barber &amp; Co.</div>
+                <div class="mono text-[10px] text-text-3">salon/</div>
+              </div>
+            </a>
+            <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Milledgeville HVAC Pros</div>
+                <div class="mono text-[10px] text-text-3">trades/</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+
+        <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
+
+        <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <a href="contact.html" class="md:hidden px-3 py-1.5 bg-ember text-bg-0 rounded-md font-medium text-xs">Start →</a>
+    </div>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <header id="top" class="relative overflow-hidden">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute inset-0 hero-halo"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-24 sm:pt-24 sm:pb-32">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+
+        <!-- LEFT: Headline -->
+        <div class="lg:col-span-7 fade-up">
+          <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-1 border border-line rounded-full">
+            <span class="relative flex w-2 h-2">
+              <span class="absolute inset-0 rounded-full bg-lime status-dot"></span>
+              <span class="absolute inset-0 rounded-full bg-lime"></span>
+            </span>
+            <span class="mono text-[11px] text-text-1">[ MILLEDGEVILLE, GA · ACCEPTING BUILDS ]</span>
+          </div>
+
+          <h1 class="display mt-8 text-5xl sm:text-7xl lg:text-[82px] leading-[0.95] tracking-tight font-semibold text-text-0">
+            Modern websites
+            <span class="block">for Milledgeville</span>
+            <span class="block">
+              <span class="relative">
+                <span class="text-ember">small business.</span>
+              </span>
+            </span>
+          </h1>
+
+          <p class="mt-8 text-lg sm:text-xl text-text-1 max-w-xl leading-relaxed">
+            I build fast, custom sites the way Vercel, Linear, and Stripe do — and I build the whole thing <span class="text-text-0 font-semibold">free</span>. You only pay if you want to keep it.
+          </p>
+
+          <div class="mt-10 flex flex-col sm:flex-row gap-3">
+            <a href="contact.html" class="group inline-flex items-center justify-center gap-2 px-7 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
+              <span class="mono text-xs">$</span>
+              Start my build
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+            </a>
+            <a href="#demos" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-bg-1 hover:bg-bg-2 border border-line hover:border-line-strong text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
+              See what I ship
+            </a>
+          </div>
+
+          <div class="mt-12 grid grid-cols-3 gap-6 max-w-lg">
+            <div>
+              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Cost to start</div>
+              <div class="display text-2xl font-semibold mt-1">$0<span class="text-text-3 font-normal text-base">.00</span></div>
+            </div>
+            <div>
+              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Time to live</div>
+              <div class="display text-2xl font-semibold mt-1">~14<span class="text-text-3 font-normal text-base"> days</span></div>
+            </div>
+            <div>
+              <div class="mono text-[10px] text-text-3 uppercase tracking-wider">Lock-in</div>
+              <div class="display text-2xl font-semibold mt-1 text-lime">None</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: Rotating demo preview -->
+        <div class="lg:col-span-5 fade-up" x-data="heroRotator()" x-init="start()">
+          <div class="relative">
+            <!-- Decorative ring-glow -->
+            <div class="absolute -inset-6 blur-3xl opacity-70 transition-all duration-1000 pointer-events-none" :style="`background: radial-gradient(circle, ${demos[current].glow} 0%, transparent 60%);`"></div>
+
+            <div class="relative mini-frame shadow-glow-ember">
+              <div class="mini-bar">
+                <span class="mini-dot"></span>
+                <span class="mini-dot"></span>
+                <span class="mini-dot"></span>
+                <div class="ml-2 flex-1 px-3 py-1 bg-bg-0 border border-line rounded-md mono text-[10px] text-text-2 truncate">
+                  <span x-text="demos[current].url"></span>
+                </div>
+                <a :href="demos[current].href" target="_blank" class="mono text-[10px] text-ember hover:text-ember-hot flex items-center gap-1">
+                  open
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                </a>
+              </div>
+
+              <!-- Rotating hero peek -->
+              <div class="relative aspect-[5/3.5] overflow-hidden transition-all duration-700" :style="`background: ${demos[current].bg};`">
+                <template x-for="(d, i) in demos" :key="i">
+                  <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 transition-opacity duration-700"
+                       :class="i === current ? 'opacity-100' : 'opacity-0'"
+                       :style="`font-family: ${d.font}; color: ${d.fg};`">
+                    <div class="text-[9px] uppercase tracking-[0.3em]" :style="`color: ${d.meta};`" x-text="d.kicker"></div>
+                    <div class="mt-3 text-3xl sm:text-4xl leading-tight" :style="`font-weight:${d.weight};font-style:${d.style};`" x-text="d.name"></div>
+                    <div class="mt-2 text-xs opacity-75" x-text="d.tagline"></div>
+                  </div>
+                </template>
+              </div>
+
+              <!-- Footer row: meta + indicators -->
+              <div class="flex items-center justify-between p-3 border-t border-line bg-bg-1">
+                <div class="mono text-[10px] text-text-3">
+                  <span class="text-ember">▸</span>
+                  <span x-text="`now showing: ${demos[current].label}`"></span>
+                </div>
+                <div class="flex items-center gap-1.5">
+                  <template x-for="(d,i) in demos" :key="i">
+                    <button type="button" @click="current = i; restart()" :class="i === current ? 'bg-ember w-6' : 'bg-line-strong w-1.5 hover:bg-text-3'" class="h-1.5 rounded-full transition-all cursor-pointer"></button>
+                  </template>
+                </div>
+              </div>
+            </div>
+
+            <!-- Floating tag -->
+            <div class="absolute -top-3 -left-3 mono text-[10px] bg-bg-2 border border-line-strong rounded-md px-2 py-1 text-text-2 flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
+              live
+            </div>
+          </div>
+
+          <p class="mono text-[11px] text-text-3 mt-5 text-center leading-relaxed">
+            {<span class="text-ember">4</span>} live sample sites · auto-rotating · <span class="text-text-1">click a demo below to see the full build</span>
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== WHY IT MATTERS =================== -->
+  <section class="relative py-20 sm:py-28 border-t border-line">
+    <div class="absolute inset-0 dotgrid opacity-40 pointer-events-none"></div>
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-3xl">
+        <div class="tag-mono">[ // THE STAKES ]</div>
+        <h2 class="display mt-4 text-4xl sm:text-5xl font-semibold tracking-tight leading-tight text-text-0">
+          A bad website isn't just ugly.<br />
+          <span class="text-ember">It's a line item that's losing you money.</span>
+        </h2>
+        <p class="mt-5 text-lg text-text-1 leading-relaxed">
+          Every day in Baldwin County, people are deciding whether to call you, visit you, or buy from you — based on what shows up when they search. If they don't find you, or what they find looks abandoned, they go elsewhere. That's not a guess. It's the data.
+        </p>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-2 lg:grid-cols-4 gap-4 items-stretch">
+        <!-- AI SEARCH — the newest discovery channel and the one most small businesses are invisible on -->
+        <div class="relative bg-bg-1 border border-ember/30 rounded-2xl p-7 overflow-hidden flex flex-col">
+          <div class="absolute inset-0 bg-gradient-to-br from-ember/8 to-transparent pointer-events-none"></div>
+          <div class="relative flex flex-col h-full">
+            <div class="mono text-[10px] text-ember tracking-wider uppercase">[ 01 / ai search · new ]</div>
+            <div class="display text-6xl sm:text-7xl font-semibold mt-5 text-text-0 leading-none">200M<span class="text-ember">+</span></div>
+            <div class="mt-3 h-1 bg-bg-2 rounded-full overflow-hidden"><div class="h-full bg-ember rounded-full" style="width:88%"></div></div>
+            <p class="mt-5 text-text-0 font-medium leading-snug">ask ChatGPT, Perplexity &amp; Gemini for recommendations each week</p>
+            <p class="mt-2 text-sm text-text-2 leading-relaxed">AI engines recommend businesses whose sites they can read. Most sites can't.</p>
+            <p class="mono text-[11px] text-text-3 mt-auto pt-4">— OpenAI / Perplexity · 2024</p>
+          </div>
+        </div>
+
+        <div class="relative bg-bg-1 border border-line rounded-2xl p-7 overflow-hidden flex flex-col h-full">
+          <div class="mono text-[10px] text-text-3 tracking-wider uppercase">[ 02 / local search ]</div>
+          <div class="display text-6xl sm:text-7xl font-semibold mt-5 text-text-0 leading-none">97<span class="text-text-3">%</span></div>
+          <div class="mt-3 h-1 bg-bg-2 rounded-full overflow-hidden"><div class="h-full bg-ember rounded-full" style="width:97%"></div></div>
+          <p class="mt-5 text-text-0 font-medium leading-snug">search online for local businesses before buying</p>
+          <p class="mt-2 text-sm text-text-2 leading-relaxed">Your website is the first impression. Most people never get past it.</p>
+          <p class="mono text-[11px] text-text-3 mt-auto pt-4">— BrightLocal</p>
+        </div>
+
+        <div class="relative bg-bg-1 border border-line rounded-2xl p-7 overflow-hidden flex flex-col h-full">
+          <div class="mono text-[10px] text-text-3 tracking-wider uppercase">[ 03 / mobile intent ]</div>
+          <div class="display text-6xl sm:text-7xl font-semibold mt-5 text-text-0 leading-none">76<span class="text-text-3">%</span></div>
+          <div class="mt-3 h-1 bg-bg-2 rounded-full overflow-hidden"><div class="h-full bg-lime rounded-full" style="width:76%"></div></div>
+          <p class="mt-5 text-text-0 font-medium leading-snug">visit a business within 24 hours of a local search</p>
+          <p class="mt-2 text-sm text-text-2 leading-relaxed">A bad mobile site costs you today's customers, not just future ones.</p>
+          <p class="mono text-[11px] text-text-3 mt-auto pt-4">— Think with Google</p>
+        </div>
+
+        <div class="relative bg-bg-1 border border-line rounded-2xl p-7 overflow-hidden flex flex-col h-full">
+          <div class="mono text-[10px] text-text-3 tracking-wider uppercase">[ 04 / credibility ]</div>
+          <div class="display text-6xl sm:text-7xl font-semibold mt-5 text-text-0 leading-none">75<span class="text-text-3">%</span></div>
+          <div class="mt-3 h-1 bg-bg-2 rounded-full overflow-hidden"><div class="h-full bg-amber2 rounded-full" style="width:75%"></div></div>
+          <p class="mt-5 text-text-0 font-medium leading-snug">judge a business's credibility by its website alone</p>
+          <p class="mt-2 text-sm text-text-2 leading-relaxed">Dated sites look abandoned. A modern one earns the call.</p>
+          <p class="mono text-[11px] text-text-3 mt-auto pt-4">— Stanford Web Credibility</p>
+        </div>
+      </div>
+
+      <!-- Same business. Two websites. One earns the call. -->
+      <div class="mt-16">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <div class="mono text-[11px] text-text-3 tracking-widest uppercase">[ same business · two websites ]</div>
+          <h3 class="display mt-3 text-2xl sm:text-3xl font-semibold text-text-0">Meet Martin's Auto. <span class="text-text-2">Here's their current site.</span> <span class="text-ember">Here's what I'd build them.</span></h3>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-4 lg:gap-5 items-stretch">
+
+          <!-- BEFORE: dated, real-looking 2010-era small-biz site -->
+          <div class="relative bg-bg-1 border border-line rounded-2xl p-5 sm:p-6 flex flex-col">
+            <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center gap-2">
+                <span class="mono text-[10px] text-red-400 tracking-widest uppercase">[ before ]</span>
+                <span class="text-[11px] text-text-3">· last updated aug 2019</span>
+              </div>
+              <span class="text-[11px] font-semibold text-red-400">costs them customers</span>
+            </div>
+
+            <!-- mini dated-site preview — realistic, not cartoonish -->
+            <div class="rounded-lg border border-line overflow-hidden flex-1" style="background:#F5F1E8;font-family:'Times New Roman','Liberation Serif',serif;color:#1a1a1a;">
+              <!-- nav bar -->
+              <div class="px-4 py-2.5 border-b-2 border-gray-400" style="background:#1E3A8A;">
+                <div class="flex items-center gap-2">
+                  <div class="w-6 h-6 rounded-full flex items-center justify-center" style="background:#DC2626;">
+                    <span class="text-white text-xs font-bold" style="font-family:Arial,sans-serif;">M</span>
+                  </div>
+                  <div class="text-[12px] font-bold text-white">MARTIN'S AUTO REPAIR</div>
+                </div>
+              </div>
+              <!-- nav links row -->
+              <div class="px-4 py-1.5 text-[9px] text-blue-900 underline flex gap-3" style="background:#E8E2D0;font-family:Arial,sans-serif;">
+                <span>HOME</span><span>ABOUT US</span><span>SERVICES</span><span>HOURS</span><span>CONTACT US</span>
+              </div>
+              <!-- body -->
+              <div class="p-4">
+                <div class="text-[14px] font-bold text-blue-900 mb-2" style="font-family:Arial,sans-serif;">Welcome to Martin's Auto!</div>
+                <div class="text-[10px] leading-tight text-gray-800">
+                  We have been proudly servicing the community since 1987. Here at Martin's, we pride ourselves on quality workmanship and customer satisfaction. We offer a wide range of automotive services including oil changes, brake repair, tire rotation, engine diagnostics, and much more. Please stop by our shop or give us a call to schedule an appointment.
+                </div>
+                <div class="text-[10px] text-gray-800 mt-3 leading-tight">
+                  <strong>Our Hours:</strong> Monday through Friday we are open from 8:00am until 5:30pm. Saturdays we are open from 9:00am until 2:00pm. We are closed on Sundays and most major holidays.
+                </div>
+                <div class="text-[10px] text-gray-800 mt-3 leading-tight">
+                  To contact us, please call <span class="text-blue-800 underline">(478) 555-0142</span> or email us at <span class="text-blue-800 underline">martinauto@hotmail.com</span>.
+                </div>
+                <div class="mt-3 p-2 border border-dashed border-gray-500 text-center" style="background:#FFFACD;">
+                  <div class="text-[10px] font-bold" style="color:#B91C1C;font-family:Impact,sans-serif;">★ SPECIAL ★</div>
+                  <div class="text-[9px] text-gray-800 mt-0.5">Click here for our current coupons!</div>
+                </div>
+              </div>
+              <!-- footer -->
+              <div class="px-4 py-2 border-t border-gray-400 flex justify-between" style="background:#E8E2D0;font-family:Arial,sans-serif;">
+                <div class="text-[8px] text-gray-600">© 2011-2019 Martin's Auto Repair</div>
+                <div class="text-[8px] text-gray-600">Visitors: 4,728</div>
+              </div>
+            </div>
+
+            <!-- what's wrong — 4 bullets that mirror the AFTER list below -->
+            <ul class="mt-5 text-sm space-y-2.5 text-text-1 leading-relaxed">
+              <li class="flex gap-3"><span class="text-red-400 mt-0.5 flex-shrink-0">✕</span> Hours and phone number buried in paragraphs</li>
+              <li class="flex gap-3"><span class="text-red-400 mt-0.5 flex-shrink-0">✕</span> Can't tap to call, get directions, or book</li>
+              <li class="flex gap-3"><span class="text-red-400 mt-0.5 flex-shrink-0">✕</span> Looks dated — zero reviews, zero trust signals</li>
+              <li class="flex gap-3"><span class="text-red-400 mt-0.5 flex-shrink-0">✕</span> Google and AI search skip right past it</li>
+            </ul>
+          </div>
+
+          <!-- AFTER: a real-looking modern auto shop page -->
+          <div class="relative bg-bg-1 border border-line rounded-2xl p-5 sm:p-6 border-gradient flex flex-col">
+            <div class="flex items-center justify-between mb-5">
+              <div class="flex items-center gap-2">
+                <span class="mono text-[10px] text-lime tracking-widest uppercase">[ after ]</span>
+                <span class="text-[11px] text-text-3">· live today</span>
+              </div>
+              <span class="text-[11px] font-semibold text-lime">earns the call</span>
+            </div>
+
+            <!-- mini modern-site preview — blue-collar auto shop, cream/red/navy -->
+            <div class="rounded-lg overflow-hidden flex-1 flex flex-col" style="background:#F5F0E8; font-family: 'Inter', sans-serif; color:#1a1a1a;">
+
+              <!-- top navy bar with phone CTA (classic mechanic shop header) -->
+              <div class="px-4 py-2.5 flex items-center justify-between" style="background:#0F1F38; color:#ffffff;">
+                <div class="flex items-center gap-2.5">
+                  <!-- red chunky logo block with M -->
+                  <div class="w-7 h-7 grid place-items-center flex-shrink-0 border-2 border-white" style="background:#B91C1C;">
+                    <span style="font-family:'Oswald',sans-serif; font-weight:700; font-size:14px; line-height:1; color:#ffffff;">M</span>
+                  </div>
+                  <div style="font-family:'Oswald', sans-serif;">
+                    <div style="font-size:14px; font-weight:700; line-height:1; letter-spacing:0.03em; text-transform:uppercase;">Martin's Auto</div>
+                    <div style="font-size:8px; font-weight:500; letter-spacing:0.15em; color:#D4D4D4; text-transform:uppercase; margin-top:2px;">Since 1987 · Family Owned</div>
+                  </div>
+                </div>
+                <a class="flex items-center gap-1.5 px-2.5 py-1.5" style="background:#FFC107; color:#0F1F38; font-family:'Oswald',sans-serif; font-weight:700; font-size:11px; letter-spacing:0.04em; text-transform:uppercase;">
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2A19.79 19.79 0 0 1 11.19 18a19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 3.18 2 2 0 0 1 4.11 1h3a2 2 0 0 1 2 1.72c.13.96.37 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.33 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                  (478) 555-0142
+                </a>
+              </div>
+
+              <!-- red secondary nav strip -->
+              <div class="px-4 py-1.5 flex items-center justify-between" style="background:#B91C1C; color:#F5F0E8; font-family:'Oswald',sans-serif; font-size:10px; font-weight:500; letter-spacing:0.15em; text-transform:uppercase;">
+                <div class="flex gap-4">
+                  <span>Services</span>
+                  <span>About</span>
+                  <span>Reviews</span>
+                  <span>Hours</span>
+                </div>
+                <span style="opacity:0.85;">Open · 8am – 5:30pm</span>
+              </div>
+
+              <!-- HERO with real shop photo -->
+              <div class="relative overflow-hidden" style="aspect-ratio: 16/7; min-height: 150px;">
+                <img src="https://images.unsplash.com/photo-1486262715619-67b85e0b08d3?w=1200&q=80&auto=format&fit=crop"
+                     alt="Martin's Auto garage bay"
+                     class="absolute inset-0 w-full h-full object-cover"
+                     onerror="this.remove()">
+                <div class="absolute inset-0" style="background: linear-gradient(85deg, rgba(15,31,56,0.92) 0%, rgba(15,31,56,0.55) 55%, rgba(15,31,56,0.15) 100%);"></div>
+                <div class="absolute inset-0 -z-10" style="background:#1E293B;"></div>
+                <!-- diagonal accent stripe -->
+                <div class="absolute left-0 top-0 bottom-0 w-1" style="background:#FFC107;"></div>
+
+                <div class="relative p-5 flex flex-col justify-center h-full" style="color:#F5F0E8; font-family:'Oswald', sans-serif;">
+                  <div style="color:#FFC107; font-size:10px; font-weight:600; letter-spacing:0.25em; text-transform:uppercase;">Baldwin County's Trusted Mechanic</div>
+                  <div style="font-size:26px; font-weight:700; line-height:0.95; text-transform:uppercase; margin-top:8px; letter-spacing:-0.01em;">Honest Work.<br><span style="color:#FFC107;">Done Right.</span></div>
+                  <div style="font-family:'Inter',sans-serif; font-size:11px; font-weight:400; margin-top:8px; max-width:24rem; color:#E5E5E5; line-height:1.4;">Full-service repair. ASE-certified technicians. Straight prices, no upsells, work done when we said it would be.</div>
+                </div>
+              </div>
+
+              <!-- reviews + action row -->
+              <div class="px-4 py-3 flex items-center justify-between" style="background:#F5F0E8; border-bottom:1px solid #D6D3D1;">
+                <div>
+                  <div style="font-size:13px; color:#FFC107; letter-spacing:2px; line-height:1;">★★★★★</div>
+                  <div style="font-size:10px; color:#57534E; margin-top:2px;"><strong style="color:#1a1a1a;">4.9</strong> · 312 Google reviews</div>
+                </div>
+                <div class="flex gap-1.5">
+                  <div class="px-3 py-2" style="background:#B91C1C; color:#ffffff; font-family:'Oswald',sans-serif; font-weight:700; font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Book service</div>
+                  <div class="px-3 py-2" style="background:transparent; border:1.5px solid #1a1a1a; color:#1a1a1a; font-family:'Oswald',sans-serif; font-weight:600; font-size:10px; letter-spacing:0.1em; text-transform:uppercase;">Directions</div>
+                </div>
+              </div>
+
+              <!-- trust badges row — real brand colors -->
+              <div class="px-4 py-2.5 flex items-center gap-2.5 border-b" style="background:#ffffff; border-color:#D6D3D1;">
+                <div style="font-family:'Oswald',sans-serif; font-size:9px; font-weight:600; color:#57534E; letter-spacing:0.18em; text-transform:uppercase;">Certified:</div>
+                <div class="flex gap-1.5 items-center">
+                  <div class="px-2 py-0.5" style="background:#1E40AF; color:#ffffff; font-family:'Oswald',sans-serif; font-weight:700; font-size:9px; letter-spacing:0.1em;">ASE</div>
+                  <div class="px-2 py-0.5" style="background:#DC2626; color:#ffffff; font-family:'Oswald',sans-serif; font-weight:700; font-size:9px; letter-spacing:0.1em;">AAA</div>
+                  <div class="px-2 py-0.5" style="background:#1a1a1a; color:#ffffff; font-family:'Oswald',sans-serif; font-weight:700; font-size:9px; letter-spacing:0.1em;">BBB A+</div>
+                  <div class="px-2 py-0.5" style="background:#065F46; color:#FFC107; font-family:'Oswald',sans-serif; font-weight:700; font-size:9px; letter-spacing:0.1em;">NAPA</div>
+                </div>
+              </div>
+
+              <!-- services grid with industrial-style icons -->
+              <div class="px-4 py-4 grid grid-cols-4 gap-2" style="background:#ffffff;">
+                <div class="p-2 text-center border" style="border-color:#D6D3D1;">
+                  <svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 22a6 6 0 0 0 6-6c0-4-6-10-6-10s-6 6-6 10a6 6 0 0 0 6 6z"/></svg>
+                  <div style="font-family:'Oswald',sans-serif; font-size:10px; font-weight:700; color:#1a1a1a; margin-top:3px; text-transform:uppercase; letter-spacing:0.05em;">Oil Change</div>
+                  <div style="font-size:8.5px; color:#B91C1C; margin-top:1px; font-weight:600;">from $39</div>
+                </div>
+                <div class="p-2 text-center border" style="border-color:#D6D3D1;">
+                  <svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/></svg>
+                  <div style="font-family:'Oswald',sans-serif; font-size:10px; font-weight:700; color:#1a1a1a; margin-top:3px; text-transform:uppercase; letter-spacing:0.05em;">Brakes</div>
+                  <div style="font-size:8.5px; color:#B91C1C; margin-top:1px; font-weight:600;">from $149</div>
+                </div>
+                <div class="p-2 text-center border" style="border-color:#D6D3D1;">
+                  <svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5" fill="#B91C1C"/></svg>
+                  <div style="font-family:'Oswald',sans-serif; font-size:10px; font-weight:700; color:#1a1a1a; margin-top:3px; text-transform:uppercase; letter-spacing:0.05em;">Tires</div>
+                  <div style="font-size:8.5px; color:#B91C1C; margin-top:1px; font-weight:600;">4 / $480</div>
+                </div>
+                <div class="p-2 text-center border" style="border-color:#D6D3D1;">
+                  <svg class="w-5 h-5 mx-auto" viewBox="0 0 24 24" fill="none" stroke="#B91C1C" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="18" height="13" rx="1"/><path d="M7 6V4h10v2"/><path d="M12 10v5"/><path d="M9 12h6"/></svg>
+                  <div style="font-family:'Oswald',sans-serif; font-size:10px; font-weight:700; color:#1a1a1a; margin-top:3px; text-transform:uppercase; letter-spacing:0.05em;">Engine</div>
+                  <div style="font-size:8.5px; color:#B91C1C; margin-top:1px; font-weight:600;">diagnostic</div>
+                </div>
+              </div>
+
+              <!-- review quote -->
+              <div class="px-4 py-3 flex items-start gap-3 border-t" style="background:#F5F0E8; border-color:#D6D3D1;">
+                <div class="w-8 h-8 flex-shrink-0 grid place-items-center border-2 border-white" style="background:#1E293B; color:#FFC107; font-family:'Oswald',sans-serif; font-weight:700; font-size:11px;">TR</div>
+                <div class="flex-1">
+                  <div style="font-size:11px; color:#FFC107; letter-spacing:1px; line-height:1;">★★★★★</div>
+                  <div style="font-size:10px; color:#1a1a1a; margin-top:3px; line-height:1.4;">"Honest prices. Done right the first time. Only place I trust with my truck."</div>
+                  <div style="font-size:9px; color:#57534E; margin-top:3px; font-family:'Oswald',sans-serif; letter-spacing:0.1em; text-transform:uppercase;">— Tanya R. · verified customer</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- what's right — 4 bullets that mirror the BEFORE list above -->
+            <ul class="mt-5 text-sm space-y-2.5 text-text-0 leading-relaxed">
+              <li class="flex gap-3"><span class="text-lime mt-0.5 flex-shrink-0">✓</span> Hours, phone, reviews &amp; services visible in one glance</li>
+              <li class="flex gap-3"><span class="text-lime mt-0.5 flex-shrink-0">✓</span> One-tap to call, get directions, or book</li>
+              <li class="flex gap-3"><span class="text-lime mt-0.5 flex-shrink-0">✓</span> Trust badges + 4.9 stars build instant confidence</li>
+              <li class="flex gap-3"><span class="text-lime mt-0.5 flex-shrink-0">✓</span> Found in Google <em class="not-italic text-ember">and</em> AI search for "mechanic near me"</li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== DEMO GALLERY =================== -->
+  <section id="demos" class="relative py-20 sm:py-28 border-t border-line bg-bg-1/30">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="max-w-3xl">
+        <div class="tag-mono">[ // LIVE SAMPLE SITES ]</div>
+        <h2 class="display mt-4 text-4xl sm:text-5xl font-semibold tracking-tight leading-tight text-text-0">
+          Four businesses.<br />
+          <span class="text-ember">Four completely different sites.</span>
+        </h2>
+        <p class="mt-5 text-lg text-text-1 leading-relaxed">
+          These are real, working websites — each designed for a specific kind of business. Click any card to open the full live site in a new tab.
+        </p>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-2 gap-5 items-stretch auto-rows-fr">
+
+        <!-- Restaurant -->
+        <a href="demos/restaurant/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+          <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%);">
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8" style="font-family: 'Playfair Display', serif;">
+              <div class="text-[10px] uppercase tracking-[0.35em] text-amber-300/80" style="font-family: 'JetBrains Mono', monospace;">Downtown · Est. 1978</div>
+              <div class="mt-3 text-white text-4xl sm:text-5xl italic" style="font-weight:500;">Mama Lou's</div>
+              <div class="text-amber-200 text-xl -mt-1" style="letter-spacing:0.05em;">Kitchen</div>
+              <div class="mt-4 w-16 h-[1px] bg-amber-400/60"></div>
+              <div class="mt-4 text-amber-100/80 text-sm" style="font-family:'Inter',sans-serif;">Southern comfort, three meals a day.</div>
+            </div>
+          </div>
+          <div class="p-6 flex items-start justify-between gap-4 flex-1">
+            <div>
+              <div class="mono text-[10px] tracking-wider uppercase text-ember">[ restaurant · editorial warm ]</div>
+              <h3 class="display mt-2 text-xl font-semibold text-text-0">Mama Lou's Kitchen</h3>
+              <p class="mt-1 text-sm text-text-2">Playfair Display · burgundy &amp; gold · menu-led, reservation-forward.</p>
+            </div>
+            <div class="flex-shrink-0 mt-1 w-9 h-9 rounded-full bg-bg-2 border border-line group-hover:bg-ember group-hover:border-ember group-hover:text-bg-0 text-ember grid place-items-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Retail -->
+        <a href="demos/retail/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+          <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #FAFAF9;">
+            <div class="absolute inset-0 grid grid-cols-2">
+              <div style="background: linear-gradient(135deg,#d6d3d1 0%,#78716c 100%);"></div>
+              <div class="flex flex-col justify-center items-start p-8" style="font-family: 'Instrument Serif', serif;">
+                <div class="text-[10px] uppercase tracking-[0.35em] text-stone-500" style="font-family:'JetBrains Mono', monospace;">Since 2019</div>
+                <div class="mt-3 text-stone-900 text-4xl sm:text-5xl leading-none">Oak &amp;</div>
+                <div class="text-stone-900 text-4xl sm:text-5xl italic leading-none">Thread</div>
+                <div class="mt-5 px-3 py-1.5 bg-stone-900 text-white text-[10px] uppercase tracking-widest" style="font-family:'Inter',sans-serif;">Shop the drop</div>
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex items-start justify-between gap-4 flex-1">
+            <div>
+              <div class="mono text-[10px] tracking-wider uppercase text-ember">[ retail · minimal boutique ]</div>
+              <h3 class="display mt-2 text-xl font-semibold text-text-0">Oak &amp; Thread</h3>
+              <p class="mt-1 text-sm text-text-2">Instrument Serif · monochrome · editorial lookbook.</p>
+            </div>
+            <div class="flex-shrink-0 mt-1 w-9 h-9 rounded-full bg-bg-2 border border-line group-hover:bg-ember group-hover:border-ember group-hover:text-bg-0 text-ember grid place-items-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Salon -->
+        <a href="demos/salon/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+          <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0a0908;">
+            <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.35) 0%, transparent 60%);"></div>
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8">
+              <div class="text-[10px] uppercase tracking-[0.5em]" style="font-family:'JetBrains Mono', monospace; color:#d4a94a;">— Est. 2016 —</div>
+              <div class="mt-3 text-amber-100 text-5xl sm:text-6xl" style="font-family: 'DM Serif Display', serif; letter-spacing:0.01em;">The Barber</div>
+              <div class="text-amber-100/70 text-xl italic mt-1" style="font-family: 'DM Serif Display', serif;">&amp; Co.</div>
+              <div class="mt-5 px-4 py-2 border border-amber-600/60 text-amber-200 text-[10px] uppercase tracking-[0.3em]" style="font-family:'Inter',sans-serif;">Book your chair</div>
+            </div>
+          </div>
+          <div class="p-6 flex items-start justify-between gap-4 flex-1">
+            <div>
+              <div class="mono text-[10px] tracking-wider uppercase text-ember">[ salon · dark vintage luxury ]</div>
+              <h3 class="display mt-2 text-xl font-semibold text-text-0">The Barber &amp; Co.</h3>
+              <p class="mt-1 text-sm text-text-2">DM Serif Display · brass on near-black · moody.</p>
+            </div>
+            <div class="flex-shrink-0 mt-1 w-9 h-9 rounded-full bg-bg-2 border border-line group-hover:bg-ember group-hover:border-ember group-hover:text-bg-0 text-ember grid place-items-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </div>
+          </div>
+        </a>
+
+        <!-- Trades -->
+        <a href="demos/trades/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+          <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0c4a6e;">
+            <div class="absolute top-0 right-0 px-3 py-1 bg-yellow-400 text-blue-950 text-[10px] font-black uppercase tracking-wider" style="font-family: 'Barlow Condensed', sans-serif; font-weight:900;">24/7 EMERGENCY</div>
+            <div class="absolute inset-0 flex flex-col justify-center p-8" style="font-family: 'Barlow Condensed', sans-serif;">
+              <div class="text-yellow-300 text-[10px] uppercase tracking-widest font-bold" style="font-family:'JetBrains Mono',monospace;">Licensed · Insured · Family-owned</div>
+              <div class="mt-2 text-white text-4xl sm:text-5xl leading-[0.95]" style="font-weight:900; letter-spacing:-0.02em; text-transform:uppercase;">Heat &amp; Air<br/>Done Right.</div>
+              <div class="mt-4 inline-flex items-center gap-2 w-fit px-4 py-2 bg-yellow-400 text-blue-950 text-xs font-black" style="font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:0.05em;">
+                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Call (478) 555-0187
+              </div>
+            </div>
+          </div>
+          <div class="p-6 flex items-start justify-between gap-4 flex-1">
+            <div>
+              <div class="mono text-[10px] tracking-wider uppercase text-ember">[ trades · utility industrial ]</div>
+              <h3 class="display mt-2 text-xl font-semibold text-text-0">Milledgeville HVAC Pros</h3>
+              <p class="mt-1 text-sm text-text-2">Barlow Condensed · navy &amp; safety yellow · phone-first.</p>
+            </div>
+            <div class="flex-shrink-0 mt-1 w-9 h-9 rounded-full bg-bg-2 border border-line group-hover:bg-ember group-hover:border-ember group-hover:text-bg-0 text-ember grid place-items-center transition-colors">
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <p class="mt-10 text-center text-sm text-text-2">Yours won't look like any of these. It'll look like <span class="text-text-0">you</span>. These are just proof of range.</p>
+    </div>
+  </section>
+
+  <!-- =================== SCARCITY =================== -->
+  <section class="relative py-16 border-t border-line overflow-hidden">
+    <div class="absolute inset-0 dotgrid-bright opacity-30"></div>
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
+      <div class="inline-flex items-center gap-2 px-3 py-1 bg-bg-1 border border-ember/30 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-ember status-dot"></span>
+        <span class="mono text-[11px] text-ember tracking-wider uppercase">[ booking queue: open ]</span>
+      </div>
+      <h2 class="display mt-6 text-3xl sm:text-5xl font-semibold leading-tight text-text-0">
+        First five Milledgeville businesses.<br />
+        <span class="text-ember">Three spots remain.</span>
+      </h2>
+      <p class="mt-5 text-text-2 max-w-xl mx-auto">After that, I charge normal rates. Claim yours while I'm still building for free.</p>
+
+      <!-- Visible counter -->
+      <div class="mt-8 flex justify-center gap-3">
+        <span class="w-10 h-10 rounded-lg bg-bg-2 border border-line grid place-items-center mono text-text-3 line-through">01</span>
+        <span class="w-10 h-10 rounded-lg bg-bg-2 border border-line grid place-items-center mono text-text-3 line-through">02</span>
+        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">03</span>
+        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">04</span>
+        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">05</span>
+      </div>
+
+      <a href="contact.html" class="mt-10 inline-flex items-center gap-2 px-6 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
+        Claim a spot
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="py-12 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-3 gap-8 text-sm">
+      <div>
+        <div>
+          <span class="display font-bold text-3xl tracking-tight text-text-0">Motley Tech</span>
+        </div>
+        <p class="mt-4 text-text-2 max-w-sm">Custom websites for small businesses in Milledgeville, Georgia. Built by Grant Motley, one site at a time.</p>
+      </div>
+      <div>
+        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// contact</div>
+        <div class="mt-2 text-text-1"><a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a></div>
+        <div class="mt-1 text-text-2">Milledgeville, GA · Baldwin County</div>
+      </div>
+      <div>
+        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// sample builds</div>
+        <div class="mt-2 flex flex-col gap-1 text-text-1">
+          <a href="demos/restaurant/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ mamalous-milledgeville.com</a>
+          <a href="demos/retail/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ oakandthread.shop</a>
+          <a href="demos/salon/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ thebarberandco.com</a>
+          <a href="demos/trades/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ milledgevillehvacpros.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-line max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between gap-2 text-xs text-text-3 mono">
+      <div>© 2026 Motley Tech · all rights reserved</div>
+      <div>handcrafted in Milledgeville, GA · <span class="text-text-2">v2.0</span></div>
+    </div>
+  </footer>
+
+  <!-- =================== APP JS =================== -->
+  <script>
+    function heroRotator() {
+      return {
+        current: 0,
+        timer: null,
+        demos: [
+          { id:'restaurant', label:'Mama Lou\u2019s Kitchen', name:'Mama Lou\u2019s', tagline:'Southern comfort, three meals a day.', kicker:'DOWNTOWN · EST. 1978',
+            url:'mamalous-milledgeville.com', href:'demos/restaurant/',
+            bg:'linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%)',
+            fg:'#FEF3C7', meta:'#FCD34D', glow:'rgba(249,115,22,0.35)', font:'Playfair Display, serif', weight:'500', style:'italic' },
+          { id:'retail', label:'Oak & Thread', name:'Oak & Thread', tagline:'Slow fashion for the South.', kicker:'SINCE 2019 · MILLEDGEVILLE',
+            url:'oakandthread.shop', href:'demos/retail/',
+            bg:'linear-gradient(135deg, #FAFAF9 0%, #E7E5E4 100%)',
+            fg:'#0A0A0C', meta:'#78716C', glow:'rgba(168,162,158,0.25)', font:'Instrument Serif, serif', weight:'400', style:'normal' },
+          { id:'salon', label:'The Barber & Co.', name:'The Barber & Co.', tagline:'Walk in a man. Walk out a gentleman.', kicker:'— EST. 2016 —',
+            url:'thebarberandco.com', href:'demos/salon/',
+            bg:'radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.4) 0%, transparent 60%), #0a0908',
+            fg:'#E7D9BC', meta:'#B88A44', glow:'rgba(184,138,68,0.3)', font:'DM Serif Display, serif', weight:'400', style:'normal' },
+          { id:'trades', label:'Milledgeville HVAC Pros', name:'HEAT & AIR DONE RIGHT.', tagline:'(478) 555-0187 · 24/7 Emergency', kicker:'LICENSED · INSURED · FAMILY-OWNED',
+            url:'milledgevillehvacpros.com', href:'demos/trades/',
+            bg:'linear-gradient(135deg, #041E33 0%, #0c4a6e 100%)',
+            fg:'#FFFFFF', meta:'#FACC15', glow:'rgba(250,204,21,0.25)', font:'Barlow Condensed, sans-serif', weight:'900', style:'normal' },
+        ],
+        start() { this.timer = setInterval(() => { this.current = (this.current + 1) % this.demos.length; }, 4000); },
+        restart() { if (this.timer) clearInterval(this.timer); this.start(); },
+      };
+    }
+  </script>
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

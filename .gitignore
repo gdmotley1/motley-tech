@@ -1,0 +1,13 @@
+# Local prospect/outreach data — never commit
+leads/
+prospects/
+
+# Local dev config
+.claude/
+
+# OS / editor noise
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/

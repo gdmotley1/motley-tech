@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Visit &amp; Reserve — Mama Lou's Kitchen</title>
+  <meta name="description" content="Reserve a table, find our address and hours, or give us a call. Mama Lou's Kitchen, downtown Milledgeville." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy:  { DEFAULT: '#7c2d12', deep: '#431407', soft: '#9A3412' },
+            cream:     '#FEF3C7',
+            parchment: '#FFFBEB',
+            gold:      '#C8A24B',
+            goldLite:  '#EAB308',
+            ink:       '#1C1917',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #FFFBEB; color: #1C1917; }
+    h1, h2, h3, h4, .display { font-family: 'Playfair Display', Georgia, serif; }
+
+    .hero-wash {
+      background:
+        radial-gradient(ellipse at 15% 100%, rgba(200,162,75,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 10%, rgba(234,179,8,0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #2a0a06 0%, #5a1c0a 50%, #7c2d12 100%);
+    }
+
+    .menu-row { display: flex; align-items: baseline; gap: 0.75rem; }
+    .menu-row .dots { flex: 1; border-bottom: 1px dotted rgba(124,45,18,0.3); transform: translateY(-0.35em); }
+
+    .ornament {
+      display: flex; align-items: center; gap: 1rem; color: #C8A24B;
+      font-family: 'Playfair Display', serif; font-style: italic;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #C8A24B 50%, transparent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- Motley Tech banner -->
+  <div class="bg-burgundy-deep/95 text-cream/70 text-[11px] text-center py-1.5 border-b border-gold/20 uppercase tracking-[0.25em]">
+    Sample site · built by <a href="../../index.html" class="text-gold hover:text-cream underline-offset-2 hover:underline">Motley Tech</a> · <a href="../../contact.html" class="text-gold hover:text-cream">get yours →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="bg-burgundy-deep text-cream border-b border-gold/20">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6 flex items-center justify-between">
+      <a href="index.html" class="display italic text-2xl tracking-tight">Mama Lou's</a>
+      <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-[0.2em]">
+        <a href="menu.html" class="hover:text-gold transition-colors">Menu</a>
+        <a href="story.html" class="hover:text-gold transition-colors">Our Story</a>
+        <a href="visit.html" class="text-gold underline underline-offset-8 transition-colors">Visit</a>
+      </div>
+      <a href="#reserve" class="px-5 py-2.5 border border-gold text-gold text-xs uppercase tracking-[0.2em] hover:bg-gold hover:text-burgundy-deep transition-colors">Reserve</a>
+    </div>
+  </nav>
+
+  <!-- RESERVE (top of page per spec) + VISIT -->
+  <section id="reserve" class="py-20 sm:py-28 bg-gradient-to-b from-burgundy to-burgundy-deep text-cream">
+    <div class="max-w-5xl mx-auto px-6 sm:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <div class="ornament text-xs uppercase tracking-[0.4em]" style="font-style:normal; color:#C8A24B;">Save Your Seat</div>
+        <h1 class="display text-5xl sm:text-7xl mt-5">Come hungry.<br /><em class="italic text-gold">Leave happy.</em></h1>
+        <p class="mt-5 text-cream/80">Walk-ins always welcome. But we fill up Thursday – Sunday, so reservations aren't a bad idea.</p>
+      </div>
+
+      <form class="mt-12 bg-burgundy-deep/60 backdrop-blur border border-gold/30 p-8 sm:p-10 grid sm:grid-cols-2 gap-5" onsubmit="event.preventDefault(); alert('Demo — in the real site this books your table.');">
+        <label class="block">
+          <span class="text-xs uppercase tracking-widest text-gold">Your Name</span>
+          <input type="text" required class="mt-1.5 w-full bg-transparent border-b border-gold/40 py-2.5 text-cream focus:outline-none focus:border-gold transition-colors" placeholder="First &amp; Last">
+        </label>
+        <label class="block">
+          <span class="text-xs uppercase tracking-widest text-gold">Phone</span>
+          <input type="tel" required class="mt-1.5 w-full bg-transparent border-b border-gold/40 py-2.5 text-cream focus:outline-none focus:border-gold transition-colors" placeholder="(478)">
+        </label>
+        <label class="block">
+          <span class="text-xs uppercase tracking-widest text-gold">Date</span>
+          <input type="date" class="mt-1.5 w-full bg-transparent border-b border-gold/40 py-2.5 text-cream focus:outline-none focus:border-gold transition-colors">
+        </label>
+        <label class="block">
+          <span class="text-xs uppercase tracking-widest text-gold">Party Size</span>
+          <select class="mt-1.5 w-full bg-burgundy-deep border-b border-gold/40 py-2.5 text-cream focus:outline-none focus:border-gold transition-colors">
+            <option>2 people</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7+</option>
+          </select>
+        </label>
+        <div class="sm:col-span-2 flex justify-end">
+          <button type="submit" class="px-10 py-4 bg-gold text-burgundy-deep font-semibold text-sm uppercase tracking-[0.2em] hover:bg-goldLite transition-colors">Request Reservation</button>
+        </div>
+      </form>
+
+      <div id="visit" class="mt-20 grid md:grid-cols-3 gap-8 text-center">
+        <div>
+          <div class="text-xs uppercase tracking-[0.3em] text-gold">Find Us</div>
+          <div class="display text-xl mt-2">204 W Hancock St<br />Milledgeville, GA 31061</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-[0.3em] text-gold">Hours</div>
+          <div class="display text-xl mt-2">Mon – Sat · 7am–9pm<br />Sunday · 10am–3pm</div>
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-[0.3em] text-gold">Call Us</div>
+          <div class="display text-xl mt-2">(478) 555-0147</div>
+          <div class="text-xs mt-1 text-cream/60">Catering inquiries ext. 2</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-burgundy-deep border-t border-gold/20 text-cream/70 text-sm">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="display italic text-lg text-cream">Mama Lou's Kitchen · Milledgeville, GA</div>
+      <div class="text-xs">
+        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a> — sample site, not a real restaurant.
+      </div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+# Motley Tech
+
+> Solo web-development studio building custom websites for small businesses. First build is free; client chooses to keep it via monthly hosting subscription ($49+/mo) or one-time buyout. No lock-in, no templates, no monthly minimums to get started.
+
+## About
+
+Motley Tech is run by **Grant Motley** and serves small businesses across the United States, starting with Milledgeville, GA. Every site is hand-built, custom-designed, fast-loading, mobile-first, and optimized for both traditional search (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
+
+- **Pricing**: Free initial build. Monthly hosting from $49/mo or one-time buyout.
+- **Timeline**: ~14 days from first call to live site, typical.
+- **Stack**: HTML + Tailwind + minimal JS. Portable, fast, easy to hand off if the client ever wants to move.
+- **Contact**: motleytech.ai@gmail.com
+
+## Key pages
+
+- [Home (what we do + sample sites + stakes)](https://motley-tech.com/)
+- [FAQ (ten common questions with full answers)](https://motley-tech.com/faq.html)
+- [How it works (3-step process, pricing model)](https://motley-tech.com/process.html)
+- [Contact / start a build](https://motley-tech.com/contact.html)
+
+## Sample builds (real working sites demonstrating the range)
+
+- [Mama Lou's Kitchen — restaurant demo](https://motley-tech.com/demos/restaurant/) — editorial, Playfair Display, burgundy + gold
+- [Oak & Thread — retail boutique demo](https://motley-tech.com/demos/retail/) — minimal monochrome, Instrument Serif, lookbook-led
+- [The Barber & Co. — salon demo](https://motley-tech.com/demos/salon/) — dark vintage luxury, DM Serif Display, brass + coal
+- [Milledgeville HVAC Pros — trades demo](https://motley-tech.com/demos/trades/) — utility industrial, Barlow Condensed, navy + safety yellow
+
+## Optional
+
+- [Brand guidelines](https://motley-tech.com/BRAND.md) — wordmark, colors, merch rules
+- [Sitemap](https://motley-tech.com/sitemap.xml)

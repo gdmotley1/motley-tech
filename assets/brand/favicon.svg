@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Favicon: ember square with white "m" baked in — readable at 16x16. -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" fill="#F97316"/>
+  <text x="32" y="48"
+        text-anchor="middle"
+        font-family="Space Grotesk, system-ui, sans-serif"
+        font-weight="700"
+        font-size="48"
+        letter-spacing="-2"
+        fill="#0A0A0C">m</text>
+</svg>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Single-color wordmark for embroidery, foil stamp, laser-etch, or one-color print.
+  Default: black. Change the fill attribute on both shapes to re-color (e.g., fill="#FFFFFF" for a polo).
+  Convert type to outlines in your design tool before sending to any embroidery vendor.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 56" role="img" aria-label="Motley Tech">
+  <title>Motley Tech</title>
+  <g fill="#000000">
+    <rect x="0" y="12" width="32" height="32"/>
+    <text x="48" y="40"
+          font-family="Space Grotesk, system-ui, sans-serif"
+          font-weight="700"
+          font-size="34"
+          letter-spacing="-0.9">Motley Tech</text>
+  </g>
+</svg>

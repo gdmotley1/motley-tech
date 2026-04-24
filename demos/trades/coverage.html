@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Service Area &amp; Reviews — Milledgeville HVAC Pros</title>
+  <meta name="description" content="We cover Baldwin County top to bottom — 30-mile radius. 4.9 stars on Google, 487 reviews." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy:    { DEFAULT: '#0c4a6e', dark: '#082F49', deeper: '#041E33', light: '#0369A1' },
+            safety:  { DEFAULT: '#FACC15', dark: '#CA8A04' },
+            steel:   { 50:'#F8FAFC', 100:'#F1F5F9', 200:'#E2E8F0', 400:'#94A3B8', 600:'#475569', 900:'#0F172A' },
+          },
+          fontFamily: {
+            display: ['Barlow Condensed', 'Arial Narrow', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #F8FAFC; color: #0F172A; }
+    .display, h1, h2, h3, h4 { font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif; text-transform: uppercase; letter-spacing: -0.01em; }
+
+    .stripe-caution {
+      background-image: repeating-linear-gradient(-45deg, #FACC15 0 12px, #0F172A 12px 24px);
+    }
+
+    .sticky-call { position: fixed; bottom: 0; left: 0; right: 0; z-index: 50; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- Motley Tech banner -->
+  <div class="bg-navy-deeper text-blue-100 text-[11px] text-center py-1.5 uppercase tracking-[0.2em] font-semibold">
+    Sample site · built by <a href="../../index.html" class="text-safety hover:text-white underline-offset-2 hover:underline">Motley Tech</a> · <a href="../../contact.html" class="text-safety hover:text-white">get yours →</a>
+  </div>
+
+  <!-- Emergency banner -->
+  <div class="bg-safety text-navy-dark text-center text-xs sm:text-sm py-2 px-4 border-b-2 border-navy-dark">
+    <strong class="display text-base tracking-wider">24/7 EMERGENCY SERVICE</strong>
+    <span class="mx-2">·</span>
+    <a href="tel:4785550187" class="underline font-bold">Call (478) 555-0187</a>
+    <span class="hidden sm:inline mx-2">·</span>
+    <span class="hidden sm:inline">No dispatch fee for same-day calls</span>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 bg-white border-b-2 border-navy-dark">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-3 flex items-center justify-between gap-4">
+      <a href="index.html" class="flex items-center gap-2.5">
+        <div class="w-10 h-10 bg-navy grid place-items-center">
+          <svg class="w-6 h-6 text-safety" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v8a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V4Zm4 2v6a4 4 0 0 0 4 4 4 4 0 0 0 4-4V6H8Zm-2 16h12v-2H6v2Z"/></svg>
+        </div>
+        <div>
+          <div class="display text-lg sm:text-xl font-black leading-none text-navy-dark">Milledgeville</div>
+          <div class="display text-lg sm:text-xl font-black leading-none text-navy">HVAC Pros</div>
+        </div>
+      </a>
+      <div class="hidden lg:flex items-center gap-8 display uppercase tracking-wide font-bold text-steel-900 text-sm">
+        <a href="services.html" class="hover:text-navy transition-colors">Services</a>
+        <a href="coverage.html" class="text-navy underline underline-offset-8 transition-colors">Service Area</a>
+        <a href="#reviews" class="hover:text-navy transition-colors">Reviews</a>
+        <a href="estimate.html" class="hover:text-navy transition-colors">Get Estimate</a>
+      </div>
+      <a href="tel:4785550187" class="flex items-center gap-2 px-4 sm:px-5 py-3 bg-safety text-navy-dark border-2 border-navy-dark font-black text-sm sm:text-base hover:bg-safety-dark transition-colors">
+        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <span class="display tracking-wide">Call Now</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- SERVICE AREA -->
+  <section class="py-20 sm:py-24 bg-navy text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <div class="inline-block px-3 py-1 bg-safety text-navy-dark display font-black tracking-widest text-xs">COVERAGE</div>
+        <h1 class="display text-6xl sm:text-7xl font-black mt-5">We cover Baldwin County. <span class="text-safety">Top to bottom.</span></h1>
+        <ul class="mt-8 grid grid-cols-2 gap-x-4 gap-y-2.5 text-blue-100">
+          <li>✓ Milledgeville</li>
+          <li>✓ Hardwick</li>
+          <li>✓ Lake Sinclair</li>
+          <li>✓ Gray</li>
+          <li>✓ Sparta</li>
+          <li>✓ Eatonton</li>
+          <li>✓ Gordon</li>
+          <li>✓ Haddock</li>
+        </ul>
+        <p class="mt-8 text-sm text-blue-200">Not sure if you're in our coverage area? <a href="tel:4785550187" class="underline font-semibold text-safety">Call us</a> — 9 times out of 10, the answer is yes.</p>
+      </div>
+      <div class="relative aspect-[4/3] border-2 border-safety/40 overflow-hidden" style="background: linear-gradient(135deg,#0369a1 0%, #082f49 100%);">
+        <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80&auto=format&fit=crop"
+             alt="" aria-hidden="true"
+             class="absolute inset-0 w-full h-full object-cover opacity-30"
+             onerror="this.remove()">
+        <div class="absolute inset-0 bg-gradient-to-br from-navy-dark/60 via-transparent to-navy-deeper/80"></div>
+        <div class="absolute inset-8 border border-safety/30 grid place-items-center">
+          <div class="text-center">
+            <div class="display text-6xl font-black text-safety">30 MI</div>
+            <div class="text-sm uppercase tracking-widest font-bold text-white/80 mt-2">RADIUS FROM HQ</div>
+          </div>
+        </div>
+        <div class="absolute top-4 left-4 text-[10px] font-mono text-safety/70">📍 221 Industrial Blvd</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section id="reviews" class="py-20 sm:py-24 bg-steel-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6">
+      <div class="flex items-end justify-between flex-wrap gap-4">
+        <div>
+          <div class="inline-block px-3 py-1 bg-navy text-safety display font-black tracking-widest text-xs">THE NEIGHBORS</div>
+          <h2 class="display text-5xl sm:text-6xl font-black mt-5 text-navy-dark">4.9 stars. 487 reviews.</h2>
+        </div>
+        <div class="text-right">
+          <div class="display font-black text-5xl text-safety-dark">487</div>
+          <div class="text-xs font-bold uppercase tracking-wider text-steel-600">5-star Google reviews</div>
+        </div>
+      </div>
+
+      <div class="mt-12 grid md:grid-cols-3 gap-5">
+        <blockquote class="bg-white border-2 border-steel-200 p-6">
+          <div class="text-safety-dark text-sm">★★★★★</div>
+          <p class="mt-4 text-steel-900 leading-relaxed">"Called at 11 pm on a Sunday. Tech was at my door in 40 minutes and had the AC fixed for the price they quoted on the phone. Nobody else in this town does that."</p>
+          <div class="mt-5 display font-bold text-navy-dark">Tanya R. · Hardwick</div>
+        </blockquote>
+        <blockquote class="bg-white border-2 border-steel-200 p-6">
+          <div class="text-safety-dark text-sm">★★★★★</div>
+          <p class="mt-4 text-steel-900 leading-relaxed">"Their competitor wanted $4,800 to replace my furnace. These guys looked at it, replaced one part for $180, and it's run fine for two years. Honest folks."</p>
+          <div class="mt-5 display font-bold text-navy-dark">Bill C. · Downtown Milledgeville</div>
+        </blockquote>
+        <blockquote class="bg-white border-2 border-steel-200 p-6">
+          <div class="text-safety-dark text-sm">★★★★★</div>
+          <p class="mt-4 text-steel-900 leading-relaxed">"On the maintenance plan for three years now. They catch every problem before it breaks. Absolute peace of mind — especially having young kids at home."</p>
+          <div class="mt-5 display font-bold text-navy-dark">Monica &amp; Dan F. · Lake Sinclair</div>
+        </blockquote>
+      </div>
+
+      <div class="mt-12 flex flex-wrap gap-4">
+        <a href="tel:4785550187" class="inline-flex items-center gap-3 px-7 py-5 bg-safety hover:bg-safety-dark text-navy-dark border-4 border-navy-dark display font-black text-xl tracking-wide transition-colors">
+          <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          (478) 555-0187
+        </a>
+        <a href="estimate.html" class="inline-flex items-center gap-2 px-7 py-5 border-2 border-navy-dark text-navy-dark display font-bold text-lg tracking-wider hover:bg-navy-dark hover:text-white transition-colors">Free Estimate →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="bg-navy-deeper text-blue-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-14 grid sm:grid-cols-4 gap-8">
+      <div class="sm:col-span-2">
+        <div class="flex items-center gap-2.5">
+          <div class="w-10 h-10 bg-safety grid place-items-center">
+            <svg class="w-6 h-6 text-navy-dark" viewBox="0 0 24 24" fill="currentColor"><path d="M4 4h16v8a6 6 0 0 1-6 6H10a6 6 0 0 1-6-6V4Z"/></svg>
+          </div>
+          <div class="display text-white">
+            <div class="text-xl font-black leading-none">Milledgeville</div>
+            <div class="text-xl font-black leading-none">HVAC Pros</div>
+          </div>
+        </div>
+        <p class="mt-5 text-sm max-w-md">Family-owned and operated in Milledgeville since 2008. Serving Baldwin County and surrounding areas 24/7/365.</p>
+        <div class="mt-5 text-xs display uppercase tracking-widest space-x-3 text-safety">
+          <span>GA #CN210473</span>·
+          <span>BBB A+</span>·
+          <span>NATE Certified</span>
+        </div>
+      </div>
+      <div>
+        <div class="display text-safety text-xs font-black uppercase tracking-widest">Office</div>
+        <div class="mt-2 text-sm">221 Industrial Blvd<br />Milledgeville, GA 31061</div>
+        <div class="mt-3 text-sm">Mon–Fri · 7am – 6pm<br />Sat · 8am – 2pm<br /><strong class="text-safety">Emergency · 24/7</strong></div>
+      </div>
+      <div>
+        <div class="display text-safety text-xs font-black uppercase tracking-widest">Call</div>
+        <a href="tel:4785550187" class="mt-2 block display font-black text-2xl text-white">(478) 555-0187</a>
+        <div class="mt-3 text-sm">dispatch@milledgevillehvacpros.com</div>
+      </div>
+    </div>
+    <div class="border-t border-navy-dark py-4">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col sm:flex-row justify-between items-center gap-2 text-xs">
+        <div>© 2026 Milledgeville HVAC Pros · All rights reserved</div>
+        <div>Built by <a href="../../index.html" class="text-safety underline hover:text-white">Motley Tech</a> — sample site, not a real HVAC company.</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Sticky mobile call bar -->
+  <a href="tel:4785550187" class="sticky-call sm:hidden bg-safety text-navy-dark border-t-4 border-navy-dark py-4 display font-black text-xl uppercase tracking-wide text-center flex items-center justify-center gap-3">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+    Call (478) 555-0187
+  </a>
+
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

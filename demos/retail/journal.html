@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Journal — Oak &amp; Thread</title>
+  <meta name="description" content="Care guides, maker stories, and style notes from Oak &amp; Thread." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            ink: '#0a0a0a',
+            paper: '#FFFFFF',
+            off:  '#FAFAF9',
+            taupe:'#78716C',
+            line: '#E7E5E4',
+            moss: '#3F5D3D',
+          },
+          fontFamily: {
+            display: ['Instrument Serif', 'Georgia', 'serif'],
+            sans:    ['Manrope', 'system-ui', 'sans-serif'],
+          },
+          letterSpacing: {
+            tightest: '-0.04em',
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Manrope', sans-serif; background: #FFFFFF; color: #0a0a0a; }
+    .display, h1, h2, h3 { font-family: 'Instrument Serif', Georgia, serif; font-weight: 400; letter-spacing: -0.02em; }
+
+    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .marquee-track { animation: marquee 40s linear infinite; }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- Motley Tech banner -->
+  <div class="bg-off text-taupe text-[11px] text-center py-1.5 border-b border-line uppercase tracking-[0.25em]">
+    Sample site · built by <a href="../../index.html" class="text-ink hover:underline underline-offset-2">Motley Tech</a> · <a href="../../contact.html" class="text-ink hover:underline">get yours →</a>
+  </div>
+
+  <!-- Announce ticker -->
+  <div class="bg-ink text-off text-[11px] uppercase tracking-[0.25em] overflow-hidden border-b border-ink">
+    <div class="marquee-track flex gap-16 py-2.5 whitespace-nowrap" style="width:200%;">
+      <span>Fall drop · Sept 15 · 9am sharp</span><span>·</span>
+      <span>Free alterations on full-price denim</span><span>·</span>
+      <span>Visit us · 118 S Wayne St, Milledgeville</span><span>·</span>
+      <span>Fall drop · Sept 15 · 9am sharp</span><span>·</span>
+      <span>Free alterations on full-price denim</span><span>·</span>
+      <span>Visit us · 118 S Wayne St, Milledgeville</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav class="sticky top-0 z-40 bg-white/90 backdrop-blur border-b border-line">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-10 py-5 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-0.5">
+        <span class="display text-2xl tracking-tightest">Oak</span>
+        <span class="display text-2xl italic tracking-tightest">&amp; Thread</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10 text-xs uppercase tracking-[0.2em] text-ink">
+        <a href="shop.html" class="hover:underline underline-offset-4">Shop</a>
+        <a href="lookbook.html" class="hover:underline underline-offset-4">Lookbook</a>
+        <a href="journal.html" class="underline underline-offset-4 text-moss">Journal</a>
+        <a href="visit.html" class="hover:underline underline-offset-4">Visit</a>
+      </div>
+      <div class="flex items-center gap-5 text-xs">
+        <button type="button" class="hover:underline underline-offset-4 uppercase tracking-[0.2em]">Search</button>
+        <button type="button" class="flex items-center gap-1.5 hover:underline underline-offset-4 uppercase tracking-[0.2em]">
+          Bag <span class="font-medium">(0)</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- JOURNAL -->
+  <section class="py-20 sm:py-28 bg-off">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-10">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <div class="text-[11px] uppercase tracking-[0.3em] text-taupe">The Journal</div>
+          <h1 class="display text-5xl sm:text-7xl mt-2">Words, worn.</h1>
+        </div>
+        <a href="#" class="hidden sm:inline-block text-xs uppercase tracking-[0.25em] hover:underline underline-offset-4">All posts →</a>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-10">
+        <article>
+          <div class="aspect-[4/3] relative overflow-hidden" style="background: linear-gradient(135deg,#fed7aa,#9A3412);">
+            <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=900&q=80&auto=format&fit=crop"
+                 alt="Raw denim washing guide"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="mt-4">
+            <div class="text-[11px] uppercase tracking-widest text-taupe">Care Guide · 6 min</div>
+            <h2 class="display text-2xl mt-2">How to wash raw denim (slowly).</h2>
+            <p class="mt-2 text-sm text-taupe leading-relaxed">The 6-month no-wash rule isn't about being gross. It's about letting the fade tell your story. Here's how to do it right.</p>
+          </div>
+        </article>
+        <article>
+          <div class="aspect-[4/3] relative overflow-hidden" style="background: linear-gradient(135deg,#d6d3d1,#57534e);">
+            <img src="https://images.unsplash.com/photo-1528483518878-31b9d0f5b59a?w=900&q=80&auto=format&fit=crop"
+                 alt="Yarn on spindle"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="mt-4">
+            <div class="text-[11px] uppercase tracking-widest text-taupe">Maker Story · 4 min</div>
+            <h2 class="display text-2xl mt-2">Meet Callie, who spins our yarn.</h2>
+            <p class="mt-2 text-sm text-taupe leading-relaxed">A fifth-generation spinner in north Georgia, Callie turns every skein on a wheel her great-great-grandfather built.</p>
+          </div>
+        </article>
+        <article>
+          <div class="aspect-[4/3] relative overflow-hidden" style="background: linear-gradient(135deg,#bbf7d0,#3F5D3D);">
+            <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=900&q=80&auto=format&fit=crop"
+                 alt="Wool coat"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="mt-4">
+            <div class="text-[11px] uppercase tracking-widest text-taupe">Style Note · 3 min</div>
+            <h2 class="display text-2xl mt-2">The case for owning one good coat.</h2>
+            <p class="mt-2 text-sm text-taupe leading-relaxed">Five coats in the closet, worn twice each. Or one coat, worn a hundred times. Math and romance both agree.</p>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-14 pt-10 border-t border-line grid md:grid-cols-3 gap-10">
+        <article>
+          <div class="text-[11px] uppercase tracking-widest text-taupe">Care Guide · 5 min</div>
+          <h2 class="display text-2xl mt-2">Linen, creased and loving it.</h2>
+          <p class="mt-2 text-sm text-taupe leading-relaxed">Stop ironing. Embrace the rumple. It's not a flaw, it's the whole point.</p>
+        </article>
+        <article>
+          <div class="text-[11px] uppercase tracking-widest text-taupe">Community · 7 min</div>
+          <h2 class="display text-2xl mt-2">The shop, one year in.</h2>
+          <p class="mt-2 text-sm text-taupe leading-relaxed">Lessons from year one on Wayne Street — what we got right, what we're changing for year two.</p>
+        </article>
+        <article>
+          <div class="text-[11px] uppercase tracking-widest text-taupe">Style Note · 4 min</div>
+          <h2 class="display text-2xl mt-2">Layering for Georgia winters.</h2>
+          <p class="mt-2 text-sm text-taupe leading-relaxed">45 at sunrise, 72 by lunch. Here's what to wear when the weather can't make up its mind.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 border-t border-line bg-white">
+    <div class="max-w-[1400px] mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-taupe">
+      <div class="display text-base text-ink">Oak &amp; Thread</div>
+      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

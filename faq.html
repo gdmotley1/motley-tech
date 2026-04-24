@@ -1,0 +1,511 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>FAQ — Motley Tech · answers to the questions small business owners actually ask</title>
+  <meta name="description" content="Plain-English answers about Motley Tech's free-first-build website service. Pricing, timelines, ownership, hosting, SEO, AI search, domain transfers, and more." />
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:title" content="FAQ — Motley Tech">
+  <meta property="og:description" content="Answers to the questions small business owners actually ask about Motley Tech's free-first-build service.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/brand/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:       { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:     { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:     { DEFAULT: '#26262C', strong: '#36363E' },
+            ember:    { DEFAULT: '#F97316', hot: '#FB923C', soft: 'rgba(249,115,22,0.14)' },
+            lime:     { DEFAULT: '#A3E635', soft: 'rgba(163,230,53,0.14)' },
+            mint:     { DEFAULT: '#10B981' },
+            amber2:   { DEFAULT: '#FACC15' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0A0A0C; color: #FAFAF9; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    .dotgrid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
+    .hero-halo { background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%); }
+
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F97316; }
+    .rule-grid { height: 1px; background: linear-gradient(90deg, transparent, #26262C 10%, #36363E 50%, #26262C 90%, transparent); }
+
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .status-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+
+    /* FAQ-specific — terminal-style Q/A cards */
+    .faq-card { position: relative; background: #111114; border: 1px solid #26262C; border-radius: 16px; transition: border-color 250ms ease, transform 250ms ease; }
+    .faq-card:hover { border-color: rgba(249,115,22,0.35); }
+    .faq-card::before {
+      content: '';
+      position: absolute; left: 1.75rem; right: 1.75rem; top: 4rem; height: 1px;
+      background: linear-gradient(90deg, rgba(249,115,22,0.4), rgba(38,38,44,0) 85%);
+    }
+    .faq-prompt { font-family: 'JetBrains Mono', monospace; color: #F97316; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+
+    /* Smooth details marker */
+    details.qa > summary { list-style: none; cursor: pointer; }
+    details.qa > summary::-webkit-details-marker { display: none; }
+    details.qa .chev { transition: transform 250ms ease; }
+    details[open].qa .chev { transform: rotate(180deg); }
+    details.qa .qa-body { max-height: 0; overflow: hidden; transition: max-height 350ms ease; }
+    details[open].qa .qa-body { max-height: 600px; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+
+    /* Scroll-reveal — fade sections + grid children into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+  </style>
+  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+
+  <!-- FAQPage JSON-LD — tells Google + AI search engines (ChatGPT, Perplexity, Gemini) what questions this page answers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is the free build really free?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, completely. I build the full site, you try it, and if you don't want to keep it we part ways with no hard feelings and no bill. You only pay if you love it — either a monthly hosting subscription, or a one-time fee to own the code outright."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's the catch?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "I'm early in the business and building a portfolio. The first few clients get a better deal than my later ones ever will — I'd ask to feature the finished site as a case study, and in return you'd get a permanent founder's rate if you stick around on the subscription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How long until my site is live?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Typically about 14 days from our first call. Simpler sites (single service, straightforward menu or product list) can be faster. Sites with lots of custom features, heavy content, or complex integrations may take longer — I'll tell you up front."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What happens if I stop paying for hosting later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Zero lock-in. I'll give you 60 days notice either way. You can switch to a buyout (one-time fee and the code is yours to take anywhere), migrate to another host with my help, or stay on your founder's rate. No surprise charges, no ransom."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I update the site myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes, if you want. I can set up a simple content editor so you can change text, swap photos, update hours and prices from your phone. Most clients just text me updates though — same-day turnaround is part of the subscription."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Will Google and AI search engines find me?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Every site I build is optimized for both traditional search (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude). That means proper meta tags, Schema.org structured data, fast load times, mobile-first design, and clear content that AI tools can cite as an answer."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How does this compare to Squarespace, Wix, or WordPress?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Template builders like Squarespace work fine if you want a generic $20-a-month site that looks like every other business in town. I build something specifically for your business — custom design, faster, cleaner, and more memorable. If you ever want to move to Squarespace later, the site is standard HTML so your content is portable."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I already have a website?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Even better. I'll audit your existing site free, tell you what's working and what's costing you customers, and if a rebuild makes sense we go from there. The free build still applies — you only pay if you prefer the new one."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I keep my current domain name?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. Whatever domain you own today stays yours. I point it at the new site. If you don't have one yet, I'll help you pick and register a domain that actually matches your business."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Do you work with businesses outside your local area?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Yes. I started local because face-to-face meetings are the fastest way to learn a business, but the build process itself works anywhere. If you're a small business anywhere in the US, reach out."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased">
+
+  <!-- =================== NAV =================== -->
+  <nav class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <button type="button" @click="open = !open" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+            Sample Sites
+            <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </button>
+          <div x-show="open" x-cloak x-transition.opacity
+               class="absolute top-full right-0 mt-2 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+            <a href="index.html#demos" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
+              <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
+              <div class="mt-0.5 font-medium text-text-0">Go to gallery →</div>
+            </a>
+            <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
+              <div>
+                <div class="font-medium text-text-0">Mama Lou's Kitchen</div>
+                <div class="mono text-[10px] text-text-3">restaurant/</div>
+              </div>
+            </a>
+            <a href="demos/retail/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #d6d3d1, #57534e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Oak &amp; Thread</div>
+                <div class="mono text-[10px] text-text-3">retail/</div>
+              </div>
+            </a>
+            <a href="demos/salon/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #0a0908, #B88A44);"></div>
+              <div>
+                <div class="font-medium text-text-0">The Barber &amp; Co.</div>
+                <div class="mono text-[10px] text-text-3">salon/</div>
+              </div>
+            </a>
+            <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Milledgeville HVAC Pros</div>
+                <div class="mono text-[10px] text-text-3">trades/</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="faq.html" class="text-ember underline underline-offset-8 transition-colors">FAQ</a>
+        <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
+
+        <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <a href="contact.html" class="md:hidden px-3 py-1.5 bg-ember text-bg-0 rounded-md font-medium text-xs">Start →</a>
+    </div>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <header class="relative overflow-hidden border-b border-line">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute inset-0 hero-halo"></div>
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-20 sm:py-28">
+      <div class="tag-mono">[ // FAQ ]</div>
+      <h1 class="display mt-4 text-5xl sm:text-7xl lg:text-[84px] font-semibold tracking-tight leading-[0.95] text-text-0">
+        Questions people<br />
+        <span class="text-ember">actually ask.</span>
+      </h1>
+      <p class="mt-8 text-lg sm:text-xl text-text-1 max-w-2xl leading-relaxed">
+        Plain-English answers, no asterisks. If you don't see yours here, email me directly — I'll add it.
+      </p>
+
+      <!-- Terminal prompt ornament -->
+      <div class="mt-10 mono text-sm text-text-3 flex items-center gap-3">
+        <span class="text-ember">▸</span>
+        <span>ten most common · no login · no email required to read</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== FAQ GRID =================== -->
+  <section class="relative py-16 sm:py-20">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="grid lg:grid-cols-2 gap-4 items-stretch">
+
+        <!-- Q01 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_01</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">Is the free build really free?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Yes, completely. I build the full site, you try it, and if you don't want to keep it we part ways with no hard feelings and no bill. You only pay if you love it — either a monthly hosting subscription, or a one-time fee to own the code outright.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q02 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_02</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">What's the catch?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              I'm early in the business and building a portfolio. The first few clients get a better deal than later ones ever will — I'd ask to feature the finished site as a case study, and in return you get a permanent founder's rate if you stick around on the subscription.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q03 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_03</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">How long until my site is live?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Typically about 14 days from our first call. Simpler sites (single service, straightforward menu or product list) can be faster. Sites with lots of custom features, heavy content, or complex integrations may take longer — I'll tell you up front.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q04 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_04</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">What happens if I stop paying for hosting later?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Zero lock-in. I give you 60 days notice either way. Your options: switch to a buyout (one-time fee, code is yours, take it anywhere), migrate to another host with my help, or stay on your founder's rate. No surprise charges, no ransom.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q05 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_05</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">Can I update the site myself?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Yes, if you want. I can set up a simple content editor so you can change text, swap photos, update hours and prices from your phone. Most clients just text me updates though — same-day turnaround is part of the subscription.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q06 — AI search angle (important, called out with ember border) -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open style="border-color: rgba(249,115,22,0.35);">
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_06 · <span class="text-lime">ai search</span></div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">Will Google <span class="text-text-2">and AI</span> find me?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Every site I build is optimized for <strong class="text-text-0">both</strong> traditional search (Google, Bing) <strong class="text-text-0">and</strong> AI answer engines (ChatGPT, Perplexity, Gemini, Claude). That means proper meta tags, Schema.org structured data, fast load times, mobile-first design, and clear content that AI tools can confidently cite when someone asks them for a recommendation.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q07 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_07</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">How does this compare to Squarespace / Wix / WordPress?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Template builders work fine if you want a generic $20-a-month site that looks like every other business in town. I build something specifically for <em>your</em> business — custom design, faster, cleaner, more memorable. If you ever want to move to Squarespace later, the site is standard HTML so your content is fully portable.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q08 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_08</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">What if I already have a website?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Even better. I'll audit your existing site free — tell you what's working and what's costing you customers. If a rebuild makes sense, we go from there. The free build still applies, and you only pay if you prefer the new one.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q09 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_09</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">Can I keep my current domain name?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Yes. Whatever domain you own today stays yours — I just point it at the new site. If you don't have one yet, I'll help you pick and register a domain that actually matches your business.
+            </p>
+          </div>
+        </details>
+
+        <!-- Q10 -->
+        <details class="qa faq-card p-7 lg:p-8 group h-full" open>
+          <summary class="flex items-start justify-between gap-6">
+            <div class="flex-1">
+              <div class="faq-prompt">&gt; q_10</div>
+              <h3 class="display mt-3 text-xl sm:text-2xl font-semibold text-text-0">Do you work with businesses outside your area?</h3>
+            </div>
+            <svg class="chev flex-shrink-0 w-5 h-5 mt-1 text-text-3 group-hover:text-ember transition-colors" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </summary>
+          <div class="qa-body">
+            <p class="mt-5 text-text-1 leading-relaxed">
+              Yes. I start local because face-to-face meetings are the fastest way to learn a business, but the build process itself works anywhere. If you're a small business anywhere in the US, reach out.
+            </p>
+          </div>
+        </details>
+
+      </div>
+
+      <!-- Still have a question CTA -->
+      <div class="mt-16 p-8 sm:p-10 bg-bg-1 border border-line rounded-2xl text-center relative overflow-hidden">
+        <div class="absolute inset-0 dotgrid opacity-40"></div>
+        <div class="relative">
+          <div class="mono text-[10px] text-ember tracking-widest uppercase">[ &gt; q_11 ]</div>
+          <h2 class="display mt-3 text-3xl sm:text-5xl font-semibold tracking-tight text-text-0">Didn't see your question?</h2>
+          <p class="mt-4 text-text-1 max-w-xl mx-auto">Email me directly and I'll answer within 24 hours. If it's common, I'll add it above.</p>
+          <div class="mt-7 flex flex-col sm:flex-row gap-3 justify-center">
+            <a href="mailto:motleytech.ai@gmail.com?subject=Question%20about%20Motley%20Tech" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
+              <span class="mono text-xs">✉</span>
+              motleytech.ai@gmail.com
+            </a>
+            <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-bg-2 hover:bg-bg-3 border border-line text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
+              Or start a build →
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="py-12 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-3 gap-8 text-sm">
+      <div>
+        <div>
+          <span class="display font-bold text-3xl tracking-tight text-text-0">Motley Tech</span>
+        </div>
+        <p class="mt-4 text-text-2 max-w-sm">Custom websites for small businesses in Milledgeville, Georgia. Built by Grant Motley, one site at a time.</p>
+      </div>
+      <div>
+        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// contact</div>
+        <div class="mt-2 text-text-1"><a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a></div>
+        <div class="mt-1 text-text-2">Milledgeville, GA · Baldwin County</div>
+      </div>
+      <div>
+        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// sample builds</div>
+        <div class="mt-2 flex flex-col gap-1 text-text-1">
+          <a href="demos/restaurant/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ mamalous-milledgeville.com</a>
+          <a href="demos/retail/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ oakandthread.shop</a>
+          <a href="demos/salon/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ thebarberandco.com</a>
+          <a href="demos/trades/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ milledgevillehvacpros.com</a>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-6 border-t border-line max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between gap-2 text-xs text-text-3 mono">
+      <div>© 2026 Motley Tech · all rights reserved</div>
+      <div>handcrafted in Milledgeville, GA · <span class="text-text-2">v2.0</span></div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mama Lou's Kitchen — Southern cooking, downtown Milledgeville since 1978</title>
+  <meta name="description" content="Three meals a day of Southern comfort, plate-lunches, and hand-cut pies on Hancock Street." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            burgundy:  { DEFAULT: '#7c2d12', deep: '#431407', soft: '#9A3412' },
+            cream:     '#FEF3C7',
+            parchment: '#FFFBEB',
+            gold:      '#C8A24B',
+            goldLite:  '#EAB308',
+            ink:       '#1C1917',
+          },
+          fontFamily: {
+            display: ['Playfair Display', 'Georgia', 'serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: #FFFBEB; color: #1C1917; }
+    h1, h2, h3, h4, .display { font-family: 'Playfair Display', Georgia, serif; }
+
+    /* Hero texture — warm diagonal wash + paper texture via gradients */
+    .hero-wash {
+      background:
+        radial-gradient(ellipse at 15% 100%, rgba(200,162,75,0.12) 0%, transparent 55%),
+        radial-gradient(ellipse at 85% 10%, rgba(234,179,8,0.10) 0%, transparent 55%),
+        linear-gradient(180deg, #2a0a06 0%, #5a1c0a 50%, #7c2d12 100%);
+    }
+
+    /* Menu price dot leaders */
+    .menu-row { display: flex; align-items: baseline; gap: 0.75rem; }
+    .menu-row .dots { flex: 1; border-bottom: 1px dotted rgba(124,45,18,0.3); transform: translateY(-0.35em); }
+
+    /* Gold divider ornament */
+    .ornament {
+      display: flex; align-items: center; gap: 1rem; color: #C8A24B;
+      font-family: 'Playfair Display', serif; font-style: italic;
+    }
+    .ornament::before, .ornament::after {
+      content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, transparent, #C8A24B 50%, transparent);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+    }
+    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(.2,.7,.2,1), transform 700ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+  </style>
+  <link rel="icon" type="image/svg+xml" href="../../assets/brand/favicon.svg">
+</head>
+<body class="antialiased">
+
+  <!-- Motley Tech banner -->
+  <div class="bg-burgundy-deep/95 text-cream/70 text-[11px] text-center py-1.5 border-b border-gold/20 uppercase tracking-[0.25em]">
+    Sample site · built by <a href="../../index.html" class="text-gold hover:text-cream underline-offset-2 hover:underline">Motley Tech</a> · <a href="../../contact.html" class="text-gold hover:text-cream">get yours →</a>
+  </div>
+
+  <!-- NAV -->
+  <nav class="absolute left-0 right-0 z-30 text-cream" style="top: 30px;">
+    <div class="max-w-7xl mx-auto px-6 sm:px-10 py-6 flex items-center justify-between">
+      <a href="index.html" class="display italic text-2xl tracking-tight">Mama Lou's</a>
+      <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-[0.2em]">
+        <a href="menu.html" class="hover:text-gold transition-colors">Menu</a>
+        <a href="story.html" class="hover:text-gold transition-colors">Our Story</a>
+        <a href="visit.html" class="hover:text-gold transition-colors">Visit</a>
+      </div>
+      <a href="visit.html#reserve" class="px-5 py-2.5 border border-gold text-gold text-xs uppercase tracking-[0.2em] hover:bg-gold hover:text-burgundy-deep transition-colors">Reserve</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="top" class="hero-wash relative min-h-[92vh] flex items-center justify-center text-center px-6 pt-24 pb-20 overflow-hidden">
+    <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1800&q=80&auto=format&fit=crop"
+         alt="" aria-hidden="true"
+         class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
+         onerror="this.remove()">
+    <div class="absolute inset-0 bg-gradient-to-b from-burgundy-deep/60 via-transparent to-burgundy-deep/80 pointer-events-none"></div>
+    <div class="relative max-w-4xl">
+      <div class="ornament text-xs uppercase tracking-[0.4em] text-gold" style="font-style:normal;">Est. 1978 · Hancock Street</div>
+      <h1 class="display text-cream mt-6 text-6xl sm:text-8xl lg:text-9xl leading-[0.95] italic font-medium">Mama Lou's</h1>
+      <div class="display text-gold text-3xl sm:text-5xl mt-2 tracking-[0.2em] uppercase" style="font-weight:400;">Kitchen</div>
+      <p class="display italic text-cream/80 text-xl sm:text-2xl mt-8 max-w-2xl mx-auto leading-relaxed">
+        Three meals a day of Southern comfort, the way Grandma would've made it — if Grandma had a line out the door.
+      </p>
+      <div class="mt-10 flex flex-wrap gap-4 justify-center">
+        <a href="visit.html#reserve" class="px-8 py-4 bg-gold text-burgundy-deep font-semibold text-sm uppercase tracking-[0.2em] hover:bg-goldLite transition-colors">Reserve a Table</a>
+        <a href="menu.html" class="px-8 py-4 border border-cream/40 text-cream text-sm uppercase tracking-[0.2em] hover:bg-cream/10 transition-colors">See the Menu</a>
+      </div>
+      <div class="mt-12 flex flex-wrap justify-center gap-x-10 gap-y-2 text-sm text-cream/70">
+        <span>★ Open today · 7:00 am – 9:00 pm</span>
+        <span>·</span>
+        <span>(478) 555-0147</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- TODAY'S PLATES -->
+  <section class="py-20 sm:py-28 bg-parchment">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10">
+      <div class="text-center max-w-2xl mx-auto">
+        <div class="ornament text-xs uppercase tracking-[0.4em]" style="font-style:normal;">Today's Plates</div>
+        <h2 class="display text-4xl sm:text-6xl text-burgundy-deep mt-5">Cooked this morning.<br /><em class="italic">Served 'til it's gone.</em></h2>
+      </div>
+
+      <div class="mt-16 grid md:grid-cols-3 gap-6 sm:gap-8">
+        <article class="bg-white border border-burgundy/10 overflow-hidden group">
+          <div class="aspect-[4/3] relative" style="background: linear-gradient(135deg, #9A3412 0%, #431407 60%, #7c2d12 100%);">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop"
+                 alt="Sunday pot roast with gravy"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="p-7">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="display text-2xl text-burgundy-deep">Sunday Pot Roast</h3>
+              <span class="display text-xl text-gold">$14</span>
+            </div>
+            <p class="mt-3 text-sm text-ink/70 leading-relaxed">Slow-braised chuck, carrots from Barnes' farm, red-skin potatoes, drowned in pan gravy.</p>
+            <div class="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-burgundy">Comes with cornbread</div>
+          </div>
+        </article>
+
+        <article class="bg-white border border-burgundy/10 overflow-hidden group">
+          <div class="aspect-[4/3] relative" style="background: linear-gradient(135deg, #EAB308 0%, #92400e 55%, #431407 100%);">
+            <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=900&q=80&auto=format&fit=crop"
+                 alt="Buttermilk fried chicken"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="p-7">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="display text-2xl text-burgundy-deep">Buttermilk Fried Chicken</h3>
+              <span class="display text-xl text-gold">$13</span>
+            </div>
+            <p class="mt-3 text-sm text-ink/70 leading-relaxed">Brined 24 hours, dredged three times, fried in cast iron. Two pieces, two sides.</p>
+            <div class="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-burgundy">Lou's recipe · 1982</div>
+          </div>
+        </article>
+
+        <article class="bg-white border border-burgundy/10 overflow-hidden group">
+          <div class="aspect-[4/3] relative" style="background: linear-gradient(135deg, #fde68a 0%, #C8A24B 50%, #92400e 100%);">
+            <img src="https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?w=900&q=80&auto=format&fit=crop"
+                 alt="Warm peach cobbler with ice cream"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+          </div>
+          <div class="p-7">
+            <div class="flex items-baseline justify-between gap-4">
+              <h3 class="display text-2xl text-burgundy-deep">Peach Cobbler</h3>
+              <span class="display text-xl text-gold">$6</span>
+            </div>
+            <p class="mt-3 text-sm text-ink/70 leading-relaxed">Georgia peaches, butter-crust lattice, vanilla bean ice cream melting on top.</p>
+            <div class="mt-4 inline-flex items-center gap-2 text-[11px] uppercase tracking-widest text-burgundy">Seasonal · limit 40 a day</div>
+          </div>
+        </article>
+      </div>
+
+      <div class="mt-14 text-center">
+        <a href="menu.html" class="inline-block px-8 py-4 bg-burgundy-deep text-cream font-semibold text-sm uppercase tracking-[0.2em] hover:bg-burgundy transition-colors">See the Full Menu →</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="py-10 bg-burgundy-deep border-t border-gold/20 text-cream/70 text-sm">
+    <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div class="display italic text-lg text-cream">Mama Lou's Kitchen · Milledgeville, GA</div>
+      <div class="text-xs">
+        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a> — sample site, not a real restaurant.
+      </div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      // Auto-tag every <section> and select .auto-reveal blocks
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) {
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in'));
+        return;
+      }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-in');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

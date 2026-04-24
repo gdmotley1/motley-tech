@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 56" role="img" aria-label="Motley Tech">
+  <title>Motley Tech</title>
+  <!-- ember square mark -->
+  <rect x="0" y="12" width="32" height="32" fill="#F97316"/>
+  <!-- wordmark: Space Grotesk Bold (700), tight tracking -->
+  <text x="48" y="40"
+        font-family="Space Grotesk, system-ui, sans-serif"
+        font-weight="700"
+        font-size="34"
+        letter-spacing="-0.9"
+        fill="#0A0A0C">Motley Tech</text>
+</svg>
