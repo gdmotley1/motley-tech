@@ -269,7 +269,7 @@
 
         <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
           <a href="samples.html" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
-            Sample Sites
+            Samples
             <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <div x-show="open" x-cloak x-transition.opacity
@@ -309,13 +309,13 @@
           </div>
         </div>
 
-        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="process.html" class="text-ember underline underline-offset-8 transition-colors">Process</a>
 
         <a href="pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
 
         <a href="care.html" class="hover:text-text-0 transition-colors">Care</a>
 
-        <a href="process.html" class="text-ember underline underline-offset-8 transition-colors">How it works</a>
+        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
 
         <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
           Start a build
@@ -339,11 +339,11 @@
          class="md:hidden absolute top-full left-0 right-0 bg-bg-0/95 backdrop-blur border-b border-line">
       <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-1">
         <a href="index.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Home</a>
-        <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Sample Sites</a>
-        <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
+        <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Samples</a>
+        <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Process</a>
         <a href="pricing.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Pricing</a>
         <a href="care.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Care</a>
-        <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">How it works</a>
+        <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
         <a href="contact.html" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-base transition-colors">
           Start a build
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -355,62 +355,91 @@
   <!-- =================== PROCESS =================== -->
   <section class="no-reveal relative py-16 sm:py-24">
     <div class="absolute inset-0 dotgrid opacity-40 pointer-events-none"></div>
-    <div class="relative max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="max-w-3xl fade-up">
-        <h1 class="display mt-2 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[0.95] text-text-0">
-          Three steps. <span class="text-ember">About 14 days.</span>
+    <div class="relative max-w-5xl mx-auto px-5 sm:px-8">
+
+      <!-- Hero -->
+      <div class="max-w-4xl fade-up">
+        <h1 class="display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1] text-text-0">
+          Two weeks. <span class="text-ember">Then it's your call.</span>
         </h1>
-        <p class="mt-3 text-base sm:text-lg text-text-1 leading-relaxed">
-          From first call to live URL. You pay nothing until you decide to keep it.
-        </p>
       </div>
 
-      <ol class="mt-6 grid md:grid-cols-3 gap-3.5 items-stretch">
-        <li id="step-1" class="relative bg-bg-1 border border-line rounded-2xl p-5 flex flex-col h-full">
-          <div class="flex items-center gap-3">
-            <span class="mono text-xs text-ember">01.</span>
-            <span class="flex-1 rule-grid"></span>
-            <span class="mono text-[10px] text-text-3">~20 min · free</span>
-          </div>
-          <h2 class="display mt-3 text-xl font-semibold text-text-0">Free 20-min consult</h2>
-          <p class="mt-2 text-sm text-text-1 leading-relaxed">Phone, video, or in-person if you're in Milledgeville. Tell us what you sell, who buys it, and where customers fall off finding you. No pitch. No contract.</p>
-        </li>
+      <!-- Steps · vertical timeline visualization -->
+      <div class="mt-14 sm:mt-16 relative">
 
-        <li id="step-2" class="relative bg-bg-1 border border-line rounded-2xl p-5 flex flex-col h-full">
-          <div class="flex items-center gap-3">
-            <span class="mono text-xs text-ember">02.</span>
-            <span class="flex-1 rule-grid"></span>
-            <span class="mono text-[10px] text-text-3">~14 days · free</span>
-          </div>
-          <h2 class="display mt-3 text-xl font-semibold text-text-0">Live custom site in ~14 days</h2>
-          <p class="mt-2 text-sm text-text-1 leading-relaxed">Hand-coded. Custom design and copy. Mobile-first. Built to get cited by Google and the AI engines (ChatGPT, Perplexity, Gemini). You get a real URL to share and test.</p>
-        </li>
+        <!-- Vertical ember track running through the nodes -->
+        <div aria-hidden="true" class="absolute left-3.5 sm:left-4 top-4 bottom-10 w-px"
+             style="background: linear-gradient(to bottom, #F97316 0%, #F97316 33%, rgba(249,115,22,0.55) 66%, rgba(249,115,22,0.15) 100%);"></div>
 
-        <li id="step-3" class="relative bg-bg-1 border border-line rounded-2xl p-5 border-gradient shadow-glow-ember flex flex-col h-full">
-          <div class="flex items-center gap-3">
-            <span class="mono text-xs text-ember">03.</span>
-            <span class="flex-1 rule-grid"></span>
-            <span class="mono text-[10px] text-lime">your call</span>
+        <!-- Step 1 · Day 0 -->
+        <div id="step-1" class="relative pl-12 sm:pl-16 pb-14 sm:pb-20">
+          <!-- Node -->
+          <div aria-hidden="true" class="absolute left-0 top-2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-bg-0 border-2 border-ember grid place-items-center">
+            <div class="w-2.5 h-2.5 rounded-full bg-ember"></div>
           </div>
-          <h2 class="display mt-3 text-xl font-semibold text-text-0">Subscribe, buy, or walk</h2>
-          <ul class="mt-2 space-y-1.5 text-text-1">
-            <li class="flex gap-2 text-sm"><span class="mono text-ember">→</span><span><strong class="text-text-0">Subscribe</strong> from $49/mo, hosting, updates, tweaks.</span></li>
-            <li class="flex gap-2 text-sm"><span class="mono text-ember">→</span><span><strong class="text-text-0">Buy outright</strong>, full source code, take it anywhere.</span></li>
-            <li class="flex gap-2 text-sm"><span class="mono text-ember">→</span><span><strong class="text-text-0">Walk away</strong>, no bill, no hard feelings.</span></li>
+          <div class="mono text-[11px] text-ember tracking-[0.2em] uppercase">Day 0</div>
+          <h2 class="display mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0">
+            We <span class="text-ember">talk for 20 minutes.</span>
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-text-1 leading-relaxed max-w-3xl">
+            Phone, video, or in-person if you're nearby. You tell us what you do and who you want finding you. We listen. No slides, no pitch, no contract.
+          </p>
+        </div>
+
+        <!-- Step 2 · Day 14 (delivery — pulsing) -->
+        <div id="step-2" class="relative pl-12 sm:pl-16 pb-14 sm:pb-20">
+          <!-- Node with pulse ring -->
+          <div aria-hidden="true" class="absolute left-0 top-2 w-8 h-8 sm:w-9 sm:h-9">
+            <span class="absolute inset-0 rounded-full bg-ember/20 status-dot"></span>
+            <div class="relative w-full h-full rounded-full bg-bg-0 border-2 border-ember grid place-items-center">
+              <div class="w-2.5 h-2.5 rounded-full bg-ember"></div>
+            </div>
+          </div>
+          <div class="mono text-[11px] text-ember tracking-[0.2em] uppercase">Two weeks later</div>
+          <h2 class="display mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0">
+            Your site goes <span class="text-ember">live.</span>
+          </h2>
+          <p class="mt-4 text-base sm:text-lg text-text-1 leading-relaxed max-w-3xl">
+            We send a real URL. Custom design, custom copy, mobile-first, AI-ready out of the box. No templates, no page builders. Click around. Show your team.
+          </p>
+        </div>
+
+        <!-- Step 3 · After (open, undecided — hollow ring) -->
+        <div id="step-3" class="relative pl-12 sm:pl-16 pb-2">
+          <!-- Hollow node (decision pending) -->
+          <div aria-hidden="true" class="absolute left-0 top-2 w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-bg-0 border-2 border-dashed border-ember/60 grid place-items-center">
+            <div class="w-1.5 h-1.5 rounded-full bg-ember/40"></div>
+          </div>
+          <div class="mono text-[11px] tracking-[0.2em] uppercase text-lime">From there, your call</div>
+          <h2 class="display mt-2 text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0">
+            Keep it, buy it, or <span class="text-ember">walk away.</span>
+          </h2>
+          <ul class="mt-5 space-y-3 max-w-3xl">
+            <li class="flex gap-3 text-text-1 text-base sm:text-lg leading-relaxed"><span class="mono text-ember mt-1.5 flex-shrink-0 text-sm">→</span><span><strong class="text-text-0 font-semibold">Keep it</strong> from $49 a month. We host it, update it, and keep it AI-fresh.</span></li>
+            <li class="flex gap-3 text-text-1 text-base sm:text-lg leading-relaxed"><span class="mono text-ember mt-1.5 flex-shrink-0 text-sm">→</span><span><strong class="text-text-0 font-semibold">Buy it outright.</strong> Own the code. Take it anywhere.</span></li>
+            <li class="flex gap-3 text-text-1 text-base sm:text-lg leading-relaxed"><span class="mono text-ember mt-1.5 flex-shrink-0 text-sm">→</span><span><strong class="text-text-0 font-semibold">Walk away.</strong> No bill. No hard feelings.</span></li>
           </ul>
-        </li>
-      </ol>
+        </div>
+
+      </div>
 
       <!-- CTA -->
-      <div class="mt-7 flex flex-col sm:flex-row gap-3 items-start sm:items-center">
-        <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer text-sm">
-          Start my build
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-        </a>
-        <a href="samples.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-bg-1 hover:bg-bg-2 border border-line hover:border-line-strong text-text-0 rounded-lg font-semibold transition-colors cursor-pointer text-sm">
-          See sample sites →
-        </a>
+      <div class="mt-12 sm:mt-14 pt-10 border-t border-line flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 justify-between">
+        <div class="max-w-2xl">
+          <h3 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Ready to start?</h3>
+          <p class="mt-2 text-text-1">Tell us about your business. We'll have something to show you in two weeks.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <a href="samples.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent hover:bg-bg-1 border border-line-strong hover:border-ember/50 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
+            See samples
+          </a>
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
+            Start my build
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
       </div>
+
     </div>
   </section>
 

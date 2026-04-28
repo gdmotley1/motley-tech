@@ -170,7 +170,7 @@
 
         <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
           <a href="samples.html" class="flex items-center gap-1 text-ember underline underline-offset-8 transition-colors cursor-pointer">
-            Sample Sites
+            Samples
             <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </a>
           <div x-show="open" x-cloak x-transition.opacity
@@ -210,10 +210,10 @@
           </div>
         </div>
 
-        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="process.html" class="hover:text-text-0 transition-colors">Process</a>
         <a href="pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
         <a href="care.html" class="hover:text-text-0 transition-colors">Care</a>
-        <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
+        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
 
         <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
           Start a build
@@ -237,11 +237,11 @@
          class="md:hidden absolute top-full left-0 right-0 bg-bg-0/95 backdrop-blur border-b border-line">
       <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-1">
         <a href="index.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Home</a>
-        <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Sample Sites</a>
-        <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
+        <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Samples</a>
+        <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Process</a>
         <a href="pricing.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Pricing</a>
         <a href="care.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Care</a>
-        <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">How it works</a>
+        <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
         <a href="contact.html" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-base transition-colors">
           Start a build
           <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
@@ -274,12 +274,28 @@
         <!-- Restaurant -->
         <a href="demos/restaurant/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%);">
-            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8" style="font-family: 'Playfair Display', serif;">
+            <!-- Browser chrome -->
+            <div class="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 z-10" style="background: rgba(0,0,0,0.28); backdrop-filter: blur(6px);">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,235,200,0.4);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,235,200,0.4);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(255,235,200,0.4);"></span>
+              <div class="flex-1 ml-1.5 px-2 py-0.5 text-[9px] truncate" style="background:rgba(255,235,200,0.1); color:rgba(255,235,200,0.75); font-family:'JetBrains Mono',monospace; border-radius:3px;">mamalous-milledgeville.com</div>
+            </div>
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 pt-12" style="font-family: 'Playfair Display', serif;">
               <div class="text-[10px] uppercase tracking-[0.35em] text-amber-300/80" style="font-family: 'JetBrains Mono', monospace;">Downtown · Est. 1978</div>
               <div class="mt-3 text-white text-4xl sm:text-5xl italic" style="font-weight:500;">Mama Lou's</div>
               <div class="text-amber-200 text-xl -mt-1" style="letter-spacing:0.05em;">Kitchen</div>
               <div class="mt-4 w-16 h-[1px] bg-amber-400/60"></div>
               <div class="mt-4 text-amber-100/80 text-sm" style="font-family:'Inter',sans-serif;">Southern comfort, three meals a day.</div>
+            </div>
+            <!-- Footer nav strip -->
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-1.5 flex items-center gap-2.5 z-10" style="background:rgba(0,0,0,0.25);">
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(255,235,200,0.7); font-family:'JetBrains Mono',monospace;">menu</span>
+              <span style="color:rgba(255,235,200,0.35);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(255,235,200,0.7); font-family:'JetBrains Mono',monospace;">our story</span>
+              <span style="color:rgba(255,235,200,0.35);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(255,235,200,0.7); font-family:'JetBrains Mono',monospace;">visit</span>
+              <span class="ml-auto text-[8px] uppercase tracking-[0.18em] px-2 py-0.5" style="color:#3b1505; background:#FCD34D; font-family:'JetBrains Mono',monospace;">reserve</span>
             </div>
           </div>
           <div class="p-6 flex items-start justify-between gap-4 flex-1">
@@ -297,7 +313,14 @@
         <!-- Retail -->
         <a href="demos/retail/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #FAFAF9;">
-            <div class="absolute inset-0 grid grid-cols-2">
+            <!-- Browser chrome -->
+            <div class="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 z-10" style="background:rgba(231,229,228,0.85); backdrop-filter: blur(6px); border-bottom:1px solid rgba(0,0,0,0.06);">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:#a8a29e;"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:#a8a29e;"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:#a8a29e;"></span>
+              <div class="flex-1 ml-1.5 px-2 py-0.5 text-[9px] truncate" style="background:#fff; color:#57534e; font-family:'JetBrains Mono',monospace; border-radius:3px; border:1px solid rgba(0,0,0,0.05);">oakandthread.shop</div>
+            </div>
+            <div class="absolute inset-0 grid grid-cols-2 pt-8">
               <div style="background: linear-gradient(135deg,#d6d3d1 0%,#78716c 100%);"></div>
               <div class="flex flex-col justify-center items-start p-8" style="font-family: 'Instrument Serif', serif;">
                 <div class="text-[10px] uppercase tracking-[0.35em] text-stone-500" style="font-family:'JetBrains Mono', monospace;">Since 2019</div>
@@ -305,6 +328,15 @@
                 <div class="text-stone-900 text-4xl sm:text-5xl italic leading-none">Thread</div>
                 <div class="mt-5 px-3 py-1.5 bg-stone-900 text-white text-[10px] uppercase tracking-widest" style="font-family:'Inter',sans-serif;">Shop the drop</div>
               </div>
+            </div>
+            <!-- Footer nav strip -->
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-1.5 flex items-center gap-2.5 z-10" style="background:#fff; border-top:1px solid rgba(0,0,0,0.08);">
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:#57534e; font-family:'JetBrains Mono',monospace;">shop</span>
+              <span style="color:#a8a29e;">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:#57534e; font-family:'JetBrains Mono',monospace;">lookbook</span>
+              <span style="color:#a8a29e;">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:#57534e; font-family:'JetBrains Mono',monospace;">journal</span>
+              <span class="ml-auto text-[8px] uppercase tracking-[0.18em] px-2 py-0.5" style="color:#fff; background:#0a0a0a; font-family:'JetBrains Mono',monospace;">cart</span>
             </div>
           </div>
           <div class="p-6 flex items-start justify-between gap-4 flex-1">
@@ -323,11 +355,27 @@
         <a href="demos/salon/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0a0908;">
             <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.35) 0%, transparent 60%);"></div>
-            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8">
+            <!-- Browser chrome -->
+            <div class="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 z-10" style="background:rgba(0,0,0,0.4); backdrop-filter: blur(6px); border-bottom:1px solid rgba(184,138,68,0.15);">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(184,138,68,0.5);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(184,138,68,0.5);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(184,138,68,0.5);"></span>
+              <div class="flex-1 ml-1.5 px-2 py-0.5 text-[9px] truncate" style="background:rgba(184,138,68,0.08); color:rgba(231,217,188,0.8); font-family:'JetBrains Mono',monospace; border-radius:3px;">thebarberandco.com</div>
+            </div>
+            <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 pt-12">
               <div class="text-[10px] uppercase tracking-[0.5em]" style="font-family:'JetBrains Mono', monospace; color:#d4a94a;">· Est. 2016 ·</div>
               <div class="mt-3 text-amber-100 text-5xl sm:text-6xl" style="font-family: 'DM Serif Display', serif; letter-spacing:0.01em;">The Barber</div>
               <div class="text-amber-100/70 text-xl italic mt-1" style="font-family: 'DM Serif Display', serif;">&amp; Co.</div>
               <div class="mt-5 px-4 py-2 border border-amber-600/60 text-amber-200 text-[10px] uppercase tracking-[0.3em]" style="font-family:'Inter',sans-serif;">Book your chair</div>
+            </div>
+            <!-- Footer nav strip -->
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-1.5 flex items-center gap-2.5 z-10" style="background:rgba(0,0,0,0.5); border-top:1px solid rgba(184,138,68,0.2);">
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(231,217,188,0.7); font-family:'JetBrains Mono',monospace;">services</span>
+              <span style="color:rgba(184,138,68,0.4);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(231,217,188,0.7); font-family:'JetBrains Mono',monospace;">barbers</span>
+              <span style="color:rgba(184,138,68,0.4);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(231,217,188,0.7); font-family:'JetBrains Mono',monospace;">gallery</span>
+              <span class="ml-auto text-[8px] uppercase tracking-[0.18em] px-2 py-0.5" style="color:#0a0908; background:#d4a94a; font-family:'JetBrains Mono',monospace;">book</span>
             </div>
           </div>
           <div class="p-6 flex items-start justify-between gap-4 flex-1">
@@ -345,14 +393,31 @@
         <!-- Trades -->
         <a href="demos/trades/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0c4a6e;">
-            <div class="absolute top-0 right-0 px-3 py-1 bg-yellow-400 text-blue-950 text-[10px] font-black uppercase tracking-wider" style="font-family: 'Barlow Condensed', sans-serif; font-weight:900;">24/7 EMERGENCY</div>
-            <div class="absolute inset-0 flex flex-col justify-center p-8" style="font-family: 'Barlow Condensed', sans-serif;">
+            <!-- Browser chrome -->
+            <div class="absolute top-0 left-0 right-0 flex items-center gap-1.5 px-3 py-2 z-10" style="background:rgba(4,30,51,0.65); backdrop-filter: blur(6px); border-bottom:1px solid rgba(250,204,21,0.18);">
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(250,204,21,0.7);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(250,204,21,0.7);"></span>
+              <span class="w-1.5 h-1.5 rounded-full" style="background:rgba(250,204,21,0.7);"></span>
+              <div class="flex-1 ml-1.5 px-2 py-0.5 text-[9px] truncate" style="background:rgba(250,204,21,0.08); color:rgba(254,240,138,0.85); font-family:'JetBrains Mono',monospace; border-radius:3px;">whitfieldheatingandair.com</div>
+            </div>
+            <div class="absolute top-7 right-0 px-3 py-1 bg-yellow-400 text-blue-950 text-[10px] font-black uppercase tracking-wider z-20" style="font-family: 'Barlow Condensed', sans-serif; font-weight:900;">24/7 EMERGENCY</div>
+            <div class="absolute inset-0 flex flex-col justify-center p-8 pt-12" style="font-family: 'Barlow Condensed', sans-serif;">
               <div class="text-yellow-300 text-[10px] uppercase tracking-widest font-bold" style="font-family:'JetBrains Mono',monospace;">Licensed · Insured · Family-owned</div>
-              <div class="mt-2 text-white text-4xl sm:text-5xl leading-[0.95]" style="font-weight:900; letter-spacing:-0.02em; text-transform:uppercase;">Heat &amp; Air<br/>Done Right.</div>
-              <div class="mt-4 inline-flex items-center gap-2 w-fit px-4 py-2 bg-yellow-400 text-blue-950 text-xs font-black" style="font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:0.05em;">
-                <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              <div class="mt-1 text-white text-2xl sm:text-3xl leading-[1]" style="font-weight:900; letter-spacing:-0.01em; text-transform:uppercase;">Whitfield Heating &amp; Air</div>
+              <div class="mt-2 text-white text-3xl sm:text-4xl leading-[0.95]" style="font-weight:900; letter-spacing:-0.02em; text-transform:uppercase; color:#FACC15;">Done Right.</div>
+              <div class="mt-3 inline-flex items-center gap-2 w-fit px-3 py-1.5 bg-yellow-400 text-blue-950 text-[11px] font-black" style="font-family:'Barlow Condensed',sans-serif; text-transform:uppercase; letter-spacing:0.05em;">
+                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="currentColor"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                 Call (478) 555-0187
               </div>
+            </div>
+            <!-- Footer nav strip -->
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-1.5 flex items-center gap-2.5 z-10" style="background:rgba(4,30,51,0.6); border-top:1px solid rgba(250,204,21,0.2);">
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(254,240,138,0.85); font-family:'JetBrains Mono',monospace;">services</span>
+              <span style="color:rgba(250,204,21,0.4);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(254,240,138,0.85); font-family:'JetBrains Mono',monospace;">coverage</span>
+              <span style="color:rgba(250,204,21,0.4);">·</span>
+              <span class="text-[8px] uppercase tracking-[0.18em]" style="color:rgba(254,240,138,0.85); font-family:'JetBrains Mono',monospace;">estimate</span>
+              <span class="ml-auto text-[8px] uppercase tracking-[0.18em] px-2 py-0.5" style="color:#0c4a6e; background:#FACC15; font-family:'JetBrains Mono',monospace; font-weight:900;">call now</span>
             </div>
           </div>
           <div class="p-6 flex items-start justify-between gap-4 flex-1">
