@@ -105,6 +105,18 @@
   <!-- Alpine.js -->
   <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
 
+  <!-- Skip the hero load-in animation if visitor came from another page on this site (or refreshed) -->
+  <script>
+    (function () {
+      try {
+        var ref = document.referrer || '';
+        if (ref && ref.indexOf(window.location.origin) === 0) {
+          document.documentElement.classList.add('mt-skip-anim');
+        }
+      } catch (e) {}
+    })();
+  </script>
+
 
   <style>
     html { scroll-behavior: smooth; }
@@ -132,6 +144,74 @@
       background:
         radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%),
         radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%);
+    }
+
+    /* Live-cursor blink, used in the Claude answer card */
+    @keyframes cursorBlink { 0%, 50% { opacity: 0.55; } 51%, 100% { opacity: 0; } }
+    .cursor-blink { display: inline-block; width: 8px; height: 1.05em; vertical-align: -2px; background: currentColor; margin-left: 2px; animation: cursorBlink 1.06s step-end infinite; }
+    @media (prefers-reduced-motion: reduce) { .cursor-blink { animation: none; opacity: 0.55; } }
+
+    /* Claude card staged load-in: each band fades + lifts in sequence so it
+       reads as a live answer assembling in real time. CSS-only, runs once. */
+    @keyframes claudeStage {
+      from { opacity: 0; transform: translateY(6px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes claudeCardIn {
+      from { opacity: 0; transform: translateY(14px) scale(0.985); }
+      to   { opacity: 1; transform: none; }
+    }
+    .claude-card { animation: claudeCardIn 700ms cubic-bezier(0.22,1,0.36,1) both; }
+    .claude-load .stage { opacity: 0; }
+    .claude-load .stage-1 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 250ms forwards; }
+    .claude-load .stage-2 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 600ms forwards; }
+    .claude-load .stage-3 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 1300ms forwards; } /* "thinking pause" before answer */
+    .claude-load .stage-4 { animation: claudeStage 600ms cubic-bezier(0.22,1,0.36,1) 1700ms forwards; }
+    .claude-load .stage-5 { animation: claudeStage 400ms cubic-bezier(0.22,1,0.36,1) 3050ms forwards; }
+    .claude-load .stage-6 { animation: claudeStage 400ms cubic-bezier(0.22,1,0.36,1) 3400ms forwards; }
+    /* Cursor doesn't blink until the typing has finished */
+    .claude-load .cursor-blink { opacity: 0; animation: claudeStage 200ms ease-out 2950ms forwards, cursorBlink 1.06s step-end 3150ms infinite; }
+    /* Per-word typing reveal (sync with JS at bottom of page) */
+    .tw-word { opacity: 0; transition: opacity 200ms ease-out; }
+    .tw-word.tw-on { opacity: 1; }
+    @media (prefers-reduced-motion: reduce) {
+      .claude-card, .claude-load .stage { animation: none !important; opacity: 1 !important; transform: none !important; }
+      .tw-word { opacity: 1 !important; }
+    }
+    /* Skip the load-in animation entirely on internal navigation / refresh */
+    html.mt-skip-anim .claude-card { animation: none !important; opacity: 1 !important; transform: none !important; }
+    html.mt-skip-anim .claude-load .stage { opacity: 1 !important; animation: none !important; }
+    html.mt-skip-anim .tw-word { opacity: 1 !important; transition: none !important; }
+    html.mt-skip-anim .cursor-blink { opacity: 0.55 !important; animation: cursorBlink 1.06s step-end infinite !important; }
+
+    /* Reserve · ultra-premium gold accent palette */
+    .gold      { color: #D4AF37; }
+    .gold-soft { color: rgba(212, 175, 55, 0.7); }
+    .gold-rule { background: linear-gradient(90deg, transparent, #D4AF37 50%, transparent); }
+    .gold-tint { background: linear-gradient(135deg, rgba(212,175,55,0.06) 0%, rgba(212,175,55,0.015) 60%, transparent 100%); }
+    .gold-text {
+      background: linear-gradient(135deg, #FAFAF9 0%, #E6C875 60%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .gold-border {
+      position: relative;
+    }
+    .gold-border::before {
+      content: '';
+      position: absolute; inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(212,175,55,0.6) 0%, rgba(212,175,55,0.15) 40%, transparent 80%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+    .gold-glow {
+      box-shadow: 0 0 0 1px rgba(212,175,55,0.18), 0 24px 60px -28px rgba(212,175,55,0.45);
     }
 
     /* Section tag (mono overline) */
@@ -342,7 +422,7 @@
     <div class="absolute inset-0 hero-halo"></div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-24 sm:pt-24 sm:pb-32">
-      <div class="grid lg:grid-cols-12 gap-12 items-center" x-data="heroRotator()" x-init="start()">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
 
         <!-- LEFT: Headline -->
         <div class="lg:col-span-7 fade-up">
@@ -366,115 +446,88 @@
           </div>
         </div>
 
-        <!-- RIGHT: Rotating demo preview -->
+        <!-- RIGHT: Live Claude answer card -->
         <div class="lg:col-span-5 fade-up">
-          <div class="group/preview relative"
-               @mouseenter="pause()"
-               @mouseleave="resume()"
-               @touchstart.passive="onTouchStart"
-               @touchend.passive="onTouchEnd">
+          <div class="relative">
             <!-- Decorative ring-glow -->
-            <div class="absolute -inset-6 blur-3xl opacity-70 transition-all duration-1000 pointer-events-none" :style="`background: radial-gradient(circle, ${demos[current].glow} 0%, transparent 60%);`"></div>
+            <div class="absolute -inset-8 blur-3xl opacity-50 pointer-events-none" style="background: radial-gradient(circle, rgba(249,115,22,0.20) 0%, transparent 65%);"></div>
 
-            <!-- Prev chevron, visible on hover -->
-            <button type="button" @click.stop.prevent="prev()" aria-label="Previous demo"
-              class="absolute z-20 left-2 sm:-left-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-bg-1/85 hover:bg-bg-2 border border-line hover:border-ember/60 backdrop-blur grid place-items-center text-text-1 hover:text-ember opacity-0 group-hover/preview:opacity-100 transition-all duration-300 -translate-x-1 group-hover/preview:translate-x-0 cursor-pointer shadow-lg">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-            </button>
-            <!-- Next chevron -->
-            <button type="button" @click.stop.prevent="next()" aria-label="Next demo"
-              class="absolute z-20 right-2 sm:-right-3 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-bg-1/85 hover:bg-bg-2 border border-line hover:border-ember/60 backdrop-blur grid place-items-center text-text-1 hover:text-ember opacity-0 group-hover/preview:opacity-100 transition-all duration-300 translate-x-1 group-hover/preview:translate-x-0 cursor-pointer shadow-lg">
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-            </button>
+            <!-- Claude session card -->
+            <div class="relative rounded-2xl overflow-hidden shadow-glow-ember claude-card claude-load" style="background: #F5F1EA; border: 1px solid rgba(0,0,0,0.08);">
 
-            <!-- The whole AI-result card is a clickable link to the cited site -->
-            <a :href="demos[current].href" target="_blank" rel="noopener"
-               :aria-label="`View ${demos[current].label} sample site cited in the AI answer`"
-               class="group relative block mini-frame shadow-glow-ember cursor-pointer ring-focus">
-
-              <!-- App chrome: not a browser this time, an AI search panel -->
-              <div class="mini-bar">
-                <div class="flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-lime status-dot"></span>
-                  <span class="mono text-[10px] uppercase tracking-[0.2em] text-text-2">AI Search · live</span>
+              <!-- Top bar (Claude chrome) -->
+              <div class="stage stage-1 flex items-center px-5 py-3.5 border-b" style="background:#EDE7DC; border-color:rgba(0,0,0,0.08);">
+                <div class="flex items-center gap-2.5">
+                  <span class="grid place-items-center w-6 h-6 rounded-md text-base leading-none" style="background:#1F1B17; color:#F5F1EA;">✻</span>
+                  <span class="text-[13px] font-semibold tracking-tight" style="color:#1F1B17; font-family:'Inter',sans-serif;">Claude</span>
+                  <span class="text-[11px]" style="color:#8C8378; font-family:'Inter',sans-serif;">· Sonnet</span>
                 </div>
-                <div class="ml-auto mono text-[10px] text-text-3">just now</div>
+                <div class="ml-auto flex items-center gap-2">
+                  <span class="relative flex w-1.5 h-1.5">
+                    <span class="absolute inset-0 rounded-full bg-lime status-dot"></span>
+                    <span class="absolute inset-0 rounded-full bg-lime"></span>
+                  </span>
+                  <span class="mono text-[9px] uppercase tracking-[0.2em]" style="color:#5A554D;">Live</span>
+                </div>
               </div>
 
-              <!-- Chat body, cycles through 4 conversations -->
-              <div class="relative aspect-[5/3.5] overflow-hidden bg-bg-0">
-                <template x-for="(d, i) in demos" :key="`chat-${i}`">
-                  <div class="absolute inset-0 flex flex-col gap-3 p-5 sm:p-6"
-                       :style="`opacity: ${i === current ? 1 : 0}; transform: translateY(${i === current ? 0 : '6px'}); transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);`">
+              <!-- User prompt -->
+              <div class="stage stage-2 px-6 sm:px-7 pt-7 pb-2">
+                <div class="mono text-[10px] uppercase tracking-[0.18em] mb-2" style="color:#8C8378;">prompt</div>
+                <p class="text-[16px] sm:text-[17px] leading-snug" style="color:#1F1B17; font-family:'Inter',sans-serif;">
+                  how do I get a custom website that AI actually cites, without paying upfront?
+                </p>
+              </div>
 
-                    <!-- User prompt -->
-                    <div class="flex justify-end">
-                      <div class="max-w-[85%] px-3 py-2 bg-bg-2 border border-line rounded-lg rounded-br-none mono text-[11px] sm:text-xs text-text-1 leading-snug">
-                        <span class="text-text-3 mr-1">▸</span><span x-text="d.aiQ"></span>
-                      </div>
-                    </div>
+              <!-- Divider rule -->
+              <div class="stage stage-3 mx-6 sm:mx-7 my-4 h-px" style="background: linear-gradient(90deg, rgba(31,27,23,0.15), rgba(31,27,23,0.04));"></div>
 
-                    <!-- AI response (with cited business name in ember + citation chip) -->
-                    <div class="flex justify-start gap-2">
-                      <div class="flex-shrink-0 w-7 h-7 rounded-full bg-ember/15 border border-ember/40 grid place-items-center mono text-[10px] font-semibold text-ember mt-0.5">AI</div>
-                      <div class="flex-1 px-3 py-2 bg-bg-1 border border-line rounded-lg rounded-bl-none">
-                        <div class="text-sm sm:text-[15px] leading-snug text-text-1">
-                          I'd recommend <span class="text-ember font-semibold" x-text="d.label"></span>, <span x-text="d.aiA"></span>
-                        </div>
-                        <div class="mt-2 inline-flex items-center gap-1 mono text-[10px] text-ember/85">
-                          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
-                          <span x-text="d.url"></span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </template>
+              <!-- Claude answer -->
+              <div class="stage stage-4 px-6 sm:px-7 pb-6">
+                <div class="mono text-[10px] uppercase tracking-[0.18em] mb-3" style="color:#8C8378;">answer</div>
+                <p class="claude-answer-text text-[15px] sm:text-[16px] leading-relaxed" style="color:#1F1B17; font-family:'Inter',sans-serif;">
+                  Most small-business websites are invisible to AI search engines. <strong style="color:#C2410C; font-weight:600;">Motley Tech</strong><sup style="color:#C2410C; font-size:0.65em; margin-left:1px;">1</sup> specifically builds for this. Every site is fast, mobile-friendly, and built so ChatGPT, Perplexity, and Gemini can actually cite it. The first build is free; you only pay if you decide to keep it ($49/mo hosting, or buy the code outright).<span class="cursor-blink" aria-hidden="true"></span>
+                </p>
 
-                <!-- Hover overlay: dim + "View this site" pill -->
-                <div class="absolute inset-0 flex items-center justify-center bg-bg-0/0 group-hover:bg-bg-0/55 transition-colors duration-300 pointer-events-none">
-                  <span class="opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 inline-flex items-center gap-2 px-4 py-2.5 bg-ember text-bg-0 rounded-lg font-semibold text-sm shadow-lg">
-                    View this site
-                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                <!-- In-chat CTA -->
+                <a href="contact.html" class="stage stage-5 inline-flex items-center gap-1.5 mt-5 px-3.5 py-2 rounded-md text-[12px] font-semibold transition-all arrow-nudge hover:opacity-90" style="background:#C2410C; color:#F5F1EA; font-family:'Inter',sans-serif;">
+                  Start your free build <span class="arrow">→</span>
+                </a>
+              </div>
+
+              <!-- Chat input bar (looks like a Claude composer; click sends to /contact.html) -->
+              <a href="contact.html"
+                 class="stage stage-6 block px-5 sm:px-6 pt-4 pb-4 group/input"
+                 style="background:#EDE7DC; border-top: 1px solid rgba(0,0,0,0.06);"
+                 x-data="{ i: 0, qs: ['How fast can my site be live?', 'What\'s included in the $49 a month?', 'Can I edit it myself?', 'What if I want to leave later?'], init() { setInterval(() => this.i = (this.i + 1) % this.qs.length, 3200); } }"
+                 x-init="init()">
+                <div class="flex items-center gap-3 px-4 py-3 rounded-xl border transition-all duration-300 group-hover/input:border-[rgba(31,27,23,0.35)] group-hover/input:shadow-[0_4px_12px_-4px_rgba(31,27,23,0.15)]"
+                     style="background:#FAF6EE; border-color:rgba(31,27,23,0.14);">
+                  <svg class="w-4 h-4 flex-shrink-0" viewBox="0 0 24 24" fill="none" stroke="#8C8378" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+                  <span class="flex-1 relative h-5 overflow-hidden">
+                    <template x-for="(q, idx) in qs" :key="idx">
+                      <span class="absolute inset-0 text-sm leading-5 transition-opacity duration-500"
+                            :class="idx === i ? 'opacity-100' : 'opacity-0'"
+                            style="color:#8C8378; font-family:'Inter',sans-serif;"
+                            x-text="q"></span>
+                    </template>
+                  </span>
+                  <span class="grid place-items-center w-7 h-7 rounded-md transition-colors flex-shrink-0 group-hover/input:bg-[#1F1B17] group-hover/input:text-[#F5F1EA]"
+                        style="background:#E0D7C5; color:#5A554D;">
+                    <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 7-7 7 7M12 5v14"/></svg>
                   </span>
                 </div>
-              </div>
+                <div class="mt-2 mono text-[9px] uppercase tracking-[0.18em] text-center" style="color:#8C8378;">click to ask Motley Tech</div>
+              </a>
+            </div>
 
-              <!-- Footer strip: cited-by label + click hint -->
-              <div class="flex items-center justify-between p-3 border-t border-line bg-bg-1">
-                <div class="mono text-[10px] text-text-3">
-                  <span class="text-ember">▸</span>
-                  <span>cited: <span class="text-text-1" x-text="demos[current].label"></span></span>
-                </div>
-                <div class="mono text-[10px] text-ember opacity-70 group-hover:opacity-100 inline-flex items-center gap-1 transition-opacity">
-                  click to view live
-                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
-                </div>
-              </div>
-            </a>
-
-            <!-- Floating tag -->
+            <!-- Floating live tag (kept for continuity with site chrome) -->
             <div class="absolute -top-3 -left-3 mono text-[10px] bg-bg-2 border border-line-strong rounded-md px-2 py-1 text-text-2 flex items-center gap-1.5">
               <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
-              live
+              live answer
             </div>
           </div>
 
-          <!-- Big visible CTA, swaps with rotation -->
-          <a :href="demos[current].href" target="_blank" rel="noopener"
-             class="mt-5 w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-bg-1 hover:bg-bg-2 border border-line-strong hover:border-ember/60 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
-            <span>View <span class="text-ember" x-text="demos[current].name"></span> live</span>
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-          </a>
-
-          <!-- Demo selector dots, moved outside the link so they're individually clickable -->
-          <div class="mt-4 flex items-center justify-center gap-2">
-            <template x-for="(d,i) in demos" :key="i">
-              <button type="button" @click="current = i; restart()"
-                :aria-label="`Show ${d.name}`"
-                :class="i === current ? 'bg-ember w-8' : 'bg-line-strong w-2 hover:bg-text-3'"
-                class="h-2 rounded-full transition-all cursor-pointer"></button>
-            </template>
-          </div>
         </div>
 
       </div>
@@ -683,70 +736,91 @@
         </p>
       </div>
 
-      <!-- TIER TEASER PANEL · drives to /pricing.html -->
-      <div class="mt-14 sm:mt-16 relative bg-bg-1 border border-line-strong rounded-2xl overflow-hidden">
-        <div class="absolute inset-0 dotgrid-bright opacity-40 pointer-events-none"></div>
-        <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 70% 60% at 80% 0%, rgba(249,115,22,0.10) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 10% 100%, rgba(163,230,53,0.05) 0%, transparent 65%);"></div>
+      <!-- TIER TEASER · drives to /pricing.html -->
+      <div class="mt-14 sm:mt-16">
 
-        <div class="relative px-6 sm:px-10 pt-9 sm:pt-12 pb-8 sm:pb-10">
+        <!-- Headline -->
+        <div class="max-w-2xl">
+          <h3 class="display text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-text-0">
+            Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
+          </h3>
+          <p class="mt-4 text-base text-text-1 leading-relaxed">
+            Build fee, hosting, and buyout are priced separately so you can see exactly what you'd pay. No quote-in-disguise.
+          </p>
+        </div>
 
-          <!-- Headline -->
-          <div class="max-w-2xl">
-            <h3 class="display text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-text-0">
-              Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
-            </h3>
-            <p class="mt-4 text-base text-text-1 leading-relaxed">
-              Build fee, hosting, and buyout are priced separately so you can see exactly what you'd pay. No quote-in-disguise.
-            </p>
-          </div>
+        <!-- Tier triplet · three substantial cards -->
+        <div class="mt-12 grid md:grid-cols-3 gap-5 items-stretch auto-rows-fr no-reveal">
 
-          <!-- Tier triplet -->
-          <div class="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-px bg-line rounded-xl overflow-hidden border border-line no-reveal">
-            <div class="relative bg-bg-2 px-6 py-7">
+          <!-- I · Standard -->
+          <a href="pricing.html" class="group relative flex flex-col bg-bg-1 border border-line hover:border-text-3 transition-all duration-500 ease-out hover:-translate-y-1 rounded-2xl overflow-hidden p-7 sm:p-8 cursor-pointer ring-focus">
+            <div aria-hidden="true" class="absolute -top-6 -right-2 display text-[140px] font-semibold leading-none text-text-0/[0.04] select-none pointer-events-none">I</div>
+            <div class="relative">
               <div class="mono text-[11px] text-text-3 tracking-widest">I</div>
-              <div class="display text-2xl font-semibold text-text-0 mt-1 tracking-tight">Standard</div>
-              <div class="mt-4 mono text-[10px] text-text-3 tracking-widest uppercase">From</div>
-              <div class="display text-3xl font-semibold text-ember mt-1 tracking-tight">Free</div>
+              <div class="display text-3xl sm:text-[34px] font-semibold text-text-0 mt-2 tracking-tight">Standard</div>
+              <p class="mt-3 text-sm text-text-2 italic leading-snug">Get found. Look legit.</p>
+
+              <div class="mt-8 pt-6 border-t border-line">
+                <div class="mono text-[10px] text-text-3 tracking-widest uppercase">Build fee</div>
+                <div class="display text-4xl sm:text-5xl font-semibold text-ember mt-1 tracking-tight leading-none">$0</div>
+                <div class="mt-2 mono text-[11px] text-text-2">$49/mo · buyout from $750</div>
+              </div>
             </div>
-            <div class="relative bg-bg-2 px-6 py-7">
-              <div class="absolute inset-x-0 top-0 h-0.5 bg-ember/60"></div>
+          </a>
+
+          <!-- II · Signature · flagship (ember) -->
+          <a href="pricing.html" class="group relative flex flex-col bg-bg-1 border border-ember/40 hover:border-ember transition-all duration-500 ease-out hover:-translate-y-1 rounded-2xl overflow-hidden p-7 sm:p-8 cursor-pointer ring-focus shadow-glow-ember">
+            <div aria-hidden="true" class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse 90% 60% at 100% 0%, rgba(249,115,22,0.10) 0%, transparent 65%);"></div>
+            <div aria-hidden="true" class="absolute -top-6 -right-2 display text-[140px] font-semibold leading-none text-ember/[0.06] select-none pointer-events-none">II</div>
+            <div class="relative">
               <div class="flex items-baseline gap-2">
                 <span class="mono text-[11px] text-ember tracking-widest">II</span>
                 <span class="mono text-[9px] text-ember/80 tracking-widest uppercase">flagship</span>
               </div>
-              <div class="display text-2xl font-semibold text-text-0 mt-1 tracking-tight">Signature</div>
-              <div class="mt-4 mono text-[10px] text-text-3 tracking-widest uppercase">From</div>
-              <div class="display text-3xl font-semibold text-ember mt-1 tracking-tight">$500</div>
-            </div>
-            <div class="relative bg-bg-2 px-6 py-7">
-              <div class="mono text-[11px] text-text-3 tracking-widest">III</div>
-              <div class="display text-2xl font-semibold text-text-0 mt-1 tracking-tight">Reserve</div>
-              <div class="mt-4 mono text-[10px] text-text-3 tracking-widest uppercase">From</div>
-              <div class="display text-3xl font-semibold text-ember mt-1 tracking-tight">$1,500</div>
-            </div>
-          </div>
+              <div class="display text-3xl sm:text-[34px] font-semibold text-text-0 mt-2 tracking-tight">Signature</div>
+              <p class="mt-3 text-sm text-text-2 italic leading-snug">Take bookings, orders, leads.</p>
 
-          <!-- Footer row: scarcity chip + CTAs -->
-          <div class="mt-9 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-5">
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-2 border border-ember/40 rounded-full w-fit">
-              <span class="relative flex w-2 h-2">
-                <span class="absolute inset-0 rounded-full bg-ember status-dot"></span>
-                <span class="absolute inset-0 rounded-full bg-ember"></span>
-              </span>
-              <span class="mono text-[11px] text-ember">[ FIRST 5 MILLEDGEVILLE BUSINESSES · 3 SPOTS LEFT ]</span>
+              <div class="mt-8 pt-6 border-t border-ember/25">
+                <div class="mono text-[10px] text-ember tracking-widest uppercase">Build fee</div>
+                <div class="display text-4xl sm:text-5xl font-semibold text-ember mt-1 tracking-tight leading-none">from $500</div>
+                <div class="mt-2 mono text-[11px] text-text-2">$49/mo · buyout from $1,800</div>
+              </div>
             </div>
+          </a>
 
-            <div class="flex flex-col sm:flex-row gap-3 sm:items-center">
-              <a href="pricing.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer text-sm arrow-nudge whitespace-nowrap">
-                See full pricing <span class="arrow">→</span>
-              </a>
-              <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-6 py-3 bg-transparent hover:bg-bg-2 border border-line-strong hover:border-ember/50 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer text-sm whitespace-nowrap">
-                Start my build
-              </a>
+          <!-- III · Reserve · ultra premium (gold) -->
+          <a href="pricing.html" class="group relative flex flex-col bg-bg-1 rounded-2xl overflow-hidden p-7 sm:p-8 cursor-pointer ring-focus gold-border gold-glow transition-all duration-500 ease-out hover:-translate-y-1">
+            <div aria-hidden="true" class="absolute inset-0 gold-tint pointer-events-none"></div>
+            <div aria-hidden="true" class="absolute inset-x-8 top-0 h-px gold-rule pointer-events-none"></div>
+            <div aria-hidden="true" class="absolute -top-6 -right-2 display text-[140px] font-semibold leading-none gold-text opacity-10 select-none pointer-events-none">III</div>
+            <div class="relative">
+              <div class="flex items-baseline gap-2">
+                <span class="mono text-[11px] tracking-widest gold">III</span>
+                <span class="mono text-[9px] tracking-widest uppercase gold-soft">bespoke</span>
+              </div>
+              <div class="display text-3xl sm:text-[34px] font-semibold mt-2 tracking-tight gold-text">Reserve</div>
+              <p class="mt-3 text-sm text-text-2 italic leading-snug">Custom-built for complex needs.</p>
+
+              <div class="mt-8 pt-6" style="border-top: 1px solid rgba(212,175,55,0.25);">
+                <div class="mono text-[10px] tracking-widest uppercase gold">Build fee</div>
+                <div class="display text-4xl sm:text-5xl font-semibold mt-1 tracking-tight leading-none gold-text">from $1,500</div>
+                <div class="mt-2 mono text-[11px] text-text-2">$79/mo · buyout quoted</div>
+              </div>
             </div>
-          </div>
+          </a>
 
         </div>
+
+        <!-- CTAs -->
+        <div class="mt-10 flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-end">
+          <a href="pricing.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer arrow-nudge whitespace-nowrap">
+            See full pricing <span class="arrow">→</span>
+          </a>
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-transparent hover:bg-bg-2 border border-line-strong hover:border-ember/50 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer whitespace-nowrap">
+            Start my build
+          </a>
+        </div>
+
       </div>
     </div>
   </section>
@@ -870,6 +944,47 @@
           });
         }, { threshold: 0.3 });
         obs.observe(el);
+      });
+    })();
+  </script>
+
+  <!-- Claude answer word-by-word reveal · runs once, no continuous work -->
+  <script>
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const answer = document.querySelector('.claude-answer-text');
+      if (!answer) return;
+
+      const words = [];
+      const wrap = (node) => {
+        if (node.nodeType === 3) {
+          const parts = node.textContent.split(/(\s+)/);
+          const frag = document.createDocumentFragment();
+          parts.forEach(p => {
+            if (p && !/^\s+$/.test(p)) {
+              const s = document.createElement('span');
+              s.className = 'tw-word';
+              s.textContent = p;
+              frag.appendChild(s);
+              words.push(s);
+            } else if (p) {
+              frag.appendChild(document.createTextNode(p));
+            }
+          });
+          node.parentNode.replaceChild(frag, node);
+        } else if (node.nodeType === 1 && !node.classList.contains('cursor-blink')) {
+          [...node.childNodes].forEach(wrap);
+        }
+      };
+      [...answer.childNodes].forEach(wrap);
+
+      // Skip the typewriter on internal navigation / refresh
+      if (document.documentElement.classList.contains('mt-skip-anim')) return;
+
+      const startMs = 1700;
+      const stepMs = 22;
+      words.forEach((w, i) => {
+        setTimeout(() => { w.classList.add('tw-on'); }, startMs + i * stepMs);
       });
     })();
   </script>

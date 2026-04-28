@@ -60,6 +60,34 @@
 
     .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F97316; }
 
+    /* Reserve · ultra-premium gold accent */
+    .gold      { color: #D4AF37; }
+    .gold-soft { color: rgba(212, 175, 55, 0.7); }
+    .gold-rule { background: linear-gradient(90deg, transparent, #D4AF37 50%, transparent); }
+    .gold-tint-cell { background-color: rgba(212, 175, 55, 0.045); }
+    .gold-tint-strong { background: linear-gradient(135deg, rgba(212,175,55,0.10) 0%, rgba(212,175,55,0.02) 70%, transparent 100%); }
+    .gold-text {
+      background: linear-gradient(135deg, #FAFAF9 0%, #E6C875 60%, #D4AF37 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      color: transparent;
+    }
+    .gold-border {
+      position: relative;
+    }
+    .gold-border::before {
+      content: '';
+      position: absolute; inset: 0;
+      padding: 1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(212,175,55,0.6) 0%, rgba(212,175,55,0.15) 40%, transparent 80%);
+      -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+      -webkit-mask-composite: xor;
+              mask-composite: exclude;
+      pointer-events: none;
+    }
+
     @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
     .status-dot { animation: pulse-dot 2s ease-in-out infinite; }
 
@@ -218,14 +246,12 @@
     <div class="absolute inset-0 dotgrid opacity-60"></div>
     <div class="absolute inset-0 hero-halo"></div>
     <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-9 sm:py-12">
-      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
-        <div>
-          <h1 class="display mt-2 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[0.95] text-text-0">
-            Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
-          </h1>
-        </div>
-        <p class="mono text-xs text-text-3 sm:pb-1 max-w-xs sm:text-right">Build fee, hosting, and buyout are priced separately so you can see exactly what you'd pay.</p>
-      </div>
+      <h1 class="display text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[0.95] text-text-0">
+        Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
+      </h1>
+      <p class="mt-5 text-base sm:text-lg text-text-1 leading-relaxed max-w-2xl">
+        Build fee, hosting, and buyout are priced separately. Every tier ships with the AI-ready basics, the table shows what scales.
+      </p>
     </div>
   </header>
 
@@ -235,164 +261,139 @@
 
       <!-- TIER COMPARISON MATRIX · standard / signature / reserve -->
       <div class="overflow-x-auto">
-        <table class="w-full min-w-[640px] border-collapse">
+        <table class="w-full min-w-[640px] border-collapse mx-auto">
           <colgroup>
-            <col class="w-[34%]">
-            <col class="w-[22%]">
-            <col class="w-[22%]">
-            <col class="w-[22%]">
+            <col class="w-[28%]">
+            <col class="w-[24%]">
+            <col class="w-[24%]">
+            <col class="w-[24%]">
           </colgroup>
 
           <!-- HEADER: tier names + headline pricing -->
           <thead>
             <tr class="border-b border-line-strong align-bottom">
               <th class="text-left pb-6 pt-2 align-bottom"></th>
-              <th class="text-left pb-6 pt-2 px-4 align-bottom">
+              <th class="text-center pb-6 pt-2 px-4 align-bottom">
                 <div class="mono text-[11px] text-text-3 tracking-widest">I</div>
                 <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Standard</div>
-                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Look legit. Get found. Stop losing customers.</div>
+                <div class="mt-3 text-sm text-text-2 italic leading-snug font-normal">Get found. Look legit.</div>
               </th>
-              <th class="text-left pb-6 pt-2 px-4 align-bottom relative bg-ember/[0.06]">
+              <th class="text-center pb-6 pt-2 px-4 align-bottom relative bg-ember/[0.06]">
                 <div class="absolute inset-x-0 top-0 h-0.5 bg-ember/60"></div>
                 <div class="flex items-baseline gap-2">
                   <span class="mono text-[11px] text-ember tracking-widest">II</span>
                   <span class="mono text-[9px] text-ember/80 tracking-widest uppercase">flagship</span>
                 </div>
                 <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Signature</div>
-                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Site that does real work, book, order, capture, sell.</div>
+                <div class="mt-3 text-sm text-text-2 italic leading-snug font-normal">Take bookings, orders, leads.</div>
               </th>
-              <th class="text-left pb-6 pt-2 px-4 align-bottom">
-                <div class="mono text-[11px] text-text-3 tracking-widest">III</div>
-                <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Reserve</div>
-                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Multi-location, integrations, member portals.</div>
+              <th class="text-center pb-6 pt-2 px-4 align-bottom relative gold-tint-strong">
+                <div class="absolute inset-x-0 top-0 h-0.5 gold-rule"></div>
+                <div class="flex items-baseline justify-center gap-2">
+                  <span class="mono text-[11px] tracking-widest gold">III</span>
+                  <span class="mono text-[9px] tracking-widest uppercase gold-soft">bespoke</span>
+                </div>
+                <div class="display text-2xl sm:text-3xl font-semibold mt-1 tracking-tight gold-text">Reserve</div>
+                <div class="mt-3 text-sm text-text-2 italic leading-snug font-normal">Custom-built for complex needs.</div>
               </th>
             </tr>
           </thead>
 
-          <tbody class="text-sm">
+          <tbody class="text-base">
 
             <!-- ── Pricing strip ── -->
             <tr class="border-b border-line">
-              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Build fee</td>
-              <td class="py-4 px-4 text-text-0 font-semibold display text-lg"><span class="text-ember">Free</span></td>
-              <td class="py-4 px-4 text-text-0 font-semibold display text-lg bg-ember/[0.06]"><span class="text-ember">from $500</span></td>
-              <td class="py-4 px-4 text-text-0 font-semibold display text-lg"><span class="text-ember">from $1,500</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Build fee</td>
+              <td class="py-3 px-4 text-text-0 font-semibold display text-lg text-center"><span class="text-ember">$0</span></td>
+              <td class="py-3 px-4 text-text-0 font-semibold display text-lg bg-ember/[0.06] text-center"><span class="text-ember">from $500</span></td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 font-semibold display text-lg text-center"><span class="text-ember">from $1,500</span></td>
             </tr>
             <tr class="border-b border-line">
-              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Hosting</td>
-              <td class="py-4 px-4 text-text-0 display text-lg">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
-              <td class="py-4 px-4 text-text-0 display text-lg bg-ember/[0.06]">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
-              <td class="py-4 px-4 text-text-0 display text-lg">$79<span class="text-text-3 text-xs ml-1">/mo</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Hosting</td>
+              <td class="py-3 px-4 text-text-0 display text-lg text-center">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
+              <td class="py-3 px-4 text-text-0 display text-lg bg-ember/[0.06] text-center">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 display text-lg text-center">$79<span class="text-text-3 text-xs ml-1">/mo</span></td>
             </tr>
             <tr class="border-b border-line-strong">
-              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Buyout</td>
-              <td class="py-4 px-4 text-text-1">from $750</td>
-              <td class="py-4 px-4 text-text-1 bg-ember/[0.06]">from $1,800</td>
-              <td class="py-4 px-4 text-text-1">quoted</td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Buyout</td>
+              <td class="py-3 px-4 text-text-1 text-center">from $750</td>
+              <td class="py-3 px-4 text-text-1 bg-ember/[0.06] text-center">from $1,800</td>
+              <td class="gold-tint-cell py-3 px-4 text-text-1 text-center">quoted</td>
             </tr>
 
             <!-- ── Section: SCOPE ── -->
             <tr>
-              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Scope</td>
+              <td colspan="4" class="pt-7 pb-3 mono text-[11px] text-ember tracking-widest uppercase">Scope</td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Pages</td>
-              <td class="py-3 px-4 text-text-0">Up to 7</td>
-              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">Up to 15</td>
-              <td class="py-3 px-4 text-text-0">As needed</td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Pages</td>
+              <td class="py-3 px-4 text-text-0 text-center">Up to 7</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06] text-center">Up to 15</td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 text-center">As needed</td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Live in</td>
-              <td class="py-3 px-4 text-text-0">2 weeks</td>
-              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">3 weeks</td>
-              <td class="py-3 px-4 text-text-0">4&ndash;6 weeks</td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Live in</td>
+              <td class="py-3 px-4 text-text-0 text-center">2 weeks</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06] text-center">3 weeks</td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 text-center">4&ndash;6 weeks</td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Revisions during build</td>
-              <td class="py-3 px-4 text-text-0">1 round</td>
-              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">2 rounds</td>
-              <td class="py-3 px-4 text-text-0">3 rounds</td>
-            </tr>
-
-            <!-- ── Section: FOUNDATIONS ── -->
-            <tr>
-              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Foundations</td>
-            </tr>
-            <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Mobile-first &amp; AI-ready</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-            </tr>
-            <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Schema, sitemap, fast load</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-            </tr>
-            <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Contact form</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Revisions during build</td>
+              <td class="py-3 px-4 text-text-0 text-center">1 round</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06] text-center">2 rounds</td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 text-center">3 rounds</td>
             </tr>
 
             <!-- ── Section: FUNCTIONALITY ── -->
             <tr>
-              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Functionality</td>
+              <td colspan="4" class="pt-7 pb-3 mono text-[11px] text-ember tracking-widest uppercase">Functionality</td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Online booking</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Online booking</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center"><span class="text-ember">✓</span></td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Light e-commerce (Stripe)</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Light e-commerce (Stripe)</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center"><span class="text-ember">✓</span></td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Email signup &amp; lead capture</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Email signup &amp; lead capture</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center"><span class="text-ember">✓</span></td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Custom integrations (CRM, accounting)</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Custom integrations (CRM, accounting)</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center text-text-3">&mdash;</td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Member login / customer portal</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Member login / customer portal</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center text-text-3">&mdash;</td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Multi-location &amp; local SEO</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Multi-location &amp; local SEO</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center text-text-3">&mdash;</td>
+              <td class="gold-tint-cell py-3 px-4 text-center"><span class="text-lime">✓</span></td>
             </tr>
 
             <!-- ── Section: AFTER LAUNCH ── -->
             <tr>
-              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">After launch</td>
+              <td colspan="4" class="pt-7 pb-3 mono text-[11px] text-ember tracking-widest uppercase">After launch</td>
             </tr>
             <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Monthly content updates</td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
-              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
-            </tr>
-            <tr class="ledger-row border-b border-line">
-              <td class="py-3 text-text-1">Post-launch roadmap</td>
-              <td class="py-3 px-4 text-text-3">&mdash;</td>
-              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
-              <td class="py-3 px-4 text-text-0">90 days</td>
+              <td class="py-3 pr-4 text-base font-medium text-text-0">Post-launch roadmap</td>
+              <td class="py-3 px-4 text-center text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-center text-text-3">&mdash;</td>
+              <td class="gold-tint-cell py-3 px-4 text-text-0 text-center">90 days</td>
             </tr>
 
           </tbody>
@@ -414,14 +415,7 @@
         <div class="absolute inset-0 dotgrid-bright opacity-30 pointer-events-none"></div>
         <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
           <div>
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-2 border border-ember/40 rounded-full">
-              <span class="relative flex w-2 h-2">
-                <span class="absolute inset-0 rounded-full bg-ember status-dot"></span>
-                <span class="absolute inset-0 rounded-full bg-ember"></span>
-              </span>
-              <span class="mono text-[11px] text-ember">[ FIRST 5 MILLEDGEVILLE BUSINESSES · 3 SPOTS LEFT ]</span>
-            </div>
-            <h3 class="display mt-4 text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Free build, no bill until you keep it.</h3>
+            <h3 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Free build, no bill until you keep it.</h3>
             <p class="mt-2 text-text-1">Tell us about your business in 30 seconds. We'll have something to show you next week.</p>
           </div>
           <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer flex-shrink-0">
