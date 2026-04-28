@@ -881,7 +881,7 @@
             bg:'linear-gradient(135deg, #041E33 0%, #0c4a6e 100%)',
             fg:'#FFFFFF', meta:'#FACC15', glow:'rgba(250,204,21,0.25)', font:'Barlow Condensed, sans-serif', weight:'900', style:'normal' },
         ],
-        start() { this.timer = setInterval(() => { this.current = (this.current + 1) % this.demos.length; }, 5500); },
+        start() { this.timer = setInterval(() => { this.current = (this.current + 1) % this.demos.length; }, 3500); },
         restart() { if (this.timer) clearInterval(this.timer); this.start(); },
         pause() { if (this.timer) { clearInterval(this.timer); this.timer = null; } },
         resume() { if (!this.timer) this.start(); },
