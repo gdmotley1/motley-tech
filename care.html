@@ -1,0 +1,470 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Motley Care. Motley Tech · ongoing care for your website by an actual human</title>
+  <meta name="description" content="What you get when you keep your site with us. Hosting, updates, AI freshness, security, and a person who answers. Plain-English service-level commitments, no help desk." />
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:title" content="Motley Care. Motley Tech">
+  <meta property="og:description" content="Ongoing care for your website by an actual human. Hosting, updates, AI freshness, security, and a person who answers.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/brand/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:       { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:     { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:     { DEFAULT: '#26262C', strong: '#36363E' },
+            ember:    { DEFAULT: '#F97316', hot: '#FB923C', soft: 'rgba(249,115,22,0.14)' },
+            lime:     { DEFAULT: '#A3E635', soft: 'rgba(163,230,53,0.14)' },
+            mint:     { DEFAULT: '#10B981' },
+            amber2:   { DEFAULT: '#FACC15' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0A0A0C; color: #FAFAF9; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    .dotgrid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
+    .dotgrid-bright { background-image: radial-gradient(circle at 1px 1px, rgba(249,115,22,0.10) 1px, transparent 0); background-size: 24px 24px; }
+    .hero-halo { background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%); }
+
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F97316; }
+
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .status-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+
+    /* Scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1), transform 280ms cubic-bezier(0.22,1,0.36,1), opacity 280ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge .arrow { display: inline-block; transition: transform 320ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge:hover .arrow { transform: translateX(4px); }
+
+    /* Same ambient gradient as FAQ */
+    body.faq-flow {
+      background:
+        radial-gradient(ellipse 100% 60% at 80% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 10% 35%, rgba(163, 230, 53, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 70% at 50% 100%, rgba(38, 38, 64, 0.45) 0%, transparent 65%),
+        linear-gradient(180deg, #0A0A0C 0%, #0c0c10 40%, #0A0A0C 100%);
+      background-attachment: fixed;
+    }
+    body.faq-flow header.flow-section,
+    body.faq-flow section.flow-section { border: none !important; }
+    body.faq-flow header.flow-section .hero-halo,
+    body.faq-flow header.flow-section .dotgrid { display: none; }
+    body.faq-flow footer { border-top-color: rgba(38, 38, 44, 0.4); }
+
+    /* Care-specific: DIY ledger styling */
+    .care-row + .care-row { border-top: 1px solid #26262C; }
+    .care-cell-strike { color: #78716C; text-decoration: line-through; text-decoration-color: rgba(120,113,108,0.5); }
+  </style>
+  <link rel="canonical" href="https://motley-tech.com/care.html">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+
+  <!-- Service JSON-LD: Motley Care offerings -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Motley Care",
+    "description": "Ongoing website care by an actual human: hosting, domain renewal, SSL, daily backups, uptime monitoring, security patches, monthly content updates, AI freshness, email deliverability checks, and 1-business-day response from a real person.",
+    "url": "https://motley-tech.com/care.html",
+    "provider": { "@id": "#motleytech" },
+    "serviceType": "Website maintenance and hosting",
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Standard Care",
+        "description": "Hosting, domain renewal, SSL, daily backups (30-day retention), uptime monitoring (99.9% target), security patches, up to 60 minutes of monthly content edits, AI freshness updates, email deliverability checks, 1 business day response, quarterly content review.",
+        "price": "49",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "49",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      },
+      {
+        "@type": "Offer",
+        "name": "Reserve Care",
+        "description": "Everything in Standard Care plus expanded edit window, priority response, custom integration upkeep, and tailored support for multi-location and Reserve-tier sites.",
+        "price": "79",
+        "priceCurrency": "USD",
+        "priceSpecification": {
+          "@type": "UnitPriceSpecification",
+          "price": "79",
+          "priceCurrency": "USD",
+          "billingDuration": "P1M"
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased faq-flow">
+
+  <!-- =================== NAV =================== -->
+  <nav x-data="{ mobileOpen: false }" @keydown.escape.window="mobileOpen = false" class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+
+        <a href="index.html" class="hover:text-text-0 transition-colors">Home</a>
+
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <a href="samples.html" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+            Sample Sites
+            <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div x-show="open" x-cloak x-transition.opacity
+               class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+            <a href="samples.html" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
+              <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
+              <div class="mt-0.5 font-medium text-text-0">All four demos →</div>
+            </a>
+            <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
+              <div>
+                <div class="font-medium text-text-0">Mama Lou's Kitchen</div>
+                <div class="mono text-[10px] text-text-3">restaurant/</div>
+              </div>
+            </a>
+            <a href="demos/retail/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #d6d3d1, #57534e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Oak &amp; Thread</div>
+                <div class="mono text-[10px] text-text-3">retail/</div>
+              </div>
+            </a>
+            <a href="demos/salon/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #0a0908, #B88A44);"></div>
+              <div>
+                <div class="font-medium text-text-0">The Barber &amp; Co.</div>
+                <div class="mono text-[10px] text-text-3">salon/</div>
+              </div>
+            </a>
+            <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Whitfield Heating & Air</div>
+                <div class="mono text-[10px] text-text-3">trades/</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
+        <a href="care.html" class="text-ember underline underline-offset-8 transition-colors">Care</a>
+        <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
+
+        <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <button type="button" @click="mobileOpen = !mobileOpen" :aria-expanded="mobileOpen" aria-label="Menu" class="md:hidden flex items-center justify-center w-10 h-10 -mr-2 rounded-lg hover:bg-bg-1 transition-colors text-text-0 ring-focus">
+        <svg x-show="!mobileOpen" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h18M3 12h18M3 18h18"/></svg>
+        <svg x-show="mobileOpen" x-cloak class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 6 12 12M6 18 18 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu panel -->
+    <div x-show="mobileOpen" x-cloak
+         x-transition:enter="transition ease-out duration-200"
+         x-transition:enter-start="opacity-0 -translate-y-2"
+         x-transition:enter-end="opacity-100 translate-y-0"
+         x-transition:leave="transition ease-in duration-150"
+         x-transition:leave-start="opacity-100"
+         x-transition:leave-end="opacity-0"
+         class="md:hidden absolute top-full left-0 right-0 bg-bg-0/95 backdrop-blur border-b border-line">
+      <div class="max-w-6xl mx-auto px-5 py-3 flex flex-col gap-1">
+        <a href="index.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Home</a>
+        <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Sample Sites</a>
+        <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
+        <a href="pricing.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Pricing</a>
+        <a href="care.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Care</a>
+        <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">How it works</a>
+        <a href="contact.html" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-base transition-colors">
+          Start a build
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- =================== HERO · anchored with three-pillar promise =================== -->
+  <header class="flow-section relative overflow-hidden">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute inset-0 hero-halo"></div>
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+
+      <!-- Top label strip -->
+      <div class="flex items-center gap-3 mb-6 sm:mb-8">
+        <span class="mono text-[11px] text-ember tracking-widest uppercase">Motley Care</span>
+        <span class="inline-flex items-center gap-2 mono text-[11px] text-text-2 tracking-widest uppercase">
+          <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
+          From $49 / mo
+        </span>
+      </div>
+
+      <!-- Anchor headline -->
+      <h1 class="display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1] text-text-0 max-w-4xl">
+        What you're paying for.<br />
+        <span class="text-ember">A person, not a portal.</span>
+      </h1>
+
+      <!-- Three-pillar promise -->
+      <div class="mt-10 sm:mt-14 space-y-5 sm:space-y-6 max-w-3xl">
+        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-5 sm:pb-6">
+          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">01</div>
+          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
+            We <span class="text-ember">host it.</span>
+          </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">01</span>
+        </div>
+
+        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-5 sm:pb-6">
+          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">02</div>
+          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
+            We <span class="text-ember">update it.</span>
+          </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">02</span>
+        </div>
+
+        <div class="relative flex items-baseline gap-3 sm:gap-6 pb-1">
+          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">03</div>
+          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
+            We <span class="text-ember">answer when something breaks.</span>
+          </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">03</span>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- =================== WHAT YOU GET =================== -->
+  <section class="flow-section relative py-10 sm:py-14">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="mb-8">
+        <div class="mono text-[11px] text-ember tracking-widest uppercase">What's included</div>
+        <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-2">Every month, on us.</h2>
+      </div>
+
+      <div class="divide-y divide-line border-y border-line">
+        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
+          <div class="display text-lg font-semibold text-text-0">Hosting, domain, SSL.</div>
+          <p class="text-sm sm:text-base text-text-1 leading-relaxed">All the boring necessities, billed by us, kept current. You don't log into a registrar, ever.</p>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
+          <div class="display text-lg font-semibold text-text-0">Daily backups, kept 30 days.</div>
+          <p class="text-sm sm:text-base text-text-1 leading-relaxed">If something breaks, we restore the last known good version. You don't lose a Tuesday to it.</p>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
+          <div class="display text-lg font-semibold text-text-0">Content updates, up to 60 min a month.</div>
+          <p class="text-sm sm:text-base text-text-1 leading-relaxed">New hours, new prices, new photos, new copy. Send us the change. We ship it within a business day.</p>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
+          <div class="display text-lg font-semibold text-text-0">AI freshness, kept current.</div>
+          <p class="text-sm sm:text-base text-text-1 leading-relaxed">Schema and structured data updated as your business changes, so your site stays cited by ChatGPT, Perplexity, and Gemini.</p>
+        </div>
+        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
+          <div class="display text-lg font-semibold text-text-0">A real person, within one business day.</div>
+          <p class="text-sm sm:text-base text-text-1 leading-relaxed">Email or text. The same person every time. No tickets, no help-desk script.</p>
+        </div>
+      </div>
+
+      <p class="mt-6 text-xs text-text-3 leading-relaxed max-w-2xl">New pages, redesigns, and custom integrations are scoped separately so the work matches the price.</p>
+    </div>
+  </section>
+
+  <!-- =================== COMPARE TO DIY =================== -->
+  <section class="flow-section relative py-10 sm:py-14">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="flex items-end justify-between gap-6 mb-8">
+        <div>
+          <div class="mono text-[11px] text-ember tracking-widest uppercase">Versus doing it yourself</div>
+          <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-2">You could. It would cost you a weekend.</h2>
+          <p class="mt-3 text-text-1 leading-relaxed max-w-2xl">DIY is a real option. We're not going to pretend it isn't. Here's what it actually looks like next to Care, line for line.</p>
+        </div>
+      </div>
+
+      <!-- Two-column ledger -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
+
+        <!-- LEFT · DIY -->
+        <div class="bg-bg-1 border border-line rounded-2xl p-6 sm:p-7 flex flex-col h-full">
+          <div class="flex items-baseline justify-between">
+            <div>
+              <div class="mono text-[11px] text-text-3 tracking-widest uppercase">If you do it yourself</div>
+              <h3 class="display text-xl font-semibold text-text-0 mt-1">GoDaddy + WordPress + a weekend.</h3>
+            </div>
+          </div>
+
+          <div class="mt-6 text-sm">
+            <div class="grid grid-cols-[1fr_auto] gap-x-4 mono text-[10px] text-text-3 tracking-widest uppercase pb-2 border-b border-line-strong">
+              <div>Item</div><div class="text-right">hours / mo</div>
+            </div>
+
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Domain registrar (GoDaddy)</div><div class="text-right text-text-0">0.2</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Hosting (Bluehost, SiteGround, etc.)</div><div class="text-right text-text-0">0.5</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>WordPress + theme + plugins</div><div class="text-right text-text-0">2.0</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>SSL setup &amp; renewal</div><div class="text-right text-text-0">0.3</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Plugin &amp; security patches</div><div class="text-right text-text-0">2.0</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Backups (off-site, tested)</div><div class="text-right text-text-0">0.5</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Schema &amp; AI-readiness markup</div><div class="text-right text-text-0">1.5</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Mobile / cross-browser testing</div><div class="text-right text-text-0">1.0</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Content edits &amp; new photos</div><div class="text-right text-text-0">1.5</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Uptime monitoring (UptimeRobot)</div><div class="text-right text-text-0">0.5</div></div>
+            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>The cousin who knows HTML</div><div class="text-right text-text-0">?</div></div>
+
+            <div class="grid grid-cols-[1fr_auto] gap-x-4 pt-4 mt-2 border-t-2 border-line-strong">
+              <div class="font-semibold text-text-0">Your time, every month</div>
+              <div class="text-right font-semibold text-text-0">~10 hours</div>
+            </div>
+            <p class="mt-4 text-xs text-text-3 leading-relaxed">Plus the weekend you spend learning what a CNAME record is the first time something breaks.</p>
+          </div>
+        </div>
+
+        <!-- RIGHT · Care -->
+        <div class="bg-bg-1 border border-line rounded-2xl p-6 sm:p-7 flex flex-col h-full relative overflow-hidden">
+          <div class="absolute inset-0 dotgrid-bright opacity-40 pointer-events-none"></div>
+          <div class="relative">
+            <div class="flex items-baseline justify-between">
+              <div>
+                <div class="mono text-[11px] text-ember tracking-widest uppercase">If we do it</div>
+                <h3 class="display text-xl font-semibold text-text-0 mt-1">Motley Care.</h3>
+              </div>
+            </div>
+
+            <div class="mt-6 text-sm">
+              <div class="grid grid-cols-[1fr_auto] gap-x-4 mono text-[10px] text-text-3 tracking-widest uppercase pb-2 border-b border-line-strong">
+                <div>Item</div><div class="text-right">hours / mo</div>
+              </div>
+
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Domain registrar</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Hosting</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Codebase &amp; updates</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>SSL setup &amp; renewal</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Security patches</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Daily backups (30-day retention)</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Schema &amp; AI-readiness markup</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Mobile / cross-browser testing</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Content edits (up to 60 min)</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Uptime monitoring</div><div class="text-right text-text-3">&mdash;</div></div>
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>A person who answers</div><div class="text-right text-text-3">&mdash;</div></div>
+
+              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>The email you send us when something changes</div><div class="text-right text-text-0">~5 min</div></div>
+
+              <div class="grid grid-cols-[1fr_auto] gap-x-4 pt-4 mt-2 border-t-2 border-line-strong">
+                <div class="font-semibold text-text-0">Your time, every month</div>
+                <div class="text-right font-semibold text-ember">~5 minutes</div>
+              </div>
+              <p class="mt-4 text-xs text-text-3 leading-relaxed">Five minutes is the email you send us with the change. That's the entire job.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Closing CTA · folded right into the same flow, no box -->
+      <div class="mt-12 sm:mt-14 pt-10 sm:pt-12 border-t border-line flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 justify-between">
+        <div class="max-w-2xl">
+          <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Care comes with the site.</h2>
+          <p class="mt-2 text-text-1">Start a free build. If you keep it, Care is $49 a month and you'll get the same person every time.</p>
+        </div>
+        <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
+          <a href="pricing.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent hover:bg-bg-1 border border-line-strong hover:border-ember/50 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
+            See pricing
+          </a>
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
+            Start my build
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
+      </div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>

@@ -161,16 +161,16 @@
       from { opacity: 0; transform: translateY(14px) scale(0.985); }
       to   { opacity: 1; transform: none; }
     }
-    .claude-card { animation: claudeCardIn 700ms cubic-bezier(0.22,1,0.36,1) both; }
+    .claude-card { animation: claudeCardIn 500ms cubic-bezier(0.22,1,0.36,1) both; }
     .claude-load .stage { opacity: 0; }
-    .claude-load .stage-1 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 250ms forwards; }
-    .claude-load .stage-2 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 600ms forwards; }
-    .claude-load .stage-3 { animation: claudeStage 480ms cubic-bezier(0.22,1,0.36,1) 1300ms forwards; } /* "thinking pause" before answer */
-    .claude-load .stage-4 { animation: claudeStage 600ms cubic-bezier(0.22,1,0.36,1) 1700ms forwards; }
-    .claude-load .stage-5 { animation: claudeStage 400ms cubic-bezier(0.22,1,0.36,1) 3050ms forwards; }
-    .claude-load .stage-6 { animation: claudeStage 400ms cubic-bezier(0.22,1,0.36,1) 3400ms forwards; }
+    .claude-load .stage-1 { animation: claudeStage 320ms cubic-bezier(0.22,1,0.36,1) 100ms forwards; }
+    .claude-load .stage-2 { animation: claudeStage 320ms cubic-bezier(0.22,1,0.36,1) 320ms forwards; }
+    .claude-load .stage-3 { animation: claudeStage 320ms cubic-bezier(0.22,1,0.36,1) 650ms forwards; } /* shorter "thinking pause" */
+    .claude-load .stage-4 { animation: claudeStage 360ms cubic-bezier(0.22,1,0.36,1) 850ms forwards; }
+    .claude-load .stage-5 { animation: claudeStage 320ms cubic-bezier(0.22,1,0.36,1) 1700ms forwards; }
+    .claude-load .stage-6 { animation: claudeStage 320ms cubic-bezier(0.22,1,0.36,1) 1950ms forwards; }
     /* Cursor doesn't blink until the typing has finished */
-    .claude-load .cursor-blink { opacity: 0; animation: claudeStage 200ms ease-out 2950ms forwards, cursorBlink 1.06s step-end 3150ms infinite; }
+    .claude-load .cursor-blink { opacity: 0; animation: claudeStage 180ms ease-out 1600ms forwards, cursorBlink 1.06s step-end 1800ms infinite; }
     /* Per-word typing reveal (sync with JS at bottom of page) */
     .tw-word { opacity: 0; transition: opacity 200ms ease-out; }
     .tw-word.tw-on { opacity: 1; }
@@ -394,7 +394,7 @@
             <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
               <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
               <div>
-                <div class="font-medium text-text-0">Milledgeville HVAC Pros</div>
+                <div class="font-medium text-text-0">Whitfield Heating & Air</div>
                 <div class="mono text-[10px] text-text-3">trades/</div>
               </div>
             </a>
@@ -404,6 +404,8 @@
         <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
 
         <a href="pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
+
+        <a href="care.html" class="hover:text-text-0 transition-colors">Care</a>
 
         <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
 
@@ -432,6 +434,7 @@
         <a href="samples.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Sample Sites</a>
         <a href="faq.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">FAQ</a>
         <a href="pricing.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Pricing</a>
+        <a href="care.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">Care</a>
         <a href="process.html" class="block px-3 py-3.5 rounded-lg text-text-1 hover:text-text-0 hover:bg-bg-1 text-base transition-colors">How it works</a>
         <a href="contact.html" class="mt-2 inline-flex items-center justify-center gap-2 px-4 py-3.5 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-base transition-colors">
           Start a build
@@ -573,25 +576,28 @@
       </p>
 
       <div class="mt-9 sm:mt-12 space-y-6 sm:space-y-8">
-        <div class="flex items-baseline gap-3 sm:gap-6">
+        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-6 sm:pb-8">
           <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-12">01</div>
-          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0">
+          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
             AI can <span class="text-ember">find you.</span>
           </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-2 sm:-top-3" style="font-size: clamp(3.5rem, 7vw, 5rem);">01</span>
         </div>
 
-        <div class="flex items-baseline gap-3 sm:gap-6">
+        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-6 sm:pb-8">
           <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-12">02</div>
-          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0">
+          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
             AI can <span class="text-ember">read you.</span>
           </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-2 sm:-top-3" style="font-size: clamp(3.5rem, 7vw, 5rem);">02</span>
         </div>
 
-        <div class="flex items-baseline gap-3 sm:gap-6">
+        <div class="relative flex items-baseline gap-3 sm:gap-6 pb-1">
           <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-12">03</div>
-          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0">
+          <p class="display text-2xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
             AI keeps <span class="text-ember">recommending you.</span>
           </p>
+          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-2 sm:-top-3" style="font-size: clamp(3.5rem, 7vw, 5rem);">03</span>
         </div>
       </div>
 
@@ -632,7 +638,7 @@
 
         <div class="stat-col lg:pl-8 lg:border-l lg:border-line">
           <div class="display font-semibold mt-5 text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(3rem, 5.5vw, 4.5rem);">
-            <span data-count-to="97">97</span><span class="text-ember">%</span>
+            <span data-count-to="97">97</span><span class="text-ember ml-0.5">%</span>
           </div>
           <div class="mt-5 h-0.5 w-full bg-bg-2 overflow-hidden">
             <div class="h-full bg-ember" data-bar-fill="97"></div>
@@ -644,7 +650,7 @@
 
         <div class="stat-col lg:pl-8 lg:border-l lg:border-line">
           <div class="display font-semibold mt-5 text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(3rem, 5.5vw, 4.5rem);">
-            <span data-count-to="76">76</span><span class="text-lime">%</span>
+            <span data-count-to="76">76</span><span class="text-lime ml-0.5">%</span>
           </div>
           <div class="mt-5 h-0.5 w-full bg-bg-2 overflow-hidden">
             <div class="h-full bg-lime" data-bar-fill="76"></div>
@@ -656,7 +662,7 @@
 
         <div class="stat-col lg:pl-8 lg:border-l lg:border-line">
           <div class="display font-semibold mt-5 text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(3rem, 5.5vw, 4.5rem);">
-            <span data-count-to="75">75</span><span class="text-amber2">%</span>
+            <span data-count-to="75">75</span><span class="text-amber2 ml-0.5">%</span>
           </div>
           <div class="mt-5 h-0.5 w-full bg-bg-2 overflow-hidden">
             <div class="h-full bg-amber2" data-bar-fill="75"></div>
@@ -678,67 +684,67 @@
         <div class="mt-12 sm:mt-16">
           <!-- Column header (desktop only) -->
           <div class="hidden md:grid md:grid-cols-12 gap-6 pb-4 border-b border-line-strong">
-            <div class="md:col-span-3 mono text-[10px] text-text-3 tracking-widest uppercase">industry</div>
-            <div class="md:col-span-6 mono text-[10px] text-text-3 tracking-widest uppercase">how it adds up</div>
-            <div class="md:col-span-3 mono text-[10px] text-text-3 tracking-widest uppercase text-right">estimated loss</div>
+            <div class="md:col-span-3 mono text-[12px] text-text-3 tracking-widest uppercase">industry</div>
+            <div class="md:col-span-6 mono text-[12px] text-text-3 tracking-widest uppercase">how it adds up</div>
+            <div class="md:col-span-3 mono text-[12px] text-text-3 tracking-widest uppercase text-right">estimated loss</div>
           </div>
 
           <!-- Row 1: trades -->
           <div class="ledger-row grid md:grid-cols-12 gap-x-6 gap-y-4 py-7 sm:py-8 border-b border-line rounded-md sm:px-3 sm:-mx-3">
             <div class="md:col-span-3">
-              <div class="mono text-[11px] text-ember tracking-wider uppercase">hvac</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">plumbing</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">electrical</div>
+              <div class="mono text-[14px] text-ember tracking-wider uppercase">hvac</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">plumbing</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">electrical</div>
             </div>
             <p class="md:col-span-6 text-sm sm:text-base text-text-1 leading-relaxed">
-              About 200 people a month look up "plumber near me" or "AC repair Baldwin County." If AI hands them to whoever set up their site right, that's six jobs a month, at $500 a job, walking next door.
+              <strong class="text-text-0 font-semibold">~200 searches</strong> a month for plumbers, HVAC, or electricians nearby. <strong class="text-text-0 font-semibold">About 6 jobs</strong> go to whoever AI recommends first. <strong class="text-text-0 font-semibold">~$500 each.</strong>
             </p>
             <div class="md:col-span-3 md:text-right">
               <div class="ledger-amount display font-semibold text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(2.5rem, 4.5vw, 3.5rem);">
-                <span class="text-ember">$3,000</span><span class="text-text-3 text-base ml-1">/mo</span>
+                <span class="text-ember">$3,000</span><span class="text-text-3 text-base ml-2 tracking-wider">/ mo</span>
               </div>
-              <div class="mono text-[11px] text-text-3 mt-3 tracking-wider">$36,000 / yr</div>
+              <div class="mt-3 mono text-[12px] tracking-wider"><span class="text-text-0 font-semibold">$36,000</span><span class="text-text-3"> / yr</span></div>
             </div>
           </div>
 
           <!-- Row 2: hospitality -->
           <div class="ledger-row grid md:grid-cols-12 gap-x-6 gap-y-4 py-7 sm:py-8 border-b border-line rounded-md sm:px-3 sm:-mx-3">
             <div class="md:col-span-3">
-              <div class="mono text-[11px] text-ember tracking-wider uppercase">restaurant</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">cafe</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">bar</div>
+              <div class="mono text-[14px] text-ember tracking-wider uppercase">restaurant</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">cafe</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">bar</div>
             </div>
             <p class="md:col-span-6 text-sm sm:text-base text-text-1 leading-relaxed">
-              Roughly 400 people a month search "best [food] near me" around here. The one AI recommends fills tables. About 18 tables a month, at $40 a head, end up at the other guy's place.
+              <strong class="text-text-0 font-semibold">~400 searches</strong> a month for food spots nearby. <strong class="text-text-0 font-semibold">About 18 tables</strong> go to whoever AI recommends first. <strong class="text-text-0 font-semibold">~$100 a table.</strong>
             </p>
             <div class="md:col-span-3 md:text-right">
               <div class="ledger-amount display font-semibold text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(2.5rem, 4.5vw, 3.5rem);">
-                <span class="text-ember">$1,800</span><span class="text-text-3 text-base ml-1">/mo</span>
+                <span class="text-ember">$1,800</span><span class="text-text-3 text-base ml-2 tracking-wider">/ mo</span>
               </div>
-              <div class="mono text-[11px] text-text-3 mt-3 tracking-wider">$21,600 / yr</div>
+              <div class="mt-3 mono text-[12px] tracking-wider"><span class="text-text-0 font-semibold">$21,600</span><span class="text-text-3"> / yr</span></div>
             </div>
           </div>
 
           <!-- Row 3: service -->
           <div class="ledger-row grid md:grid-cols-12 gap-x-6 gap-y-4 py-7 sm:py-8 border-b border-line rounded-md sm:px-3 sm:-mx-3">
             <div class="md:col-span-3">
-              <div class="mono text-[11px] text-ember tracking-wider uppercase">salon</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">retail</div>
-              <div class="mono text-[11px] text-text-2 tracking-wider uppercase">service</div>
+              <div class="mono text-[14px] text-ember tracking-wider uppercase">salon</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">retail</div>
+              <div class="mono text-[14px] text-text-2 tracking-wider uppercase">service</div>
             </div>
             <p class="md:col-span-6 text-sm sm:text-base text-text-1 leading-relaxed">
-              Around 150 people a month search for what you do, locally. About five new customers a month, at $220 each, end up booked somewhere else. You never see them. You never know they were looking.
+              <strong class="text-text-0 font-semibold">~150 searches</strong> a month for what you do. <strong class="text-text-0 font-semibold">About 5 customers</strong> go to whoever AI recommends first. <strong class="text-text-0 font-semibold">~$220 each.</strong>
             </p>
             <div class="md:col-span-3 md:text-right">
               <div class="ledger-amount display font-semibold text-text-0 leading-none tracking-tighter whitespace-nowrap" style="font-size: clamp(2.5rem, 4.5vw, 3.5rem);">
-                <span class="text-ember">$1,200</span><span class="text-text-3 text-base ml-1">/mo</span>
+                <span class="text-ember">$1,200</span><span class="text-text-3 text-base ml-2 tracking-wider">/ mo</span>
               </div>
-              <div class="mono text-[11px] text-text-3 mt-3 tracking-wider">$14,400 / yr</div>
+              <div class="mt-3 mono text-[12px] tracking-wider"><span class="text-text-0 font-semibold">$14,400</span><span class="text-text-3"> / yr</span></div>
             </div>
           </div>
 
           <!-- Footer note -->
-          <p class="mt-6 text-xs text-text-3 leading-relaxed max-w-2xl">
+          <p class="mt-6 text-xs text-text-3 leading-relaxed text-center whitespace-nowrap overflow-x-auto">
             Rough averages. Your numbers might run smaller or bigger. Either way, the answer's the same: real money, every month.
           </p>
         </div>
@@ -762,20 +768,10 @@
       </div>
 
       <!-- TIER TEASER · drives to /pricing.html -->
-      <div class="mt-14 sm:mt-16">
-
-        <!-- Headline -->
-        <div class="max-w-2xl">
-          <h3 class="display text-3xl sm:text-4xl font-semibold tracking-tight leading-tight text-text-0">
-            Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
-          </h3>
-          <p class="mt-4 text-base text-text-1 leading-relaxed">
-            Build fee, hosting, and buyout are priced separately so you can see exactly what you'd pay. No quote-in-disguise.
-          </p>
-        </div>
+      <div class="mt-12 sm:mt-14">
 
         <!-- Tier triplet · three substantial cards -->
-        <div class="mt-12 grid md:grid-cols-3 gap-5 items-stretch auto-rows-fr no-reveal">
+        <div class="grid md:grid-cols-3 gap-5 items-stretch auto-rows-fr no-reveal">
 
           <!-- I · Standard -->
           <a href="pricing.html" class="group relative flex flex-col bg-bg-1 border border-line hover:border-text-3 transition-all duration-500 ease-out hover:-translate-y-1 rounded-2xl overflow-hidden p-7 sm:p-8 cursor-pointer ring-focus">
@@ -884,8 +880,8 @@
             url:'thebarberandco.com', aiQ:'best barber near Milledgeville?', aiA:'By appointment only, on Jefferson St. Hot-towel shaves are a specialty. Open since 2016.', nav:'SERVICES · BARBERS · GALLERY', badge:'BOOK', sub:'', href:'demos/salon/',
             bg:'radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.4) 0%, transparent 60%), #0a0908',
             fg:'#E7D9BC', meta:'#B88A44', glow:'rgba(184,138,68,0.3)', font:'DM Serif Display, serif', weight:'400', style:'normal' },
-          { id:'trades', label:'Milledgeville HVAC Pros', name:'HEAT & AIR DONE RIGHT.', tagline:'(478) 555-0187 · 24/7 Emergency', kicker:'LICENSED · INSURED · FAMILY-OWNED',
-            url:'milledgevillehvacpros.com', aiQ:'who fixes AC in Baldwin County?', aiA:'Family-owned, NATE-certified, with 24/7 emergency service across Baldwin County since 2008.', nav:'SERVICES · COVERAGE · REVIEWS', badge:'CALL NOW', sub:'', href:'demos/trades/',
+          { id:'trades', label:'Whitfield Heating & Air', name:'HEAT & AIR DONE RIGHT.', tagline:'(478) 555-0187 · 24/7 Emergency', kicker:'LICENSED · INSURED · FAMILY-OWNED',
+            url:'whitfieldheatingandair.com', aiQ:'who fixes AC in Baldwin County?', aiA:'Family-owned, NATE-certified, with 24/7 emergency service across Baldwin County since 2008.', nav:'SERVICES · COVERAGE · REVIEWS', badge:'CALL NOW', sub:'', href:'demos/trades/',
             bg:'linear-gradient(135deg, #041E33 0%, #0c4a6e 100%)',
             fg:'#FFFFFF', meta:'#FACC15', glow:'rgba(250,204,21,0.25)', font:'Barlow Condensed, sans-serif', weight:'900', style:'normal' },
         ],
@@ -1006,8 +1002,8 @@
       // Skip the typewriter on internal navigation / refresh
       if (document.documentElement.classList.contains('mt-skip-anim')) return;
 
-      const startMs = 1700;
-      const stepMs = 22;
+      const startMs = 850;
+      const stepMs = 14;
       words.forEach((w, i) => {
         setTimeout(() => { w.classList.add('tw-on'); }, startMs + i * stepMs);
       });
