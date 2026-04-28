@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Visit &amp; Newsletter — Oak &amp; Thread</title>
+  <title>Visit &amp; Newsletter. Oak &amp; Thread</title>
   <meta name="description" content="Find us on Wayne Street in Milledgeville, or sign up for first dibs on every drop." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,7 +42,7 @@
 
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-track { animation: marquee 40s linear infinite; }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -105,9 +105,9 @@
 
       <!-- Success state (hidden until form submit) -->
       <div id="newsletter-success" hidden class="mt-8 max-w-md mx-auto border border-ink p-8 text-left">
-        <div class="text-[11px] uppercase tracking-[0.3em] text-taupe">— You're on the list</div>
+        <div class="text-[11px] uppercase tracking-[0.3em] text-taupe">, You're on the list</div>
         <div class="display text-2xl italic mt-3 text-ink">See you Tuesday.</div>
-        <p class="mt-4 text-sm text-taupe leading-relaxed">We'll send the first drop preview to <span id="echo-email" class="text-ink"></span>. Unsubscribe anytime — we're not jerks about it.</p>
+        <p class="mt-4 text-sm text-taupe leading-relaxed">We'll send the first drop preview to <span id="echo-email" class="text-ink"></span>. Unsubscribe anytime, we're not jerks about it.</p>
         <p class="mt-6 text-[11px] text-taupe italic">(Sample site · no email was actually saved.)</p>
       </div>
 
@@ -132,11 +132,11 @@
   <footer class="py-10 border-t border-line bg-white">
     <div class="max-w-[1400px] mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-taupe">
       <div class="display text-base text-ink">Oak &amp; Thread</div>
-      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
+      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a>, sample site, not a real shop.</div>
     </div>
   </footer>
 
-  <!-- Newsletter — demo confirmation flow -->
+  <!-- Newsletter, demo confirmation flow -->
   <script>
     (() => {
       const form = document.getElementById('newsletter-form');

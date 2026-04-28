@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Shop the Fall '26 Drop — Oak &amp; Thread</title>
-  <meta name="description" content="Linen, denim, outerwear, and one-of-one vintage — all made to last. Shop the Fall '26 collection." />
+  <title>Shop the Fall '26 Drop. Oak &amp; Thread</title>
+  <meta name="description" content="Linen, denim, outerwear, and one-of-one vintage, all made to last. Shop the Fall '26 collection." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -48,7 +49,7 @@
     .product .swatch-2 { position: absolute; inset: 0; opacity: 0; transition: opacity 400ms ease; }
     .product:hover .swatch-1 { opacity: 0; }
     .product:hover .swatch-2 { opacity: 1; }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -117,7 +118,7 @@
             <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=700&q=80&auto=format&fit=crop"
                  alt="Linen field shirt"
                  class="swatch-1 absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" fetchpriority="high" decoding="async">
             <div class="swatch-2" style="background: linear-gradient(160deg,#d6d3d1,#78716c);"></div>
             <div class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.3em] bg-white/90 px-2 py-0.5 z-10">New</div>
           </div>
@@ -135,7 +136,7 @@
             <img src="https://images.unsplash.com/photo-1551232864-3f0890e580d9?w=700&q=80&auto=format&fit=crop"
                  alt="Selvedge denim"
                  class="swatch-1 absolute inset-0 w-full h-full object-cover"
-                 onerror="this.style.display='none'">
+                 onerror="this.style.display='none'" loading="lazy" decoding="async">
             <div class="swatch-1 absolute inset-0 -z-10" style="background: linear-gradient(160deg,#78716c,#44403c);"></div>
             <div class="swatch-2" style="background: linear-gradient(160deg,#57534e,#1c1917);"></div>
           </div>
@@ -153,7 +154,7 @@
             <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=700&q=80&auto=format&fit=crop"
                  alt="Waxed canvas field jacket"
                  class="swatch-1 absolute inset-0 w-full h-full object-cover"
-                 onerror="this.style.display='none'">
+                 onerror="this.style.display='none'" loading="lazy" decoding="async">
             <div class="swatch-1 absolute inset-0 -z-10" style="background: linear-gradient(160deg,#fed7aa,#c2410c);"></div>
             <div class="swatch-2" style="background: linear-gradient(160deg,#fde68a,#92400e);"></div>
           </div>
@@ -244,7 +245,7 @@
   <footer class="py-10 border-t border-line bg-white">
     <div class="max-w-[1400px] mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-taupe">
       <div class="display text-base text-ink">Oak &amp; Thread</div>
-      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
+      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a>, sample site, not a real shop.</div>
     </div>
   </footer>
 

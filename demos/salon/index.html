@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Barber &amp; Co. — Milledgeville · By appointment only</title>
+  <title>The Barber &amp; Co.. Milledgeville · By appointment only</title>
   <meta name="description" content="Hot-towel shaves, straight-razor finishes, cuts that last six weeks. By appointment only." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -55,7 +56,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -96,7 +97,7 @@
     <img src="https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=1800&q=80&auto=format&fit=crop"
          alt="" aria-hidden="true"
          class="absolute inset-0 w-full h-full object-cover opacity-25 mix-blend-luminosity"
-         onerror="this.remove()">
+         onerror="this.remove()" fetchpriority="high" decoding="async">
     <div class="vignette"></div>
     <div class="relative text-center max-w-4xl">
       <div class="flex items-center justify-center gap-4 text-[10px] uppercase tracking-[0.5em] text-brass">
@@ -114,9 +115,9 @@
 
       <div class="mt-14 flex flex-wrap justify-center gap-x-10 gap-y-3 text-[11px] uppercase tracking-[0.3em] text-cream/50">
         <span>By Appointment Only</span>
-        <span>—</span>
+        <span>, </span>
         <span>Tues – Sat</span>
-        <span>—</span>
+        <span>, </span>
         <span>112 S Jefferson St</span>
       </div>
     </div>
@@ -127,7 +128,7 @@
     <div class="max-w-4xl mx-auto px-6 sm:px-10 text-center">
       <div class="text-[10px] uppercase tracking-[0.5em] text-brass">★ ★ ★ ★ ★</div>
       <blockquote class="display italic text-cream text-3xl sm:text-5xl mt-8 leading-snug">"The first real haircut I've had in fifteen years. Won't go anywhere else now."</blockquote>
-      <div class="mt-8 text-sm text-cream/60 uppercase tracking-[0.3em]">— Wes H. · Milledgeville · Google review</div>
+      <div class="mt-8 text-sm text-cream/60 uppercase tracking-[0.3em]">, Wes H. · Milledgeville · Google review</div>
 
       <div class="mt-12 flex flex-wrap justify-center gap-4">
         <a href="services.html" class="px-8 py-4 border border-brass/60 text-brass text-[11px] uppercase tracking-[0.3em] hover:bg-brass/10 transition-colors">See Services</a>

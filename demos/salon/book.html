@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Book a Chair — The Barber &amp; Co.</title>
-  <meta name="description" content="Reserve a chair at The Barber &amp; Co. — by appointment only, Tue–Sat on Jefferson Street." />
+  <title>Book a Chair. The Barber &amp; Co.</title>
+  <meta name="description" content="Reserve a chair at The Barber &amp; Co., by appointment only, Tue–Sat on Jefferson Street." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -45,7 +45,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -138,7 +138,7 @@
         <div class="inline-flex items-center justify-center w-14 h-14 rounded-full border border-brass/60">
           <svg class="w-7 h-7 text-brass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l4 4L19 7"/></svg>
         </div>
-        <div class="text-[10px] uppercase tracking-[0.5em] text-brass mt-6">— Confirmed</div>
+        <div class="text-[10px] uppercase tracking-[0.5em] text-brass mt-6">, Confirmed</div>
         <h3 class="display text-cream text-4xl sm:text-5xl mt-3">See you soon, <span id="echo-name">friend</span>.</h3>
         <p class="mt-5 text-cream/70 max-w-md mx-auto leading-relaxed">
           <span id="echo-service" class="text-brass"></span> with <span id="echo-barber" class="text-brass"></span><span id="echo-when-wrap"> · <span id="echo-when" class="text-brass"></span></span>.
@@ -177,7 +177,7 @@
 
   <div class="h-1.5 stripe-blue"></div>
 
-  <!-- Booking — demo confirmation flow -->
+  <!-- Booking, demo confirmation flow -->
   <script>
     (() => {
       const form = document.getElementById('book-form');

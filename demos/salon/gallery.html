@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Gallery — The Barber &amp; Co.</title>
-  <meta name="description" content="Behind the chair — the shop on Jefferson Street, the cuts, the details." />
+  <title>Gallery. The Barber &amp; Co.</title>
+  <meta name="description" content="Behind the chair, the shop on Jefferson Street, the cuts, the details." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -45,7 +46,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -89,35 +90,35 @@
       </div>
       <div class="grid grid-cols-2 md:grid-cols-4 gap-2">
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#3b2d1f,#0a0908);">
-          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" fetchpriority="high" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#57534e,#1c1917);">
-          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#0a0908,#292524);">
-          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#292524,#B88A44);">
-          <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1493256338651-d82f7acb2b38?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#1c1917,#B88A44);">
-          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#0a0908,#3b2d1f);">
-          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#57534e,#292524);">
-          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
         <div class="aspect-[3/4] relative overflow-hidden" style="background:linear-gradient(165deg,#3b2d1f,#57534e);">
-          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()">
+          <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=700&q=80&auto=format&fit=crop" alt="" class="absolute inset-0 w-full h-full object-cover" onerror="this.remove()" loading="lazy" decoding="async">
           <div class="absolute inset-0 bg-gradient-to-t from-coal/60 to-transparent"></div>
         </div>
       </div>

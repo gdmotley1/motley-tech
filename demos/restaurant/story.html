@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Our Story — Mama Lou's Kitchen</title>
+  <title>Our Story. Mama Lou's Kitchen</title>
   <meta name="description" content="Louise Jenkins opened the kitchen in 1978. Forty-seven years later, her granddaughter still runs the line." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -58,7 +59,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -94,12 +95,12 @@
         <img src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=900&q=80&auto=format&fit=crop"
              alt="Kitchen at Mama Lou's"
              class="absolute inset-0 w-full h-full object-cover mix-blend-multiply opacity-70"
-             onerror="this.remove()">
+             onerror="this.remove()" fetchpriority="high" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-burgundy-deep/90 via-burgundy-deep/30 to-transparent"></div>
         <div class="absolute inset-6 border border-gold/40"></div>
         <div class="absolute inset-0 flex items-end p-10 text-cream">
           <div>
-            <div class="display italic text-2xl">— Louise "Mama Lou" Jenkins</div>
+            <div class="display italic text-2xl">, Louise "Mama Lou" Jenkins</div>
             <div class="text-xs uppercase tracking-widest mt-1 text-gold">Founder · 1934–2019</div>
           </div>
         </div>
@@ -108,7 +109,7 @@
         <div class="ornament text-xs uppercase tracking-[0.4em]" style="font-style:normal;">Since 1978</div>
         <h1 class="display mt-5 text-5xl sm:text-6xl text-burgundy-deep leading-tight">Forty-seven years of <em class="italic">putting folks first.</em></h1>
         <div class="mt-6 space-y-4 text-ink/80 leading-relaxed">
-          <p>Louise Jenkins opened the kitchen in a converted gas station on Hancock Street with $400, a Frigidaire, and her grandmother's recipe book. Her only rule — "if I wouldn't serve it at my own table, it don't go out" — still runs the place.</p>
+          <p>Louise Jenkins opened the kitchen in a converted gas station on Hancock Street with $400, a Frigidaire, and her grandmother's recipe book. Her only rule, "if I wouldn't serve it at my own table, it don't go out", still runs the place.</p>
           <p>Today, her granddaughter Terri runs the line. Most mornings you'll find her at the back prep sink by 4:30, butchering chicken, shelling peas, rolling biscuits by hand. The cornbread skillets are the same ones Lou bought in 1978.</p>
           <p>We don't take shortcuts. We don't reheat. And if Terri's great-grandchildren ever take over, they'll cook the same way.</p>
         </div>
@@ -130,7 +131,7 @@
     <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="display italic text-lg text-cream">Mama Lou's Kitchen · Milledgeville, GA</div>
       <div class="text-xs">
-        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a> — sample site, not a real restaurant.
+        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a>, sample site, not a real restaurant.
       </div>
     </div>
   </footer>

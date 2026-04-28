@@ -122,6 +122,21 @@ Below these sizes, switch to the mark alone — the wordmark loses legibility.
 - **Location tag**: *Milledgeville, GA · Baldwin County*
 - **Contact**: motleytech.ai@gmail.com
 
+### Voice rules (locked 2026-04-28)
+
+Every page on `motley-tech.com` follows these. If you write or edit copy, hold the line.
+
+1. **First person, plural.** "We build," "we ship," "we'll have something to show you." Never "I," "me," or "my" for Motley Tech actions. Use "I" / "my" only when speaking *as the customer* (form labels, CTAs like "Start my build") or quoting one. Never "our team," "the agency."
+2. **Specific over generic.** Real numbers (`200M`, `$3,000/mo`, `14 days`), real places (Milledgeville, Baldwin County), real scenarios. No "elevate your business," no "leverage solutions."
+3. **Plainspoken.** Short sentences. Conversational. A neighbor explaining a trade, not a sales deck. Read it aloud; if it sounds like a brochure, rewrite it.
+4. **Confident, not boastful.** State what's true. "Live in 14 days," not "industry-leading turnaround." Skip the superlatives unless backed by a citation. Cut weasels ("just," "really," "actually," "a bit," "kind of," "I think") and hedges ("we'll try to," "you can if you want," "feel free to," "potentially"). Prefer declarative over conditional: "we do," not "we can"; "it works," not "it might help." Confident, never boastful.
+5. **Dev-studio flavor as accent, not wallpaper.** `[ // SECTION TAGS ]`, mono labels, `$` prompts, file-name lists, `v2.0` pills. They're seasoning. Don't pile them on every block.
+6. **Punctuation: no em dashes, no emojis.** Em dashes read as AI-generated. Use periods, commas, colons, or parentheses instead. Emojis aren't on-brand.
+7. **Cite real sources.** Stats get an attribution line: *BrightLocal*, *Think with Google*, *Stanford Web Credibility*, *OpenAI / Perplexity 2024*. Never invent numbers about Motley Tech itself.
+8. **Local without forcing it.** Milledgeville and Baldwin County are fair game when they fit. Don't crowbar them into every paragraph. The site serves the U.S.
+9. **Scarcity is honest.** "First 5 Milledgeville businesses, 3 spots left" is a real thing Grant is doing. Don't manufacture fake urgency.
+10. **Demos are different brands.** Each demo (Mama Lou's, Oak & Thread, The Barber & Co., Milledgeville HVAC Pros) gets its own voice. The rules above apply to the Motley Tech chrome only, not to the demo content itself.
+
 ---
 
 ## Version history
@@ -129,6 +144,7 @@ Below these sizes, switch to the mark alone — the wordmark loses legibility.
 | Version | Date | Notes |
 |---------|------|-------|
 | v1.0 | 2026-04-17 | Initial Fortune-500-style wordmark: ember square + "Motley Tech" in Space Grotesk Bold. Replaces the v2.0-site "motley.tech with m-tile" which was too busy. |
+| v1.1 | 2026-04-28 | Voice rule 1 flipped to first person plural. Rule 4 expanded with confidence-tightening: cut weasels and hedges, prefer declarative over conditional. |
 
 ---
 

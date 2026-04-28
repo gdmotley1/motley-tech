@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Oak &amp; Thread — Slow fashion for the South</title>
+  <title>Oak &amp; Thread. Slow fashion for the South</title>
   <meta name="description" content="Small-batch linen, heirloom denim, and one-of-one vintage. Curated on Wayne Street, Milledgeville." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -49,7 +50,7 @@
     .product .swatch-2 { position: absolute; inset: 0; opacity: 0; transition: opacity 400ms ease; }
     .product:hover .swatch-1 { opacity: 0; }
     .product:hover .swatch-2 { opacity: 1; }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -103,9 +104,9 @@
   <header id="top" class="grid md:grid-cols-5 min-h-[84vh]">
     <div class="md:col-span-3 relative aspect-[4/5] md:aspect-auto overflow-hidden" style="background: linear-gradient(165deg, #e7e5e4 0%, #a8a29e 55%, #57534e 100%);">
       <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1600&q=80&auto=format&fit=crop"
-           alt="Fall '26 editorial — oversized linen coat"
+           alt="Fall '26 editorial, oversized linen coat"
            class="absolute inset-0 w-full h-full object-cover"
-           onerror="this.remove()">
+           onerror="this.remove()" fetchpriority="high" decoding="async">
       <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
       <div class="absolute bottom-6 left-6 sm:bottom-10 sm:left-10 text-white">
         <div class="text-[10px] uppercase tracking-[0.3em] opacity-80">Fall '26 · Frame 01</div>
@@ -138,7 +139,7 @@
       <a href="shop.html" class="group aspect-[5/6] relative block border-r border-line overflow-hidden" style="background: linear-gradient(160deg,#f5f5f4,#d6d3d1);">
         <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=800&q=80&auto=format&fit=crop"
              alt="" class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.remove()">
+             onerror="this.remove()" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
         <div class="absolute inset-0 flex items-end p-6">
           <div>
@@ -151,7 +152,7 @@
       <a href="shop.html" class="group aspect-[5/6] relative block border-r border-line overflow-hidden" style="background: linear-gradient(160deg,#78716c,#292524);">
         <img src="https://images.unsplash.com/photo-1542272604-787c3835535d?w=800&q=80&auto=format&fit=crop"
              alt="" class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.remove()">
+             onerror="this.remove()" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         <div class="absolute inset-0 flex items-end p-6">
           <div>
@@ -164,7 +165,7 @@
       <a href="shop.html" class="group aspect-[5/6] relative block border-r border-line overflow-hidden" style="background: linear-gradient(160deg,#fed7aa,#9A3412);">
         <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=800&q=80&auto=format&fit=crop"
              alt="" class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.remove()">
+             onerror="this.remove()" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         <div class="absolute inset-0 flex items-end p-6">
           <div>
@@ -177,7 +178,7 @@
       <a href="shop.html" class="group aspect-[5/6] relative block overflow-hidden" style="background: linear-gradient(160deg,#bbf7d0,#3F5D3D);">
         <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=800&q=80&auto=format&fit=crop"
              alt="" class="absolute inset-0 w-full h-full object-cover"
-             onerror="this.remove()">
+             onerror="this.remove()" loading="lazy" decoding="async">
         <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
         <div class="absolute inset-0 flex items-end p-6">
           <div>
@@ -194,7 +195,7 @@
   <footer class="py-10 border-t border-line bg-white">
     <div class="max-w-[1400px] mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-taupe">
       <div class="display text-base text-ink">Oak &amp; Thread</div>
-      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
+      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a>, sample site, not a real shop.</div>
     </div>
   </footer>
 

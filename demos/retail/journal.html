@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Journal — Oak &amp; Thread</title>
+  <title>The Journal. Oak &amp; Thread</title>
   <meta name="description" content="Care guides, maker stories, and style notes from Oak &amp; Thread." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -42,7 +43,7 @@
 
     @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
     .marquee-track { animation: marquee 40s linear infinite; }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -109,7 +110,7 @@
             <img src="https://images.unsplash.com/photo-1604176354204-9268737828e4?w=900&q=80&auto=format&fit=crop"
                  alt="Raw denim washing guide"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" fetchpriority="high" decoding="async">
           </div>
           <div class="mt-4">
             <div class="text-[11px] uppercase tracking-widest text-taupe">Care Guide · 6 min</div>
@@ -122,7 +123,7 @@
             <img src="https://images.unsplash.com/photo-1528483518878-31b9d0f5b59a?w=900&q=80&auto=format&fit=crop"
                  alt="Yarn on spindle"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" loading="lazy" decoding="async">
           </div>
           <div class="mt-4">
             <div class="text-[11px] uppercase tracking-widest text-taupe">Maker Story · 4 min</div>
@@ -135,7 +136,7 @@
             <img src="https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?w=900&q=80&auto=format&fit=crop"
                  alt="Wool coat"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" loading="lazy" decoding="async">
           </div>
           <div class="mt-4">
             <div class="text-[11px] uppercase tracking-widest text-taupe">Style Note · 3 min</div>
@@ -154,7 +155,7 @@
         <article>
           <div class="text-[11px] uppercase tracking-widest text-taupe">Community · 7 min</div>
           <h2 class="display text-2xl mt-2">The shop, one year in.</h2>
-          <p class="mt-2 text-sm text-taupe leading-relaxed">Lessons from year one on Wayne Street — what we got right, what we're changing for year two.</p>
+          <p class="mt-2 text-sm text-taupe leading-relaxed">Lessons from year one on Wayne Street, what we got right, what we're changing for year two.</p>
         </article>
         <article>
           <div class="text-[11px] uppercase tracking-widest text-taupe">Style Note · 4 min</div>
@@ -169,7 +170,7 @@
   <footer class="py-10 border-t border-line bg-white">
     <div class="max-w-[1400px] mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-taupe">
       <div class="display text-base text-ink">Oak &amp; Thread</div>
-      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
+      <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a>, sample site, not a real shop.</div>
     </div>
   </footer>
 

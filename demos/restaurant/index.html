@@ -3,11 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mama Lou's Kitchen — Southern cooking, downtown Milledgeville since 1978</title>
+  <title>Mama Lou's Kitchen. Southern cooking, downtown Milledgeville since 1978</title>
   <meta name="description" content="Three meals a day of Southern comfort, plate-lunches, and hand-cut pies on Hancock Street." />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://images.unsplash.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
   <script src="https://cdn.tailwindcss.com"></script>
@@ -37,7 +38,7 @@
     body { font-family: 'Inter', sans-serif; background: #FFFBEB; color: #1C1917; }
     h1, h2, h3, h4, .display { font-family: 'Playfair Display', Georgia, serif; }
 
-    /* Hero texture — warm diagonal wash + paper texture via gradients */
+    /* Hero texture, warm diagonal wash + paper texture via gradients */
     .hero-wash {
       background:
         radial-gradient(ellipse at 15% 100%, rgba(200,162,75,0.12) 0%, transparent 55%),
@@ -61,7 +62,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
     }
-    /* Scroll-reveal — elements fade + rise into view when scrolled to */
+    /* Scroll-reveal, elements fade + rise into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
@@ -95,14 +96,14 @@
     <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=1800&q=80&auto=format&fit=crop"
          alt="" aria-hidden="true"
          class="absolute inset-0 w-full h-full object-cover opacity-20 mix-blend-luminosity"
-         onerror="this.remove()">
+         onerror="this.remove()" fetchpriority="high" decoding="async">
     <div class="absolute inset-0 bg-gradient-to-b from-burgundy-deep/60 via-transparent to-burgundy-deep/80 pointer-events-none"></div>
     <div class="relative max-w-4xl">
       <div class="ornament text-xs uppercase tracking-[0.4em] text-gold" style="font-style:normal;">Est. 1978 · Hancock Street</div>
       <h1 class="display text-cream mt-6 text-6xl sm:text-8xl lg:text-9xl leading-[0.95] italic font-medium">Mama Lou's</h1>
       <div class="display text-gold text-3xl sm:text-5xl mt-2 tracking-[0.2em] uppercase" style="font-weight:400;">Kitchen</div>
       <p class="display italic text-cream/80 text-xl sm:text-2xl mt-8 max-w-2xl mx-auto leading-relaxed">
-        Three meals a day of Southern comfort, the way Grandma would've made it — if Grandma had a line out the door.
+        Three meals a day of Southern comfort, the way Grandma would've made it, if Grandma had a line out the door.
       </p>
       <div class="mt-10 flex flex-wrap gap-4 justify-center">
         <a href="visit.html#reserve" class="px-8 py-4 bg-gold text-burgundy-deep font-semibold text-sm uppercase tracking-[0.2em] hover:bg-goldLite transition-colors">Reserve a Table</a>
@@ -130,7 +131,7 @@
             <img src="https://images.unsplash.com/photo-1544025162-d76694265947?w=900&q=80&auto=format&fit=crop"
                  alt="Sunday pot roast with gravy"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" loading="lazy" decoding="async">
           </div>
           <div class="p-7">
             <div class="flex items-baseline justify-between gap-4">
@@ -147,7 +148,7 @@
             <img src="https://images.unsplash.com/photo-1626645738196-c2a7c87a8f58?w=900&q=80&auto=format&fit=crop"
                  alt="Buttermilk fried chicken"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" loading="lazy" decoding="async">
           </div>
           <div class="p-7">
             <div class="flex items-baseline justify-between gap-4">
@@ -164,7 +165,7 @@
             <img src="https://images.unsplash.com/photo-1621743478914-cc8a86d7e7b5?w=900&q=80&auto=format&fit=crop"
                  alt="Warm peach cobbler with ice cream"
                  class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.remove()">
+                 onerror="this.remove()" loading="lazy" decoding="async">
           </div>
           <div class="p-7">
             <div class="flex items-baseline justify-between gap-4">
@@ -188,7 +189,7 @@
     <div class="max-w-6xl mx-auto px-6 sm:px-10 flex flex-col sm:flex-row justify-between items-center gap-4">
       <div class="display italic text-lg text-cream">Mama Lou's Kitchen · Milledgeville, GA</div>
       <div class="text-xs">
-        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a> — sample site, not a real restaurant.
+        Website built by <a href="../../index.html" class="text-gold hover:underline">Motley Tech</a>, sample site, not a real restaurant.
       </div>
     </div>
   </footer>

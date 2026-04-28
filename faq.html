@@ -3,11 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FAQ — Motley Tech · answers to the questions small business owners actually ask</title>
+  <title>FAQ. Motley Tech · answers to the questions small business owners actually ask</title>
   <meta name="description" content="Plain-English answers about Motley Tech's free-first-build website service. Pricing, timelines, ownership, hosting, SEO, AI search, domain transfers, and more." />
 
   <!-- Open Graph + Twitter -->
-  <meta property="og:title" content="FAQ — Motley Tech">
+  <meta property="og:title" content="FAQ. Motley Tech">
   <meta property="og:description" content="Answers to the questions small business owners actually ask about Motley Tech's free-first-build service.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/brand/og-image.svg">
@@ -16,7 +16,9 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Tailwind Play CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -64,7 +66,7 @@
     .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
     [x-cloak] { display: none !important; }
 
-    /* FAQ-specific — terminal-style Q/A cards */
+    /* FAQ-specific, terminal-style Q/A cards */
     .faq-card { position: relative; background: #111114; border: 1px solid #26262C; border-radius: 16px; transition: border-color 250ms ease, transform 250ms ease; }
     .faq-card:hover { border-color: rgba(249,115,22,0.35); }
     .faq-card::before {
@@ -84,11 +86,11 @@
 
     @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
 
-    /* Scroll-reveal — fade sections + grid children into view when scrolled to */
+    /* Scroll-reveal, fade sections + grid children into view when scrolled to */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
-    /* Smooth micro-interactions — premium feel */
+    /* Smooth micro-interactions, premium feel */
     a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1), transform 280ms cubic-bezier(0.22,1,0.36,1), opacity 280ms cubic-bezier(0.22,1,0.36,1); }
     .lift { transition: transform 500ms cubic-bezier(0.22,1,0.36,1), border-color 500ms cubic-bezier(0.22,1,0.36,1), background-color 500ms cubic-bezier(0.22,1,0.36,1), box-shadow 500ms cubic-bezier(0.22,1,0.36,1); }
     .lift:hover { transform: translateY(-3px); }
@@ -114,7 +116,7 @@
     .faq-card-h.accent { border-color: rgba(249,115,22,0.4); }
     .faq-card-h.accent:hover { border-color: rgba(249,115,22,0.7); }
 
-    /* FAQ page — ambient gradient background that flows through every section */
+    /* FAQ page, ambient gradient background that flows through every section */
     body.faq-flow {
       background:
         radial-gradient(ellipse 100% 60% at 80% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 55%),
@@ -134,7 +136,7 @@
   <link rel="canonical" href="https://motley-tech.com/faq.html">
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
 
-  <!-- FAQPage JSON-LD — tells Google + AI search engines (ChatGPT, Perplexity, Gemini) what questions this page answers -->
+  <!-- FAQPage JSON-LD, tells Google + AI search engines (ChatGPT, Perplexity, Gemini) what questions this page answers -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -145,7 +147,7 @@
         "name": "Is the free build really free?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Yes, completely. I build the full site, you try it, and if you don't want to keep it we part ways with no hard feelings and no bill. You only pay if you love it — either a monthly hosting subscription, or a one-time fee to own the code outright."
+          "text": "Yes. We build the full site. You try it. If you don't want to keep it, we part ways, no bill. If you do: monthly hosting, or a one-time fee to own the code."
         }
       },
       {
@@ -153,15 +155,55 @@
         "name": "What's the catch?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "I'm early in the business and building a portfolio. The first few clients get a better deal than my later ones ever will — I'd ask to feature the finished site as a case study, and in return you'd get a permanent founder's rate if you stick around on the subscription."
+          "text": "We're early. The first clients get a deal later ones won't. In exchange, we feature the finished site as a case study and you keep a permanent founder's rate."
         }
       },
       {
         "@type": "Question",
-        "name": "How does this compare to Squarespace, Wix, or WordPress?",
+        "name": "Will my site show up when people ask AI?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Template builders like Squarespace work fine if you want a generic $20-a-month site that looks like every other business in town. I build something specifically for your business — custom design, faster, cleaner, and more memorable. If you ever want to move to Squarespace later, the site is standard HTML so your content is portable."
+          "text": "That's the whole point. 200M+ people ask ChatGPT, Perplexity, and Gemini for recommendations every week. Most local sites are invisible to them. Every site we build ships with the structured data, clean HTML, and freshness signals AI engines actually read."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "How is this different from Squarespace, Wix, or WordPress?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Templates work fine if you're okay looking like every other business in town. We build something for your business: custom, faster, more memorable. Standard files, so you can take it anywhere."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What do you need from me to start?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Less than 30 minutes of your time. Your business name, what you do, your hours, a few photos if you have them, and your domain (or we'll help you grab one). We can pull the rest from your existing site, Google, and a 15-minute call."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What's actually included in the $49 a month?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hosting, domain renewal, SSL certificate, uptime monitoring, small monthly content updates (new hours, new photos, price changes), and we keep your AI signals fresh as things change. No setup fee. No surprise charges."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What if I want to walk away later?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "You can. If you bought it out, you already own the code. If you're on monthly, give us 30 days and we hand you the files. No hostage situations."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Can I edit the site myself?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Most clients don't want to. We turn small changes around in a day on the monthly plan, no extra charge. If you want full self-edit access, ask: we'll quote a buyout with a basic editor layer included."
         }
       }
     ]
@@ -181,15 +223,15 @@
         <a href="index.html" class="hover:text-text-0 transition-colors">Home</a>
 
         <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <button type="button" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+          <a href="samples.html" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
             Sample Sites
             <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
-          </button>
+          </a>
           <div x-show="open" x-cloak x-transition.opacity
                class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
-            <a href="index.html#demos" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
+            <a href="samples.html" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
               <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
-              <div class="mt-0.5 font-medium text-text-0">Go to gallery →</div>
+              <div class="mt-0.5 font-medium text-text-0">All four demos →</div>
             </a>
             <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
               <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
@@ -241,12 +283,11 @@
     <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-9 sm:py-12">
       <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
         <div>
-          <div class="tag-mono">[ // FAQ ]</div>
           <h1 class="display mt-2 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[0.95] text-text-0">
             Questions people <span class="text-ember">actually ask.</span>
           </h1>
         </div>
-        <p class="mono text-xs text-text-3 sm:pb-1 max-w-xs sm:text-right">Straight answers. <a href="mailto:motleytech.ai@gmail.com?subject=Question%20about%20Motley%20Tech" class="text-ember hover:text-ember-hot underline underline-offset-4">Email me</a> if yours isn't here.</p>
+        <p class="mono text-xs text-text-3 sm:pb-1 max-w-xs sm:text-right">Straight answers. <a href="mailto:motleytech.ai@gmail.com?subject=Question%20about%20Motley%20Tech" class="text-ember hover:text-ember-hot underline underline-offset-4">Email us</a> if yours isn't here.</p>
       </div>
     </div>
   </header>
@@ -257,27 +298,43 @@
       <div class="grid sm:grid-cols-2 gap-3.5 sm:gap-4">
 
         <article class="faq-card-h">
-          <div class="faq-prompt">&gt; q_01</div>
-          <h3 class="display mt-2.5 text-lg sm:text-xl font-semibold text-text-0 leading-tight">Is the free build really free?</h3>
-          <p class="mt-3 text-text-1 leading-relaxed text-sm">Yes. I build the full site. You try it. If you don't want to keep it, we part ways — no bill. If you do: monthly hosting, or a one-time fee to own the code.</p>
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">Is the free build really free?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">Yes. We build the full site. You try it. If you don't want to keep it, we part ways, no bill. If you do: monthly hosting, or a one-time fee to own the code.</p>
         </article>
 
         <article class="faq-card-h">
-          <div class="faq-prompt">&gt; q_02</div>
-          <h3 class="display mt-2.5 text-lg sm:text-xl font-semibold text-text-0 leading-tight">What's the catch?</h3>
-          <p class="mt-3 text-text-1 leading-relaxed text-sm">I'm early. The first clients get a deal later ones won't. In exchange, I feature the finished site as a case study and you keep a permanent founder's rate.</p>
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">What's the catch?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">We're early. The first clients get a deal later ones won't. In exchange, we feature the finished site as a case study and you keep a permanent founder's rate.</p>
         </article>
 
         <article class="faq-card-h accent">
-          <div class="faq-prompt">[ &gt; the edge · <span class="text-lime">ai search</span> ]</div>
-          <h3 class="display mt-2.5 text-lg sm:text-xl font-semibold text-text-0 leading-tight">I build sites <span class="text-ember">ChatGPT can quote.</span></h3>
-          <p class="mt-3 text-text-1 leading-relaxed text-sm"><strong class="text-text-0">200M+ people</strong> ask ChatGPT, Perplexity, and Gemini for recommendations every week. Most local sites are invisible to them. <strong class="text-text-0">I build the ones that get cited.</strong></p>
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">Will my site show up when people <span class="text-ember">ask AI?</span></h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">That's the whole point. <strong class="text-text-0">200M+ people</strong> ask ChatGPT, Perplexity, and Gemini for recommendations every week. Most local sites are invisible to them. Every site we build ships with the structured data, clean HTML, and freshness signals AI engines actually read.</p>
         </article>
 
         <article class="faq-card-h">
-          <div class="faq-prompt">&gt; q_04</div>
-          <h3 class="display mt-2.5 text-lg sm:text-xl font-semibold text-text-0 leading-tight">How is this different from Squarespace?</h3>
-          <p class="mt-3 text-text-1 leading-relaxed text-sm">Templates work fine if you're okay looking like every other business in town. I build something for <em>your</em> business — custom, faster, more memorable. Standard HTML if you ever want to take it elsewhere.</p>
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">How is this different from Squarespace, Wix, or WordPress?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">Templates work fine if you're okay looking like every other business in town. We build something for <em>your</em> business: custom, faster, more memorable. Standard files, so you can take it anywhere.</p>
+        </article>
+
+        <article class="faq-card-h">
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">What do you need from me to start?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">Less than 30 minutes of your time. Your business name, what you do, your hours, a few photos if you have them, and your domain (or we'll help you grab one). We pull the rest from your existing site, Google, and a 15-minute call.</p>
+        </article>
+
+        <article class="faq-card-h">
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">What's actually included in the $49 a month?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">Hosting, domain renewal, SSL certificate, uptime monitoring, small monthly content updates (new hours, new photos, price changes), and we keep your AI signals fresh as things change. No setup fee. No surprise charges.</p>
+        </article>
+
+        <article class="faq-card-h">
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">What if I want to walk away later?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">You can. If you bought it out, you already own the code. If you're on monthly, give us 30 days and we hand you the files. No hostage situations.</p>
+        </article>
+
+        <article class="faq-card-h">
+          <h3 class="display text-lg sm:text-xl font-semibold text-text-0 leading-tight">Can I edit the site myself?</h3>
+          <p class="mt-3 text-text-1 leading-relaxed text-sm">Most clients don't want to. We turn small changes around in a day on the monthly plan, no extra charge. If you want full self-edit access, ask: we'll quote a buyout with a basic editor layer included.</p>
         </article>
 
       </div>
@@ -338,7 +395,7 @@
       });
       function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
       requestAnimationFrame(raf);
-      // anchor links — smooth scroll with nav offset
+      // anchor links, smooth scroll with nav offset
       document.querySelectorAll('a[href^="#"]').forEach(a => {
         a.addEventListener('click', (e) => {
           const id = a.getAttribute('href');
