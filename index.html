@@ -325,14 +325,12 @@
           </div>
 
           <h1 class="display mt-7 text-5xl sm:text-6xl lg:text-[72px] leading-[0.88] tracking-tighter font-semibold text-text-0">
-            Custom websites for<br />
-            <span class="text-ember name-swap"
-                  x-effect="current; $el.classList.remove('name-swap'); void $el.offsetWidth; $el.classList.add('name-swap')"
-                  x-text="demos[current].label"></span>
+            Is your site<br />
+            <span class="text-ember">ready for AI?</span>
           </h1>
 
           <p class="mt-7 text-lg sm:text-xl text-text-1 max-w-xl leading-relaxed">
-            Live in <span class="text-text-0 font-semibold">14 days</span>. No bill until you keep it. <span class="text-text-0 font-semibold">$49/mo</span> if you stay — or buy it outright.
+            Customers ask ChatGPT, Perplexity, and Gemini for recommendations now. Most local sites are invisible to them. I build sites AI engines can actually <span class="text-text-0 font-semibold">read, trust, and quote by name</span>.
           </p>
 
           <div class="mt-9 flex flex-col sm:flex-row gap-3">
@@ -368,72 +366,66 @@
               <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
             </button>
 
-            <!-- Whole preview is now a clickable link -->
+            <!-- The whole AI-result card is a clickable link to the cited site -->
             <a :href="demos[current].href" target="_blank" rel="noopener"
-               :aria-label="`View ${demos[current].name} sample site`"
+               :aria-label="`View ${demos[current].label} sample site cited in the AI answer`"
                class="group relative block mini-frame shadow-glow-ember cursor-pointer ring-focus">
+
+              <!-- App chrome: not a browser this time — an AI search panel -->
               <div class="mini-bar">
-                <span class="mini-dot"></span>
-                <span class="mini-dot"></span>
-                <span class="mini-dot"></span>
-                <div class="ml-2 flex-1 px-3 py-1 bg-bg-0 border border-line rounded-md mono text-[10px] text-text-2 truncate">
-                  <span x-text="demos[current].url"></span>
+                <div class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-lime status-dot"></span>
+                  <span class="mono text-[10px] uppercase tracking-[0.2em] text-text-2">AI Search · live</span>
                 </div>
+                <div class="ml-auto mono text-[10px] text-text-3">just now</div>
               </div>
 
-              <!-- Rotating hero peek — bg crossfade + text crossfade with subtle scale -->
+              <!-- Chat body — cycles through 4 conversations -->
               <div class="relative aspect-[5/3.5] overflow-hidden bg-bg-0">
-                <!-- Background layers: each fades in/out with a long, soft transition -->
-                <template x-for="(d, i) in demos" :key="`bg-${i}`">
-                  <div class="absolute inset-0"
-                       :style="`background: ${d.bg}; opacity: ${i === current ? 1 : 0}; transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);`"></div>
-                </template>
-                <!-- Text layers: faux nav strip + dramatic name + ornament + tagline -->
-                <template x-for="(d, i) in demos" :key="`text-${i}`">
-                  <div class="absolute inset-0 flex flex-col p-5 sm:p-6"
-                       :style="`font-family: ${d.font}; color: ${d.fg}; opacity: ${i === current ? 1 : 0}; transform: scale(${i === current ? 1 : 1.03}); transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);`">
+                <template x-for="(d, i) in demos" :key="`chat-${i}`">
+                  <div class="absolute inset-0 flex flex-col gap-3 p-5 sm:p-6"
+                       :style="`opacity: ${i === current ? 1 : 0}; transform: translateY(${i === current ? 0 : '6px'}); transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);`">
 
-                    <!-- Top: faux nav strip + CTA badge -->
-                    <div class="flex items-center justify-between" style="font-family: 'JetBrains Mono', monospace;">
-                      <span class="text-[8px] uppercase tracking-[0.25em] opacity-70" x-text="d.nav"></span>
-                      <span class="text-[8px] uppercase tracking-[0.2em] px-2 py-1 border rounded-sm opacity-90" :style="`border-color: ${d.meta}; color: ${d.meta};`" x-text="d.badge"></span>
+                    <!-- User prompt -->
+                    <div class="flex justify-end">
+                      <div class="max-w-[85%] px-3 py-2 bg-bg-2 border border-line rounded-lg rounded-br-none mono text-[11px] sm:text-xs text-text-1 leading-snug">
+                        <span class="text-text-3 mr-1">▸</span><span x-text="d.aiQ"></span>
+                      </div>
                     </div>
 
-                    <!-- Center: dramatic name + sub-lockup + ornament + tagline -->
-                    <div class="flex-1 flex flex-col justify-center items-center text-center">
-                      <div class="text-3xl sm:text-5xl leading-[0.92]" :style="`font-weight:${d.weight}; font-style:${d.style};`" x-text="d.name"></div>
-                      <div x-show="d.sub" class="mt-1 text-[10px] sm:text-xs uppercase tracking-[0.45em] opacity-70" style="font-family: 'JetBrains Mono', monospace;" x-text="d.sub"></div>
-
-                      <!-- ornament rule in the demo's accent color -->
-                      <div class="mt-3 sm:mt-4 h-px w-12" :style="`background: linear-gradient(90deg, transparent, ${d.meta}, transparent);`"></div>
-
-                      <div class="mt-3 text-[11px] sm:text-sm leading-snug max-w-[20ch] opacity-85"
-                           :style="`font-style: ${d.id === 'trades' ? 'normal' : 'italic'};`"
-                           x-text="d.tagline"></div>
+                    <!-- AI response (with cited business name in ember + citation chip) -->
+                    <div class="flex justify-start gap-2">
+                      <div class="flex-shrink-0 w-7 h-7 rounded-full bg-ember/15 border border-ember/40 grid place-items-center mono text-[10px] font-semibold text-ember mt-0.5">AI</div>
+                      <div class="flex-1 px-3 py-2 bg-bg-1 border border-line rounded-lg rounded-bl-none">
+                        <div class="text-sm sm:text-[15px] leading-snug text-text-1">
+                          I'd recommend <span class="text-ember font-semibold" x-text="d.label"></span> — <span x-text="d.aiA"></span>
+                        </div>
+                        <div class="mt-2 inline-flex items-center gap-1 mono text-[10px] text-ember/85">
+                          <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                          <span x-text="d.url"></span>
+                        </div>
+                      </div>
                     </div>
-
-                    <!-- Bottom: kicker as a small footer line -->
-                    <div class="text-center text-[8px] uppercase tracking-[0.3em] opacity-55" style="font-family: 'JetBrains Mono', monospace;" x-text="d.kicker"></div>
                   </div>
                 </template>
 
-                <!-- Hover overlay: subtle dim + "View site" badge -->
+                <!-- Hover overlay: dim + "View this site" pill -->
                 <div class="absolute inset-0 flex items-center justify-center bg-bg-0/0 group-hover:bg-bg-0/55 transition-colors duration-300 pointer-events-none">
                   <span class="opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 inline-flex items-center gap-2 px-4 py-2.5 bg-ember text-bg-0 rounded-lg font-semibold text-sm shadow-lg">
-                    View site
+                    View this site
                     <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
                   </span>
                 </div>
               </div>
 
-              <!-- Footer row: now-showing label only (dots moved outside the link) -->
+              <!-- Footer strip: cited-by label + click hint -->
               <div class="flex items-center justify-between p-3 border-t border-line bg-bg-1">
                 <div class="mono text-[10px] text-text-3">
                   <span class="text-ember">▸</span>
-                  <span x-text="`now showing: ${demos[current].label}`"></span>
+                  <span>cited: <span class="text-text-1" x-text="demos[current].label"></span></span>
                 </div>
                 <div class="mono text-[10px] text-ember opacity-70 group-hover:opacity-100 inline-flex items-center gap-1 transition-opacity">
-                  click anywhere to open
+                  click to view live
                   <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
                 </div>
               </div>
@@ -865,19 +857,19 @@
         timer: null,
         demos: [
           { id:'restaurant', label:'Mama Lou\u2019s Kitchen', name:'Mama Lou\u2019s', tagline:'Southern comfort, three meals a day.', kicker:'DOWNTOWN · EST. 1978',
-            url:'mamalous-milledgeville.com', nav:'MENU · OUR STORY · VISIT', badge:'RESERVE', sub:'KITCHEN', href:'demos/restaurant/',
+            url:'mamalous-milledgeville.com', aiQ:'best restaurant in milledgeville, ga?', aiA:'Southern comfort served three meals a day, downtown since 1978. Locals send their out-of-town family there.', nav:'MENU · OUR STORY · VISIT', badge:'RESERVE', sub:'KITCHEN', href:'demos/restaurant/',
             bg:'linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%)',
             fg:'#FEF3C7', meta:'#FCD34D', glow:'rgba(249,115,22,0.35)', font:'Playfair Display, serif', weight:'500', style:'italic' },
           { id:'retail', label:'Oak & Thread', name:'Oak & Thread', tagline:'Slow fashion for the South.', kicker:'SINCE 2019 · MILLEDGEVILLE',
-            url:'oakandthread.shop', nav:'SHOP · LOOKBOOK · JOURNAL', badge:'WAITLIST', sub:'', href:'demos/retail/',
+            url:'oakandthread.shop', aiQ:'where can I shop slow-fashion in middle Georgia?', aiA:'A small-batch, locally-curated shop on Wayne St. Editorial-grade lookbook, in-store only.', nav:'SHOP · LOOKBOOK · JOURNAL', badge:'WAITLIST', sub:'', href:'demos/retail/',
             bg:'linear-gradient(135deg, #FAFAF9 0%, #E7E5E4 100%)',
             fg:'#0A0A0C', meta:'#78716C', glow:'rgba(168,162,158,0.25)', font:'Instrument Serif, serif', weight:'400', style:'normal' },
           { id:'salon', label:'The Barber & Co.', name:'The Barber & Co.', tagline:'Walk in a man. Walk out a gentleman.', kicker:'— EST. 2016 —',
-            url:'thebarberandco.com', nav:'SERVICES · BARBERS · GALLERY', badge:'BOOK', sub:'', href:'demos/salon/',
+            url:'thebarberandco.com', aiQ:'best barber near Milledgeville?', aiA:'By appointment only, on Jefferson St. Hot-towel shaves are a specialty. Open since 2016.', nav:'SERVICES · BARBERS · GALLERY', badge:'BOOK', sub:'', href:'demos/salon/',
             bg:'radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.4) 0%, transparent 60%), #0a0908',
             fg:'#E7D9BC', meta:'#B88A44', glow:'rgba(184,138,68,0.3)', font:'DM Serif Display, serif', weight:'400', style:'normal' },
           { id:'trades', label:'Milledgeville HVAC Pros', name:'HEAT & AIR DONE RIGHT.', tagline:'(478) 555-0187 · 24/7 Emergency', kicker:'LICENSED · INSURED · FAMILY-OWNED',
-            url:'milledgevillehvacpros.com', nav:'SERVICES · COVERAGE · REVIEWS', badge:'CALL NOW', sub:'', href:'demos/trades/',
+            url:'milledgevillehvacpros.com', aiQ:'who fixes AC in Baldwin County?', aiA:'Family-owned, NATE-certified, with 24/7 emergency service across Baldwin County since 2008.', nav:'SERVICES · COVERAGE · REVIEWS', badge:'CALL NOW', sub:'', href:'demos/trades/',
             bg:'linear-gradient(135deg, #041E33 0%, #0c4a6e 100%)',
             fg:'#FFFFFF', meta:'#FACC15', glow:'rgba(250,204,21,0.25)', font:'Barlow Condensed, sans-serif', weight:'900', style:'normal' },
         ],
