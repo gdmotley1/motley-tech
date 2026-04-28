@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing. Motley Tech · three tiers, plain pricing, no surprises</title>
+  <meta name="description" content="Three tiers (Standard, Signature, Reserve) with clearly separated build, hosting, and buyout pricing. No surprises, no quote-in-disguise." />
+
+  <!-- Open Graph + Twitter -->
+  <meta property="og:title" content="Pricing. Motley Tech">
+  <meta property="og:description" content="Three tiers with clearly separated build, hosting, and buyout pricing. No surprises.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/brand/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Tailwind Play CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:       { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:     { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:     { DEFAULT: '#26262C', strong: '#36363E' },
+            ember:    { DEFAULT: '#F97316', hot: '#FB923C', soft: 'rgba(249,115,22,0.14)' },
+            lime:     { DEFAULT: '#A3E635', soft: 'rgba(163,230,53,0.14)' },
+            mint:     { DEFAULT: '#10B981' },
+            amber2:   { DEFAULT: '#FACC15' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <!-- Alpine.js -->
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0A0A0C; color: #FAFAF9; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+
+    .dotgrid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
+    .dotgrid-bright { background-image: radial-gradient(circle at 1px 1px, rgba(249,115,22,0.10) 1px, transparent 0); background-size: 24px 24px; }
+    .hero-halo { background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%); }
+
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F97316; }
+
+    @keyframes pulse-dot { 0%,100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .status-dot { animation: pulse-dot 2s ease-in-out infinite; }
+
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation-duration: 0.001ms !important; transition-duration: 0.001ms !important; } }
+
+    /* Scroll-reveal */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1), transform 280ms cubic-bezier(0.22,1,0.36,1), opacity 280ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge .arrow { display: inline-block; transition: transform 320ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge:hover .arrow { transform: translateX(4px); }
+
+    /* Same ambient gradient as FAQ */
+    body.faq-flow {
+      background:
+        radial-gradient(ellipse 100% 60% at 80% 0%, rgba(249, 115, 22, 0.12) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 10% 35%, rgba(163, 230, 53, 0.06) 0%, transparent 60%),
+        radial-gradient(ellipse 90% 70% at 50% 100%, rgba(38, 38, 64, 0.45) 0%, transparent 65%),
+        linear-gradient(180deg, #0A0A0C 0%, #0c0c10 40%, #0A0A0C 100%);
+      background-attachment: fixed;
+    }
+    body.faq-flow header.flow-section,
+    body.faq-flow section.flow-section { border: none !important; }
+    body.faq-flow header.flow-section .hero-halo,
+    body.faq-flow header.flow-section .dotgrid { display: none; }
+    body.faq-flow footer { border-top-color: rgba(38, 38, 44, 0.4); }
+  </style>
+  <link rel="canonical" href="https://motley-tech.com/pricing.html">
+  <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
+
+  <!-- Service JSON-LD: three tier offers tied to the ProfessionalService -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Motley Tech Website Tiers",
+    "description": "Three tiers (Standard, Signature, Reserve) with clearly separated build, hosting, and buyout pricing.",
+    "url": "https://motley-tech.com/pricing.html",
+    "provider": { "@id": "#motleytech" },
+    "serviceType": "Custom Website Design and Development",
+    "areaServed": { "@type": "Country", "name": "United States" },
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Standard",
+        "description": "Free trial build, up to 7 pages, live in 2 weeks. Hosting $49/mo. Buyout from $750.",
+        "price": "0",
+        "priceCurrency": "USD",
+        "priceSpecification": [
+          { "@type": "UnitPriceSpecification", "name": "Build fee", "price": "0", "priceCurrency": "USD" },
+          { "@type": "UnitPriceSpecification", "name": "Hosting", "price": "49", "priceCurrency": "USD", "billingDuration": "P1M" },
+          { "@type": "UnitPriceSpecification", "name": "Buyout (from)", "price": "750", "priceCurrency": "USD" }
+        ]
+      },
+      {
+        "@type": "Offer",
+        "name": "Signature",
+        "description": "Flagship tier. Up to 15 pages, online booking, light e-commerce, lead capture, live in 3 weeks. Hosting $49/mo. Buyout from $1,800.",
+        "price": "500",
+        "priceCurrency": "USD",
+        "priceSpecification": [
+          { "@type": "UnitPriceSpecification", "name": "Build fee (from)", "price": "500", "priceCurrency": "USD" },
+          { "@type": "UnitPriceSpecification", "name": "Hosting", "price": "49", "priceCurrency": "USD", "billingDuration": "P1M" },
+          { "@type": "UnitPriceSpecification", "name": "Buyout (from)", "price": "1800", "priceCurrency": "USD" }
+        ]
+      },
+      {
+        "@type": "Offer",
+        "name": "Reserve",
+        "description": "Multi-location, custom integrations, member portals, 90-day post-launch roadmap. Hosting $79/mo. Buyout quoted.",
+        "price": "1500",
+        "priceCurrency": "USD",
+        "priceSpecification": [
+          { "@type": "UnitPriceSpecification", "name": "Build fee (from)", "price": "1500", "priceCurrency": "USD" },
+          { "@type": "UnitPriceSpecification", "name": "Hosting", "price": "79", "priceCurrency": "USD", "billingDuration": "P1M" }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body class="antialiased faq-flow">
+
+  <!-- =================== NAV =================== -->
+  <nav class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+
+        <a href="index.html" class="hover:text-text-0 transition-colors">Home</a>
+
+        <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
+          <a href="samples.html" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+            Sample Sites
+            <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
+          </a>
+          <div x-show="open" x-cloak x-transition.opacity
+               class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+            <a href="samples.html" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
+              <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
+              <div class="mt-0.5 font-medium text-text-0">All four demos →</div>
+            </a>
+            <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
+              <div>
+                <div class="font-medium text-text-0">Mama Lou's Kitchen</div>
+                <div class="mono text-[10px] text-text-3">restaurant/</div>
+              </div>
+            </a>
+            <a href="demos/retail/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #d6d3d1, #57534e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Oak &amp; Thread</div>
+                <div class="mono text-[10px] text-text-3">retail/</div>
+              </div>
+            </a>
+            <a href="demos/salon/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #0a0908, #B88A44);"></div>
+              <div>
+                <div class="font-medium text-text-0">The Barber &amp; Co.</div>
+                <div class="mono text-[10px] text-text-3">salon/</div>
+              </div>
+            </a>
+            <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
+              <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
+              <div>
+                <div class="font-medium text-text-0">Milledgeville HVAC Pros</div>
+                <div class="mono text-[10px] text-text-3">trades/</div>
+              </div>
+            </a>
+          </div>
+        </div>
+
+        <a href="faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="pricing.html" class="text-ember underline underline-offset-8 transition-colors">Pricing</a>
+        <a href="process.html" class="hover:text-text-0 transition-colors">How it works</a>
+
+        <a href="contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <a href="contact.html" class="md:hidden px-3 py-1.5 bg-ember text-bg-0 rounded-md font-medium text-xs">Start →</a>
+    </div>
+  </nav>
+
+  <!-- =================== HERO =================== -->
+  <header class="flow-section relative overflow-hidden">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute inset-0 hero-halo"></div>
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-9 sm:py-12">
+      <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
+        <div>
+          <h1 class="display mt-2 text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight leading-[0.95] text-text-0">
+            Three tiers. Plain pricing. <span class="text-ember">No surprises.</span>
+          </h1>
+        </div>
+        <p class="mono text-xs text-text-3 sm:pb-1 max-w-xs sm:text-right">Build fee, hosting, and buyout are priced separately so you can see exactly what you'd pay.</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- =================== TIER MATRIX =================== -->
+  <section class="flow-section relative py-5 sm:py-8">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+
+      <!-- TIER COMPARISON MATRIX · standard / signature / reserve -->
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[640px] border-collapse">
+          <colgroup>
+            <col class="w-[34%]">
+            <col class="w-[22%]">
+            <col class="w-[22%]">
+            <col class="w-[22%]">
+          </colgroup>
+
+          <!-- HEADER: tier names + headline pricing -->
+          <thead>
+            <tr class="border-b border-line-strong align-bottom">
+              <th class="text-left pb-6 pt-2 align-bottom"></th>
+              <th class="text-left pb-6 pt-2 px-4 align-bottom">
+                <div class="mono text-[11px] text-text-3 tracking-widest">I</div>
+                <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Standard</div>
+                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Look legit. Get found. Stop losing customers.</div>
+              </th>
+              <th class="text-left pb-6 pt-2 px-4 align-bottom relative bg-ember/[0.06]">
+                <div class="absolute inset-x-0 top-0 h-0.5 bg-ember/60"></div>
+                <div class="flex items-baseline gap-2">
+                  <span class="mono text-[11px] text-ember tracking-widest">II</span>
+                  <span class="mono text-[9px] text-ember/80 tracking-widest uppercase">flagship</span>
+                </div>
+                <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Signature</div>
+                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Site that does real work, book, order, capture, sell.</div>
+              </th>
+              <th class="text-left pb-6 pt-2 px-4 align-bottom">
+                <div class="mono text-[11px] text-text-3 tracking-widest">III</div>
+                <div class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-1 tracking-tight">Reserve</div>
+                <div class="mt-3 text-xs text-text-2 italic leading-snug font-normal">Multi-location, integrations, member portals.</div>
+              </th>
+            </tr>
+          </thead>
+
+          <tbody class="text-sm">
+
+            <!-- ── Pricing strip ── -->
+            <tr class="border-b border-line">
+              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Build fee</td>
+              <td class="py-4 px-4 text-text-0 font-semibold display text-lg"><span class="text-ember">Free</span></td>
+              <td class="py-4 px-4 text-text-0 font-semibold display text-lg bg-ember/[0.06]"><span class="text-ember">from $500</span></td>
+              <td class="py-4 px-4 text-text-0 font-semibold display text-lg"><span class="text-ember">from $1,500</span></td>
+            </tr>
+            <tr class="border-b border-line">
+              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Hosting</td>
+              <td class="py-4 px-4 text-text-0 display text-lg">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
+              <td class="py-4 px-4 text-text-0 display text-lg bg-ember/[0.06]">$49<span class="text-text-3 text-xs ml-1">/mo</span></td>
+              <td class="py-4 px-4 text-text-0 display text-lg">$79<span class="text-text-3 text-xs ml-1">/mo</span></td>
+            </tr>
+            <tr class="border-b border-line-strong">
+              <td class="py-4 mono text-[10px] text-text-3 tracking-widest uppercase">Buyout</td>
+              <td class="py-4 px-4 text-text-1">from $750</td>
+              <td class="py-4 px-4 text-text-1 bg-ember/[0.06]">from $1,800</td>
+              <td class="py-4 px-4 text-text-1">quoted</td>
+            </tr>
+
+            <!-- ── Section: SCOPE ── -->
+            <tr>
+              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Scope</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Pages</td>
+              <td class="py-3 px-4 text-text-0">Up to 7</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">Up to 15</td>
+              <td class="py-3 px-4 text-text-0">As needed</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Live in</td>
+              <td class="py-3 px-4 text-text-0">2 weeks</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">3 weeks</td>
+              <td class="py-3 px-4 text-text-0">4&ndash;6 weeks</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Revisions during build</td>
+              <td class="py-3 px-4 text-text-0">1 round</td>
+              <td class="py-3 px-4 text-text-0 bg-ember/[0.06]">2 rounds</td>
+              <td class="py-3 px-4 text-text-0">3 rounds</td>
+            </tr>
+
+            <!-- ── Section: FOUNDATIONS ── -->
+            <tr>
+              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Foundations</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Mobile-first &amp; AI-ready</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Schema, sitemap, fast load</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Contact form</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+
+            <!-- ── Section: FUNCTIONALITY ── -->
+            <tr>
+              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">Functionality</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Online booking</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Light e-commerce (Stripe)</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Email signup &amp; lead capture</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Custom integrations (CRM, accounting)</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Member login / customer portal</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Multi-location &amp; local SEO</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+
+            <!-- ── Section: AFTER LAUNCH ── -->
+            <tr>
+              <td colspan="4" class="pt-8 pb-3 mono text-[10px] text-text-3 tracking-widest uppercase">After launch</td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Monthly content updates</td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+              <td class="py-3 px-4 bg-ember/[0.06]"><span class="text-ember">✓</span></td>
+              <td class="py-3 px-4"><span class="text-lime">✓</span></td>
+            </tr>
+            <tr class="ledger-row border-b border-line">
+              <td class="py-3 text-text-1">Post-launch roadmap</td>
+              <td class="py-3 px-4 text-text-3">&mdash;</td>
+              <td class="py-3 px-4 bg-ember/[0.06] text-text-3">&mdash;</td>
+              <td class="py-3 px-4 text-text-0">90 days</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+        <!-- Self-qualify line -->
+        <p class="mt-8 text-xs text-text-3 leading-relaxed max-w-2xl">
+          Not sure which tier you need? Tell us what you do on the contact form and we'll size it for you, no commitment.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- =================== SCARCITY + CTA =================== -->
+  <section class="flow-section relative py-12 sm:py-16">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="relative bg-bg-1 border border-line-strong rounded-2xl p-7 sm:p-9 overflow-hidden">
+        <div class="absolute inset-0 dotgrid-bright opacity-30 pointer-events-none"></div>
+        <div class="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 bg-bg-2 border border-ember/40 rounded-full">
+              <span class="relative flex w-2 h-2">
+                <span class="absolute inset-0 rounded-full bg-ember status-dot"></span>
+                <span class="absolute inset-0 rounded-full bg-ember"></span>
+              </span>
+              <span class="mono text-[11px] text-ember">[ FIRST 5 MILLEDGEVILLE BUSINESSES · 3 SPOTS LEFT ]</span>
+            </div>
+            <h3 class="display mt-4 text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Free build, no bill until you keep it.</h3>
+            <p class="mt-2 text-text-1">Tell us about your business in 30 seconds. We'll have something to show you next week.</p>
+          </div>
+          <a href="contact.html" class="inline-flex items-center justify-center gap-2 px-7 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer flex-shrink-0">
+            Start my build
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =================== FOOTER =================== -->
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
+      </div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
+    </div>
+  </footer>
+
+  <!-- scroll-reveal -->
+  <script>
+    (() => {
+      if (!('IntersectionObserver' in window)) return;
+      const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+      const sections = document.querySelectorAll('section, .auto-reveal');
+      sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
+      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        [...grid.children].forEach((child, i) => {
+          if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
+            child.classList.add('reveal');
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+          }
+        });
+      });
+      if (reduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
+      const obs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+</body>
+</html>
