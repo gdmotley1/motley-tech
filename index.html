@@ -203,9 +203,37 @@
     }
     .mini-dot { width: 8px; height: 8px; border-radius: 999px; background: #2A2A30; }
     /* Scroll-reveal — elements fade + rise into view when scrolled to */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+    /* Smooth micro-interactions — premium feel */
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1), transform 280ms cubic-bezier(0.22,1,0.36,1), opacity 280ms cubic-bezier(0.22,1,0.36,1); }
+    .lift { transition: transform 500ms cubic-bezier(0.22,1,0.36,1), border-color 500ms cubic-bezier(0.22,1,0.36,1), background-color 500ms cubic-bezier(0.22,1,0.36,1), box-shadow 500ms cubic-bezier(0.22,1,0.36,1); }
+    .lift:hover { transform: translateY(-3px); }
+    .img-zoom { overflow: hidden; }
+    .img-zoom > * { transition: transform 900ms cubic-bezier(0.22,1,0.36,1); }
+    .img-zoom:hover > * { transform: scale(1.04); }
+    /* Arrow nudge inside any link with .arrow-nudge */
+    .arrow-nudge .arrow { display: inline-block; transition: transform 320ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge:hover .arrow { transform: translateX(4px); }
+
+    /* Liquid demo-name swap in the H1 */
+    @keyframes nameSwap {
+      0%   { opacity: 0; transform: translateY(12px); filter: blur(10px); }
+      55%  { filter: blur(0); }
+      100% { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    .name-swap { animation: nameSwap 700ms cubic-bezier(0.22,1,0.36,1); display: inline-block; }
+
+    /* Hero preview rotator — entering layer fades in ON TOP of previous (no mid-crossfade dip) */
+    @keyframes layerIn   { from { opacity: 0; }                                  to { opacity: 1; } }
+    @keyframes layerInFx { from { opacity: 0; transform: scale(1.04); filter: blur(6px); } 60% { filter: blur(0); } to { opacity: 1; transform: scale(1); filter: blur(0); } }
+    .layer-in   { animation: layerIn   1300ms cubic-bezier(0.4, 0, 0.2, 1); }
+    .layer-in-fx{ animation: layerInFx 1300ms cubic-bezier(0.22, 1, 0.36, 1); }
+    @media (prefers-reduced-motion: reduce) {
+      .name-swap, .layer-in, .layer-in-fx { animation: none; }
+    }
+
 
   </style>
   <link rel="canonical" href="https://motley-tech.com/">
@@ -221,13 +249,15 @@
       </a>
       <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
 
+        <a href="index.html" class="text-ember underline underline-offset-8">Home</a>
+
         <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <button type="button" @click="open = !open" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+          <button type="button" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
             Sample Sites
             <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div x-show="open" x-cloak x-transition.opacity
-               class="absolute top-full right-0 mt-2 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+               class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
             <a href="#demos" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
               <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
               <div class="mt-0.5 font-medium text-text-0">Scroll to gallery →</div>
@@ -282,7 +312,7 @@
     <div class="absolute inset-0 hero-halo"></div>
 
     <div class="relative max-w-7xl mx-auto px-5 sm:px-8 pt-16 pb-24 sm:pt-24 sm:pb-32">
-      <div class="grid lg:grid-cols-12 gap-12 items-center">
+      <div class="grid lg:grid-cols-12 gap-12 items-center" x-data="heroRotator()" x-init="start()">
 
         <!-- LEFT: Headline -->
         <div class="lg:col-span-7 fade-up">
@@ -295,12 +325,14 @@
           </div>
 
           <h1 class="display mt-7 text-5xl sm:text-6xl lg:text-[72px] leading-[0.88] tracking-tighter font-semibold text-text-0">
-            Modern websites for
-            <span class="text-ember">Milledgeville small business.</span>
+            Custom websites for<br />
+            <span class="text-ember name-swap"
+                  x-effect="current; $el.classList.remove('name-swap'); void $el.offsetWidth; $el.classList.add('name-swap')"
+                  x-text="demos[current].label"></span>
           </h1>
 
           <p class="mt-7 text-lg sm:text-xl text-text-1 max-w-xl leading-relaxed">
-            I build fast, custom sites the way Vercel, Linear, and Stripe do — and I build the whole thing <span class="text-text-0 font-semibold">free</span>. You only pay if you want to keep it.
+            <span class="text-text-0 font-semibold">$0 to start.</span> Live in about 14 days. <span class="text-text-0 font-semibold">$49/mo</span> only if you keep it.
           </p>
 
           <div class="mt-9 flex flex-col sm:flex-row gap-3">
@@ -316,12 +348,15 @@
         </div>
 
         <!-- RIGHT: Rotating demo preview -->
-        <div class="lg:col-span-5 fade-up" x-data="heroRotator()" x-init="start()">
+        <div class="lg:col-span-5 fade-up">
           <div class="relative">
             <!-- Decorative ring-glow -->
             <div class="absolute -inset-6 blur-3xl opacity-70 transition-all duration-1000 pointer-events-none" :style="`background: radial-gradient(circle, ${demos[current].glow} 0%, transparent 60%);`"></div>
 
-            <div class="relative mini-frame shadow-glow-ember">
+            <!-- Whole preview is now a clickable link -->
+            <a :href="demos[current].href" target="_blank" rel="noopener"
+               :aria-label="`View ${demos[current].name} sample site`"
+               class="group relative block mini-frame shadow-glow-ember cursor-pointer ring-focus">
               <div class="mini-bar">
                 <span class="mini-dot"></span>
                 <span class="mini-dot"></span>
@@ -329,38 +364,65 @@
                 <div class="ml-2 flex-1 px-3 py-1 bg-bg-0 border border-line rounded-md mono text-[10px] text-text-2 truncate">
                   <span x-text="demos[current].url"></span>
                 </div>
-                <a :href="demos[current].href" target="_blank" class="mono text-[10px] text-ember hover:text-ember-hot flex items-center gap-1">
-                  open
-                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
-                </a>
               </div>
 
-              <!-- Rotating hero peek -->
-              <div class="relative aspect-[5/3.5] overflow-hidden transition-all duration-700" :style="`background: ${demos[current].bg};`">
-                <template x-for="(d, i) in demos" :key="i">
-                  <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8 transition-opacity duration-700"
-                       :class="i === current ? 'opacity-100' : 'opacity-0'"
-                       :style="`font-family: ${d.font}; color: ${d.fg};`">
-                    <div class="text-[9px] uppercase tracking-[0.3em]" :style="`color: ${d.meta};`" x-text="d.kicker"></div>
-                    <div class="mt-3 text-3xl sm:text-4xl leading-tight" :style="`font-weight:${d.weight};font-style:${d.style};`" x-text="d.name"></div>
-                    <div class="mt-2 text-xs opacity-75" x-text="d.tagline"></div>
+              <!-- Rotating hero peek — bg crossfade + text crossfade with subtle scale -->
+              <div class="relative aspect-[5/3.5] overflow-hidden bg-bg-0">
+                <!-- Background layers: each fades in/out with a long, soft transition -->
+                <template x-for="(d, i) in demos" :key="`bg-${i}`">
+                  <div class="absolute inset-0"
+                       :style="`background: ${d.bg}; opacity: ${i === current ? 1 : 0}; transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1);`"></div>
+                </template>
+                <!-- Text layers: faux nav strip + dramatic name + ornament + tagline -->
+                <template x-for="(d, i) in demos" :key="`text-${i}`">
+                  <div class="absolute inset-0 flex flex-col p-5 sm:p-6"
+                       :style="`font-family: ${d.font}; color: ${d.fg}; opacity: ${i === current ? 1 : 0}; transform: scale(${i === current ? 1 : 1.03}); transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1), transform 700ms cubic-bezier(0.22, 1, 0.36, 1);`">
+
+                    <!-- Top: faux nav strip + CTA badge -->
+                    <div class="flex items-center justify-between" style="font-family: 'JetBrains Mono', monospace;">
+                      <span class="text-[8px] uppercase tracking-[0.25em] opacity-70" x-text="d.nav"></span>
+                      <span class="text-[8px] uppercase tracking-[0.2em] px-2 py-1 border rounded-sm opacity-90" :style="`border-color: ${d.meta}; color: ${d.meta};`" x-text="d.badge"></span>
+                    </div>
+
+                    <!-- Center: dramatic name + sub-lockup + ornament + tagline -->
+                    <div class="flex-1 flex flex-col justify-center items-center text-center">
+                      <div class="text-3xl sm:text-5xl leading-[0.92]" :style="`font-weight:${d.weight}; font-style:${d.style};`" x-text="d.name"></div>
+                      <div x-show="d.sub" class="mt-1 text-[10px] sm:text-xs uppercase tracking-[0.45em] opacity-70" style="font-family: 'JetBrains Mono', monospace;" x-text="d.sub"></div>
+
+                      <!-- ornament rule in the demo's accent color -->
+                      <div class="mt-3 sm:mt-4 h-px w-12" :style="`background: linear-gradient(90deg, transparent, ${d.meta}, transparent);`"></div>
+
+                      <div class="mt-3 text-[11px] sm:text-sm leading-snug max-w-[20ch] opacity-85"
+                           :style="`font-style: ${d.id === 'trades' ? 'normal' : 'italic'};`"
+                           x-text="d.tagline"></div>
+                    </div>
+
+                    <!-- Bottom: kicker as a small footer line -->
+                    <div class="text-center text-[8px] uppercase tracking-[0.3em] opacity-55" style="font-family: 'JetBrains Mono', monospace;" x-text="d.kicker"></div>
                   </div>
                 </template>
+
+                <!-- Hover overlay: subtle dim + "View site" badge -->
+                <div class="absolute inset-0 flex items-center justify-center bg-bg-0/0 group-hover:bg-bg-0/55 transition-colors duration-300 pointer-events-none">
+                  <span class="opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0 transition-all duration-300 inline-flex items-center gap-2 px-4 py-2.5 bg-ember text-bg-0 rounded-lg font-semibold text-sm shadow-lg">
+                    View site
+                    <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
+                  </span>
+                </div>
               </div>
 
-              <!-- Footer row: meta + indicators -->
+              <!-- Footer row: now-showing label only (dots moved outside the link) -->
               <div class="flex items-center justify-between p-3 border-t border-line bg-bg-1">
                 <div class="mono text-[10px] text-text-3">
                   <span class="text-ember">▸</span>
                   <span x-text="`now showing: ${demos[current].label}`"></span>
                 </div>
-                <div class="flex items-center gap-1.5">
-                  <template x-for="(d,i) in demos" :key="i">
-                    <button type="button" @click="current = i; restart()" :class="i === current ? 'bg-ember w-6' : 'bg-line-strong w-1.5 hover:bg-text-3'" class="h-1.5 rounded-full transition-all cursor-pointer"></button>
-                  </template>
+                <div class="mono text-[10px] text-ember opacity-70 group-hover:opacity-100 inline-flex items-center gap-1 transition-opacity">
+                  click anywhere to open
+                  <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M7 7h10v10"/></svg>
                 </div>
               </div>
-            </div>
+            </a>
 
             <!-- Floating tag -->
             <div class="absolute -top-3 -left-3 mono text-[10px] bg-bg-2 border border-line-strong rounded-md px-2 py-1 text-text-2 flex items-center gap-1.5">
@@ -369,9 +431,22 @@
             </div>
           </div>
 
-          <p class="mono text-[11px] text-text-3 mt-5 text-center leading-relaxed">
-            {<span class="text-ember">4</span>} live sample sites · auto-rotating · <span class="text-text-1">click a demo below to see the full build</span>
-          </p>
+          <!-- Big visible CTA — swaps with rotation -->
+          <a :href="demos[current].href" target="_blank" rel="noopener"
+             class="mt-5 w-full inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-bg-1 hover:bg-bg-2 border border-line-strong hover:border-ember/60 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
+            <span>View <span class="text-ember" x-text="demos[current].name"></span> live</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+          </a>
+
+          <!-- Demo selector dots — moved outside the link so they're individually clickable -->
+          <div class="mt-4 flex items-center justify-center gap-2">
+            <template x-for="(d,i) in demos" :key="i">
+              <button type="button" @click="current = i; restart()"
+                :aria-label="`Show ${d.name}`"
+                :class="i === current ? 'bg-ember w-8' : 'bg-line-strong w-2 hover:bg-text-3'"
+                class="h-2 rounded-full transition-all cursor-pointer"></button>
+            </template>
+          </div>
         </div>
 
       </div>
@@ -651,7 +726,7 @@
       <div class="mt-12 grid md:grid-cols-2 gap-5 items-stretch auto-rows-fr">
 
         <!-- Restaurant -->
-        <a href="demos/restaurant/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+        <a href="demos/restaurant/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%);">
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8" style="font-family: 'Playfair Display', serif;">
               <div class="text-[10px] uppercase tracking-[0.35em] text-amber-300/80" style="font-family: 'JetBrains Mono', monospace;">Downtown · Est. 1978</div>
@@ -674,7 +749,7 @@
         </a>
 
         <!-- Retail -->
-        <a href="demos/retail/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+        <a href="demos/retail/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #FAFAF9;">
             <div class="absolute inset-0 grid grid-cols-2">
               <div style="background: linear-gradient(135deg,#d6d3d1 0%,#78716c 100%);"></div>
@@ -699,7 +774,7 @@
         </a>
 
         <!-- Salon -->
-        <a href="demos/salon/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+        <a href="demos/salon/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0a0908;">
             <div class="absolute inset-0" style="background: radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.35) 0%, transparent 60%);"></div>
             <div class="absolute inset-0 flex flex-col justify-center items-center text-center p-8">
@@ -722,7 +797,7 @@
         </a>
 
         <!-- Trades -->
-        <a href="demos/trades/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all hover:-translate-y-1 cursor-pointer ring-focus">
+        <a href="demos/trades/" target="_blank" rel="noopener" class="group flex flex-col h-full rounded-2xl overflow-hidden border border-line hover:border-ember/50 bg-bg-1 hover:bg-bg-2 transition-all duration-500 ease-out hover:-translate-y-1 cursor-pointer ring-focus">
           <div class="relative aspect-[16/10] overflow-hidden flex-shrink-0" style="background: #0c4a6e;">
             <div class="absolute top-0 right-0 px-3 py-1 bg-yellow-400 text-blue-950 text-[10px] font-black uppercase tracking-wider" style="font-family: 'Barlow Condensed', sans-serif; font-weight:900;">24/7 EMERGENCY</div>
             <div class="absolute inset-0 flex flex-col justify-center p-8" style="font-family: 'Barlow Condensed', sans-serif;">
@@ -752,63 +827,18 @@
     </div>
   </section>
 
-  <!-- =================== SCARCITY =================== -->
-  <section class="relative py-16 border-t border-line overflow-hidden">
-    <div class="absolute inset-0 dotgrid-bright opacity-30"></div>
-    <div class="relative max-w-4xl mx-auto px-5 sm:px-8 text-center">
-      <div class="inline-flex items-center gap-2 px-3 py-1 bg-bg-1 border border-ember/30 rounded-full">
-        <span class="w-2 h-2 rounded-full bg-ember status-dot"></span>
-        <span class="mono text-[11px] text-ember tracking-wider uppercase">[ booking queue: open ]</span>
-      </div>
-      <h2 class="display mt-6 text-3xl sm:text-5xl font-semibold leading-tight text-text-0">
-        First five Milledgeville businesses.<br />
-        <span class="text-ember">Three spots remain.</span>
-      </h2>
-      <p class="mt-5 text-text-2 max-w-xl mx-auto">After that, I charge normal rates. Claim yours while I'm still building for free.</p>
-
-      <!-- Visible counter -->
-      <div class="mt-8 flex justify-center gap-3">
-        <span class="w-10 h-10 rounded-lg bg-bg-2 border border-line grid place-items-center mono text-text-3 line-through">01</span>
-        <span class="w-10 h-10 rounded-lg bg-bg-2 border border-line grid place-items-center mono text-text-3 line-through">02</span>
-        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">03</span>
-        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">04</span>
-        <span class="w-10 h-10 rounded-lg bg-ember border border-ember grid place-items-center mono text-bg-0 font-semibold">05</span>
-      </div>
-
-      <a href="contact.html" class="mt-10 inline-flex items-center gap-2 px-6 py-4 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold transition-colors cursor-pointer">
-        Claim a spot
-        <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-      </a>
-    </div>
-  </section>
 
   <!-- =================== FOOTER =================== -->
-  <footer class="py-12 border-t border-line">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-3 gap-8 text-sm">
-      <div>
-        <div>
-          <span class="display font-bold text-3xl tracking-tight text-text-0">Motley Tech</span>
-        </div>
-        <p class="mt-4 text-text-2 max-w-sm">Custom websites for small businesses in Milledgeville, Georgia. Built by Grant Motley, one site at a time.</p>
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
       </div>
-      <div>
-        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// contact</div>
-        <div class="mt-2 text-text-1"><a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a></div>
-        <div class="mt-1 text-text-2">Milledgeville, GA · Baldwin County</div>
-      </div>
-      <div>
-        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// sample builds</div>
-        <div class="mt-2 flex flex-col gap-1 text-text-1">
-          <a href="demos/restaurant/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ mamalous-milledgeville.com</a>
-          <a href="demos/retail/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ oakandthread.shop</a>
-          <a href="demos/salon/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ thebarberandco.com</a>
-          <a href="demos/trades/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ milledgevillehvacpros.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="mt-10 pt-6 border-t border-line max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between gap-2 text-xs text-text-3 mono">
-      <div>© 2026 Motley Tech · all rights reserved</div>
-      <div>handcrafted in Milledgeville, GA · <span class="text-text-2">v2.0</span></div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
     </div>
   </footer>
 
@@ -820,23 +850,23 @@
         timer: null,
         demos: [
           { id:'restaurant', label:'Mama Lou\u2019s Kitchen', name:'Mama Lou\u2019s', tagline:'Southern comfort, three meals a day.', kicker:'DOWNTOWN · EST. 1978',
-            url:'mamalous-milledgeville.com', href:'demos/restaurant/',
+            url:'mamalous-milledgeville.com', nav:'MENU · OUR STORY · VISIT', badge:'RESERVE', sub:'KITCHEN', href:'demos/restaurant/',
             bg:'linear-gradient(135deg, #3b1505 0%, #7c2d12 65%, #431407 100%)',
             fg:'#FEF3C7', meta:'#FCD34D', glow:'rgba(249,115,22,0.35)', font:'Playfair Display, serif', weight:'500', style:'italic' },
           { id:'retail', label:'Oak & Thread', name:'Oak & Thread', tagline:'Slow fashion for the South.', kicker:'SINCE 2019 · MILLEDGEVILLE',
-            url:'oakandthread.shop', href:'demos/retail/',
+            url:'oakandthread.shop', nav:'SHOP · LOOKBOOK · JOURNAL', badge:'WAITLIST', sub:'', href:'demos/retail/',
             bg:'linear-gradient(135deg, #FAFAF9 0%, #E7E5E4 100%)',
             fg:'#0A0A0C', meta:'#78716C', glow:'rgba(168,162,158,0.25)', font:'Instrument Serif, serif', weight:'400', style:'normal' },
           { id:'salon', label:'The Barber & Co.', name:'The Barber & Co.', tagline:'Walk in a man. Walk out a gentleman.', kicker:'— EST. 2016 —',
-            url:'thebarberandco.com', href:'demos/salon/',
+            url:'thebarberandco.com', nav:'SERVICES · BARBERS · GALLERY', badge:'BOOK', sub:'', href:'demos/salon/',
             bg:'radial-gradient(ellipse at 70% 30%, rgba(161,98,7,0.4) 0%, transparent 60%), #0a0908',
             fg:'#E7D9BC', meta:'#B88A44', glow:'rgba(184,138,68,0.3)', font:'DM Serif Display, serif', weight:'400', style:'normal' },
           { id:'trades', label:'Milledgeville HVAC Pros', name:'HEAT & AIR DONE RIGHT.', tagline:'(478) 555-0187 · 24/7 Emergency', kicker:'LICENSED · INSURED · FAMILY-OWNED',
-            url:'milledgevillehvacpros.com', href:'demos/trades/',
+            url:'milledgevillehvacpros.com', nav:'SERVICES · COVERAGE · REVIEWS', badge:'CALL NOW', sub:'', href:'demos/trades/',
             bg:'linear-gradient(135deg, #041E33 0%, #0c4a6e 100%)',
             fg:'#FFFFFF', meta:'#FACC15', glow:'rgba(250,204,21,0.25)', font:'Barlow Condensed, sans-serif', weight:'900', style:'normal' },
         ],
-        start() { this.timer = setInterval(() => { this.current = (this.current + 1) % this.demos.length; }, 4000); },
+        start() { this.timer = setInterval(() => { this.current = (this.current + 1) % this.demos.length; }, 5500); },
         restart() { if (this.timer) clearInterval(this.timer); this.start(); },
       };
     }
@@ -854,7 +884,7 @@
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');
-            child.style.transitionDelay = Math.min(i * 40, 200) + 'ms';
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
           }
         });
       });
@@ -869,8 +899,34 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+  <script>
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (typeof Lenis === 'undefined') return;
+      const lenis = new Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      // anchor links — smooth scroll with nav offset
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id.length < 2) return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+        });
+      });
     })();
   </script>
 

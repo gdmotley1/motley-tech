@@ -4,16 +4,16 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Start a build — Motley Tech</title>
-  <meta name="description" content="Four quick taps. I'll reach back within 24 hours. Start a free website build for your Milledgeville business." />
+  <meta name="description" content="Tell me about your business. I'll personally reply within 24 hours with a plan for a free website build." />
   <!-- Open Graph + Twitter Card -->
   <meta property="og:title" content="Start a build — Motley Tech">
-  <meta property="og:description" content="Four taps and you're in the queue. I'll personally reply within 24 hours with a plan.">
+  <meta property="og:description" content="Tell me about your business. I'll personally reply within 24 hours with a plan.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/brand/og-image.svg">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Start a build — Motley Tech">
-  <meta name="twitter:description" content="Four taps and you're in the queue. I'll personally reply within 24 hours with a plan.">
+  <meta name="twitter:description" content="Tell me about your business. I'll personally reply within 24 hours with a plan.">
   <meta name="twitter:image" content="assets/brand/og-image.svg">
 
   <!-- Structured data for search engines (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude) -->
@@ -194,9 +194,20 @@
     }
     .mini-dot { width: 8px; height: 8px; border-radius: 999px; background: #2A2A30; }
     /* Scroll-reveal — elements fade + rise into view when scrolled to */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 350ms cubic-bezier(.2,.7,.2,1), transform 350ms cubic-bezier(.2,.7,.2,1); will-change: opacity, transform; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 900ms cubic-bezier(0.22,1,0.36,1), transform 900ms cubic-bezier(0.22,1,0.36,1); will-change: opacity, transform; }
     .reveal.is-in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; transition: none !important; } }
+    /* Smooth micro-interactions — premium feel */
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1), transform 280ms cubic-bezier(0.22,1,0.36,1), opacity 280ms cubic-bezier(0.22,1,0.36,1); }
+    .lift { transition: transform 500ms cubic-bezier(0.22,1,0.36,1), border-color 500ms cubic-bezier(0.22,1,0.36,1), background-color 500ms cubic-bezier(0.22,1,0.36,1), box-shadow 500ms cubic-bezier(0.22,1,0.36,1); }
+    .lift:hover { transform: translateY(-3px); }
+    .img-zoom { overflow: hidden; }
+    .img-zoom > * { transition: transform 900ms cubic-bezier(0.22,1,0.36,1); }
+    .img-zoom:hover > * { transform: scale(1.04); }
+    /* Arrow nudge inside any link with .arrow-nudge */
+    .arrow-nudge .arrow { display: inline-block; transition: transform 320ms cubic-bezier(0.22,1,0.36,1); }
+    .arrow-nudge:hover .arrow { transform: translateX(4px); }
+
 
   </style>
   <link rel="canonical" href="https://motley-tech.com/contact.html">
@@ -212,13 +223,15 @@
       </a>
       <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
 
+        <a href="index.html" class="hover:text-text-0 transition-colors">Home</a>
+
         <div class="relative" x-data="{ open: false }" @mouseenter="open = true" @mouseleave="open = false">
-          <button type="button" @click="open = !open" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
+          <button type="button" class="flex items-center gap-1 hover:text-text-0 transition-colors cursor-pointer">
             Sample Sites
             <svg class="w-3 h-3 mt-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
           </button>
           <div x-show="open" x-cloak x-transition.opacity
-               class="absolute top-full right-0 mt-2 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
+               class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
             <a href="index.html#demos" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
               <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
               <div class="mt-0.5 font-medium text-text-0">Go to gallery →</div>
@@ -268,209 +281,129 @@
   </nav>
 
   <!-- =================== CONTACT =================== -->
-  <section class="py-20 sm:py-28">
-    <div class="max-w-4xl mx-auto px-5 sm:px-8">
-      <div class="text-center max-w-2xl mx-auto fade-up">
+  <section class="no-reveal min-h-[calc(100vh-138px)] flex items-center py-6 sm:py-8">
+    <div class="max-w-7xl w-full mx-auto px-5 sm:px-8 grid lg:grid-cols-[1fr_minmax(0,1.1fr)] gap-10 lg:gap-14 items-center">
+
+      <!-- Left: pitch -->
+      <div class="text-center lg:text-left max-w-xl mx-auto lg:mx-0">
         <div class="tag-mono">[ // START A BUILD ]</div>
-        <h1 class="display mt-4 text-5xl sm:text-7xl font-semibold tracking-tight leading-[0.95] text-text-0">
-          No boring form.
-          <span class="text-ember">Just tap.</span>
+        <h1 class="display mt-4 text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[0.95] text-text-0">
+          Tell me about<br />
+          <span class="text-ember">your business.</span>
         </h1>
-        <p class="mt-5 text-lg text-text-1">Four quick taps. I'll reach back within 24 hours.</p>
+        <p class="mt-5 text-base sm:text-lg text-text-1">A few details — I'll personally reply within 24 hours with a plan.</p>
+        <p class="mt-4 text-sm text-text-3">
+          Or email me directly — <a href="mailto:motleytech.ai@gmail.com" class="text-ember hover:underline">motleytech.ai@gmail.com</a>
+        </p>
       </div>
 
-      <div x-data="motleyForm()" class="mt-12 bg-bg-1 border border-line rounded-2xl shadow-card overflow-hidden">
-        <!-- Progress bar -->
-        <div class="h-1 bg-bg-2">
-          <div class="h-full bg-gradient-to-r from-ember to-lime transition-all duration-500" :style="`width: ${progress}%`"></div>
-        </div>
+      <!-- Right: form card -->
+      <div x-data="motleyForm()" class="bg-bg-1 border border-line rounded-2xl shadow-card overflow-hidden w-full">
+        <div class="p-5 sm:p-7">
 
-        <div class="p-6 sm:p-10 min-h-[440px]">
-
-          <!-- STEP 1 -->
+          <!-- FORM -->
           <div x-show="step === 1" x-cloak>
-            <div class="flex items-center justify-between">
-              <span class="mono text-[11px] text-ember">[ STEP 1 / 4 ]</span>
-              <span class="mono text-[11px] text-text-3">~60 sec total</span>
-            </div>
-            <h3 class="display mt-4 text-3xl sm:text-4xl font-semibold text-text-0">What kind of business?</h3>
-            <p class="mt-2 text-text-2">Pick the closest — doesn't have to be exact.</p>
-            <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 gap-3 items-stretch">
-              <template x-for="(opt, i) in businessTypes" :key="opt.id">
-                <button type="button" @click="pickBusiness(opt)"
-                  :class="answers.business?.id === opt.id ? 'border-ember bg-ember-soft' : 'border-line hover:border-line-strong hover:bg-bg-2'"
-                  class="group p-5 border rounded-xl text-left transition-all cursor-pointer ring-focus h-full flex flex-col">
-                  <div class="flex items-center justify-between">
-                    <div class="w-9 h-9 rounded-lg bg-bg-2 border border-line grid place-items-center text-ember" x-html="opt.icon"></div>
-                    <span class="kbd" x-text="(i+1).toString()"></span>
-                  </div>
-                  <div class="mt-4 font-medium text-text-0" x-text="opt.label"></div>
-                  <div class="mono text-[10px] text-text-3 mt-0.5" x-text="opt.hint"></div>
-                </button>
-              </template>
-            </div>
-          </div>
-
-          <!-- STEP 2 -->
-          <div x-show="step === 2" x-cloak>
-            <div class="flex items-center justify-between">
-              <span class="mono text-[11px] text-ember">[ STEP 2 / 4 ]</span>
-              <button type="button" @click="step = 1" class="mono text-[11px] text-text-3 hover:text-text-0 cursor-pointer">← back</button>
-            </div>
-            <h3 class="display mt-4 text-3xl sm:text-4xl font-semibold text-text-0">What's broken?</h3>
-            <p class="mt-2 text-text-2">Tap all that apply — no wrong answers.</p>
-            <div class="mt-8 grid sm:grid-cols-2 gap-3 items-stretch">
-              <template x-for="opt in problems" :key="opt.id">
-                <button type="button" @click="toggleProblem(opt)"
-                  :class="answers.problems.some(p => p.id === opt.id) ? 'border-lime bg-lime-soft' : 'border-line hover:border-line-strong hover:bg-bg-2'"
-                  class="p-5 border rounded-xl text-left transition-all cursor-pointer ring-focus flex items-start gap-4 h-full">
-                  <div class="mt-0.5 w-5 h-5 rounded border-2 grid place-items-center flex-shrink-0 transition-colors"
-                       :class="answers.problems.some(p => p.id === opt.id) ? 'bg-lime border-lime text-bg-0' : 'border-line-strong bg-bg-2'">
-                    <svg x-show="answers.problems.some(p => p.id === opt.id)" class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-                  </div>
-                  <div>
-                    <div class="font-medium text-text-0" x-text="opt.label"></div>
-                    <div class="mono text-[11px] text-text-3 mt-0.5" x-text="opt.hint"></div>
-                  </div>
-                </button>
-              </template>
-            </div>
-            <div class="mt-8">
-              <button type="button" @click="step = 3" :disabled="answers.problems.length === 0"
-                :class="answers.problems.length === 0 ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-ember-hot'"
-                class="inline-flex items-center gap-2 px-6 py-3 bg-ember text-bg-0 rounded-lg font-semibold transition-colors">
-                Next
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </button>
-            </div>
-          </div>
-
-          <!-- STEP 3 -->
-          <div x-show="step === 3" x-cloak>
-            <div class="flex items-center justify-between">
-              <span class="mono text-[11px] text-ember">[ STEP 3 / 4 ]</span>
-              <button type="button" @click="step = 2" class="mono text-[11px] text-text-3 hover:text-text-0 cursor-pointer">← back</button>
-            </div>
-            <h3 class="display mt-4 text-3xl sm:text-4xl font-semibold text-text-0">Pick a vibe.</h3>
-            <p class="mt-2 text-text-2">If none feel right, we'll figure it out on the call.</p>
-            <div class="mt-8 grid sm:grid-cols-3 gap-3 items-stretch">
-              <template x-for="v in vibes" :key="v.id">
-                <button type="button" @click="pickVibe(v)"
-                  :class="answers.vibe?.id === v.id ? 'border-ember' : 'border-line hover:border-line-strong'"
-                  class="border rounded-xl overflow-hidden text-left transition-all cursor-pointer ring-focus h-full flex flex-col">
-                  <div class="aspect-[4/3]" :style="`background:${v.swatch}`"></div>
-                  <div class="p-4 bg-bg-1">
-                    <div class="font-medium text-text-0" x-text="v.label"></div>
-                    <div class="mono text-[11px] text-text-3 mt-0.5" x-text="v.hint"></div>
-                  </div>
-                </button>
-              </template>
-            </div>
-          </div>
-
-          <!-- STEP 4 -->
-          <div x-show="step === 4" x-cloak>
-            <div class="flex items-center justify-between">
-              <span class="mono text-[11px] text-ember">[ STEP 4 / 4 ]</span>
-              <button type="button" @click="step = 3" class="mono text-[11px] text-text-3 hover:text-text-0 cursor-pointer">← back</button>
-            </div>
-            <h3 class="display mt-4 text-3xl sm:text-4xl font-semibold text-text-0">Last — who are you?</h3>
-            <p class="mt-2 text-text-2">I'll personally reach out within 24 hours.</p>
-            <form @submit.prevent="submit()" class="mt-8 space-y-5 max-w-md">
-              <label class="block">
-                <span class="mono text-[11px] text-text-2 uppercase tracking-wider">name</span>
-                <input type="text" x-model="answers.name" required
-                  class="mt-1.5 w-full px-4 py-3 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3"
+            <form @submit.prevent="submit()" class="grid sm:grid-cols-2 gap-3.5">
+              <label class="block sm:col-span-1">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">your name</span>
+                <input type="text" x-model="answers.name" required autocomplete="name"
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3 text-sm"
                   placeholder="First and last">
               </label>
-              <label class="block">
-                <span class="mono text-[11px] text-text-2 uppercase tracking-wider">email</span>
-                <input type="email" x-model="answers.email" required
-                  class="mt-1.5 w-full px-4 py-3 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3"
+              <label class="block sm:col-span-1">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">email</span>
+                <input type="email" x-model="answers.email" required autocomplete="email"
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3 text-sm"
                   placeholder="you@yourbusiness.com">
               </label>
-              <label class="block">
-                <span class="mono text-[11px] text-text-2 uppercase tracking-wider">business name <span class="text-text-3 normal-case">(optional)</span></span>
-                <input type="text" x-model="answers.businessName"
-                  class="mt-1.5 w-full px-4 py-3 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3"
+              <label class="block sm:col-span-1">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">business name</span>
+                <input type="text" x-model="answers.businessName" required
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3 text-sm"
                   placeholder="e.g. Mama Lou's Kitchen">
               </label>
-              <button type="submit" :disabled="!answers.name || !answers.email || submitting"
-                :class="(!answers.name || !answers.email || submitting) ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-ember-hot'"
-                class="w-full sm:w-auto px-8 py-4 bg-ember text-bg-0 rounded-lg font-semibold transition-colors inline-flex items-center gap-2">
-                <span x-show="!submitting">See my site preview</span>
-                <span x-show="submitting" x-cloak>Sending…</span>
-                <svg x-show="!submitting" class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
-              </button>
+              <label class="block sm:col-span-1">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">type of business</span>
+                <select x-model="answers.businessTypeId"
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 appearance-none cursor-pointer text-sm"
+                  style="background-image: url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 24 24%22 fill=%22none%22 stroke=%22%23A8A29E%22 stroke-width=%222%22 stroke-linecap=%22round%22 stroke-linejoin=%22round%22><path d=%22m6 9 6 6 6-6%22/></svg>'); background-repeat: no-repeat; background-position: right 12px center;">
+                  <template x-for="opt in businessTypes" :key="opt.id">
+                    <option :value="opt.id" x-text="opt.label"></option>
+                  </template>
+                </select>
+              </label>
+              <label class="block sm:col-span-2">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">tell me a bit about it</span>
+                <textarea x-model="answers.about" rows="3" required
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3 resize-none text-sm"
+                  placeholder="What do you do? What's the goal of the site — bookings, walk-ins, online orders, just looking legit on Google?"></textarea>
+              </label>
+              <label class="block sm:col-span-2">
+                <span class="mono text-[10px] text-text-2 uppercase tracking-wider">phone <span class="text-text-3 normal-case">(optional)</span></span>
+                <input type="tel" x-model="answers.phone" autocomplete="tel"
+                  class="mt-1 w-full px-3.5 py-2.5 bg-bg-0 border border-line rounded-lg focus:border-ember focus:outline-none transition-colors text-text-0 placeholder-text-3 text-sm"
+                  placeholder="(478) 555-0123">
+              </label>
+
+              <div class="sm:col-span-2 flex flex-col sm:flex-row sm:items-center gap-3 mt-1">
+                <button type="submit" :disabled="!canSubmit || submitting"
+                  :class="(!canSubmit || submitting) ? 'opacity-40 cursor-not-allowed' : 'cursor-pointer hover:bg-ember-hot'"
+                  class="w-full sm:w-auto px-7 py-3 bg-ember text-bg-0 rounded-lg font-semibold transition-colors inline-flex items-center justify-center gap-2 text-sm">
+                  <span x-show="!submitting">Start my free build</span>
+                  <span x-show="submitting" x-cloak>Sending…</span>
+                  <svg x-show="!submitting" class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+                </button>
+                <p class="mono text-[10px] text-text-3">no spam · no obligation · 24-hour reply</p>
+              </div>
             </form>
           </div>
 
-          <!-- STEP 5 PAYOFF -->
-          <div x-show="step === 5" x-cloak>
+          <!-- PAYOFF -->
+          <div x-show="step === 2" x-cloak>
             <div class="text-center">
               <div class="inline-flex items-center gap-2 px-3 py-1 bg-lime-soft border border-lime/30 rounded-full">
                 <span class="w-2 h-2 rounded-full bg-lime status-dot"></span>
                 <span class="mono text-[11px] text-lime uppercase tracking-widest">got it, <span x-text="answers.name.split(' ')[0]"></span>!</span>
               </div>
-              <h3 class="display mt-5 text-3xl sm:text-4xl font-semibold text-text-0">Here's what I'd build you.</h3>
-              <p class="mt-2 text-text-2 max-w-md mx-auto">This is just a rough sketch — the real site will be way better. Email's on its way.</p>
+              <h3 class="display mt-4 text-2xl sm:text-3xl font-semibold text-text-0">Here's a rough sketch.</h3>
+              <p class="mt-2 text-sm text-text-2">Real site will be way better. I'll be in touch within 24 hours at <span class="text-text-1" x-text="answers.email"></span>.</p>
             </div>
 
-            <div class="mt-8 mini-frame max-w-2xl mx-auto shadow-glow-ember">
+            <div class="mt-5 mini-frame shadow-glow-ember">
               <div class="mini-bar">
                 <span class="mini-dot"></span><span class="mini-dot"></span><span class="mini-dot"></span>
                 <div class="ml-2 flex-1 px-3 py-1 bg-bg-0 border border-line rounded-md mono text-[10px] text-text-2 truncate" x-text="previewDomain"></div>
               </div>
-              <div class="relative aspect-[5/3] flex flex-col justify-center items-center p-8 text-center transition-colors"
-                   :style="`background:${answers.vibe?.swatch || '#17171B'};color:${answers.vibe?.text || '#FAFAF9'}`">
-                <div class="text-[11px] uppercase tracking-[0.3em] opacity-70" x-text="(answers.business?.label || 'Your Business') + ' · Milledgeville, GA'"></div>
-                <div class="mt-2 display text-3xl sm:text-5xl font-semibold leading-tight max-w-md" x-text="answers.businessName || 'Your Business'"></div>
-                <div class="mt-3 text-sm opacity-80 max-w-xs" x-text="tagline"></div>
+              <div class="relative aspect-[5/3] flex flex-col justify-center items-center p-6 text-center"
+                   style="background: linear-gradient(135deg, #FEF3C7, #F97316); color: #1C1917;">
+                <div class="text-[10px] uppercase tracking-[0.3em] opacity-70" x-text="(businessTypeLabel || 'Your Business') + ' · Milledgeville, GA'"></div>
+                <div class="mt-2 display text-2xl sm:text-3xl font-semibold leading-tight max-w-md" x-text="answers.businessName || 'Your Business'"></div>
+                <div class="mt-2 text-xs opacity-80 max-w-xs" x-text="tagline"></div>
               </div>
             </div>
 
-            <div class="mt-8 text-center">
-              <p class="mono text-[11px] text-text-3">-- email en route to <span class="text-text-1" x-text="answers.email"></span> --</p>
-              <button type="button" @click="reset()" class="mt-3 text-sm text-ember hover:text-ember-hot font-medium cursor-pointer">Start over</button>
+            <div class="mt-4 text-center">
+              <button type="button" @click="reset()" class="text-sm text-ember hover:text-ember-hot font-medium cursor-pointer">Start over</button>
             </div>
           </div>
 
         </div>
       </div>
 
-      <p class="mt-6 text-center text-sm text-text-3">
-        Or email me directly — <a href="mailto:motleytech.ai@gmail.com" class="text-ember hover:underline">motleytech.ai@gmail.com</a>
-      </p>
     </div>
   </section>
 
   <!-- =================== FOOTER =================== -->
-  <footer class="py-12 border-t border-line">
-    <div class="max-w-6xl mx-auto px-5 sm:px-8 grid md:grid-cols-3 gap-8 text-sm">
-      <div>
-        <div>
-          <span class="display font-bold text-3xl tracking-tight text-text-0">Motley Tech</span>
-        </div>
-        <p class="mt-4 text-text-2 max-w-sm">Custom websites for small businesses in Milledgeville, Georgia. Built by Grant Motley, one site at a time.</p>
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
       </div>
-      <div>
-        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// contact</div>
-        <div class="mt-2 text-text-1"><a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a></div>
-        <div class="mt-1 text-text-2">Milledgeville, GA · Baldwin County</div>
-      </div>
-      <div>
-        <div class="mono text-[10px] text-text-3 uppercase tracking-wider">// sample builds</div>
-        <div class="mt-2 flex flex-col gap-1 text-text-1">
-          <a href="demos/restaurant/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ mamalous-milledgeville.com</a>
-          <a href="demos/retail/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ oakandthread.shop</a>
-          <a href="demos/salon/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ thebarberandco.com</a>
-          <a href="demos/trades/" target="_blank" rel="noopener" class="hover:text-ember transition-colors">→ milledgevillehvacpros.com</a>
-        </div>
-      </div>
-    </div>
-    <div class="mt-10 pt-6 border-t border-line max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row justify-between gap-2 text-xs text-text-3 mono">
-      <div>© 2026 Motley Tech · all rights reserved</div>
-      <div>handcrafted in Milledgeville, GA · <span class="text-text-2">v2.0</span></div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
     </div>
   </footer>
 
@@ -489,40 +422,26 @@
         step: 1,
         submitting: false,
         submitError: '',
-        answers: { business: null, problems: [], vibe: null, name: '', email: '', businessName: '' },
+        answers: { name: '', email: '', businessName: '', businessTypeId: 'restaurant', about: '', phone: '' },
 
         businessTypes: [
-          { id: 'restaurant', label: 'Restaurant / Café', hint: 'food & drink', icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3Zm0 0v7"/></svg>` },
-          { id: 'retail',     label: 'Retail / Shop',     hint: 'boutique, store',  icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>` },
-          { id: 'salon',      label: 'Salon / Barber',    hint: 'hair, beauty',     icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="3"/><path d="M8.12 8.12 12 12"/><path d="M20 4 8.12 15.88"/><circle cx="6" cy="18" r="3"/><path d="M14.8 14.8 20 20"/></svg>` },
-          { id: 'trades',     label: 'Trades',            hint: 'hvac, plumbing',   icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76Z"/></svg>` },
-          { id: 'service',    label: 'Service pro',       hint: 'lawn, cleaning',   icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 22h20"/><path d="M6 18V9a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v9"/><path d="M10 12h4"/><path d="M10 16h4"/></svg>` },
-          { id: 'other',      label: 'Something else',    hint: 'tell me on the call', icon: `<svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4M12 8h.01"/></svg>` },
+          { id: 'restaurant', label: 'Restaurant / Café' },
+          { id: 'retail',     label: 'Retail / Shop' },
+          { id: 'salon',      label: 'Salon / Barber' },
+          { id: 'trades',     label: 'Trades (HVAC, plumbing, etc.)' },
+          { id: 'service',    label: 'Service pro (lawn, cleaning, etc.)' },
+          { id: 'other',      label: 'Something else' },
         ],
 
-        problems: [
-          { id: 'none',   label: "I don't have a website yet",        hint: 'starting from scratch' },
-          { id: 'dated',  label: "Mine looks dated or unprofessional", hint: 'judged before they call' },
-          { id: 'google', label: "I can't find it on Google",         hint: 'invisible to new customers' },
-          { id: 'update', label: "I can't update it myself",          hint: 'stuck with whoever built it' },
-          { id: 'mobile', label: "It's broken on phones",             hint: '60%+ of visits are mobile' },
-          { id: 'slow',   label: "It's painfully slow",               hint: 'people leave before it loads' },
-        ],
-
-        vibes: [
-          { id: 'warm',   label: 'Warm & welcoming', hint: 'local, human, trusted',     swatch: 'linear-gradient(135deg, #FEF3C7, #F97316)', text: '#1C1917' },
-          { id: 'modern', label: 'Clean & modern',   hint: 'crisp, confident, minimal', swatch: 'linear-gradient(135deg, #F5F5F4, #78716C)', text: '#1C1917' },
-          { id: 'bold',   label: 'Bold & vibrant',   hint: 'color, energy, memorable',  swatch: 'linear-gradient(135deg, #F97316, #A3E635)', text: '#0A0A0C' },
-        ],
-
-        get progress() { return (this.step - 1) * 25; },
+        get businessTypeLabel() {
+          return this.businessTypes.find(t => t.id === this.answers.businessTypeId)?.label || '';
+        },
         get previewDomain() {
           const slug = (this.answers.businessName || 'your-business')
             .toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '') || 'your-business';
           return `${slug}.com`;
         },
         get tagline() {
-          const b = this.answers.business?.id;
           const map = {
             restaurant: 'Southern hospitality, fresh daily.',
             retail:     'Curated in Milledgeville, made with care.',
@@ -531,24 +450,22 @@
             service:    'Neighbors you can count on.',
             other:      'A beautiful site for a business that matters.',
           };
-          return map[b] || 'A beautiful site for a business that matters.';
+          return map[this.answers.businessTypeId] || 'A beautiful site for a business that matters.';
+        },
+        get canSubmit() {
+          const a = this.answers;
+          return !!(a.name && a.email && a.businessName && a.about);
         },
 
-        pickBusiness(opt) { this.answers.business = opt; setTimeout(() => this.step = 2, 200); },
-        toggleProblem(opt) {
-          const i = this.answers.problems.findIndex(p => p.id === opt.id);
-          if (i >= 0) this.answers.problems.splice(i, 1); else this.answers.problems.push(opt);
-        },
-        pickVibe(v) { this.answers.vibe = v; setTimeout(() => this.step = 4, 200); },
         buildLeadBody() {
           const a = this.answers;
           const lines = [
-            `Business name: ${a.businessName || '(not provided)'}`,
-            `Type: ${a.business?.label || '(not picked)'}`,
-            `Vibe: ${a.vibe?.label || '(not picked)'}`,
-            `Problems: ${a.problems.map(p => p.label).join(' · ') || '(none selected)'}`,
+            `Business name: ${a.businessName}`,
+            `Type: ${this.businessTypeLabel}`,
+            `About: ${a.about}`,
             '',
             `From: ${a.name} <${a.email}>`,
+            `Phone: ${a.phone || '(not provided)'}`,
             `Suggested domain: ${this.previewDomain}`,
             '',
             '— sent from motley-tech.com/contact',
@@ -561,16 +478,16 @@
           window.location.href = href;
         },
         async submit() {
-          if (this.submitting) return;
+          if (this.submitting || !this.canSubmit) return;
           this.submitting = true;
           this.submitError = '';
           const payload = {
-            businessName: this.answers.businessName,
             name: this.answers.name,
             email: this.answers.email,
-            type: this.answers.business?.label || '',
-            vibe: this.answers.vibe?.label || '',
-            problems: this.answers.problems.map(p => p.label).join(' · '),
+            phone: this.answers.phone,
+            businessName: this.answers.businessName,
+            type: this.businessTypeLabel,
+            about: this.answers.about,
             suggestedDomain: this.previewDomain,
             _subject: `New build request — ${this.answers.businessName || this.answers.name}`,
           };
@@ -582,21 +499,21 @@
                 body: JSON.stringify(payload),
               });
               if (!res.ok) throw new Error(`HTTP ${res.status}`);
-              this.step = 5;
+              this.step = 2;
             } catch (err) {
               this.submitError = 'Send failed — opening your email app as backup.';
               this.openMailtoFallback();
-              this.step = 5;
+              this.step = 2;
             }
           } else {
             this.openMailtoFallback();
-            this.step = 5;
+            this.step = 2;
           }
           this.submitting = false;
         },
         reset() {
           this.step = 1;
-          this.answers = { business: null, problems: [], vibe: null, name: '', email: '', businessName: '' };
+          this.answers = { name: '', email: '', businessName: '', businessTypeId: 'restaurant', about: '', phone: '' };
         },
       };
     }
@@ -614,7 +531,7 @@
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');
-            child.style.transitionDelay = Math.min(i * 40, 200) + 'ms';
+            child.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
           }
         });
       });
@@ -629,8 +546,34 @@
             obs.unobserve(entry.target);
           }
         });
-      }, { threshold: 0.08, rootMargin: '0px 0px -6% 0px' });
+      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
       document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    })();
+  </script>
+
+  <script>
+    (() => {
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      if (typeof Lenis === 'undefined') return;
+      const lenis = new Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smoothWheel: true,
+        smoothTouch: false,
+      });
+      function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+      requestAnimationFrame(raf);
+      // anchor links — smooth scroll with nav offset
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', (e) => {
+          const id = a.getAttribute('href');
+          if (id.length < 2) return;
+          const target = document.querySelector(id);
+          if (!target) return;
+          e.preventDefault();
+          lenis.scrollTo(target, { offset: -80, duration: 1.4 });
+        });
+      });
     })();
   </script>
 

@@ -98,10 +98,18 @@
       <h1 class="display text-5xl sm:text-7xl">First dibs <em class="italic">on every drop.</em></h1>
       <p class="mt-4 text-taupe">Tuesday mornings. One email. No noise.</p>
 
-      <form class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto" onsubmit="event.preventDefault(); alert('Demo — in the real site, this signs you up.');">
-        <input type="email" required placeholder="you@email.com" class="flex-1 px-5 py-4 border border-ink focus:outline-none text-sm">
+      <form id="newsletter-form" class="mt-8 flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
+        <input name="email" type="email" required placeholder="you@email.com" class="flex-1 px-5 py-4 border border-ink focus:outline-none text-sm">
         <button type="submit" class="px-8 py-4 bg-ink text-white text-xs uppercase tracking-[0.25em] hover:bg-taupe transition-colors">Sign up</button>
       </form>
+
+      <!-- Success state (hidden until form submit) -->
+      <div id="newsletter-success" hidden class="mt-8 max-w-md mx-auto border border-ink p-8 text-left">
+        <div class="text-[11px] uppercase tracking-[0.3em] text-taupe">— You're on the list</div>
+        <div class="display text-2xl italic mt-3 text-ink">See you Tuesday.</div>
+        <p class="mt-4 text-sm text-taupe leading-relaxed">We'll send the first drop preview to <span id="echo-email" class="text-ink"></span>. Unsubscribe anytime — we're not jerks about it.</p>
+        <p class="mt-6 text-[11px] text-taupe italic">(Sample site · no email was actually saved.)</p>
+      </div>
 
       <div class="mt-20 grid sm:grid-cols-3 gap-8 text-left">
         <div>
@@ -127,6 +135,23 @@
       <div>© 2026 Oak &amp; Thread Co. · Built by <a href="../../index.html" class="underline underline-offset-2 hover:text-ink">Motley Tech</a> — sample site, not a real shop.</div>
     </div>
   </footer>
+
+  <!-- Newsletter — demo confirmation flow -->
+  <script>
+    (() => {
+      const form = document.getElementById('newsletter-form');
+      if (!form) return;
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = (new FormData(form).get('email') || '').toString().trim();
+        document.getElementById('echo-email').textContent = email;
+        form.hidden = true;
+        const success = document.getElementById('newsletter-success');
+        success.hidden = false;
+        success.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    })();
+  </script>
 
   <!-- scroll-reveal: fade sections + grid children into view as they scroll in -->
   <script>
