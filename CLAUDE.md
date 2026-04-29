@@ -394,7 +394,7 @@ When Grant lands an actual Milledgeville business:
 **Live at https://motley-tech.com** (custom domain purchased via Cloudflare Registrar).
 
 - **Repo**: https://github.com/gdmotley1/motley-tech (public, GitHub Pages from `main` root)
-- **CNAME** file binds the domain. **DNS** is Cloudflare; 4 apex A records (185.199.108–111.153) + www CNAME to `gdmotley1.github.io`, currently **proxied** (orange cloud). Cloudflare SSL mode should be **Full** (not Flexible).
+- **CNAME** file binds the domain. **DNS** is Cloudflare; 4 apex A records (185.199.108–111.153) + www CNAME to `gdmotley1.github.io`, currently **proxied** (orange cloud). Cloudflare SSL mode is **Full** (NOT Full strict — strict breaks GitHub Pages because Cloudflare-proxied DNS prevents Let's Encrypt HTTP-01 cert issuance for the apex domain).
 - **Deploy**: `git push` to `main`. Rebuild ~1 min.
 - **Canonical links**: every HTML page has `<link rel="canonical" href="https://motley-tech.com/...">`. The `gdmotley1.github.io/motley-tech/` URL is deliberately *not* the canonical.
 - **404.html**: on-brand dark-tech 404 at the repo root. GitHub auto-serves for missing paths.
@@ -405,37 +405,38 @@ When Grant lands an actual Milledgeville business:
 - **Default**: opens user's mail client (mailto:) pre-filled to motleytech.ai@gmail.com with business name, type, vibe, problems, contact, suggested domain. Works with zero setup.
 - **Formspree swap-in**: set `FORMSPREE_ENDPOINT` (const at top of the script) to the endpoint from https://formspree.io; `submit()` switches to `fetch` POST with mailto as failure fallback. No other code changes.
 
-## Open tasks / next steps
+## SEO / AEO state (as of 2026-04-29)
 
-### SEO + AEO push (added 2026-04-28 — site invisible on "Motley Tech" Google search)
+Site is technically as optimized as a static marketing site can be. Remaining levers are off-site (backlinks, GBP, time) not technical. Don't keep tweaking schema or meta tags — the next gain comes from authority, not code.
 
-Reality: site went live 2026-04-24, only 4 days old, zero inbound links, brand term competes with an unrelated band. Indexing takes 2–8 weeks for new domains. Below is the prioritized punch list.
+**Done:**
+- Google Search Console: verified via **Cloudflare DNS TXT** (domain property covers all subdomains). Sitemap submitted. Top 9 URLs manually requested for indexing.
+- Bing Webmaster: verified via **meta tag** (`<meta name="msvalidate.01" content="ACFDF9F00674053EA660C221F30F5EA5">` lives in `index.html` head). Sitemap submitted. Top 9 URLs submitted via URL Submission.
+- **IndexNow** enabled via Cloudflare's Crawler Hints toggle (Caching → Configuration). Auto-pings Bing + Yandex on every push. Big AEO move because ChatGPT search uses Bing's index.
+- Cloudflare site recommendations applied: Always Use HTTPS, TLS 1.3, Brotli, HTTP/3, Early Hints, Auto Minify, Cloudflare Fonts, Bot Fight Mode all on.
+- Cloudflare **Email Routing** live: `hello@motley-tech.com` and `grant@motley-tech.com` forward to `motleytech.ai@gmail.com`. Catch-all not yet enabled.
+- Tailwind compiled to `dist/main.css` — LCP went from 34% Poor to 8% Poor (92% Good).
+- 16 FAQs + FAQPage schema, journal post + Article schema, ProfessionalService + Person + Service + Blog + CollectionPage schemas live.
+- Meta descriptions tightened on all 7 main pages.
+- humans.txt, theme-color (palette-matched per demo), llms.txt all in place.
 
-**Today (under 1 hour, biggest impact):**
-1. **Google Search Console** — verify domain via Cloudflare DNS TXT record, submit `sitemap.xml`, request indexing on key pages. Single biggest missing step. Without it, flying blind. *Verification meta tag placeholder is already in `index.html` `<head>` — paste GSC code into the commented `<meta name="google-site-verification">` line and uncomment.*
-2. **Bing Webmaster Tools** — same drill. Bing indexes faster + powers ChatGPT search results. *Placeholder also in `index.html` for `<meta name="msvalidate.01">`.*
-3. **Google Business Profile** — claim "Motley Tech, Milledgeville GA" as service-area business (no storefront required). Free, 10 min. Gets a knowledge panel on branded searches and feeds Maps + AI answers.
-4. **Convert `assets/brand/og-image.svg` → `og-image.png`** — Facebook, iMessage, and LinkedIn don't reliably render SVG OG images. Open the SVG in Figma/CloudConvert/squoosh.app, export at 1200x630 PNG, drop it next to the SVG, then find/replace `og-image.svg` → `og-image.png` across all HTML files (use VS Code or `find . -name "*.html" | xargs sed -i 's|og-image.svg|og-image.png|g'`).
+**Open (Grant-side, mostly off-site):**
+1. **Google Business Profile** — STILL UNCLAIMED. Single biggest missing item. https://business.google.com → service-area business → "Motley Tech, Milledgeville GA". 10 min. Gets a knowledge panel + feeds Google Maps + AI answers.
+2. **Convert `og-image.svg` → `og-image.png`** — Facebook/iMessage/LinkedIn don't render SVG previews. squoosh.app, 30 sec. Then `find . -name "*.html" | xargs sed -i 's|og-image.svg|og-image.png|g'` and re-push.
+3. **Cloudflare Web Analytics** — Grant to toggle on at Analytics & Logs → Web Analytics → enable. Will give a `<script>` snippet to paste into all 32 page heads.
+4. **Backlinks** — Milledgeville/Baldwin Chamber of Commerce member directory, LinkedIn company page, GitHub profile README. Each one tells Google "real entity, not parked domain."
+5. **One social profile per major platform** — same name + URL everywhere = entity signal.
+6. **More journal posts** — 1/month is the cadence target. Each post = new door for Google + AI to find the site.
+7. **Catch-all email** — Cloudflare → Email Routing → enable catch-all to capture typos like `info@`, `contact@`, `support@`.
 
-**This week:**
-4. **Backlinks from real sources** — Milledgeville/Baldwin County Chamber of Commerce member directory, LinkedIn company page, GitHub profile README link, local FB business groups, footer credit links once a real client launches.
-5. **One social profile per major platform** — same business name + URL everywhere. Consistency = entity signal to Google.
-6. **Test branded+geo search** — search "Motley Tech Milledgeville" not just "Motley Tech." Local-modifier queries surface much faster for new sites.
+**Other open items (non-SEO):**
+8. **Formspree signup + endpoint paste** — whenever Grant wants real lead capture instead of mailto.
+9. **Replace placeholder phone** if wanted. Currently email-only.
+10. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
+11. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). Mirror to `demos/<vertical>/assets/` if Unsplash rate-limits or demo load ever matters for SEO. Wrapper pattern already supports drop-in swap.
+12. **LocalBusiness schema upgrade** — current `ProfessionalService` schema could add `LocalBusiness` with geo coordinates (Milledgeville lat/lng) once Grant decides whether to stay locally focused or go regional. Currently `areaServed` is "United States" deliberately.
 
-**Longer arc (weeks/months):**
-7. **Add a `/journal/` section** — 1-2 posts per month answering questions Milledgeville business owners actually Google ("do I need a website if I have Facebook," "how much does a small business website cost in GA," etc.). Each post is another door for Google + AI to find the site.
-8. **Get cited on third-party AI-training content** — Indie Hackers post on the free-build model, dev.to article on the AI-readiness pattern, GitHub repos. LLMs cite specifics from these sources.
-9. **Self-host demo photos** (existing item #15 below) — also helps once domain authority matters.
-10. **LocalBusiness schema upgrade** — current `ProfessionalService` schema could add `LocalBusiness` with geo coordinates (Milledgeville lat/lng) once Grant decides whether to stay locally focused or go regional. Currently `areaServed` is "United States" deliberately.
-
-### Other open items
-
-11. **Cloudflare Web Analytics** — toggle on in Cloudflare dashboard → Analytics & Logs → Web Analytics → copy snippet → paste into each HTML page's `<head>`. Privacy-friendly, no cookie banner. *Grant to flip the toggle, Claude to paste the snippet.*
-12. **"Always Use HTTPS"** — Cloudflare → SSL/TLS → Edge Certificates → toggle on. (Grant-side, 20 sec.)
-13. **Formspree signup + endpoint paste** — whenever Grant wants real lead capture instead of mailto.
-14. **Replace placeholder phone** if wanted. Currently email-only.
-15. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
-16. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). Mirror to `demos/<vertical>/assets/` if Unsplash rate-limits or demo load ever matters for SEO. Wrapper pattern already supports drop-in swap.
+**What to expect:** Google takes 2-8 weeks to fully index and start ranking a new domain. Bing's faster (days). Don't panic about query data being thin until ~5 days post-submission. Branded+geo searches ("Motley Tech Milledgeville") will surface before pure brand searches because of the band-name competition.
 
 ---
 
