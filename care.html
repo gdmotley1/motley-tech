@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Motley Care. Motley Tech · ongoing care for your website by an actual human</title>
-  <meta name="description" content="What you get when you keep your site with us. Hosting, updates, AI freshness, security, and a person who answers. Plain-English service-level commitments, no help desk." />
+  <title>Motley Care. Motley Tech · ten hours a month, or five minutes.</title>
+  <meta name="description" content="Care is the difference between ten hours of your time and five minutes. Hosting, updates, AI freshness, security, and a real person who answers within a business day." />
 
   <!-- Open Graph + Twitter -->
   <meta property="og:title" content="Motley Care. Motley Tech">
-  <meta property="og:description" content="Ongoing care for your website by an actual human. Hosting, updates, AI freshness, security, and a person who answers.">
+  <meta property="og:description" content="Ten hours of your time, every month. Or five minutes. We do the rest.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="assets/brand/og-image.svg">
   <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +55,6 @@
     .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
 
     .dotgrid { background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0); background-size: 24px 24px; }
-    .dotgrid-bright { background-image: radial-gradient(circle at 1px 1px, rgba(249,115,22,0.10) 1px, transparent 0); background-size: 24px 24px; }
     .hero-halo { background: radial-gradient(ellipse 60% 50% at 80% 10%, rgba(249,115,22,0.20) 0%, transparent 60%), radial-gradient(ellipse 50% 40% at 10% 95%, rgba(163,230,53,0.10) 0%, transparent 65%); }
 
     .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #F97316; }
@@ -92,9 +91,28 @@
     body.faq-flow header.flow-section .dotgrid { display: none; }
     body.faq-flow footer { border-top-color: rgba(38, 38, 44, 0.4); }
 
-    /* Care-specific: DIY ledger styling */
-    .care-row + .care-row { border-top: 1px solid #26262C; }
-    .care-cell-strike { color: #78716C; text-decoration: line-through; text-decoration-color: rgba(120,113,108,0.5); }
+    /* Comparison: animated bar fill (matches index.html pattern) */
+    [data-bar-fill] { width: 0; transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s; }
+    @media (prefers-reduced-motion: reduce) { [data-bar-fill] { transition: none; } }
+
+    /* The DIY hours bar: hot ember gradient that looks like time burning */
+    .time-bar {
+      height: 10px;
+      border-radius: 2px;
+      background: linear-gradient(90deg, #F97316 0%, #FB923C 60%, #FACC15 100%);
+      box-shadow: 0 0 18px rgba(249,115,22,0.35), inset 0 0 0 1px rgba(255,255,255,0.04);
+    }
+
+    /* Comparison row: hairline divider between rows, tinted hover */
+    .cmp-row { border-top: 1px solid #26262C; transition: background-color 280ms ease; }
+    .cmp-row:hover { background-color: rgba(255,255,255,0.015); }
+
+    /* Strikethrough handled-by-care marker */
+    .care-handled { color: #A8A29E; }
+    .care-handled .strike {
+      position: relative;
+      color: #78716C;
+    }
   </style>
   <link rel="canonical" href="https://motley-tech.com/care.html">
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
@@ -162,7 +180,7 @@
                class="absolute top-full right-0 w-72 bg-bg-1 border border-line rounded-xl shadow-card overflow-hidden z-50">
             <a href="samples.html" class="block px-4 py-3 text-sm hover:bg-bg-2 transition-colors border-b border-line">
               <div class="mono text-[10px] text-ember">[ VIEW ALL ]</div>
-              <div class="mt-0.5 font-medium text-text-0">All four demos →</div>
+              <div class="mt-0.5 font-medium text-text-0">All four demos &rarr;</div>
             </a>
             <a href="demos/restaurant/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
               <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #3b1505, #7c2d12);"></div>
@@ -188,7 +206,7 @@
             <a href="demos/trades/" target="_blank" rel="noopener" class="flex items-center gap-3 px-4 py-3 text-sm hover:bg-bg-2 transition-colors">
               <div class="w-9 h-9 rounded flex-shrink-0" style="background: linear-gradient(135deg, #041E33, #0c4a6e);"></div>
               <div>
-                <div class="font-medium text-text-0">Whitfield Heating & Air</div>
+                <div class="font-medium text-text-0">Whitfield Heating &amp; Air</div>
                 <div class="mono text-[10px] text-text-3">trades/</div>
               </div>
             </a>
@@ -235,14 +253,14 @@
     </div>
   </nav>
 
-  <!-- =================== HERO · anchored with three-pillar promise =================== -->
+  <!-- =================== HERO · compact thesis =================== -->
   <header class="flow-section relative overflow-hidden">
     <div class="absolute inset-0 dotgrid opacity-60"></div>
     <div class="absolute inset-0 hero-halo"></div>
-    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 py-12 sm:py-20">
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
 
       <!-- Top label strip -->
-      <div class="flex items-center gap-3 mb-6 sm:mb-8">
+      <div class="flex items-center gap-3 mb-6">
         <span class="mono text-[11px] text-ember tracking-widest uppercase">Motley Care</span>
         <span class="inline-flex items-center gap-2 mono text-[11px] text-text-2 tracking-widest uppercase">
           <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
@@ -250,170 +268,222 @@
         </span>
       </div>
 
-      <!-- Anchor headline -->
+      <!-- Anchor headline · short, punchy, sets up the comparison -->
       <h1 class="display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1] text-text-0 max-w-4xl">
-        What you're paying for.<br />
-        <span class="text-ember">A person, not a portal.</span>
+        Your time, every month.<br />
+        <span class="text-ember">Ten hours, or five minutes.</span>
       </h1>
 
-      <!-- Three-pillar promise -->
-      <div class="mt-10 sm:mt-14 space-y-5 sm:space-y-6 max-w-3xl">
-        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-5 sm:pb-6">
-          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">01</div>
-          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
-            We <span class="text-ember">host it.</span>
-          </p>
-          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">01</span>
-        </div>
-
-        <div class="relative flex items-baseline gap-3 sm:gap-6 border-b border-line/60 pb-5 sm:pb-6">
-          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">02</div>
-          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
-            We <span class="text-ember">update it.</span>
-          </p>
-          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">02</span>
-        </div>
-
-        <div class="relative flex items-baseline gap-3 sm:gap-6 pb-1">
-          <div class="mono text-xs sm:text-sm text-ember flex-shrink-0 sm:w-10">03</div>
-          <p class="display text-2xl sm:text-3xl lg:text-4xl font-semibold tracking-tight leading-[1.15] text-text-0 flex-1">
-            We <span class="text-ember">answer when something breaks.</span>
-          </p>
-          <span aria-hidden="true" class="hidden sm:block display font-semibold leading-none select-none pointer-events-none text-text-0/[0.06] absolute right-0 -top-1 sm:-top-2" style="font-size: clamp(2.5rem, 5vw, 4rem);">03</span>
-        </div>
-      </div>
+      <p class="mt-6 sm:mt-7 text-base sm:text-lg text-text-1 max-w-2xl leading-relaxed">
+        Care is the part where we keep your site online, current, and answered. You send one email when something changes. We do the rest.
+      </p>
 
     </div>
   </header>
 
-  <!-- =================== WHAT YOU GET =================== -->
-  <section class="flow-section relative py-10 sm:py-14">
+  <!-- =================== THE COMPARISON · centerpiece =================== -->
+  <section class="flow-section relative pt-6 sm:pt-8 pb-14 sm:pb-20">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="mb-8">
-        <div class="mono text-[11px] text-ember tracking-widest uppercase">What's included</div>
-        <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-2">Every month, on us.</h2>
+
+      <!-- Section tag rule -->
+      <div class="flex items-center gap-3 mb-8 sm:mb-10">
+        <span class="mono text-[10px] uppercase tracking-[0.3em] text-ember">[ // The math ]</span>
+        <span class="flex-1 h-px bg-line"></span>
       </div>
 
-      <div class="divide-y divide-line border-y border-line">
-        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
-          <div class="display text-lg font-semibold text-text-0">Hosting, domain, SSL.</div>
-          <p class="text-sm sm:text-base text-text-1 leading-relaxed">All the boring necessities, billed by us, kept current. You don't log into a registrar, ever.</p>
+      <!-- Single shared 3-column grid · rows align by definition -->
+      <div class="grid grid-cols-[1.4fr_1fr_0.7fr] sm:grid-cols-[1.6fr_1.2fr_0.8fr] gap-x-3 sm:gap-x-8 no-reveal">
+
+        <!-- HEADER ROW -->
+        <div class="pb-4 border-b border-line-strong">
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Item</div>
         </div>
-        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
-          <div class="display text-lg font-semibold text-text-0">Daily backups, kept 30 days.</div>
-          <p class="text-sm sm:text-base text-text-1 leading-relaxed">If something breaks, we restore the last known good version. You don't lose a Tuesday to it.</p>
+        <div class="pb-4 border-b border-line-strong">
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3 flex items-center gap-2">
+            <span>If you do it yourself</span>
+          </div>
         </div>
-        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
-          <div class="display text-lg font-semibold text-text-0">Content updates, up to 60 min a month.</div>
-          <p class="text-sm sm:text-base text-text-1 leading-relaxed">New hours, new prices, new photos, new copy. Send us the change. We ship it within a business day.</p>
+        <div class="pb-4 border-b border-line-strong">
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-ember flex items-center gap-2">
+            <span class="relative flex w-1.5 h-1.5">
+              <span class="absolute inset-0 rounded-full bg-lime status-dot"></span>
+              <span class="absolute inset-0 rounded-full bg-lime"></span>
+            </span>
+            <span>If we do it</span>
+          </div>
         </div>
-        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
-          <div class="display text-lg font-semibold text-text-0">AI freshness, kept current.</div>
-          <p class="text-sm sm:text-base text-text-1 leading-relaxed">Schema and structured data updated as your business changes, so your site stays cited by ChatGPT, Perplexity, and Gemini.</p>
+
+        <!-- ROW 1 · Hosting + domain + SSL · 1.0 hr -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Hosting + domain + SSL</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="50" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.0 hr</span>
         </div>
-        <div class="grid md:grid-cols-[1fr_2fr] gap-3 sm:gap-8 py-5 sm:py-6">
-          <div class="display text-lg font-semibold text-text-0">A real person, within one business day.</div>
-          <p class="text-sm sm:text-base text-text-1 leading-relaxed">Email or text. The same person every time. No tickets, no help-desk script.</p>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+          <span class="sr-only">Handled by Motley Care</span>
         </div>
+
+        <!-- ROW 2 · WordPress + plugins maintenance · 2.0 hrs -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">WordPress + plugins maintenance</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="100" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">2.0 hrs</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 3 · Plugin + security patches · 2.0 hrs -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Plugin &amp; security patches</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="100" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">2.0 hrs</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 4 · Backups · 0.5 hr -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Backups, off-site, tested</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="25" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">0.5 hr</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 5 · Schema + AI-readiness markup · 1.5 hrs -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Schema &amp; AI-readiness markup</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="75" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.5 hrs</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 6 · Mobile / cross-browser testing · 1.0 hr -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Mobile &amp; cross-browser testing</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="50" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.0 hr</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 7 · Content edits + new photos · 1.5 hrs -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Content edits &amp; new photos</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="75" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.5 hrs</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 8 · The 11pm "what just broke" diagnosis · 0.5 hr -->
+        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">The 11pm &ldquo;what just broke&rdquo; diagnosis</div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
+          <span class="time-bar block flex-shrink-0" data-bar-fill="25" style="max-width: 100%;"></span>
+          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">0.5 hr</span>
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
+          <span aria-hidden="true">&ndash;</span>
+        </div>
+
+        <!-- ROW 9 · The email you send us -->
+        <div class="cmp-row text-text-2 text-sm sm:text-base py-4 sm:py-5 flex items-center italic">
+          The email you send when something changes
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center mono text-xs text-text-3 italic">
+          (you don&rsquo;t email anyone, you just suffer)
+        </div>
+        <div class="cmp-row py-4 sm:py-5 flex items-center mono text-xs sm:text-sm text-ember whitespace-nowrap">
+          ~5 min
+        </div>
+
+        <!-- TOTAL ROW · dramatic display type -->
+        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong flex items-end">
+          <div>
+            <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Total</div>
+            <div class="display text-base sm:text-xl text-text-0 mt-1.5 leading-tight">Your time, every month</div>
+          </div>
+        </div>
+        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong">
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">DIY</div>
+          <div class="display text-3xl sm:text-5xl lg:text-6xl text-text-0 mt-1 leading-none tracking-tighter">
+            ~10<span class="text-text-2 text-2xl sm:text-3xl ml-1.5 font-normal">hrs</span>
+          </div>
+        </div>
+        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong">
+          <div class="mono text-[10px] uppercase tracking-[0.3em] text-ember">Care</div>
+          <div class="display text-3xl sm:text-5xl lg:text-6xl text-ember mt-1 leading-none tracking-tighter">
+            ~5<span class="text-ember/60 text-2xl sm:text-3xl ml-1.5 font-normal">min</span>
+          </div>
+        </div>
+
       </div>
 
-      <p class="mt-6 text-xs text-text-3 leading-relaxed max-w-2xl">New pages, redesigns, and custom integrations are scoped separately so the work matches the price.</p>
+      <!-- One-liner caption beneath the totals · ties the support pillar in -->
+      <p class="mt-8 sm:mt-10 text-sm text-text-2 max-w-2xl leading-relaxed">
+        That five minutes is one email to a real person. Reply window, less than one business day. Same person every time.
+      </p>
+
     </div>
   </section>
 
-  <!-- =================== COMPARE TO DIY =================== -->
-  <section class="flow-section relative py-10 sm:py-14">
+  <!-- =================== ALSO INCLUDED · compressed dot-leader list =================== -->
+  <section class="flow-section relative pb-12 sm:pb-16">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
-      <div class="flex items-end justify-between gap-6 mb-8">
-        <div>
-          <div class="mono text-[11px] text-ember tracking-widest uppercase">Versus doing it yourself</div>
-          <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 mt-2">You could. It would cost you a weekend.</h2>
-          <p class="mt-3 text-text-1 leading-relaxed max-w-2xl">DIY is a real option. We're not going to pretend it isn't. Here's what it actually looks like next to Care, line for line.</p>
-        </div>
+
+      <div class="flex items-center gap-3 mb-7">
+        <span class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Also included</span>
+        <span class="flex-1 h-px bg-line"></span>
       </div>
 
-      <!-- Two-column ledger -->
-      <div class="grid grid-cols-1 lg:grid-cols-2 gap-5 items-stretch">
+      <ul class="space-y-5 sm:space-y-6 max-w-4xl">
+        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
+          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">Hosting, domain, SSL</span>
+          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
+          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Infrastructure</span>
+        </li>
+        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
+          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">Daily backups, 30 days</span>
+          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
+          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Safety net</span>
+        </li>
+        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
+          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">60 minutes of edits a month</span>
+          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
+          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Upkeep</span>
+        </li>
+        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
+          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">AI freshness, kept current</span>
+          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
+          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Discovery</span>
+        </li>
+        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
+          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">A real person, within one business day</span>
+          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
+          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Support</span>
+        </li>
+      </ul>
 
-        <!-- LEFT · DIY -->
-        <div class="bg-bg-1 border border-line rounded-2xl p-6 sm:p-7 flex flex-col h-full">
-          <div class="flex items-baseline justify-between">
-            <div>
-              <div class="mono text-[11px] text-text-3 tracking-widest uppercase">If you do it yourself</div>
-              <h3 class="display text-xl font-semibold text-text-0 mt-1">GoDaddy + WordPress + a weekend.</h3>
-            </div>
-          </div>
+      <p class="mt-8 text-xs text-text-3 leading-relaxed max-w-2xl">New pages, redesigns, and custom integrations are scoped separately so the work matches the price.</p>
 
-          <div class="mt-6 text-sm">
-            <div class="grid grid-cols-[1fr_auto] gap-x-4 mono text-[10px] text-text-3 tracking-widest uppercase pb-2 border-b border-line-strong">
-              <div>Item</div><div class="text-right">hours / mo</div>
-            </div>
+    </div>
+  </section>
 
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Domain registrar (GoDaddy)</div><div class="text-right text-text-0">0.2</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Hosting (Bluehost, SiteGround, etc.)</div><div class="text-right text-text-0">0.5</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>WordPress + theme + plugins</div><div class="text-right text-text-0">2.0</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>SSL setup &amp; renewal</div><div class="text-right text-text-0">0.3</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Plugin &amp; security patches</div><div class="text-right text-text-0">2.0</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Backups (off-site, tested)</div><div class="text-right text-text-0">0.5</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Schema &amp; AI-readiness markup</div><div class="text-right text-text-0">1.5</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Mobile / cross-browser testing</div><div class="text-right text-text-0">1.0</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Content edits &amp; new photos</div><div class="text-right text-text-0">1.5</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Uptime monitoring (UptimeRobot)</div><div class="text-right text-text-0">0.5</div></div>
-            <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>The cousin who knows HTML</div><div class="text-right text-text-0">?</div></div>
-
-            <div class="grid grid-cols-[1fr_auto] gap-x-4 pt-4 mt-2 border-t-2 border-line-strong">
-              <div class="font-semibold text-text-0">Your time, every month</div>
-              <div class="text-right font-semibold text-text-0">~10 hours</div>
-            </div>
-            <p class="mt-4 text-xs text-text-3 leading-relaxed">Plus the weekend you spend learning what a CNAME record is the first time something breaks.</p>
-          </div>
-        </div>
-
-        <!-- RIGHT · Care -->
-        <div class="bg-bg-1 border border-line rounded-2xl p-6 sm:p-7 flex flex-col h-full relative overflow-hidden">
-          <div class="absolute inset-0 dotgrid-bright opacity-40 pointer-events-none"></div>
-          <div class="relative">
-            <div class="flex items-baseline justify-between">
-              <div>
-                <div class="mono text-[11px] text-ember tracking-widest uppercase">If we do it</div>
-                <h3 class="display text-xl font-semibold text-text-0 mt-1">Motley Care.</h3>
-              </div>
-            </div>
-
-            <div class="mt-6 text-sm">
-              <div class="grid grid-cols-[1fr_auto] gap-x-4 mono text-[10px] text-text-3 tracking-widest uppercase pb-2 border-b border-line-strong">
-                <div>Item</div><div class="text-right">hours / mo</div>
-              </div>
-
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Domain registrar</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Hosting</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Codebase &amp; updates</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>SSL setup &amp; renewal</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Security patches</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Daily backups (30-day retention)</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Schema &amp; AI-readiness markup</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Mobile / cross-browser testing</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Content edits (up to 60 min)</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>Uptime monitoring</div><div class="text-right text-text-3">&mdash;</div></div>
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>A person who answers</div><div class="text-right text-text-3">&mdash;</div></div>
-
-              <div class="care-row grid grid-cols-[1fr_auto] gap-x-4 py-3 text-text-1"><div>The email you send us when something changes</div><div class="text-right text-text-0">~5 min</div></div>
-
-              <div class="grid grid-cols-[1fr_auto] gap-x-4 pt-4 mt-2 border-t-2 border-line-strong">
-                <div class="font-semibold text-text-0">Your time, every month</div>
-                <div class="text-right font-semibold text-ember">~5 minutes</div>
-              </div>
-              <p class="mt-4 text-xs text-text-3 leading-relaxed">Five minutes is the email you send us with the change. That's the entire job.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Closing CTA · folded right into the same flow, no box -->
-      <div class="mt-12 sm:mt-14 pt-10 sm:pt-12 border-t border-line flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 justify-between">
+  <!-- =================== CLOSING CTA =================== -->
+  <section class="flow-section relative pb-16 sm:pb-24">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8">
+      <div class="pt-10 sm:pt-12 border-t border-line flex flex-col sm:flex-row sm:items-end gap-6 sm:gap-10 justify-between">
         <div class="max-w-2xl">
           <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">Care comes with the site.</h2>
-          <p class="mt-2 text-text-1">Start a free build. If you keep it, Care is $49 a month and you'll get the same person every time.</p>
+          <p class="mt-2 text-text-1">Start a free build. If you keep it, Care is $49 a month and you&rsquo;ll get the same person every time.</p>
         </div>
         <div class="flex flex-col sm:flex-row gap-3 flex-shrink-0">
           <a href="pricing.html" class="inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-transparent hover:bg-bg-1 border border-line-strong hover:border-ember/50 text-text-0 rounded-lg font-semibold transition-colors cursor-pointer">
@@ -425,7 +495,6 @@
           </a>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -443,7 +512,7 @@
     </div>
   </footer>
 
-  <!-- scroll-reveal -->
+  <!-- scroll-reveal + bar fill -->
   <script>
     (() => {
       if (!('IntersectionObserver' in window)) return;
@@ -451,6 +520,7 @@
       const sections = document.querySelectorAll('section, .auto-reveal');
       sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
       document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+        if (grid.classList.contains('no-reveal')) return;
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');
@@ -458,11 +528,28 @@
           }
         });
       });
-      if (reduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); return; }
-      const obs = new IntersectionObserver((entries) => {
-        entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
-      }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
-      document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      if (reduced) { document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-in')); }
+      else {
+        const obs = new IntersectionObserver((entries) => {
+          entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-in'); obs.unobserve(entry.target); } });
+        }, { threshold: 0.05, rootMargin: '0px 0px -8% 0px' });
+        document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+      }
+
+      // Bar fill — set width from data-bar-fill once visible
+      document.querySelectorAll('[data-bar-fill]').forEach(el => {
+        const pct = parseFloat(el.dataset.barFill);
+        if (Number.isNaN(pct)) return;
+        if (reduced) { el.style.width = pct + '%'; return; }
+        const obs = new IntersectionObserver(entries => {
+          entries.forEach(e => {
+            if (!e.isIntersecting) return;
+            el.style.width = pct + '%';
+            obs.unobserve(el);
+          });
+        }, { threshold: 0.3 });
+        obs.observe(el);
+      });
     })();
   </script>
 
