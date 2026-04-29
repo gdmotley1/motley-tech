@@ -1,13 +1,13 @@
-# Local prospect/outreach data — never commit
-leads/
-prospects/
+node_modules/
+.DS_Store
+*.log
 
-# Local dev config
+# Local Claude Code config (not for public repo)
 .claude/
 
-# OS / editor noise
-.DS_Store
-Thumbs.db
-*.swp
-.vscode/
-.idea/
+# Internal lead lists / prospect notes (never publish)
+leads/
+
+# Prospect pitch sites — Grant decides per-prospect when to publish.
+# Remove this line and re-stage the specific subfolder when ready.
+prospects/

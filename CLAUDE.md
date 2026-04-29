@@ -82,12 +82,30 @@ URLs served by `python -m http.server` automatically serve `index.html` when the
 
 ## Tech stack (intentionally minimal)
 
-- **No build step.** Raw HTML + Tailwind CDN (`play.tailwindcss.com`) + Alpine.js CDN.
+- **One-command Tailwind build.** Tailwind compiled locally to `dist/main.css` via `npm run build` (or `npm run watch` during dev). Switched from the Play CDN on 2026-04-29 to fix a Core Web Vitals problem (34% of page loads were "Poor" LCP from the CDN's runtime parsing).
+- **Alpine.js 3.x** still loaded from `cdn.jsdelivr.net` for state (tab picker, multi-step form, hero rotator). Tiny, no build needed.
 - **Google Fonts** loaded via `<link>` in each file.
-- **Alpine.js 3.x** for state (tab picker, multi-step form, hero rotator).
-- All assets inline or from CDN — nothing to compile.
+- All assets inline, in `dist/main.css`, or from CDN — minimal compilation surface.
 
-**Why zero build step?** Fast iteration, trivial deploy to any static host, easy for Grant to hand off to clients if they buy the site outright.
+### Build workflow
+
+```bash
+npm install          # one-time, installs Tailwind CLI into node_modules/
+npm run build        # compiles src/input.css → dist/main.css (minified, ~46KB)
+npm run watch        # rebuilds on file changes during active dev
+```
+
+You MUST run `npm run build` (or have `watch` running) before pushing if you added new Tailwind utility classes to any HTML file. Otherwise the new classes won't have CSS.
+
+`tailwind.config.js` at the repo root holds ALL custom theme tokens (every demo's colors, fonts, etc.) merged into one config. Tailwind purges unused classes by scanning the `content` glob, so the bundle stays tiny even with all four demos plus the main site sharing one config.
+
+**Why a build step now?** The Play CDN downloads ~250KB and runs Tailwind in the browser on every load. On slow connections that cost 1-3s of LCP — bad for SEO, bad for conversion. The compiled file is 46KB minified and cached by the browser after the first load.
+
+**Files added to support the build:**
+- `package.json` — npm scripts + tailwindcss devDependency
+- `tailwind.config.js` — merged theme tokens
+- `src/input.css` — three `@tailwind` directives
+- `dist/main.css` — compiled output (committed so GitHub Pages serves it; node_modules/ is gitignored)
 
 ---
 

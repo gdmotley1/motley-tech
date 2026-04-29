@@ -1,0 +1,13 @@
+{
+  "name": "motley-tech",
+  "version": "1.0.0",
+  "description": "Motley Tech site - custom websites for small businesses",
+  "private": true,
+  "scripts": {
+    "build": "tailwindcss -i ./src/input.css -o ./dist/main.css --minify",
+    "watch": "tailwindcss -i ./src/input.css -o ./dist/main.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.4.0"
+  }
+}
