@@ -91,28 +91,53 @@
     body.faq-flow header.flow-section .dotgrid { display: none; }
     body.faq-flow footer { border-top-color: rgba(38, 38, 44, 0.4); }
 
-    /* Comparison: animated bar fill (matches index.html pattern) */
-    [data-bar-fill] { width: 0; transition: width 1.6s cubic-bezier(0.22, 1, 0.36, 1) 0.15s; }
-    @media (prefers-reduced-motion: reduce) { [data-bar-fill] { transition: none; } }
-
-    /* The DIY hours bar: hot ember gradient that looks like time burning */
-    .time-bar {
-      height: 10px;
-      border-radius: 2px;
-      background: linear-gradient(90deg, #F97316 0%, #FB923C 60%, #FACC15 100%);
-      box-shadow: 0 0 18px rgba(249,115,22,0.35), inset 0 0 0 1px rgba(255,255,255,0.04);
-    }
-
-    /* Comparison row: hairline divider between rows, tinted hover */
-    .cmp-row { border-top: 1px solid #26262C; transition: background-color 280ms ease; }
-    .cmp-row:hover { background-color: rgba(255,255,255,0.015); }
-
-    /* Strikethrough handled-by-care marker */
-    .care-handled { color: #A8A29E; }
-    .care-handled .strike {
+    /* Chat bubbles · client (left, neutral) + me (right, ember) */
+    .bubble {
+      max-width: 88%;
+      padding: 0.7rem 1rem;
+      font-size: 14.5px;
+      line-height: 1.45;
+      border-radius: 18px;
       position: relative;
-      color: #78716C;
     }
+    @media (min-width: 640px) { .bubble { max-width: 78%; font-size: 15px; padding: 0.8rem 1.1rem; } }
+    .bubble-client {
+      background: #1E1E23;
+      color: #FAFAF9;
+      border-bottom-left-radius: 6px;
+      align-self: flex-start;
+    }
+    .bubble-me {
+      background: linear-gradient(135deg, #F97316 0%, #FB923C 100%);
+      color: #0A0A0C;
+      border-bottom-right-radius: 6px;
+      align-self: flex-end;
+      font-weight: 500;
+    }
+    .bubble-meta { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.08em; color: #78716C; text-transform: uppercase; }
+    .thread-divider {
+      display: flex; align-items: center; gap: 0.875rem;
+      margin: 0.25rem 0 0.75rem;
+    }
+    .thread-divider::before, .thread-divider::after { content: ''; flex: 1; height: 1px; background: rgba(38,38,44,0.7); }
+    .typing-dot { display: inline-block; width: 5px; height: 5px; border-radius: 50%; background: #A8A29E; margin: 0 1px; animation: typing 1.4s infinite; }
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+    @keyframes typing { 0%, 60%, 100% { opacity: 0.3; transform: translateY(0); } 30% { opacity: 1; transform: translateY(-2px); } }
+
+    /* Comparison cards · soft, rounded, glow-on-care */
+    .cmp-card-soft {
+      background: radial-gradient(120% 90% at 50% 0%, rgba(255,255,255,0.025) 0%, transparent 60%), #111114;
+      border: 1px solid rgba(38,38,44,0.7);
+      border-radius: 28px;
+      box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 60px -40px rgba(0,0,0,0.6);
+    }
+    .cmp-card-care {
+      background: radial-gradient(120% 90% at 50% 0%, rgba(249,115,22,0.10) 0%, transparent 55%), #111114;
+      border-color: rgba(249,115,22,0.25);
+      box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 30px 80px -36px rgba(249,115,22,0.35);
+    }
+    .unit-label { font-family: 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.18em; text-transform: uppercase; }
   </style>
   <link rel="canonical" href="https://motley-tech.com/care.html">
   <link rel="icon" type="image/svg+xml" href="assets/brand/favicon.svg">
@@ -253,226 +278,141 @@
     </div>
   </nav>
 
-  <!-- =================== HERO · compact thesis =================== -->
+  <!-- =================== HERO · single tight statement =================== -->
   <header class="flow-section relative overflow-hidden">
-    <div class="absolute inset-0 dotgrid opacity-60"></div>
     <div class="absolute inset-0 hero-halo"></div>
-    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-6 sm:pb-8">
+    <div class="relative max-w-6xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-8 sm:pb-10">
 
-      <!-- Top label strip -->
-      <div class="flex items-center gap-3 mb-6">
-        <span class="mono text-[11px] text-ember tracking-widest uppercase">Motley Care</span>
-        <span class="inline-flex items-center gap-2 mono text-[11px] text-text-2 tracking-widest uppercase">
-          <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
-          From $49 / mo
-        </span>
-      </div>
+      <div class="mono text-[11px] text-ember tracking-[0.2em] uppercase mb-5">Motley Care</div>
 
-      <!-- Anchor headline · short, punchy, sets up the comparison -->
-      <h1 class="display text-3xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1] text-text-0 max-w-4xl">
+      <h1 class="display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-text-0 max-w-4xl">
         Your time, every month.<br />
-        <span class="text-ember">Ten hours, or five minutes.</span>
+        <span class="text-text-3 line-through decoration-text-3/60 decoration-[3px]">Ten hours.</span>
+        <span class="text-ember ml-1">Five minutes.</span>
       </h1>
 
-      <p class="mt-6 sm:mt-7 text-base sm:text-lg text-text-1 max-w-2xl leading-relaxed">
-        Care is the part where we keep your site online, current, and answered. You send one email when something changes. We do the rest.
+      <p class="mt-6 text-base sm:text-lg text-text-1 max-w-xl leading-relaxed">
+        Hosting, updates, AI freshness, after-hours fixes. You send one email when something changes. The rest is on me.
       </p>
 
     </div>
   </header>
 
-  <!-- =================== THE COMPARISON · centerpiece =================== -->
+  <!-- =================== THE COMPARISON · paired cards =================== -->
   <section class="flow-section relative pt-6 sm:pt-8 pb-14 sm:pb-20">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
-      <!-- Section tag rule -->
-      <div class="flex items-center gap-3 mb-8 sm:mb-10">
-        <span class="mono text-[10px] uppercase tracking-[0.3em] text-ember">[ // The math ]</span>
-        <span class="flex-1 h-px bg-line"></span>
-      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 items-stretch no-reveal">
 
-      <!-- Single shared 3-column grid · rows align by definition -->
-      <div class="grid grid-cols-[1.4fr_1fr_0.7fr] sm:grid-cols-[1.6fr_1.2fr_0.8fr] gap-x-3 sm:gap-x-8 no-reveal">
+        <!-- DIY CARD -->
+        <div class="cmp-card-soft relative p-8 sm:p-10 flex flex-col h-full">
+          <div class="mono text-[11px] uppercase tracking-[0.18em] text-text-3">If you do it yourself</div>
+          <div class="mt-5 flex items-baseline gap-3">
+            <span class="display font-semibold text-6xl sm:text-7xl text-text-0 leading-none tracking-tight">~10</span>
+            <span class="unit-label text-2xl sm:text-3xl text-text-1 font-semibold">hours</span>
+          </div>
+          <div class="mt-1 text-xs text-text-3">every month</div>
+          <p class="mt-4 text-sm text-text-2 leading-relaxed">Spread across nights, weekends, and the occasional Tuesday at 11pm.</p>
 
-        <!-- HEADER ROW -->
-        <div class="pb-4 border-b border-line-strong">
-          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Item</div>
-        </div>
-        <div class="pb-4 border-b border-line-strong">
-          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3 flex items-center gap-2">
-            <span>If you do it yourself</span>
+          <ul class="mt-7 space-y-3.5 flex-1">
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Hosting, domain, SSL renewals</span><span class="mono text-xs text-text-2 whitespace-nowrap">1.0 hr</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>WordPress + plugin maintenance</span><span class="mono text-xs text-text-2 whitespace-nowrap">2.0 hrs</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Plugin &amp; security patches</span><span class="mono text-xs text-text-2 whitespace-nowrap">2.0 hrs</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Backups, off-site, tested</span><span class="mono text-xs text-text-2 whitespace-nowrap">0.5 hr</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Schema &amp; AI-readiness markup</span><span class="mono text-xs text-text-2 whitespace-nowrap">1.5 hrs</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Mobile &amp; cross-browser testing</span><span class="mono text-xs text-text-2 whitespace-nowrap">1.0 hr</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>Content edits &amp; new photos</span><span class="mono text-xs text-text-2 whitespace-nowrap">1.5 hrs</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-text-3" aria-hidden="true">✕</span>The 11pm &ldquo;what just broke&rdquo;</span><span class="mono text-xs text-text-2 whitespace-nowrap">0.5 hr</span></li>
+          </ul>
+
+          <div class="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
+            <span class="mono text-[11px] uppercase tracking-[0.12em] text-text-3">Total / month</span>
+            <span class="display font-semibold text-xl text-text-0 tracking-tight">~10 hours</span>
           </div>
         </div>
-        <div class="pb-4 border-b border-line-strong">
-          <div class="mono text-[10px] uppercase tracking-[0.3em] text-ember flex items-center gap-2">
-            <span class="relative flex w-1.5 h-1.5">
-              <span class="absolute inset-0 rounded-full bg-lime status-dot"></span>
-              <span class="absolute inset-0 rounded-full bg-lime"></span>
-            </span>
-            <span>If we do it</span>
+
+        <!-- MOTLEY CARE CARD -->
+        <div class="cmp-card-soft cmp-card-care relative p-8 sm:p-10 flex flex-col h-full">
+          <span class="absolute -top-3 right-6 mono text-[10px] uppercase tracking-[0.18em] text-bg-0 bg-ember px-2.5 py-1 rounded-full">From $49 / mo</span>
+          <div class="mono text-[11px] uppercase tracking-[0.18em] text-ember flex items-center gap-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-lime status-dot"></span>
+            With Motley Care
           </div>
-        </div>
-
-        <!-- ROW 1 · Hosting + domain + SSL · 1.0 hr -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Hosting + domain + SSL</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="50" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.0 hr</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-          <span class="sr-only">Handled by Motley Care</span>
-        </div>
-
-        <!-- ROW 2 · WordPress + plugins maintenance · 2.0 hrs -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">WordPress + plugins maintenance</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="100" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">2.0 hrs</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 3 · Plugin + security patches · 2.0 hrs -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Plugin &amp; security patches</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="100" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">2.0 hrs</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 4 · Backups · 0.5 hr -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Backups, off-site, tested</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="25" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">0.5 hr</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 5 · Schema + AI-readiness markup · 1.5 hrs -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Schema &amp; AI-readiness markup</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="75" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.5 hrs</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 6 · Mobile / cross-browser testing · 1.0 hr -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Mobile &amp; cross-browser testing</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="50" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.0 hr</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 7 · Content edits + new photos · 1.5 hrs -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">Content edits &amp; new photos</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="75" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">1.5 hrs</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 8 · The 11pm "what just broke" diagnosis · 0.5 hr -->
-        <div class="cmp-row text-text-0 text-sm sm:text-base py-4 sm:py-5 flex items-center">The 11pm &ldquo;what just broke&rdquo; diagnosis</div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center gap-3">
-          <span class="time-bar block flex-shrink-0" data-bar-fill="25" style="max-width: 100%;"></span>
-          <span class="mono text-xs sm:text-sm text-text-1 whitespace-nowrap">0.5 hr</span>
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center care-handled mono text-xs">
-          <span aria-hidden="true">&ndash;</span>
-        </div>
-
-        <!-- ROW 9 · The email you send us -->
-        <div class="cmp-row text-text-2 text-sm sm:text-base py-4 sm:py-5 flex items-center italic">
-          The email you send when something changes
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center mono text-xs text-text-3 italic">
-          (you don&rsquo;t email anyone, you just suffer)
-        </div>
-        <div class="cmp-row py-4 sm:py-5 flex items-center mono text-xs sm:text-sm text-ember whitespace-nowrap">
-          ~5 min
-        </div>
-
-        <!-- TOTAL ROW · dramatic display type -->
-        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong flex items-end">
-          <div>
-            <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Total</div>
-            <div class="display text-base sm:text-xl text-text-0 mt-1.5 leading-tight">Your time, every month</div>
+          <div class="mt-5 flex items-baseline gap-3">
+            <span class="display font-semibold text-6xl sm:text-7xl text-ember leading-none tracking-tight">~5</span>
+            <span class="unit-label text-2xl sm:text-3xl text-ember/80 font-semibold">minutes</span>
           </div>
-        </div>
-        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong">
-          <div class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">DIY</div>
-          <div class="display text-3xl sm:text-5xl lg:text-6xl text-text-0 mt-1 leading-none tracking-tighter">
-            ~10<span class="text-text-2 text-2xl sm:text-3xl ml-1.5 font-normal">hrs</span>
-          </div>
-        </div>
-        <div class="pt-6 sm:pt-8 pb-2 border-t-2 border-line-strong">
-          <div class="mono text-[10px] uppercase tracking-[0.3em] text-ember">Care</div>
-          <div class="display text-3xl sm:text-5xl lg:text-6xl text-ember mt-1 leading-none tracking-tighter">
-            ~5<span class="text-ember/60 text-2xl sm:text-3xl ml-1.5 font-normal">min</span>
+          <div class="mt-1 text-xs text-text-3">every month</div>
+          <p class="mt-4 text-sm text-text-1 leading-relaxed">One email when something changes. Same person every time. Reply within one business day.</p>
+
+          <ul class="mt-7 space-y-3.5 flex-1">
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Hosting, domain, SSL renewals</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>WordPress + plugin maintenance</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Plugin &amp; security patches</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Backups, off-site, tested</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Schema &amp; AI-readiness markup</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Mobile &amp; cross-browser testing</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>Content edits &amp; new photos</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+            <li class="flex items-center justify-between gap-3 text-sm text-text-1"><span class="flex items-center gap-3"><span class="text-lime" aria-hidden="true">✓</span>The 11pm &ldquo;what just broke&rdquo;</span><span class="mono text-xs text-text-3 whitespace-nowrap">handled</span></li>
+          </ul>
+
+          <div class="mt-7 pt-5 border-t border-white/[0.06] flex items-center justify-between">
+            <span class="mono text-[11px] uppercase tracking-[0.12em] text-ember">Your time / month</span>
+            <span class="display font-semibold text-xl text-ember tracking-tight">one email</span>
           </div>
         </div>
 
       </div>
-
-      <!-- One-liner caption beneath the totals · ties the support pillar in -->
-      <p class="mt-8 sm:mt-10 text-sm text-text-2 max-w-2xl leading-relaxed">
-        That five minutes is one email to a real person. Reply window, less than one business day. Same person every time.
-      </p>
 
     </div>
   </section>
 
-  <!-- =================== ALSO INCLUDED · compressed dot-leader list =================== -->
+  <!-- =================== WHAT IT LOOKS LIKE · sample inbox =================== -->
   <section class="flow-section relative pb-12 sm:pb-16">
     <div class="max-w-6xl mx-auto px-5 sm:px-8">
 
-      <div class="flex items-center gap-3 mb-7">
-        <span class="mono text-[10px] uppercase tracking-[0.3em] text-text-3">Also included</span>
-        <span class="flex-1 h-px bg-line"></span>
+      <div class="max-w-2xl mb-10 sm:mb-12">
+        <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight">A week in your inbox.</h2>
+        <p class="mt-3 text-text-1 leading-relaxed">This is what Care actually looks like. One short message. No ticket, no portal, no escalation tree. Some weeks are quieter than this. Some weeks are busier. Either way, the same person reads it and the same person handles it.</p>
       </div>
 
-      <ul class="space-y-5 sm:space-y-6 max-w-4xl">
-        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
-          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">Hosting, domain, SSL</span>
-          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
-          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Infrastructure</span>
-        </li>
-        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
-          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">Daily backups, 30 days</span>
-          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
-          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Safety net</span>
-        </li>
-        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
-          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">60 minutes of edits a month</span>
-          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
-          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Upkeep</span>
-        </li>
-        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
-          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">AI freshness, kept current</span>
-          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
-          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Discovery</span>
-        </li>
-        <li class="grid grid-cols-[auto_1fr_auto] items-end gap-4 sm:gap-6">
-          <span class="display text-xl sm:text-2xl text-text-0 leading-none tracking-tight">A real person, within one business day</span>
-          <span class="border-b border-dotted border-text-3/50 mb-2"></span>
-          <span class="mono text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-text-2 whitespace-nowrap">Support</span>
-        </li>
-      </ul>
+      <!-- Chat thread · faux iMessage / SMS conversation -->
+      <div class="max-w-2xl mx-auto flex flex-col gap-1.5">
 
-      <p class="mt-8 text-xs text-text-3 leading-relaxed max-w-2xl">New pages, redesigns, and custom integrations are scoped separately so the work matches the price.</p>
+        <div class="thread-divider"><span class="bubble-meta">Saturday · 9:42 AM</span></div>
+
+        <div class="bubble bubble-client">Morning Grant. We're closing early today for a private event. Could you put a notice at the top of the homepage?</div>
+        <div class="bubble bubble-me">Got it. Notice will be live within the hour, and I'll take it down Monday morning.</div>
+        <div class="bubble-meta self-end mt-0.5 mb-3">Delivered · 9:51 AM</div>
+
+        <div class="thread-divider"><span class="bubble-meta">Tuesday · 11:14 PM</span></div>
+
+        <div class="bubble bubble-client">The site looks off on my phone tonight. The menu buttons are running off the side of the screen.</div>
+        <div class="bubble bubble-client">Sorry for the late message.</div>
+        <div class="bubble bubble-me">No problem at all. I see it. A plugin update earlier today changed a layout setting. I'm rolling it back tonight and confirming the fix on three devices before the morning.</div>
+        <div class="bubble-meta self-end mt-0.5 mb-3">Sent · 11:21 PM</div>
+
+        <div class="thread-divider"><span class="bubble-meta">Thursday · 2:08 PM</span></div>
+
+        <div class="bubble bubble-client">A customer told us ChatGPT said we close at 6, but we close at 8. Is there something we can do about that?</div>
+        <div class="bubble bubble-me">Yes. Your hours schema had drifted out of date. I've corrected it and re-submitted the page to the search and AI indexers. Perplexity is already showing the right hours. ChatGPT typically refreshes within a day or two.</div>
+        <div class="bubble-meta self-end mt-0.5 mb-3">Sent · 2:23 PM</div>
+
+        <div class="thread-divider"><span class="bubble-meta">Friday · 8:01 AM · from me</span></div>
+
+        <div class="bubble bubble-me">Quick weekly note. Your domain auto-renews next Tuesday. SSL was refreshed overnight. I also found and fixed a broken link on your menu page. Nothing for you to act on.</div>
+        <div class="bubble-meta self-end mt-0.5 mb-3">Sent · 8:01 AM</div>
+
+        <!-- Live composer suggestion -->
+        <div class="thread-divider"><span class="bubble-meta">Today &middot; right now</span></div>
+        <div class="bubble bubble-client flex items-center gap-2">
+          <span class="text-text-2">Grant is typing</span>
+          <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span>
+        </div>
+
+      </div>
+
+      <p class="mt-8 text-xs text-text-3 leading-relaxed max-w-2xl">Bigger projects (new pages from scratch, full redesigns, custom integrations) are scoped separately so the work matches the price.</p>
 
     </div>
   </section>

@@ -389,12 +389,34 @@ When Grant lands an actual Milledgeville business:
 
 ## Open tasks / next steps
 
-1. **Cloudflare Web Analytics** — toggle on in Cloudflare dashboard → Analytics & Logs → Web Analytics → copy snippet → paste into each HTML page's `<head>`. Privacy-friendly, no cookie banner. *Grant to flip the toggle, Claude to paste the snippet.*
-2. **"Always Use HTTPS"** — Cloudflare → SSL/TLS → Edge Certificates → toggle on. (Grant-side, 20 sec.)
-3. **Formspree signup + endpoint paste** — whenever Grant wants real lead capture instead of mailto.
-4. **Replace placeholder phone** if wanted. Currently email-only.
-5. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
-6. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). Mirror to `demos/<vertical>/assets/` if Unsplash rate-limits or demo load ever matters for SEO. Wrapper pattern already supports drop-in swap.
+### SEO + AEO push (added 2026-04-28 — site invisible on "Motley Tech" Google search)
+
+Reality: site went live 2026-04-24, only 4 days old, zero inbound links, brand term competes with an unrelated band. Indexing takes 2–8 weeks for new domains. Below is the prioritized punch list.
+
+**Today (under 1 hour, biggest impact):**
+1. **Google Search Console** — verify domain via Cloudflare DNS TXT record, submit `sitemap.xml`, request indexing on key pages. Single biggest missing step. Without it, flying blind. *Grant-side, then Claude can paste the verification meta tag if needed.*
+2. **Bing Webmaster Tools** — same drill. Bing indexes faster + powers ChatGPT search results. AEO-critical.
+3. **Google Business Profile** — claim "Motley Tech, Milledgeville GA" as service-area business (no storefront required). Free, 10 min. Gets a knowledge panel on branded searches and feeds Maps + AI answers.
+
+**This week:**
+4. **Backlinks from real sources** — Milledgeville/Baldwin County Chamber of Commerce member directory, LinkedIn company page, GitHub profile README link, local FB business groups, footer credit links once a real client launches.
+5. **One social profile per major platform** — same business name + URL everywhere. Consistency = entity signal to Google.
+6. **Test branded+geo search** — search "Motley Tech Milledgeville" not just "Motley Tech." Local-modifier queries surface much faster for new sites.
+
+**Longer arc (weeks/months):**
+7. **Add a `/journal/` section** — 1-2 posts per month answering questions Milledgeville business owners actually Google ("do I need a website if I have Facebook," "how much does a small business website cost in GA," etc.). Each post is another door for Google + AI to find the site.
+8. **Get cited on third-party AI-training content** — Indie Hackers post on the free-build model, dev.to article on the AI-readiness pattern, GitHub repos. LLMs cite specifics from these sources.
+9. **Self-host demo photos** (existing item #15 below) — also helps once domain authority matters.
+10. **LocalBusiness schema upgrade** — current `ProfessionalService` schema could add `LocalBusiness` with geo coordinates (Milledgeville lat/lng) once Grant decides whether to stay locally focused or go regional. Currently `areaServed` is "United States" deliberately.
+
+### Other open items
+
+11. **Cloudflare Web Analytics** — toggle on in Cloudflare dashboard → Analytics & Logs → Web Analytics → copy snippet → paste into each HTML page's `<head>`. Privacy-friendly, no cookie banner. *Grant to flip the toggle, Claude to paste the snippet.*
+12. **"Always Use HTTPS"** — Cloudflare → SSL/TLS → Edge Certificates → toggle on. (Grant-side, 20 sec.)
+13. **Formspree signup + endpoint paste** — whenever Grant wants real lead capture instead of mailto.
+14. **Replace placeholder phone** if wanted. Currently email-only.
+15. **Repeat-prospect handling**: once a real build is done, consider adding a "Recent work" section using the actual client (with permission) instead of just the sample demos.
+16. **Self-host demo photos eventually.** Currently hot-linked from Unsplash (27 photos). Mirror to `demos/<vertical>/assets/` if Unsplash rate-limits or demo load ever matters for SEO. Wrapper pattern already supports drop-in swap.
 
 ---
 
