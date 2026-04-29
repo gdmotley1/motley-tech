@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0A0C" />
+  <title>What a small business website actually costs in 2026 · Motley Tech Journal</title>
+  <meta name="description" content="Honest 2026 pricing for the three real options: DIY templates, custom builds from a developer, and in-between models. Real numbers, hidden costs, and what you actually get." />
+
+  <meta property="og:title" content="What a small business website actually costs in 2026">
+  <meta property="og:description" content="Honest 2026 pricing for the three real options: DIY templates, custom builds, and in-between models. Real numbers, hidden costs, and what you actually get.">
+  <meta property="og:type" content="article">
+  <meta property="og:image" content="../assets/brand/og-image.svg">
+  <meta property="article:published_time" content="2026-04-28">
+  <meta property="article:author" content="Grant Motley">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:    { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:  { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:  { DEFAULT: '#26262C', strong: '#36363E' },
+            ember: { DEFAULT: '#F97316', hot: '#FB923C' },
+            lime:  { DEFAULT: '#A3E635' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0A0A0C; color: #FAFAF9; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1); }
+    body.faq-flow {
+      background:
+        radial-gradient(ellipse 100% 60% at 80% 0%, rgba(249, 115, 22, 0.08) 0%, transparent 55%),
+        linear-gradient(180deg, #0A0A0C 0%, #0c0c10 40%, #0A0A0C 100%);
+      background-attachment: fixed;
+    }
+    .prose-text { color: #D6D3D1; line-height: 1.75; font-size: 17px; }
+    .prose-text p { margin-top: 1.25em; }
+    .prose-text h2 { font-family: 'Space Grotesk', sans-serif; color: #FAFAF9; font-size: 1.7rem; font-weight: 600; letter-spacing: -0.02em; margin-top: 2.25em; margin-bottom: 0.5em; line-height: 1.2; }
+    .prose-text h3 { font-family: 'Space Grotesk', sans-serif; color: #FAFAF9; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.02em; margin-top: 1.75em; margin-bottom: 0.4em; }
+    .prose-text strong { color: #FAFAF9; font-weight: 600; }
+    .prose-text a { color: #F97316; text-decoration: underline; text-decoration-color: rgba(249,115,22,0.4); text-underline-offset: 3px; }
+    .prose-text a:hover { text-decoration-color: #F97316; }
+    .prose-text ul { list-style: none; padding: 0; margin-top: 1em; }
+    .prose-text ul li { position: relative; padding-left: 1.5em; margin-top: 0.5em; }
+    .prose-text ul li::before { content: ''; position: absolute; left: 0; top: 0.7em; width: 6px; height: 6px; background: #F97316; border-radius: 999px; }
+    .prose-text blockquote { border-left: 2px solid #F97316; padding: 0.25em 0 0.25em 1.25em; margin: 1.5em 0; font-style: italic; color: #A8A29E; }
+    .pricing-row { display: grid; grid-template-columns: 1fr auto; gap: 1rem; padding: 0.85rem 0; border-top: 1px solid rgba(38,38,44,0.7); align-items: baseline; }
+    .pricing-row:first-of-type { border-top: 0; }
+    .pricing-amount { font-family: 'JetBrains Mono', monospace; color: #FAFAF9; font-size: 14px; white-space: nowrap; }
+    .pricing-card { background: rgba(17,17,20,0.5); border: 1px solid rgba(38,38,44,0.7); border-radius: 14px; padding: 1.5rem 1.75rem; margin: 2em 0; }
+    .pricing-card .pricing-card-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: #F97316; margin-bottom: 0.75rem; }
+  </style>
+  <link rel="canonical" href="https://motley-tech.com/journal/what-a-small-business-website-costs-in-2026.html">
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+
+  <!-- Article schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "What a small business website actually costs in 2026",
+    "description": "Honest 2026 pricing for the three real options small businesses have for getting a website: DIY templates, custom builds from a developer, and in-between models like Motley Tech. Real numbers, hidden costs, and what you actually get for each.",
+    "image": "https://motley-tech.com/assets/brand/og-image.svg",
+    "datePublished": "2026-04-28",
+    "dateModified": "2026-04-28",
+    "author": {
+      "@type": "Person",
+      "name": "Grant Motley",
+      "url": "https://motley-tech.com/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Motley Tech",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://motley-tech.com/assets/brand/wordmark-dark.svg"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://motley-tech.com/journal/what-a-small-business-website-costs-in-2026.html"
+    },
+    "articleSection": "Pricing",
+    "keywords": "small business website cost, website pricing 2026, custom website cost, Squarespace vs custom, website pricing for small business"
+  }
+  </script>
+</head>
+<body class="antialiased faq-flow">
+
+  <nav x-data="{ mobileOpen: false }" @keydown.escape.window="mobileOpen = false" class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="../index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+        <a href="../index.html" class="hover:text-text-0 transition-colors">Home</a>
+        <a href="../samples.html" class="hover:text-text-0 transition-colors">Samples</a>
+        <a href="../process.html" class="hover:text-text-0 transition-colors">Process</a>
+        <a href="../pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
+        <a href="../care.html" class="hover:text-text-0 transition-colors">Care</a>
+        <a href="../faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="../contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <article class="relative">
+    <header class="max-w-3xl mx-auto px-5 sm:px-8 pt-12 sm:pt-16 pb-8">
+      <a href="index.html" class="inline-flex items-center gap-2 mono text-[10px] uppercase tracking-[0.18em] text-text-2 hover:text-ember transition-colors">
+        &larr; Journal
+      </a>
+      <div class="mt-6 flex items-center gap-3 text-text-3">
+        <span class="mono text-[10px] uppercase tracking-[0.18em] text-ember">Pricing</span>
+        <span>·</span>
+        <time class="mono text-[10px] uppercase tracking-[0.18em]" datetime="2026-04-28">April 28, 2026</time>
+        <span>·</span>
+        <span class="mono text-[10px] uppercase tracking-[0.18em]">7 min read</span>
+      </div>
+      <h1 class="display text-3xl sm:text-5xl font-semibold tracking-tight leading-[1.1] text-text-0 mt-5">
+        What a small business website actually costs in 2026.
+      </h1>
+      <p class="mt-6 text-lg text-text-1 leading-relaxed">
+        Honest numbers for the three real options. Real prices, hidden costs, and what you actually get for each.
+      </p>
+      <div class="mt-7 flex items-center gap-3">
+        <div class="w-10 h-10 rounded-full bg-bg-2 grid place-items-center mono text-sm text-ember font-semibold">GM</div>
+        <div class="text-sm">
+          <div class="text-text-0 font-medium">Grant Motley</div>
+          <div class="text-text-3 text-xs">Founder, Motley Tech</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="max-w-3xl mx-auto px-5 sm:px-8 pb-20">
+      <div class="prose-text">
+
+        <p>If you've started Googling what a website costs for your business, you've probably already noticed that the answers are all over the map. <strong>$29 a month. $300. $5,000. $25,000.</strong> Every site that quotes a number seems to be selling exactly the thing you're being quoted for.</p>
+
+        <p>Here's a more honest breakdown. There are really three options for a small local business in 2026, and the real cost of each one depends on what you actually get and what you're stuck with later.</p>
+
+        <h2>Option 1: Drag-and-drop templates (Squarespace, Wix, GoDaddy, Shopify)</h2>
+
+        <p>This is the cheapest sticker price and the most popular path. You pick a template, drag in your logo, type your hours, and you're "live" in an afternoon.</p>
+
+        <div class="pricing-card">
+          <div class="pricing-card-title">Real cost over 3 years</div>
+          <div class="pricing-row"><span>Monthly subscription ($23 to $49 / mo)</span><span class="pricing-amount">$828 to $1,764</span></div>
+          <div class="pricing-row"><span>Premium template / theme</span><span class="pricing-amount">$0 to $200</span></div>
+          <div class="pricing-row"><span>Domain (separate or bundled)</span><span class="pricing-amount">$36 to $60</span></div>
+          <div class="pricing-row"><span>Plugins, integrations, photo storage</span><span class="pricing-amount">$120 to $600</span></div>
+          <div class="pricing-row"><span>Your time (8 to 20 hours initial setup)</span><span class="pricing-amount">priceless</span></div>
+          <div class="pricing-row" style="border-top: 2px solid rgba(249,115,22,0.4); margin-top: 0.5rem; padding-top: 1rem;"><strong>Three-year total</strong><span class="pricing-amount" style="color:#F97316;">$1,000 to $2,600</span></div>
+        </div>
+
+        <h3>What you get</h3>
+        <ul>
+          <li>A site that looks like every other small business using that template.</li>
+          <li>Limited customization. The template is the boss.</li>
+          <li>Performance that ranges from fine to slow, depending on how many widgets you add.</li>
+          <li>Basic SEO. Some platforms (Squarespace) handle structured data well. Others (Wix, GoDaddy) historically don't.</li>
+        </ul>
+
+        <h3>What you don't get</h3>
+        <ul>
+          <li>Ownership. Stop paying and the site disappears.</li>
+          <li>Portability. The site you built can't move to another platform without a full rebuild.</li>
+          <li>Real AI-readiness. Most templates don't ship the structured data that ChatGPT, Perplexity, and Gemini look for.</li>
+        </ul>
+
+        <p><strong>Verdict:</strong> Fine for a side project, a passion business, or a brand-new shop testing the waters. Not great if you want to compete with a real online presence in your town for the next five years.</p>
+
+        <h2>Option 2: Custom build from an agency or freelancer</h2>
+
+        <p>You hire a developer or a small studio. They scope the project, design something specific to your business, and write the code from scratch. Time-to-launch is usually 4 to 12 weeks.</p>
+
+        <div class="pricing-card">
+          <div class="pricing-card-title">Real cost over 3 years</div>
+          <div class="pricing-row"><span>Initial build (5 to 10 pages)</span><span class="pricing-amount">$3,000 to $10,000</span></div>
+          <div class="pricing-row"><span>Hosting + domain + SSL</span><span class="pricing-amount">$360 to $720</span></div>
+          <div class="pricing-row"><span>Maintenance + updates ($75 to $150 / mo)</span><span class="pricing-amount">$2,700 to $5,400</span></div>
+          <div class="pricing-row"><span>Stock photos, content, copy edits</span><span class="pricing-amount">$200 to $1,000</span></div>
+          <div class="pricing-row" style="border-top: 2px solid rgba(249,115,22,0.4); margin-top: 0.5rem; padding-top: 1rem;"><strong>Three-year total</strong><span class="pricing-amount" style="color:#F97316;">$6,260 to $17,120</span></div>
+        </div>
+
+        <h3>What you get</h3>
+        <ul>
+          <li>A site that looks like your business. Custom design, custom copy, your photos.</li>
+          <li>Cleaner code, faster load times, better SEO baseline.</li>
+          <li>A real human you can email when something breaks.</li>
+          <li>Usually you own the code, though always read the contract.</li>
+        </ul>
+
+        <h3>What you don't get</h3>
+        <ul>
+          <li>A small bill. The up-front cost is the biggest barrier for most small businesses, especially ones that aren't sure a website will pay for itself.</li>
+          <li>A risk-free try. Most agencies want a deposit before they start, and the deposit is usually nonrefundable.</li>
+          <li>Speed. 4 to 12 weeks is normal. Three months is normal too.</li>
+        </ul>
+
+        <p><strong>Verdict:</strong> The right choice if you have $5,000 to spend and you know exactly what you want. Risky if you're a first-time owner who isn't sure what works yet.</p>
+
+        <h2>Option 3: The in-between (free trial, then keep or walk)</h2>
+
+        <p>This is what Motley Tech does, and a small handful of other shops in 2026. You don't pay anything up front. The whole site is built for free. After it's live, you decide: keep it on a monthly hosting plan, buy the code outright, or walk away with no bill.</p>
+
+        <div class="pricing-card">
+          <div class="pricing-card-title">Real cost over 3 years (Motley Tech)</div>
+          <div class="pricing-row"><span>Free trial build</span><span class="pricing-amount">$0</span></div>
+          <div class="pricing-row"><span>Hosting + Care ($49 / mo, founder's rate)</span><span class="pricing-amount">$1,764</span></div>
+          <div class="pricing-row"><span>Domain (auto-renewed)</span><span class="pricing-amount">~$45</span></div>
+          <div class="pricing-row"><span>Maintenance, updates, AI freshness, edits</span><span class="pricing-amount">included</span></div>
+          <div class="pricing-row" style="border-top: 2px solid rgba(249,115,22,0.4); margin-top: 0.5rem; padding-top: 1rem;"><strong>Three-year total</strong><span class="pricing-amount" style="color:#F97316;">~$1,810</span></div>
+          <div class="pricing-row" style="border-top: 1px dashed rgba(38,38,44,0.7); padding-top: 0.7rem;"><span class="text-text-3 italic">Or buy outright + self-host</span><span class="pricing-amount">from $750 once</span></div>
+        </div>
+
+        <h3>What you get</h3>
+        <ul>
+          <li>A site built for your specific business, like an agency build.</li>
+          <li>Live in roughly 14 days, not 12 weeks.</li>
+          <li>No commitment. If you don't like it, you don't pay anything.</li>
+          <li>Full structured data baked in, so Google, ChatGPT, and Perplexity can find you.</li>
+          <li>Same person to email every time. No ticket portal.</li>
+        </ul>
+
+        <h3>What you don't get</h3>
+        <ul>
+          <li>A massive enterprise team. This is a sole-operator shop, not a 40-person agency.</li>
+          <li>Specialty apps that need their own engineering team (real-time inventory across 50 stores, for example).</li>
+        </ul>
+
+        <p><strong>Verdict:</strong> Designed exactly for the small local business that wants something better than a template, without the up-front risk of an agency. The trade-off is scale: a shop like this can't take on every project at once.</p>
+
+        <h2>The hidden costs nobody quotes you</h2>
+
+        <p>The sticker price is rarely the real price. Things to ask before you sign anything:</p>
+
+        <ul>
+          <li><strong>What happens if you stop paying?</strong> If the answer is "the site goes offline," you're renting. If it's "you keep the code," you're buying.</li>
+          <li><strong>Can you take it elsewhere?</strong> Standard HTML and CSS files are portable. Proprietary editors and locked themes aren't.</li>
+          <li><strong>How long until small changes are live?</strong> "Submit a ticket" usually means a week. "Email Grant" usually means same day.</li>
+          <li><strong>Is your site set up to be found by AI?</strong> Search the site for "schema" or "JSON-LD" in the source. If neither is there, AI engines like ChatGPT and Perplexity have a hard time citing you.</li>
+          <li><strong>Who owns the domain?</strong> The domain should be in your name, full stop. If your developer or platform owns it, you don't own your business address online.</li>
+        </ul>
+
+        <h2>So what does it actually cost?</h2>
+
+        <p>Here's the short version: a real website for a small local business in 2026 costs somewhere between <strong>$1,000 and $17,000 over three years</strong>. The range is enormous because the options are genuinely different.</p>
+
+        <p>The cheapest path (templates) saves you cash but costs you customization, control, and AI-readiness. The most expensive path (custom agency) buys you all of that but ties up a lot of money before you know whether the website will pay off. The in-between is newer, doesn't require you to bet anything up front, and is honestly the model I'd want if I were starting a business today.</p>
+
+        <p>Whatever you pick, ask the hidden-cost questions above before you sign. The right answer for your business depends on what you sell, how much custom design matters, and whether you'd rather spend $5,000 today or $50 a month for the next few years.</p>
+
+        <blockquote>
+          If you're in Milledgeville or Baldwin County, the first five businesses get a free build with no obligation. If you're elsewhere in the U.S. and curious, the same model is open to you. <a href="../contact.html">Tell us about your business</a> and we'll come back with a plan in one business day.
+        </blockquote>
+
+      </div>
+
+      <div class="mt-12 pt-8 border-t border-line">
+        <a href="index.html" class="text-ember hover:text-ember-hot transition-colors">&larr; More posts in the journal</a>
+      </div>
+    </div>
+  </article>
+
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
+      </div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
+    </div>
+  </footer>
+
+</body>
+</html>

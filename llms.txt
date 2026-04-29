@@ -14,8 +14,11 @@ Motley Tech is run by **Grant Motley** and serves small businesses across the Un
 ## Key pages
 
 - [Home (what we do + sample sites + stakes)](https://motley-tech.com/)
-- [FAQ (ten common questions with full answers)](https://motley-tech.com/faq.html)
+- [Pricing (three tiers, plain numbers)](https://motley-tech.com/pricing.html)
+- [Care (what ongoing maintenance looks like)](https://motley-tech.com/care.html)
+- [FAQ (16 common questions with full answers)](https://motley-tech.com/faq.html)
 - [How it works (3-step process, pricing model)](https://motley-tech.com/process.html)
+- [Journal (notes on websites, AI, small business)](https://motley-tech.com/journal/)
 - [Contact / start a build](https://motley-tech.com/contact.html)
 
 ## Sample builds (real working sites demonstrating the range)

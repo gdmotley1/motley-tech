@@ -1,0 +1,16 @@
+/* TEAM */
+Founder, Designer, Developer: Grant Motley
+Contact: motleytech.ai@gmail.com
+From: Milledgeville, Georgia, USA
+Site: https://motley-tech.com
+
+/* SITE */
+Last update: 2026-04-28
+Standards: HTML5, CSS3, JSON-LD (Schema.org)
+Components: Tailwind CSS (Play CDN), Alpine.js
+Hosting: GitHub Pages, Cloudflare DNS
+Built by hand, no build step. View source.
+
+/* THANKS */
+Local small businesses willing to be the first.
+The open web for staying weird.

@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#0A0A0C" />
+  <title>Journal. Motley Tech · plain notes on websites, AI, and small business</title>
+  <meta name="description" content="Plain-English notes on websites, AI search, SEO, and what actually works for small local businesses. Written by Grant Motley." />
+
+  <meta property="og:title" content="Journal. Motley Tech">
+  <meta property="og:description" content="Plain-English notes on websites, AI search, SEO, and what actually works for small local businesses.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="../assets/brand/og-image.svg">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bg:    { 0: '#0A0A0C', 1: '#111114', 2: '#17171B', 3: '#1E1E23' },
+            text:  { 0: '#FAFAF9', 1: '#D6D3D1', 2: '#A8A29E', 3: '#78716C' },
+            line:  { DEFAULT: '#26262C', strong: '#36363E' },
+            ember: { DEFAULT: '#F97316', hot: '#FB923C' },
+            lime:  { DEFAULT: '#A3E635' },
+          },
+          fontFamily: {
+            display: ['Space Grotesk', 'system-ui', 'sans-serif'],
+            sans:    ['Inter', 'system-ui', 'sans-serif'],
+            mono:    ['JetBrains Mono', 'ui-monospace', 'monospace'],
+          },
+        }
+      }
+    }
+  </script>
+
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', system-ui, sans-serif; background: #0A0A0C; color: #FAFAF9; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3, h4, .display { font-family: 'Space Grotesk', system-ui, sans-serif; letter-spacing: -0.025em; }
+    .mono { font-family: 'JetBrains Mono', ui-monospace, monospace; }
+    .ring-focus:focus-visible { outline: 2px solid #F97316; outline-offset: 2px; border-radius: 6px; }
+    [x-cloak] { display: none !important; }
+    a, button { transition: color 280ms cubic-bezier(0.22,1,0.36,1), background-color 280ms cubic-bezier(0.22,1,0.36,1), border-color 280ms cubic-bezier(0.22,1,0.36,1); }
+    body.faq-flow {
+      background:
+        radial-gradient(ellipse 100% 60% at 80% 0%, rgba(249, 115, 22, 0.10) 0%, transparent 55%),
+        radial-gradient(ellipse 80% 50% at 10% 35%, rgba(163, 230, 53, 0.04) 0%, transparent 60%),
+        linear-gradient(180deg, #0A0A0C 0%, #0c0c10 40%, #0A0A0C 100%);
+      background-attachment: fixed;
+    }
+    .post-card {
+      background: rgba(17,17,20,0.55);
+      border: 1px solid rgba(38,38,44,0.7);
+      border-radius: 16px;
+      padding: 1.75rem;
+      transition: border-color 280ms ease, transform 280ms ease;
+    }
+    .post-card:hover { border-color: rgba(249,115,22,0.35); transform: translateY(-2px); }
+  </style>
+  <link rel="canonical" href="https://motley-tech.com/journal/">
+  <link rel="icon" type="image/svg+xml" href="../assets/brand/favicon.svg">
+
+  <!-- Blog landing schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Motley Tech Journal",
+    "description": "Plain-English notes on websites, AI search, SEO, and what actually works for small local businesses.",
+    "url": "https://motley-tech.com/journal/",
+    "author": { "@type": "Person", "name": "Grant Motley", "url": "https://motley-tech.com/" },
+    "publisher": { "@type": "Organization", "name": "Motley Tech", "url": "https://motley-tech.com/" }
+  }
+  </script>
+</head>
+<body class="antialiased faq-flow">
+
+  <nav x-data="{ mobileOpen: false }" @keydown.escape.window="mobileOpen = false" class="sticky top-0 z-40 backdrop-blur bg-bg-0/80 border-b border-line/70">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 py-4 flex items-center justify-between">
+      <a href="../index.html" class="group ring-focus -ml-2 sm:-ml-4">
+        <span class="display font-bold text-3xl sm:text-4xl tracking-tight text-text-0">Motley Tech</span>
+      </a>
+      <div class="hidden md:flex items-center gap-7 text-sm text-text-1">
+        <a href="../index.html" class="hover:text-text-0 transition-colors">Home</a>
+        <a href="../samples.html" class="hover:text-text-0 transition-colors">Samples</a>
+        <a href="../process.html" class="hover:text-text-0 transition-colors">Process</a>
+        <a href="../pricing.html" class="hover:text-text-0 transition-colors">Pricing</a>
+        <a href="../care.html" class="hover:text-text-0 transition-colors">Care</a>
+        <a href="../faq.html" class="hover:text-text-0 transition-colors">FAQ</a>
+        <a href="../contact.html" class="relative inline-flex items-center gap-2 pl-4 pr-3.5 py-2 bg-ember hover:bg-ember-hot text-bg-0 rounded-lg font-semibold text-sm transition-colors cursor-pointer">
+          Start a build
+          <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="relative overflow-hidden">
+    <div class="relative max-w-4xl mx-auto px-5 sm:px-8 pt-14 sm:pt-20 pb-8">
+      <div class="mono text-[11px] text-ember tracking-[0.2em] uppercase mb-5">Journal</div>
+      <h1 class="display text-4xl sm:text-5xl lg:text-6xl font-semibold tracking-tight leading-[1.05] text-text-0">
+        Plain notes on websites,<br /><span class="text-ember">AI, and small business.</span>
+      </h1>
+      <p class="mt-6 text-base sm:text-lg text-text-1 max-w-2xl leading-relaxed">
+        Short reads on what actually moves the needle for local businesses online. No hype, no vague best practices. Real numbers, real opinions.
+      </p>
+    </div>
+  </header>
+
+  <section class="relative pb-20">
+    <div class="max-w-4xl mx-auto px-5 sm:px-8">
+      <ul class="space-y-5">
+
+        <li>
+          <a href="what-a-small-business-website-costs-in-2026.html" class="post-card flex flex-col gap-3 ring-focus group">
+            <div class="flex items-center gap-3">
+              <span class="mono text-[10px] uppercase tracking-[0.18em] text-ember">Pricing</span>
+              <span class="text-text-3">·</span>
+              <time class="mono text-[10px] uppercase tracking-[0.18em] text-text-3" datetime="2026-04-28">Apr 28, 2026</time>
+              <span class="text-text-3">·</span>
+              <span class="mono text-[10px] uppercase tracking-[0.18em] text-text-3">7 min read</span>
+            </div>
+            <h2 class="display text-2xl sm:text-3xl font-semibold text-text-0 leading-tight group-hover:text-ember transition-colors">What a small business website actually costs in 2026.</h2>
+            <p class="text-text-1 leading-relaxed">Honest numbers for the three real options: drag-and-drop templates, custom builds from a developer, and the in-between models like Motley Tech. Hidden costs, lock-in traps, and what you actually get for each.</p>
+            <span class="text-sm text-ember mt-1">Read the post &rarr;</span>
+          </a>
+        </li>
+
+      </ul>
+
+      <div class="mt-12 text-sm text-text-3">
+        More posts coming. <a href="../contact.html" class="text-ember hover:text-ember-hot transition-colors">Got a question you'd like answered?</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="py-5 border-t border-line">
+    <div class="max-w-6xl mx-auto px-5 sm:px-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+      <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
+        <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
+        <span class="text-text-3">·</span>
+        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <span class="text-text-3 hidden sm:inline">·</span>
+        <span class="hidden sm:inline">Milledgeville, GA</span>
+      </div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0</div>
+    </div>
+  </footer>
+
+</body>
+</html>

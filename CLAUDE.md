@@ -68,7 +68,7 @@ motley-tech/
 └── CLAUDE.md                          ← this file
 ```
 
-**Total: 22 HTML files** (4 main + 4/5/5/4 demo pages). Each file is standalone HTML loading Tailwind + Alpine from CDN.
+**Total: 24 HTML files** (4 main + 4/5/5/4 demo pages + journal index + 1 journal post). Each file is standalone HTML loading Tailwind + Alpine from CDN.
 
 **Landing narrative flow (locked)**: hero → **why it matters** (stats + before/after) → demo gallery → scarcity. Problem-awareness BEFORE product-proof. "Why it matters" is the single biggest selling-point section — it lives on the home page, inline, not on its own page. Don't split it out again.
 
@@ -394,9 +394,10 @@ When Grant lands an actual Milledgeville business:
 Reality: site went live 2026-04-24, only 4 days old, zero inbound links, brand term competes with an unrelated band. Indexing takes 2–8 weeks for new domains. Below is the prioritized punch list.
 
 **Today (under 1 hour, biggest impact):**
-1. **Google Search Console** — verify domain via Cloudflare DNS TXT record, submit `sitemap.xml`, request indexing on key pages. Single biggest missing step. Without it, flying blind. *Grant-side, then Claude can paste the verification meta tag if needed.*
-2. **Bing Webmaster Tools** — same drill. Bing indexes faster + powers ChatGPT search results. AEO-critical.
+1. **Google Search Console** — verify domain via Cloudflare DNS TXT record, submit `sitemap.xml`, request indexing on key pages. Single biggest missing step. Without it, flying blind. *Verification meta tag placeholder is already in `index.html` `<head>` — paste GSC code into the commented `<meta name="google-site-verification">` line and uncomment.*
+2. **Bing Webmaster Tools** — same drill. Bing indexes faster + powers ChatGPT search results. *Placeholder also in `index.html` for `<meta name="msvalidate.01">`.*
 3. **Google Business Profile** — claim "Motley Tech, Milledgeville GA" as service-area business (no storefront required). Free, 10 min. Gets a knowledge panel on branded searches and feeds Maps + AI answers.
+4. **Convert `assets/brand/og-image.svg` → `og-image.png`** — Facebook, iMessage, and LinkedIn don't reliably render SVG OG images. Open the SVG in Figma/CloudConvert/squoosh.app, export at 1200x630 PNG, drop it next to the SVG, then find/replace `og-image.svg` → `og-image.png` across all HTML files (use VS Code or `find . -name "*.html" | xargs sed -i 's|og-image.svg|og-image.png|g'`).
 
 **This week:**
 4. **Backlinks from real sources** — Milledgeville/Baldwin County Chamber of Commerce member directory, LinkedIn company page, GitHub profile README link, local FB business groups, footer credit links once a real client launches.
