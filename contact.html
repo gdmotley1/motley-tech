@@ -481,7 +481,7 @@
             `Phone: ${a.phone || '(not provided)'}`,
             `Suggested domain: ${this.previewDomain}`,
             '',
-            ', sent from motley-tech.com/contact',
+            'Sent from motley-tech.com/contact',
           ];
           return lines.join('\n');
         },
@@ -497,12 +497,12 @@
           const payload = {
             name: this.answers.name,
             email: this.answers.email,
-            phone: this.answers.phone,
-            businessName: this.answers.businessName,
-            type: this.businessTypeLabel,
-            about: this.answers.about,
-            suggestedDomain: this.previewDomain,
-            _subject: `New build request, ${this.answers.businessName || this.answers.name}`,
+            'Phone': this.answers.phone || '(not provided)',
+            'Business name': this.answers.businessName,
+            'Business type': this.businessTypeLabel,
+            'About': this.answers.about,
+            'Suggested domain': this.previewDomain,
+            _subject: `[motley-tech.com] ${this.answers.businessName || this.answers.name} · ${this.businessTypeLabel}`,
           };
           if (FORMSPREE_ENDPOINT) {
             try {
