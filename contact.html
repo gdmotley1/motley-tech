@@ -437,6 +437,25 @@
         submitError: '',
         answers: { name: '', email: '', businessName: '', businessTypeId: 'restaurant', about: '', phone: '' },
 
+        // Pre-fill from URL params. Used for personalized outreach (handwritten letter QR codes,
+        // referral links). Example: motley-tech.com/contact.html?for=mama-lous-kitchen&type=restaurant
+        // pre-fills "Mama Lou's Kitchen" + selects Restaurant/Café/Bar.
+        init() {
+          try {
+            const p = new URLSearchParams(window.location.search);
+            const forName = p.get('for');
+            if (forName) {
+              this.answers.businessName = forName
+                .replace(/-/g, ' ')
+                .replace(/\b\w/g, c => c.toUpperCase())
+                .replace(/\bAnd\b/g, 'and').replace(/\bOf\b/g, 'of').replace(/\bThe\b/g, 'the')
+                .replace(/^./, c => c.toUpperCase());
+            }
+            const t = p.get('type');
+            if (t && this.businessTypes.some(b => b.id === t)) this.answers.businessTypeId = t;
+          } catch (e) { /* never block the form on a parsing edge case */ }
+        },
+
         businessTypes: [
           { id: 'restaurant',    label: 'Restaurant / Café / Bar' },
           { id: 'retail',        label: 'Retail / Shop / Boutique' },

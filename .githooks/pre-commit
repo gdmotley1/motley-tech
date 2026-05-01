@@ -1,0 +1,4 @@
+#!/bin/sh
+# Motley Tech SEO safety net. Blocks broken JSON-LD or accidental noindex,
+# auto-bumps freshness stamps. Wired in via:  git config core.hooksPath .githooks
+python "$(git rev-parse --show-toplevel)/scripts/seo_precommit.py" || exit $?
