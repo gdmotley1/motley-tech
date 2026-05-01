@@ -179,7 +179,7 @@
       const sections = document.querySelectorAll('section, .auto-reveal');
       sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
       // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
-      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+      document.querySelectorAll('section:not(.no-reveal) [class*="grid-cols"], section:not(.no-reveal) .grid').forEach(grid => {
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');

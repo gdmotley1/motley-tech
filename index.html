@@ -37,7 +37,13 @@
         "image": "https://motley-tech.com/assets/brand/og-image.png",
         "logo": "https://motley-tech.com/assets/brand/wordmark-dark.svg",
         "founder": {"@type": "Person", "@id": "#grant-motley"},
-        "areaServed": {"@type": "Country", "name": "United States"},
+        "address": {"@type": "PostalAddress", "addressLocality": "Milledgeville", "addressRegion": "GA", "postalCode": "31061", "addressCountry": "US"},
+        "geo": {"@type": "GeoCoordinates", "latitude": 33.0801, "longitude": -83.2321},
+        "areaServed": [
+          {"@type": "City", "name": "Milledgeville, GA"},
+          {"@type": "AdministrativeArea", "name": "Baldwin County, GA"},
+          {"@type": "Country", "name": "United States"}
+        ],
         "priceRange": "Free trial build · from $49/mo",
         "serviceType": ["Web design", "Web development", "Website hosting", "SEO optimization"],
         "knowsAbout": ["Small business websites", "Responsive web design", "SEO", "AI-discoverable websites", "Schema.org structured data", "Web hosting", "Custom web development"]
@@ -829,7 +835,7 @@
         <span class="text-text-3 hidden sm:inline">·</span>
         <span class="hidden sm:inline">Milledgeville, GA</span>
       </div>
-      <div class="mono text-text-3">© 2026 Motley Tech · v2.0 · <time datetime="2026-04-30">Updated Apr 30, 2026</time></div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0 · <time datetime="2026-05-01">Updated May 1, 2026</time></div>
     </div>
   </footer>
 
@@ -991,7 +997,7 @@
       const sections = document.querySelectorAll('section, .auto-reveal');
       sections.forEach(el => { if (!el.classList.contains('no-reveal')) el.classList.add('reveal'); });
       // Stagger: apply reveal to direct children of every grid inside a section (at most 8 staggered)
-      document.querySelectorAll('section [class*="grid-cols"], section .grid').forEach(grid => {
+      document.querySelectorAll('section:not(.no-reveal) [class*="grid-cols"], section:not(.no-reveal) .grid').forEach(grid => {
         [...grid.children].forEach((child, i) => {
           if (!child.classList.contains('no-reveal') && !child.classList.contains('reveal')) {
             child.classList.add('reveal');
