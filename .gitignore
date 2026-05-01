@@ -11,3 +11,6 @@ leads/
 # Prospect pitch sites — Grant decides per-prospect when to publish.
 # Remove this line and re-stage the specific subfolder when ready.
 prospects/
+
+# Private financial records — never publish
+finance/
