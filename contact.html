@@ -438,12 +438,16 @@
         answers: { name: '', email: '', businessName: '', businessTypeId: 'restaurant', about: '', phone: '' },
 
         businessTypes: [
-          { id: 'restaurant', label: 'Restaurant / Café' },
-          { id: 'retail',     label: 'Retail / Shop' },
-          { id: 'salon',      label: 'Salon / Barber' },
-          { id: 'trades',     label: 'Trades (HVAC, plumbing, etc.)' },
-          { id: 'service',    label: 'Service pro (lawn, cleaning, etc.)' },
-          { id: 'other',      label: 'Something else' },
+          { id: 'restaurant',    label: 'Restaurant / Café / Bar' },
+          { id: 'retail',        label: 'Retail / Shop / Boutique' },
+          { id: 'salon',         label: 'Salon / Barber / Spa' },
+          { id: 'health',        label: 'Health / Medical / Wellness' },
+          { id: 'trades',        label: 'Trades (HVAC, plumbing, electrical)' },
+          { id: 'home_services', label: 'Home services (lawn, cleaning, pest)' },
+          { id: 'auto',          label: 'Auto / Mechanical' },
+          { id: 'professional',  label: 'Professional services (legal, accounting, real estate)' },
+          { id: 'events',        label: 'Events / Hospitality / Lodging' },
+          { id: 'other',         label: 'Something else' },
         ],
 
         get businessTypeLabel() {
@@ -456,12 +460,16 @@
         },
         get tagline() {
           const map = {
-            restaurant: 'Southern hospitality, fresh daily.',
-            retail:     'Curated in Milledgeville, made with care.',
-            salon:      'Where good hair days live.',
-            trades:     'Show up on time. Do it right.',
-            service:    'Neighbors you can count on.',
-            other:      'A beautiful site for a business that matters.',
+            restaurant:    'Southern hospitality, fresh daily.',
+            retail:        'Curated in Milledgeville, made with care.',
+            salon:         'Where good hair days live.',
+            health:        'Show up better. Feel better.',
+            trades:        'Show up on time. Do it right.',
+            home_services: 'Neighbors you can count on.',
+            auto:          'Honest work. Fair price.',
+            professional:  'Quiet expertise. No fluff.',
+            events:        'The day, done right.',
+            other:         'A beautiful site for a business that matters.',
           };
           return map[this.answers.businessTypeId] || 'A beautiful site for a business that matters.';
         },
