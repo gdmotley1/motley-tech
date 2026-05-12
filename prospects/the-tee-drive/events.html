@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Events · The Tee Drive</title>
+  <meta name="description" content="Private parties, corporate nights, tournaments, holiday buyouts. Three bays, full bar, one host running your event in downtown Milledgeville.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-0': '#0A0F1A', 'bg-1': '#0F172A', 'bg-2': '#1E293B', 'bg-3': '#334155',
+            'text-0': '#F8FAFC', 'text-1': '#CBD5E1', 'text-2': '#94A3B8', 'text-3': '#64748B',
+            'line': '#1E293B', 'line-strong': '#334155',
+            'green-base': '#16A34A', 'green-hot': '#22C55E', 'green-glow': '#4ADE80',
+          },
+          fontFamily: {
+            'display': ['DM Serif Display', 'Georgia', 'serif'],
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
+    .hairline { border-color: #1E293B; }
+    .hairline-strong { border-color: #334155; }
+    .num { font-variant-numeric: tabular-nums; }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
+    .text-balance { text-wrap: balance; }
+
+    .pick-card { transition: all 0.18s ease; cursor: pointer; }
+    .pick-card:hover { border-color: #334155; background: #0F172A; }
+    .pick-card.selected { border-color: #22C55E; background: rgba(34, 197, 94, 0.06); }
+    .pick-card.selected .pick-tag { color: #22C55E; }
+  </style>
+</head>
+<body class="bg-bg-0">
+
+  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html" class="text-text-1 hover:text-green-hot transition">Home</a>
+        <a href="simulators.html" class="text-text-1 hover:text-green-hot transition">Simulators</a>
+        <a href="membership.html" class="text-text-1 hover:text-green-hot transition">Membership</a>
+        <a href="events.html" class="text-green-hot">Events</a>
+        <a href="about.html" class="text-text-1 hover:text-green-hot transition">About</a>
+      </nav>
+      <a href="#plan" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Plan an event</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative no-reveal overflow-hidden border-b hairline">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute -bottom-32 -right-32 w-[500px] h-[500px] rounded-full bg-green-base/15 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
+        <span class="tag-mono text-green-hot text-[10px]">PRIVATE EVENTS</span>
+      </div>
+      <h1 class="display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
+        Your party. <span class="text-green-hot">Our bays.</span>
+      </h1>
+      <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-text-1 leading-relaxed">
+        Birthdays, bachelor parties, corporate nights, league outings, holiday gatherings, fundraisers. Three bays, full bar, one host running the show start to finish.
+      </p>
+      <a href="#plan" class="mt-7 sm:mt-9 inline-block bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-3 sm:px-6 sm:py-3.5 transition uppercase tracking-wide">Plan your event ↓</a>
+    </div>
+  </section>
+
+  <!-- WHAT WE HOST -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 01 ]</span>
+        <span class="tag-mono text-text-3">WHAT WE HOST</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Six formats. One <span class="text-green-hot">upgraded</span> night.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-px bg-line mt-16 border hairline">
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">01</div>
+          <div class="display text-3xl text-text-0 mb-4">BIRTHDAYS</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Reserved bay, custom playlist, scoring on screen, cake in the back. Bring the kids early, or the adults late.</div>
+          <div class="mt-6 mono text-xs text-green-hot">FROM $35 / HEAD</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">02</div>
+          <div class="display text-3xl text-text-0 mb-4">BACHELOR / BACHELORETTE</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">One bay for a tight crew, two for a fuller party, all three for a takeover. Custom drink packages if you want them.</div>
+          <div class="mt-6 mono text-xs text-green-hot">FROM $55 / HEAD</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">03</div>
+          <div class="display text-3xl text-text-0 mb-4">CORPORATE NIGHTS</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Team off-sites, client dinners, year-end blowouts. Three formats: stroke, scramble, or skills competition. We score it, you take credit.</div>
+          <div class="mt-6 mono text-xs text-green-hot">FROM $65 / HEAD</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">04</div>
+          <div class="display text-3xl text-text-0 mb-4">HOLIDAY PARTIES</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Full-floor company buyouts in November and December. Up to 30 people, fully catered, bar credit included.</div>
+          <div class="mt-6 mono text-xs text-green-hot">FROM $1,200 FLAT</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">05</div>
+          <div class="display text-3xl text-text-0 mb-4">TOURNAMENTS</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Run a bracket across all three bays. Sim-mode auto-scoring, live leaderboard on the big screens, trophy at the end.</div>
+          <div class="mt-6 mono text-xs text-green-hot">FROM $80 / HEAD</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">06</div>
+          <div class="display text-3xl text-text-0 mb-4">FUNDRAISERS</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Local cause, school team, church group, GMC alumni. We donate two hours of bay time per registered fundraiser per year.</div>
+          <div class="mt-6 mono text-xs text-green-hot">2 HRS DONATED / YR</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 02 ]</span>
+        <span class="tag-mono text-text-3">PACKAGES</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Priced flat. <span class="text-green-hot">No surprises.</span>
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-16 items-stretch">
+        <div class="border hairline bg-bg-1 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">PACKAGE A</div>
+          <div class="display text-3xl text-text-0 mb-2">TWO-HOUR</div>
+          <div class="text-text-2 text-sm mb-8">Small crew. In and out.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-5xl sm:text-6xl text-text-0 num">$35</span>
+            <span class="mono text-sm text-text-2">/ HEAD</span>
+          </div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Capacity</div>
+          <div class="text-text-1 text-sm mb-6">1 bay · up to 6 players</div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>2 hours of reserved bay time</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Dedicated host</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Custom playlist via the screen</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Scoring projected for the crew</span></li>
+          </ul>
+        </div>
+
+        <div class="border hairline bg-bg-1 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">PACKAGE B</div>
+          <div class="display text-3xl text-text-0 mb-2">FOUR-HOUR</div>
+          <div class="text-text-2 text-sm mb-8">Real party energy.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-5xl sm:text-6xl text-text-0 num">$55</span>
+            <span class="mono text-sm text-text-2">/ HEAD</span>
+          </div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Capacity</div>
+          <div class="text-text-1 text-sm mb-6">2 bays · up to 12 players</div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>4 hours of reserved bay time</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Dedicated host</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Appetizer spread (chef's choice)</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Live leaderboard across both bays</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Custom playlist control</span></li>
+          </ul>
+        </div>
+
+        <div class="border border-green-base/40 bg-bg-1 p-8 flex flex-col h-full glow relative">
+          <div class="absolute -top-3 left-8 bg-green-hot text-bg-0 text-[10px] font-bold px-2 py-1 uppercase tracking-widest mono">Best for groups</div>
+          <div class="mono text-xs text-green-hot uppercase tracking-widest mb-3">PACKAGE C</div>
+          <div class="display text-3xl text-text-0 mb-2">FULL BUYOUT</div>
+          <div class="text-text-2 text-sm mb-8">Own the whole place.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-4xl sm:text-5xl lg:text-6xl text-green-hot num">$1,200</span>
+            <span class="mono text-sm text-text-2">FLAT</span>
+          </div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Capacity</div>
+          <div class="text-text-1 text-sm mb-6">All 3 bays · up to 30 players</div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>4 hours, exclusive use of the floor</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Dedicated host + bar staff</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Appetizer spread + bar tab credit</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Custom event branding on screens</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Tournament bracket + trophy</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>BYO playlist or DJ hookup</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <p class="mt-10 mono text-xs text-text-3 max-w-3xl">
+        Add-ons available on all packages: custom shirts, photographer, cake/dessert, extended bar tab, group lesson with a local pro. Ask in the form.
+      </p>
+    </div>
+  </section>
+
+  <!-- PLAN YOUR EVENT FORM -->
+  <section id="plan" class="border-b hairline py-16 sm:py-20 lg:py-28" x-data="eventPlanner()">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 03 ]</span>
+        <span class="tag-mono text-text-3">PLAN YOUR EVENT</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Tell us what. We'll handle the <span class="text-green-hot">rest</span>.
+      </h2>
+
+      <!-- progress bar -->
+      <div class="mt-16 mb-10">
+        <div class="flex items-baseline justify-between mb-3">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">Step <span x-text="step"></span> of 4</div>
+          <div class="mono text-xs text-green-hot" x-text="Math.round((step / 4) * 100) + '%'"></div>
+        </div>
+        <div class="h-1 bg-bg-2 overflow-hidden">
+          <div class="h-full bg-green-hot transition-all duration-500" :style="`width: ${(step / 4) * 100}%`"></div>
+        </div>
+      </div>
+
+      <div class="border hairline-strong bg-bg-1 p-8 lg:p-12 min-h-[440px]">
+
+        <!-- STEP 1: TYPE -->
+        <div x-show="step === 1" x-cloak>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Question 01</div>
+          <div class="display text-3xl lg:text-4xl text-text-0 mb-8">What kind of event?</div>
+          <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+            <template x-for="opt in eventTypes" :key="opt">
+              <div class="pick-card border hairline-strong p-6" :class="{ selected: type === opt }" @click="type = opt">
+                <div class="display text-xl text-text-0 mb-1" x-text="opt"></div>
+                <div class="mono text-xs text-text-3 pick-tag">SELECT</div>
+              </div>
+            </template>
+          </div>
+        </div>
+
+        <!-- STEP 2: COUNT + DATE -->
+        <div x-show="step === 2" x-cloak>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Question 02</div>
+          <div class="display text-3xl lg:text-4xl text-text-0 mb-8">How many people, and when?</div>
+          <div class="grid md:grid-cols-2 gap-8">
+            <div>
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Head count</label>
+              <input type="number" min="1" max="60" x-model.number="headCount" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-2xl display text-text-0 focus:border-green-hot focus:outline-none">
+              <div class="mono text-xs text-text-3 mt-2">Up to 30 for full buyout, up to 12 for two bays, up to 6 for one.</div>
+            </div>
+            <div>
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Ideal date</label>
+              <input type="date" x-model="date" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-lg text-text-0 focus:border-green-hot focus:outline-none mono">
+              <div class="mono text-xs text-text-3 mt-2">Or "anytime in the next two weeks". We'll match you to an open slot.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 3: BUDGET -->
+        <div x-show="step === 3" x-cloak>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Question 03</div>
+          <div class="display text-3xl lg:text-4xl text-text-0 mb-8">Pick a package starting point.</div>
+          <div class="grid md:grid-cols-3 gap-3">
+            <div class="pick-card border hairline-strong p-6" :class="{ selected: budget === 'casual' }" @click="budget = 'casual'">
+              <div class="mono text-xs text-text-3 pick-tag mb-2">TIER A</div>
+              <div class="display text-2xl text-text-0 mb-1">CASUAL</div>
+              <div class="mono text-xs text-text-2 mb-3">2 hours · 1 bay</div>
+              <div class="text-sm text-text-1">Tight crew. ~$35/head.</div>
+            </div>
+            <div class="pick-card border hairline-strong p-6" :class="{ selected: budget === 'party' }" @click="budget = 'party'">
+              <div class="mono text-xs text-text-3 pick-tag mb-2">TIER B</div>
+              <div class="display text-2xl text-text-0 mb-1">PARTY</div>
+              <div class="mono text-xs text-text-2 mb-3">4 hours · 2 bays</div>
+              <div class="text-sm text-text-1">Real energy. ~$55/head.</div>
+            </div>
+            <div class="pick-card border hairline-strong p-6" :class="{ selected: budget === 'buyout' }" @click="budget = 'buyout'">
+              <div class="mono text-xs text-text-3 pick-tag mb-2">TIER C</div>
+              <div class="display text-2xl text-text-0 mb-1">BUYOUT</div>
+              <div class="mono text-xs text-text-2 mb-3">4 hours · 3 bays</div>
+              <div class="text-sm text-text-1">Whole floor. $1,200 flat.</div>
+            </div>
+          </div>
+          <div class="mono text-xs text-text-3 mt-6">Not locked in. We'll talk options when we follow up.</div>
+        </div>
+
+        <!-- STEP 4: CONTACT -->
+        <div x-show="step === 4" x-cloak>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Question 04</div>
+          <div class="display text-3xl lg:text-4xl text-text-0 mb-8">Where do we send the details?</div>
+          <div class="grid md:grid-cols-2 gap-6">
+            <div>
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Your name</label>
+              <input type="text" x-model="name" placeholder="" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-lg text-text-0 focus:border-green-hot focus:outline-none">
+            </div>
+            <div>
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Phone</label>
+              <input type="tel" x-model="phone" placeholder="" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-lg text-text-0 focus:border-green-hot focus:outline-none mono">
+            </div>
+            <div class="md:col-span-2">
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Email</label>
+              <input type="email" x-model="email" placeholder="" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-lg text-text-0 focus:border-green-hot focus:outline-none mono">
+            </div>
+            <div class="md:col-span-2">
+              <label class="mono text-xs text-text-3 uppercase tracking-widest block mb-3">Anything else? (optional)</label>
+              <textarea x-model="notes" rows="3" class="w-full bg-bg-0 border hairline-strong px-5 py-4 text-text-0 focus:border-green-hot focus:outline-none resize-none"></textarea>
+            </div>
+          </div>
+        </div>
+
+        <!-- STEP 5: SENT -->
+        <div x-show="step === 5" x-cloak class="text-center py-12">
+          <div class="mono text-xs text-green-hot uppercase tracking-widest mb-4">Inquiry sent</div>
+          <div class="display text-5xl lg:text-6xl text-text-0 mb-6">SEE YOU SOON.</div>
+          <p class="text-text-1 max-w-md mx-auto">
+            We'll be in touch within 24 hours at <span class="mono text-green-hot" x-text="email"></span> to lock in the date and the details.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- nav buttons -->
+      <div class="mt-8 flex items-center justify-between" x-show="step <= 4">
+        <button @click="step > 1 ? step-- : null" :class="step === 1 ? 'invisible' : ''" class="text-text-2 hover:text-text-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">← Back</button>
+        <button @click="next()" :disabled="!canAdvance" :class="canAdvance ? 'bg-green-base hover:bg-green-hot text-bg-0' : 'bg-bg-2 text-text-3 cursor-not-allowed'" class="font-semibold text-sm px-8 py-3.5 transition uppercase tracking-wide">
+          <span x-text="step === 4 ? 'Send inquiry →' : 'Next →'"></span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t hairline py-16 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4">
+            <span class="block w-1 h-7 bg-green-base"></span>
+            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          </a>
+          <div class="text-sm text-text-2 max-w-sm leading-relaxed">
+            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
+            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2 mono">
+            <div>127 S Wayne St</div>
+            <div>Milledgeville, GA 31061</div>
+            <div>(478) 000-0000</div>
+            <div class="pt-3">Sun-Thu  11a → 11p</div>
+            <div>Fri-Sat   11a → 1a</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t hairline flex flex-wrap items-center justify-between gap-4">
+        <div class="mono text-xs text-text-3">© 2026 THE TEE DRIVE · MILLEDGEVILLE, GA</div>
+        <div class="flex items-center gap-6 mono text-xs text-text-3">
+          <a href="#" class="hover:text-green-hot transition">INSTAGRAM</a>
+          <a href="#" class="hover:text-green-hot transition">FACEBOOK</a>
+          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function eventPlanner() {
+      return {
+        step: 1,
+        type: '',
+        eventTypes: ['Birthday', 'Bachelor / bachelorette', 'Corporate night', 'Holiday party', 'Tournament', 'Fundraiser'],
+        headCount: 12,
+        date: '',
+        budget: '',
+        name: '',
+        email: '',
+        phone: '',
+        notes: '',
+        get canAdvance() {
+          if (this.step === 1) return !!this.type;
+          if (this.step === 2) return this.headCount > 0 && !!this.date;
+          if (this.step === 3) return !!this.budget;
+          if (this.step === 4) return !!this.name && !!this.email;
+          return true;
+        },
+        next() {
+          if (!this.canAdvance) return;
+          if (this.step === 4) {
+            this.submit();
+          } else {
+            this.step++;
+          }
+        },
+        submit() {
+          const subject = encodeURIComponent(`Event inquiry: ${this.type} · ${this.headCount} people`);
+          const body = encodeURIComponent(
+            `Event type: ${this.type}\n` +
+            `Head count: ${this.headCount}\n` +
+            `Ideal date: ${this.date}\n` +
+            `Package interest: ${this.budget}\n\n` +
+            `Name: ${this.name}\n` +
+            `Email: ${this.email}\n` +
+            `Phone: ${this.phone}\n\n` +
+            `Notes:\n${this.notes || '(none)'}`
+          );
+          window.location.href = `mailto:hello@theteedrive.com?subject=${subject}&body=${body}`;
+          this.step = 5;
+        }
+      };
+    }
+
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const sections = document.querySelectorAll('section:not(.no-reveal)');
+      sections.forEach(s => {
+        s.classList.add('reveal');
+        const kids = s.querySelectorAll('.grid > *, [class*="grid-cols"] > *');
+        kids.forEach((k, i) => {
+          k.classList.add('reveal');
+          k.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+        });
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>

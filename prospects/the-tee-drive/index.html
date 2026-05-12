@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>The Tee Drive · Downtown Milledgeville's Simulator Bar</title>
+  <meta name="description" content="Three tour-grade simulator bays. 300+ courses. Cold bar. Memberships start at $59. 127 S Wayne St, Milledgeville GA.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-0': '#0A0F1A',
+            'bg-1': '#0F172A',
+            'bg-2': '#1E293B',
+            'bg-3': '#334155',
+            'text-0': '#F8FAFC',
+            'text-1': '#CBD5E1',
+            'text-2': '#94A3B8',
+            'text-3': '#64748B',
+            'line': '#1E293B',
+            'line-strong': '#334155',
+            'green-base': '#16A34A',
+            'green-hot': '#22C55E',
+            'green-glow': '#4ADE80',
+          },
+          fontFamily: {
+            'display': ['DM Serif Display', 'Georgia', 'serif'],
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
+    .hairline { border-color: #1E293B; }
+    .hairline-strong { border-color: #334155; }
+    .num { font-variant-numeric: tabular-nums; }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
+    .scroll-marquee { animation: scroll-marquee 60s linear infinite; }
+    @keyframes scroll-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .text-balance { text-wrap: balance; }
+
+    /* hero range view — Tron-style fly-down-the-fairway */
+    .hero-arc {
+      stroke-dasharray: 1400;
+      stroke-dashoffset: 1400;
+      animation: heroArcDraw 6s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(34,197,94,0.65));
+    }
+    @keyframes heroArcDraw {
+      0%   { stroke-dashoffset: 1400; opacity: 0.2; }
+      12%  { opacity: 1; }
+      55%  { stroke-dashoffset: 0; opacity: 1; }
+      82%  { stroke-dashoffset: 0; opacity: 1; }
+      100% { stroke-dashoffset: -1400; opacity: 0; }
+    }
+    .hero-target { opacity: 0; animation: heroTargetShow 6s ease-in-out infinite; }
+    @keyframes heroTargetShow {
+      0%, 50% { opacity: 0; }
+      62%     { opacity: 1; }
+      82%     { opacity: 1; }
+      100%    { opacity: 0; }
+    }
+    .hero-ball { animation: heroBallGlow 6s ease-in-out infinite; }
+    @keyframes heroBallGlow {
+      0%, 100% { filter: drop-shadow(0 0 4px rgba(248,250,252,0.4)); }
+      50%      { filter: drop-shadow(0 0 12px rgba(248,250,252,0.9)); }
+    }
+
+    /* trees fly toward camera (Tron light-bike trail vibe) */
+    .tree, .water-hazard, .dist-mark {
+      transform-box: view-box;
+      transform-origin: 0 0;
+      opacity: 0;
+    }
+    .tree-l { animation: treeFlyL 5.5s linear infinite; }
+    .tree-r { animation: treeFlyR 5.5s linear infinite; }
+    @keyframes treeFlyL {
+      0%   { transform: translate(170px, 232px) scale(0.18); opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { transform: translate(10px, 540px) scale(2.6); opacity: 0; }
+    }
+    @keyframes treeFlyR {
+      0%   { transform: translate(230px, 232px) scale(0.18); opacity: 0; }
+      8%   { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { transform: translate(390px, 540px) scale(2.6); opacity: 0; }
+    }
+
+    /* water hazard slides past at mid-range */
+    .water-hazard {
+      animation: waterFly 7s linear infinite;
+      animation-delay: -3s;
+    }
+    @keyframes waterFly {
+      0%   { transform: translate(180px, 244px) scale(0.5); opacity: 0; }
+      18%  { opacity: 1; }
+      80%  { opacity: 1; }
+      100% { transform: translate(60px, 500px) scale(3.2); opacity: 0; }
+    }
+
+    /* distance yardage markers float by */
+    .dist-mark { animation: markFly 5.5s linear infinite; }
+    @keyframes markFly {
+      0%   { transform: translate(200px, 238px) scale(0.5); opacity: 0; }
+      18%  { opacity: 1; }
+      75%  { opacity: 1; }
+      100% { transform: translate(200px, 475px) scale(1.7); opacity: 0; }
+    }
+
+    /* horizon ambient pulse */
+    .horizon-glow { animation: horizonPulse 4s ease-in-out infinite; }
+    @keyframes horizonPulse {
+      0%, 100% { opacity: 0.10; }
+      50%      { opacity: 0.22; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-arc, .hero-target, .hero-ball,
+      .tree, .water-hazard, .dist-mark, .horizon-glow {
+        animation: none;
+        stroke-dashoffset: 0;
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+<body class="bg-bg-0">
+
+  <!-- NAV -->
+  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html" class="text-green-hot">Home</a>
+        <a href="simulators.html" class="text-text-1 hover:text-green-hot transition">Simulators</a>
+        <a href="membership.html" class="text-text-1 hover:text-green-hot transition">Membership</a>
+        <a href="events.html" class="text-text-1 hover:text-green-hot transition">Events</a>
+        <a href="about.html" class="text-text-1 hover:text-green-hot transition">About</a>
+      </nav>
+      <a href="#book" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Book a Bay</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative no-reveal overflow-hidden border-b hairline">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute top-1/2 -right-32 w-[500px] h-[500px] rounded-full bg-green-base/15 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="max-w-xl mx-auto lg:mx-0 lg:max-w-none">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
+            <span class="tag-mono text-green-hot text-[10px]">NOW OPEN · DOWNTOWN MILLY</span>
+          </div>
+          <h1 class="display text-[2rem] sm:text-5xl md:text-6xl lg:text-[3.5rem] xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
+            The range tells you where the ball went. <span class="text-green-hot">We tell you why.</span>
+          </h1>
+          <p class="mt-6 max-w-md text-base sm:text-lg text-text-1 leading-relaxed">
+            Three bays. Three hundred courses. Open till midnight.
+          </p>
+          <div class="mt-7 flex flex-wrap items-center gap-3">
+            <a href="#book" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-3 sm:px-6 sm:py-3.5 transition uppercase tracking-wide">Book a Bay</a>
+            <a href="membership.html" class="text-text-0 hover:text-green-hot font-semibold text-sm px-5 py-3 sm:px-6 sm:py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">See membership →</a>
+          </div>
+        </div>
+        <div class="max-w-md mx-auto lg:mx-0 lg:max-w-none w-full">
+          <div class="relative aspect-[4/5] sm:aspect-square lg:aspect-[4/5] border hairline-strong overflow-hidden bg-bg-1">
+            <!-- atmospheric base gradient -->
+            <div class="absolute inset-0" style="background: radial-gradient(ellipse at 50% 44%, rgba(34,197,94,0.18) 0%, transparent 45%), radial-gradient(circle at 50% 100%, rgba(34,197,94,0.05) 0%, transparent 55%), linear-gradient(180deg, #050810 0%, #0A0F1A 40%, #0E1626 100%);"></div>
+
+            <!-- Tron-style range view SVG -->
+            <svg viewBox="0 0 400 500" class="absolute inset-0 w-full h-full pointer-events-none" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <filter id="neon" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="1.4"/>
+                  <feMerge>
+                    <feMergeNode/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              <!-- horizon glow -->
+              <ellipse cx="200" cy="220" rx="240" ry="32" fill="#22C55E" class="horizon-glow"/>
+
+              <!-- horizon line -->
+              <line x1="0" y1="220" x2="400" y2="220" stroke="#22C55E" stroke-width="0.8" opacity="0.55" filter="url(#neon)"/>
+
+              <!-- perspective grid: horizontal lines receding -->
+              <g stroke="#22C55E" stroke-width="0.6" filter="url(#neon)">
+                <line x1="-30" y1="250" x2="430" y2="250" opacity="0.14"/>
+                <line x1="-80" y1="285" x2="480" y2="285" opacity="0.22"/>
+                <line x1="-150" y1="325" x2="550" y2="325" opacity="0.32"/>
+                <line x1="-230" y1="370" x2="630" y2="370" opacity="0.42"/>
+                <line x1="-320" y1="420" x2="720" y2="420" opacity="0.55"/>
+                <line x1="-430" y1="475" x2="830" y2="475" opacity="0.68"/>
+              </g>
+
+              <!-- perspective grid: convergent lines to vanishing point -->
+              <g stroke="#22C55E" stroke-width="0.5" opacity="0.32" filter="url(#neon)">
+                <line x1="200" y1="220" x2="-200" y2="500"/>
+                <line x1="200" y1="220" x2="-50" y2="500"/>
+                <line x1="200" y1="220" x2="70" y2="500"/>
+                <line x1="200" y1="220" x2="160" y2="500"/>
+                <line x1="200" y1="220" x2="240" y2="500"/>
+                <line x1="200" y1="220" x2="330" y2="500"/>
+                <line x1="200" y1="220" x2="450" y2="500"/>
+                <line x1="200" y1="220" x2="600" y2="500"/>
+              </g>
+
+              <!-- TREES flying toward camera (left lane) -->
+              <g class="tree tree-l" style="animation-delay: 0s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-l" style="animation-delay: -1.4s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-l" style="animation-delay: -2.8s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-l" style="animation-delay: -4.2s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+
+              <!-- TREES flying toward camera (right lane) -->
+              <g class="tree tree-r" style="animation-delay: -0.7s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-r" style="animation-delay: -2.1s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-r" style="animation-delay: -3.5s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+              <g class="tree tree-r" style="animation-delay: -4.9s;">
+                <polygon points="0,0 -10,-22 10,-22" fill="none" stroke="#22C55E" stroke-width="1.5" filter="url(#neon)"/>
+                <line x1="0" y1="0" x2="0" y2="3" stroke="#22C55E" stroke-width="1" opacity="0.6"/>
+              </g>
+
+              <!-- WATER HAZARD glides past at mid-range -->
+              <g class="water-hazard">
+                <ellipse cx="0" cy="0" rx="35" ry="7" fill="#22C55E" fill-opacity="0.14" stroke="#22C55E" stroke-width="1" filter="url(#neon)"/>
+                <line x1="-25" y1="-3" x2="25" y2="-3" stroke="#22C55E" stroke-width="0.6" opacity="0.5"/>
+                <line x1="-20" y1="0" x2="20" y2="0" stroke="#22C55E" stroke-width="0.6" opacity="0.35"/>
+              </g>
+
+              <!-- DISTANCE MARKERS -->
+              <g class="dist-mark" style="animation-delay: 0s;">
+                <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="9" fill="#22C55E" text-anchor="middle" filter="url(#neon)">150 YDS</text>
+              </g>
+              <g class="dist-mark" style="animation-delay: -1.8s;">
+                <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="9" fill="#22C55E" text-anchor="middle" filter="url(#neon)">200 YDS</text>
+              </g>
+              <g class="dist-mark" style="animation-delay: -3.6s;">
+                <text x="0" y="0" font-family="JetBrains Mono, monospace" font-size="9" fill="#22C55E" text-anchor="middle" filter="url(#neon)">250 YDS</text>
+              </g>
+
+              <!-- LANDING TARGET on horizon (under the arc) -->
+              <g class="hero-target">
+                <circle cx="200" cy="225" r="22" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.3"/>
+                <circle cx="200" cy="225" r="12" fill="none" stroke="#22C55E" stroke-width="1.5" opacity="0.6"/>
+                <circle cx="200" cy="225" r="4" fill="#22C55E"/>
+              </g>
+
+              <!-- TRAJECTORY ARC — ball flies down the fairway, peaks high, lands on target -->
+              <path d="M200,488 Q 290,-180 200,225" stroke="#22C55E" stroke-width="2.5" fill="none" stroke-linecap="round" class="hero-arc"/>
+
+              <!-- TEE BALL on top (drawn last so it sits above grid) -->
+              <circle cx="200" cy="488" r="5" fill="#F8FAFC" class="hero-ball"/>
+            </svg>
+
+            <!-- subtle vignette on top of grid for depth -->
+            <div class="absolute inset-0 pointer-events-none" style="background: radial-gradient(ellipse at 50% 50%, transparent 35%, rgba(5,8,16,0.4) 100%);"></div>
+
+            <!-- top-left live label -->
+            <div class="absolute top-4 left-4 flex items-center gap-2 z-10">
+              <span class="block w-1.5 h-1.5 bg-green-hot rounded-full pulse-dot"></span>
+              <span class="mono text-[10px] text-text-1 tracking-widest">BAY 01 · LIVE</span>
+            </div>
+
+            <!-- top-right shot counter -->
+            <div class="absolute top-4 right-4 z-10">
+              <span class="mono text-[10px] text-text-3 tracking-widest">SHOT 12 / 24</span>
+            </div>
+
+            <!-- bottom data ribbon -->
+            <div class="absolute bottom-0 left-0 right-0 px-4 py-3 border-t hairline-strong bg-bg-0/75 backdrop-blur z-10">
+              <div class="grid grid-cols-4 gap-2">
+                <div>
+                  <div class="mono text-[9px] text-text-3 tracking-widest mb-0.5">CARRY</div>
+                  <div class="mono text-xs sm:text-sm text-text-0 num">287</div>
+                </div>
+                <div>
+                  <div class="mono text-[9px] text-text-3 tracking-widest mb-0.5">SPIN</div>
+                  <div class="mono text-xs sm:text-sm text-text-0 num">2,840</div>
+                </div>
+                <div>
+                  <div class="mono text-[9px] text-text-3 tracking-widest mb-0.5">LAUNCH</div>
+                  <div class="mono text-xs sm:text-sm text-text-0 num">12.4°</div>
+                </div>
+                <div>
+                  <div class="mono text-[9px] text-green-hot tracking-widest mb-0.5">SPEED</div>
+                  <div class="mono text-xs sm:text-sm text-green-hot num">168</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT'S INSIDE -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="tag-mono text-text-3 mb-6 text-[10px]">WHAT'S INSIDE</div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-3xl text-balance leading-[1.05]">
+        Sim golf. Sim darts. A real bar.
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-px bg-line mt-12 sm:mt-16 border hairline">
+        <a href="simulators.html" class="bg-bg-0 hover:bg-bg-1 transition p-8 lg:p-10 flex flex-col h-full group">
+          <div class="mono text-[10px] text-text-3 tracking-widest mb-4">01 / GOLF</div>
+          <div class="display text-3xl sm:text-4xl text-text-0 mb-3">Simulators</div>
+          <p class="text-text-1 leading-relaxed flex-1">Three bays. Tour-grade tracking. 300+ courses.</p>
+          <div class="mt-6 mono text-[10px] text-green-hot group-hover:text-green-glow tracking-widest">SEE THE BAYS →</div>
+        </a>
+        <a href="simulators.html" class="bg-bg-0 hover:bg-bg-1 transition p-8 lg:p-10 flex flex-col h-full group">
+          <div class="mono text-[10px] text-text-3 tracking-widest mb-4">02 / DARTS</div>
+          <div class="display text-3xl sm:text-4xl text-text-0 mb-3">Auto-scored</div>
+          <p class="text-text-1 leading-relaxed flex-1">Six game modes. Thursday-night brackets across all three bays.</p>
+          <div class="mt-6 mono text-[10px] text-green-hot group-hover:text-green-glow tracking-widest">SEE THE GAMES →</div>
+        </a>
+        <a href="#visit" class="bg-bg-0 hover:bg-bg-1 transition p-8 lg:p-10 flex flex-col h-full group">
+          <div class="mono text-[10px] text-text-3 tracking-widest mb-4">03 / BAR</div>
+          <div class="display text-3xl sm:text-4xl text-text-0 mb-3">The 19th Hole</div>
+          <p class="text-text-1 leading-relaxed flex-1">Cold beer. Real cocktails. Tab tracked to your bay.</p>
+          <div class="mt-6 mono text-[10px] text-green-hot group-hover:text-green-glow tracking-widest">VISIT →</div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MEMBERSHIP BAND -->
+  <section id="book" class="border-b hairline py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute -left-32 top-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full bg-green-base/10 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 relative">
+      <div class="tag-mono text-text-3 mb-6 text-[10px]">MEMBERSHIP</div>
+      <div class="grid lg:grid-cols-12 gap-10 items-end">
+        <div class="lg:col-span-7">
+          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[1.05]">
+            Pay less per round than a bucket at the <span class="text-green-hot">range</span>.
+          </h2>
+          <p class="mt-6 text-base sm:text-lg text-text-1 leading-relaxed max-w-2xl">
+            Memberships from $59. Save up to 40%. Founder rate locked for life.
+          </p>
+          <a href="membership.html" class="mt-8 inline-block bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">See the calculator →</a>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="border hairline-strong p-6 sm:p-8 bg-bg-1">
+            <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-4">FOUNDER · 100 SPOTS</div>
+            <div class="flex items-baseline gap-3">
+              <div class="display text-5xl sm:text-6xl text-text-0 num">37</div>
+              <div class="mono text-xs text-text-2">/ 100 CLAIMED</div>
+            </div>
+            <div class="mt-5 h-2 bg-bg-3 overflow-hidden">
+              <div class="h-full bg-green-hot" style="width: 37%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" class="py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="tag-mono text-text-3 mb-6 text-[10px]">VISIT</div>
+      <div class="grid md:grid-cols-2 gap-10 items-start">
+        <div>
+          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[1.05]">
+            Downtown Milly. Two blocks off <span class="text-green-hot">the square</span>.
+          </h2>
+          <div class="mt-8 grid grid-cols-2 gap-y-6 mono text-sm">
+            <div>
+              <div class="text-[10px] text-text-3 uppercase tracking-widest mb-2">Address</div>
+              <div class="text-text-0">127 S Wayne St</div>
+              <div class="text-text-0">Milledgeville, GA 31061</div>
+            </div>
+            <div>
+              <div class="text-[10px] text-text-3 uppercase tracking-widest mb-2">Hours</div>
+              <div class="text-text-0">Sun-Thu  11a → 11p</div>
+              <div class="text-text-0">Fri-Sat   11a → 1a</div>
+            </div>
+          </div>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">Book a Bay</a>
+            <a href="events.html" class="text-text-0 hover:text-green-hot font-semibold text-sm px-6 py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">Plan an event →</a>
+          </div>
+        </div>
+        <div class="border hairline p-1 bg-bg-1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3358.4!2d-83.232!3d33.080!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDA0JzQ4LjAiTiA4M8KwMTMnNTUuMiJX!5e0!3m2!1sen!2sus!4v1700000000000"
+            class="w-full aspect-[4/3] grayscale contrast-125 brightness-75"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            title="The Tee Drive · 127 S Wayne St, Milledgeville"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t hairline py-16 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4">
+            <span class="block w-1 h-7 bg-green-base"></span>
+            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          </a>
+          <div class="text-sm text-text-2 max-w-sm leading-relaxed">
+            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
+            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2 mono">
+            <div>127 S Wayne St</div>
+            <div>Milledgeville, GA 31061</div>
+            <div>(478) 000-0000</div>
+            <div class="pt-3">Sun-Thu  11a → 11p</div>
+            <div>Fri-Sat   11a → 1a</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t hairline flex flex-wrap items-center justify-between gap-4">
+        <div class="mono text-xs text-text-3">© 2026 THE TEE DRIVE · MILLEDGEVILLE, GA</div>
+        <div class="flex items-center gap-6 mono text-xs text-text-3">
+          <a href="#" class="hover:text-green-hot transition">INSTAGRAM</a>
+          <a href="#" class="hover:text-green-hot transition">FACEBOOK</a>
+          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCROLL REVEAL -->
+  <script>
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const sections = document.querySelectorAll('section:not(.no-reveal)');
+      sections.forEach(s => {
+        s.classList.add('reveal');
+        const kids = s.querySelectorAll('.grid > *, [class*="grid-cols"] > *');
+        kids.forEach((k, i) => {
+          k.classList.add('reveal');
+          k.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+        });
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>

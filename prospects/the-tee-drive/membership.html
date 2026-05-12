@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Membership · The Tee Drive</title>
+  <meta name="description" content="Membership pays for itself at four visits a month. Live break-even calculator. Founder rate locked at $129/mo for life. First 100 members only.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-0': '#0A0F1A', 'bg-1': '#0F172A', 'bg-2': '#1E293B', 'bg-3': '#334155',
+            'text-0': '#F8FAFC', 'text-1': '#CBD5E1', 'text-2': '#94A3B8', 'text-3': '#64748B',
+            'line': '#1E293B', 'line-strong': '#334155',
+            'green-base': '#16A34A', 'green-hot': '#22C55E', 'green-glow': '#4ADE80',
+          },
+          fontFamily: {
+            'display': ['DM Serif Display', 'Georgia', 'serif'],
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
+    .hairline { border-color: #1E293B; }
+    .hairline-strong { border-color: #334155; }
+    .num { font-variant-numeric: tabular-nums; }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
+    .text-balance { text-wrap: balance; }
+
+    /* slider */
+    input[type=range].td-slider {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 100%;
+      height: 4px;
+      background: #1E293B;
+      outline: none;
+      border-radius: 2px;
+    }
+    input[type=range].td-slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 28px;
+      height: 28px;
+      background: #22C55E;
+      border: 4px solid #0A0F1A;
+      box-shadow: 0 0 0 1px #22C55E, 0 0 20px rgba(34, 197, 94, 0.6);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: transform 0.15s ease;
+    }
+    input[type=range].td-slider::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+    }
+    input[type=range].td-slider::-moz-range-thumb {
+      width: 20px;
+      height: 20px;
+      background: #22C55E;
+      border: 4px solid #0A0F1A;
+      box-shadow: 0 0 0 1px #22C55E, 0 0 20px rgba(34, 197, 94, 0.6);
+      border-radius: 50%;
+      cursor: pointer;
+    }
+
+    .num-tick {
+      transition: transform 0.18s cubic-bezier(0.16,1,0.3,1), color 0.18s ease;
+    }
+    .num-tick.bumped {
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="bg-bg-0">
+
+  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html" class="text-text-1 hover:text-green-hot transition">Home</a>
+        <a href="simulators.html" class="text-text-1 hover:text-green-hot transition">Simulators</a>
+        <a href="membership.html" class="text-green-hot">Membership</a>
+        <a href="events.html" class="text-text-1 hover:text-green-hot transition">Events</a>
+        <a href="about.html" class="text-text-1 hover:text-green-hot transition">About</a>
+      </nav>
+      <a href="#tiers" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Join</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative no-reveal overflow-hidden border-b hairline">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute -top-32 -right-32 w-[600px] h-[600px] rounded-full bg-green-base/15 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
+        <span class="tag-mono text-green-hot text-[10px]">MEMBERSHIP</span>
+      </div>
+      <h1 class="display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
+        Pay less. Play more. <span class="text-green-hot">Improve faster.</span>
+      </h1>
+      <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-text-1 leading-relaxed">
+        Membership pays for itself at four visits a month. After that, every round costs you less than a large bucket at the public range. Slide the calculator below to find your number.
+      </p>
+      <a href="#calc" class="mt-7 sm:mt-9 inline-block bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-3 sm:px-6 sm:py-3.5 transition uppercase tracking-wide">See the math ↓</a>
+    </div>
+  </section>
+
+  <!-- CALCULATOR -->
+  <section id="calc" class="border-b hairline py-16 sm:py-20 lg:py-28" x-data="teeCalc()">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 01 ]</span>
+        <span class="tag-mono text-text-3">BREAK-EVEN</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Drag it. Find your <span class="text-green-hot">number</span>.
+      </h2>
+      <p class="mt-8 max-w-2xl text-lg text-text-1 leading-relaxed">
+        How often do you think you'll play per month? Be honest. The numbers update live.
+      </p>
+
+      <!-- slider control -->
+      <div class="mt-16 border hairline-strong bg-bg-1 p-8 lg:p-12">
+        <div class="flex items-baseline justify-between mb-8">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">Visits per month</div>
+          <div class="flex items-baseline gap-2">
+            <span class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num" x-text="visits"></span>
+            <span class="mono text-sm text-text-2 uppercase tracking-wider">/ MO</span>
+          </div>
+        </div>
+        <input type="range" min="1" max="20" step="1" x-model.number="visits" class="td-slider w-full" @input="bump()">
+        <div class="flex justify-between mt-3 mono text-xs text-text-3">
+          <span>1</span><span>5</span><span>10</span><span>15</span><span>20</span>
+        </div>
+      </div>
+
+      <!-- results grid -->
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <!-- CASUAL -->
+        <div class="border hairline bg-bg-1 p-8 flex flex-col">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">CASUAL</div>
+          <div class="text-text-2 text-sm mb-8">No membership. Standard rates.</div>
+
+          <div class="space-y-4 mono text-sm">
+            <div class="flex justify-between text-text-2">
+              <span>Monthly dues</span>
+              <span class="num">$0</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span>Per-visit rate</span>
+              <span class="num">$55</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span><span x-text="visits"></span> visits × $55</span>
+              <span class="num">$<span x-text="formatNum(visits * 55)"></span></span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-8 border-t hairline">
+            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">Total this month</div>
+            <div class="display text-5xl text-text-0 num num-tick" :class="bumpClass">$<span x-text="formatNum(casualTotal)"></span></div>
+          </div>
+        </div>
+
+        <!-- REGULAR -->
+        <div class="border hairline bg-bg-1 p-8 flex flex-col">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">REGULAR</div>
+          <div class="text-text-2 text-sm mb-8">$59/mo. 20% off bay time.</div>
+
+          <div class="space-y-4 mono text-sm">
+            <div class="flex justify-between text-text-2">
+              <span>Monthly dues</span>
+              <span class="num">$59</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span>Per-visit rate</span>
+              <span class="num">$44</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span><span x-text="visits"></span> visits × $44</span>
+              <span class="num">$<span x-text="formatNum(visits * 44)"></span></span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-8 border-t hairline">
+            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">Total this month</div>
+            <div class="display text-5xl text-text-0 num num-tick" :class="bumpClass">$<span x-text="formatNum(regularTotal)"></span></div>
+            <div class="mt-3 mono text-xs" :class="regularSavings > 0 ? 'text-green-hot' : 'text-text-3'">
+              <span x-text="regularSavings > 0 ? 'SAVE $' + formatNum(regularSavings) + ' / MO' : 'BREAK-EVEN AT 3 VISITS'"></span>
+            </div>
+          </div>
+        </div>
+
+        <!-- FOUNDER -->
+        <div class="border border-green-base/40 bg-bg-1 p-8 flex flex-col glow relative">
+          <div class="absolute -top-3 left-8 bg-green-hot text-bg-0 text-[10px] font-bold px-2 py-1 uppercase tracking-widest mono">Most popular</div>
+          <div class="mono text-xs text-green-hot uppercase tracking-widest mb-2">FOUNDER</div>
+          <div class="text-text-1 text-sm mb-8">$129/mo. 40% off bay time. First 100 only.</div>
+
+          <div class="space-y-4 mono text-sm">
+            <div class="flex justify-between text-text-2">
+              <span>Monthly dues</span>
+              <span class="num">$129</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span>Per-visit rate</span>
+              <span class="num">$33</span>
+            </div>
+            <div class="flex justify-between text-text-2">
+              <span><span x-text="visits"></span> visits × $33</span>
+              <span class="num">$<span x-text="formatNum(visits * 33)"></span></span>
+            </div>
+          </div>
+
+          <div class="mt-auto pt-8 border-t border-green-base/20">
+            <div class="mono text-xs text-green-hot uppercase tracking-widest mb-2">Total this month</div>
+            <div class="display text-5xl text-green-hot num num-tick" :class="bumpClass">$<span x-text="formatNum(founderTotal)"></span></div>
+            <div class="mt-3 mono text-xs" :class="founderSavings > 0 ? 'text-green-hot' : 'text-text-3'">
+              <span x-text="founderSavings > 0 ? 'SAVE $' + formatNum(founderSavings) + ' / MO  ·  $' + formatNum(founderSavings * 12) + ' / YR' : 'BREAK-EVEN AT 6 VISITS'"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="mt-10 mono text-xs text-text-3 max-w-3xl">
+        Calculation assumes standard 1-hour prime-time bay at $55/hr. Member rates discount that base. Per-bay pricing, so splitting with friends drops your cost further on top of these numbers.
+      </p>
+    </div>
+  </section>
+
+  <!-- TIERS -->
+  <section id="tiers" class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 02 ]</span>
+        <span class="tag-mono text-text-3">PICK A TIER</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Three ways in. One of them is <span class="text-green-hot">free</span>.
+      </h2>
+
+      <div class="grid md:grid-cols-3 gap-6 mt-16 items-stretch">
+        <!-- CASUAL -->
+        <div class="border hairline bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">TIER 01</div>
+          <div class="display text-4xl text-text-0 mb-2">CASUAL</div>
+          <div class="text-text-2 text-sm mb-8">Drop in when you feel like it.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-5xl sm:text-6xl text-text-0 num">$0</span>
+            <span class="mono text-sm text-text-2">/ MO</span>
+          </div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Pay-as-you-play, standard rates</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Online booking, 48-hour window</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Full course library access</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Walk-ins welcome when bays are open</span></li>
+          </ul>
+          <a href="#" class="mt-10 block text-center text-text-0 hover:text-green-hot font-semibold text-sm px-6 py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">Book a Bay</a>
+        </div>
+
+        <!-- REGULAR -->
+        <div class="border hairline bg-bg-0 p-8 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">TIER 02</div>
+          <div class="display text-4xl text-text-0 mb-2">REGULAR</div>
+          <div class="text-text-2 text-sm mb-8">For the once-a-week crowd.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-5xl sm:text-6xl text-text-0 num">$59</span>
+            <span class="mono text-sm text-text-2">/ MO</span>
+          </div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>20% off bay time, all rates</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Priority booking, 5-day window</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>2 guest passes per month</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>League access (Wed nights)</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Members-only happy hour pricing</span></li>
+          </ul>
+          <a href="#" class="mt-10 block text-center text-text-0 hover:text-green-hot font-semibold text-sm px-6 py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">Join Regular →</a>
+        </div>
+
+        <!-- FOUNDER -->
+        <div class="border border-green-base/40 bg-bg-0 p-8 flex flex-col h-full glow relative">
+          <div class="absolute -top-3 left-8 bg-green-hot text-bg-0 text-[10px] font-bold px-2 py-1 uppercase tracking-widest mono">First 100 only</div>
+          <div class="mono text-xs text-green-hot uppercase tracking-widest mb-3">TIER 03 · LOCKED FOR LIFE</div>
+          <div class="display text-4xl text-text-0 mb-2">FOUNDER</div>
+          <div class="text-text-2 text-sm mb-8">For people who'd play three times a week if life let them.</div>
+          <div class="flex items-baseline gap-2 mb-8">
+            <span class="display text-5xl sm:text-6xl text-green-hot num">$129</span>
+            <span class="mono text-sm text-text-2">/ MO</span>
+          </div>
+          <ul class="space-y-3 text-sm text-text-1 flex-1">
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>40% off bay time, all rates</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Priority booking, 7-day window</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Unlimited guest passes</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>League included, no entry fee</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Monthly tournament entry included</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Locker for your clubs</span></li>
+            <li class="flex items-start gap-3"><span class="text-green-hot mono">+</span><span>Founder rate locked for life</span></li>
+          </ul>
+          <a href="#founder" class="mt-10 block text-center bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">Claim Founder →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOUNDER PROGRESS -->
+  <section id="founder" class="border-b hairline py-16 sm:py-20 lg:py-28 relative overflow-hidden">
+    <div class="absolute -left-32 top-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full bg-green-base/15 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-6 relative">
+      <div class="grid lg:grid-cols-12 gap-12 items-center">
+        <div class="lg:col-span-7">
+          <div class="flex items-baseline gap-4 mb-8">
+            <span class="tag-mono text-green-hot">[ // 03 ]</span>
+            <span class="tag-mono text-text-3">FOUNDER · 100 SPOTS</span>
+          </div>
+          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[0.95]">
+            Once the bar fills, the price <span class="text-green-hot">goes up</span>.
+          </h2>
+          <p class="mt-8 text-lg text-text-1 leading-relaxed max-w-xl">
+            The first hundred members lock in $129/month for as long as they stay subscribed. After spot 100 the rate adjusts. No exclusions, no comeback specials, no exceptions.
+          </p>
+          <a href="#" class="mt-10 inline-block bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">Claim a Founder spot →</a>
+        </div>
+        <div class="lg:col-span-5">
+          <div class="border hairline-strong bg-bg-1 p-8">
+            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-6">Live count</div>
+            <div class="flex items-baseline gap-3">
+              <div class="display text-6xl sm:text-7xl lg:text-8xl text-text-0 num">37</div>
+              <div class="mono text-sm text-text-2">/ 100 CLAIMED</div>
+            </div>
+            <div class="mt-8 h-3 bg-bg-3 overflow-hidden">
+              <div class="h-full bg-green-hot" style="width: 37%"></div>
+            </div>
+            <div class="mt-4 flex justify-between mono text-xs text-text-3">
+              <span>0</span>
+              <span>50</span>
+              <span>100</span>
+            </div>
+            <div class="mt-8 pt-6 border-t hairline mono text-xs text-text-3">
+              63 SPOTS REMAIN · UPDATED IN REAL TIME
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT MEMBERS GET -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 04 ]</span>
+        <span class="tag-mono text-text-3">WHAT YOU GET</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Beyond the <span class="text-green-hot">discount</span>.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line mt-16 border hairline">
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">01</div>
+          <div class="display text-xl text-text-0 mb-3">PRIORITY BOOKING</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Book up to 7 days ahead. Casual guests get 48 hours.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">02</div>
+          <div class="display text-xl text-text-0 mb-3">CLUB LOCKER</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Store your sticks here. Walk in empty-handed.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">03</div>
+          <div class="display text-xl text-text-0 mb-3">HAPPY HOUR</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Member pricing on the bar tab all week. Not just Tuesdays.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">04</div>
+          <div class="display text-xl text-text-0 mb-3">LEAGUE NIGHT</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Wednesday league, 8-week season, real prizes. Auto-entry on Founder.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">05</div>
+          <div class="display text-xl text-text-0 mb-3">BRING A GUEST</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">2 per month on Regular. Unlimited on Founder. They pay nothing.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">06</div>
+          <div class="display text-xl text-text-0 mb-3">TOURNAMENT</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Monthly bracket, included on Founder. $5 entry for everyone else.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">07</div>
+          <div class="display text-xl text-text-0 mb-3">MEMBERS-ONLY</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Three or four members-only events per year. Closed bays, food, prizes.</div>
+        </div>
+        <div class="bg-bg-0 p-7 flex flex-col h-full">
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">08</div>
+          <div class="display text-xl text-text-0 mb-3">RATE LOCKED</div>
+          <div class="text-sm text-text-2 leading-relaxed flex-1">Founder pricing doesn't change. Ever. Until you cancel.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 05 ]</span>
+        <span class="tag-mono text-text-3">QUESTIONS</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        Asked + <span class="text-green-hot">answered</span>.
+      </h2>
+
+      <div class="mt-16 divide-y divide-line border hairline">
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">Can I cancel anytime?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            Yes, monthly. Cancel through your account or in person. Founder spots don't refund the prorated month, but you keep access until the period ends.
+          </div>
+        </details>
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">What counts as a visit?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            Any 1-hour bay block. Golf, darts, doesn't matter. Multiple back-to-back hours count as one booking, not multiple visits.
+          </div>
+        </details>
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">Can I share my membership?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            Regular is single-person. Founder allows two named players on one account, both get full member benefits. Add additional named players for $40/mo each.
+          </div>
+        </details>
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">Do guest passes roll over?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            On Regular, yes, up to 6 banked. After 6, new passes don't accrue until you spend down. Founder is unlimited so this doesn't apply.
+          </div>
+        </details>
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">How does league night work?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            Wednesday nights, 8-week seasons, three formats: stroke, scramble, closest-to-pin series. $10 buy-in for non-members, free for Founders. Prizes vary by season.
+          </div>
+        </details>
+        <details class="group" open>
+          <summary class="cursor-pointer p-6 flex justify-between items-center hover:bg-bg-1/40 transition">
+            <span class="display text-xl text-text-0">What if I sign up and never come in?</span>
+            <span class="mono text-green-hot group-open:rotate-45 transition-transform">+</span>
+          </summary>
+          <div class="px-6 pb-6 text-text-1 leading-relaxed max-w-3xl">
+            You're paying us to hold a Founder spot you're not using. That's allowed, and frankly appreciated. But we'd rather see you on a Tuesday.
+          </div>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t hairline py-16 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4">
+            <span class="block w-1 h-7 bg-green-base"></span>
+            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          </a>
+          <div class="text-sm text-text-2 max-w-sm leading-relaxed">
+            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
+            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2 mono">
+            <div>127 S Wayne St</div>
+            <div>Milledgeville, GA 31061</div>
+            <div>(478) 000-0000</div>
+            <div class="pt-3">Sun-Thu  11a → 11p</div>
+            <div>Fri-Sat   11a → 1a</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t hairline flex flex-wrap items-center justify-between gap-4">
+        <div class="mono text-xs text-text-3">© 2026 THE TEE DRIVE · MILLEDGEVILLE, GA</div>
+        <div class="flex items-center gap-6 mono text-xs text-text-3">
+          <a href="#" class="hover:text-green-hot transition">INSTAGRAM</a>
+          <a href="#" class="hover:text-green-hot transition">FACEBOOK</a>
+          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function teeCalc() {
+      return {
+        visits: 4,
+        bumpClass: '',
+        bumpTimer: null,
+        bump() {
+          this.bumpClass = 'bumped';
+          clearTimeout(this.bumpTimer);
+          this.bumpTimer = setTimeout(() => { this.bumpClass = ''; }, 180);
+        },
+        formatNum(n) {
+          return Number(n).toLocaleString('en-US');
+        },
+        get casualTotal()  { return this.visits * 55; },
+        get regularTotal() { return 59 + this.visits * 44; },
+        get founderTotal() { return 129 + this.visits * 33; },
+        get regularSavings() { return this.casualTotal - this.regularTotal; },
+        get founderSavings() { return this.casualTotal - this.founderTotal; },
+      };
+    }
+
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const sections = document.querySelectorAll('section:not(.no-reveal)');
+      sections.forEach(s => {
+        s.classList.add('reveal');
+        const kids = s.querySelectorAll('.grid > *, [class*="grid-cols"] > *');
+        kids.forEach((k, i) => {
+          k.classList.add('reveal');
+          k.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+        });
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>About · The Tee Drive</title>
+  <meta name="description" content="Built in downtown Milledgeville. Why a tour-grade simulator bar makes sense for Baldwin County. The thesis behind The Tee Drive.">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            'bg-0': '#0A0F1A', 'bg-1': '#0F172A', 'bg-2': '#1E293B', 'bg-3': '#334155',
+            'text-0': '#F8FAFC', 'text-1': '#CBD5E1', 'text-2': '#94A3B8', 'text-3': '#64748B',
+            'line': '#1E293B', 'line-strong': '#334155',
+            'green-base': '#16A34A', 'green-hot': '#22C55E', 'green-glow': '#4ADE80',
+          },
+          fontFamily: {
+            'display': ['DM Serif Display', 'Georgia', 'serif'],
+            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'mono': ['JetBrains Mono', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    [x-cloak] { display: none !important; }
+    html { scroll-behavior: smooth; }
+    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    .mono { font-family: 'JetBrains Mono', monospace; }
+    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
+    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
+    .hairline { border-color: #1E293B; }
+    .hairline-strong { border-color: #334155; }
+    .num { font-variant-numeric: tabular-nums; }
+    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
+    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
+    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
+    .reveal.is-in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
+    .text-balance { text-wrap: balance; }
+    .prose-td p { color: #CBD5E1; font-size: 1.125rem; line-height: 1.75; margin-bottom: 1.5rem; }
+    .prose-td p:last-child { margin-bottom: 0; }
+    .prose-td strong { color: #F8FAFC; font-weight: 600; }
+  </style>
+</head>
+<body class="bg-bg-0">
+
+  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
+    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="index.html" class="flex items-center gap-3 group">
+        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+      </a>
+      <nav class="hidden md:flex items-center gap-8 text-sm">
+        <a href="index.html" class="text-text-1 hover:text-green-hot transition">Home</a>
+        <a href="simulators.html" class="text-text-1 hover:text-green-hot transition">Simulators</a>
+        <a href="membership.html" class="text-text-1 hover:text-green-hot transition">Membership</a>
+        <a href="events.html" class="text-text-1 hover:text-green-hot transition">Events</a>
+        <a href="about.html" class="text-green-hot">About</a>
+      </nav>
+      <a href="#visit" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Visit</a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative no-reveal overflow-hidden border-b hairline">
+    <div class="absolute inset-0 dotgrid opacity-60"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-green-base/10 blur-3xl"></div>
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
+      <div class="flex items-center gap-3 mb-5">
+        <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
+        <span class="tag-mono text-green-hot text-[10px]">ABOUT</span>
+      </div>
+      <h1 class="display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
+        Built in Milly. <span class="text-green-hot">For Milly.</span>
+      </h1>
+      <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-text-1 leading-relaxed">
+        Powered by passion. Driven by tech. Downtown Milledgeville's first tour-grade simulator bar.
+      </p>
+    </div>
+  </section>
+
+  <!-- WHY THIS EXISTS -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="tag-mono text-green-hot">[ // 01 ]</span>
+            <span class="tag-mono text-text-3">THESIS</span>
+          </div>
+          <h2 class="display text-3xl sm:text-4xl lg:text-5xl text-text-0 text-balance leading-[0.95]">
+            Why this <span class="text-green-hot">exists</span>.
+          </h2>
+        </div>
+        <div class="lg:col-span-8 prose-td">
+          <p>
+            The closest tour-grade simulator to Milledgeville is a ninety-minute drive to Atlanta. The closest indoor range that runs year-round is even farther. For a town that loves golf and has nowhere to play it nine months out of the year, that's a problem.
+          </p>
+          <p>
+            Georgia summers are 95° and humid. Spring is rain-delayed half the time. Winter days are over by 5:30. Add work, family, the price of green fees, the four-hour round, the drive to a course, the bag of clubs you have to keep in your trunk, and the average serious golfer in Baldwin County plays a fraction of the rounds they want to.
+          </p>
+          <p>
+            <strong>The Tee Drive is the answer.</strong> Three bays, two blocks from the square, open until midnight five nights a week. Tour-grade ball-flight tracking on every shot. Three hundred world-famous courses in the library. A real bar. The same gear PGA pros use to practice at home, sitting on Hancock Street.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE NUMBERS -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 02 ]</span>
+        <span class="tag-mono text-text-3">THE NUMBERS</span>
+      </div>
+      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
+        What we built, <span class="text-green-hot">by the numbers</span>.
+      </h2>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line mt-16 border hairline">
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">3</div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">BAYS</div>
+          <div class="mt-4 text-sm text-text-2 leading-relaxed">Each seats 3 to 6. Each switches between golf and darts.</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">27</div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">DATA POINTS / SHOT</div>
+          <div class="mt-4 text-sm text-text-2 leading-relaxed">Ball + club flight parameters. PGA Tour standard.</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">300<span class="display text-3xl text-text-2">+</span></div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">COURSES</div>
+          <div class="mt-4 text-sm text-text-2 leading-relaxed">Pebble, St Andrews, Augusta, Bandon, plus 296 more.</div>
+        </div>
+        <div class="bg-bg-0 p-8 flex flex-col h-full">
+          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">12<span class="display text-3xl text-text-2">'</span></div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest">IMPACT SCREEN</div>
+          <div class="mt-4 text-sm text-text-2 leading-relaxed">4K projection. Real-feel turf. Properly absorbed striking.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE TECH -->
+  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid lg:grid-cols-12 gap-12">
+        <div class="lg:col-span-4">
+          <div class="flex items-baseline gap-4 mb-6">
+            <span class="tag-mono text-green-hot">[ // 03 ]</span>
+            <span class="tag-mono text-text-3">THE TECH</span>
+          </div>
+          <h2 class="display text-3xl sm:text-4xl lg:text-5xl text-text-0 text-balance leading-[0.95]">
+            Powered by passion. <span class="text-green-hot">Driven by tech.</span>
+          </h2>
+        </div>
+        <div class="lg:col-span-8 prose-td">
+          <p>
+            Industry-grade launch monitors track twenty-seven ball- and club-flight parameters in real time. The same standard the PGA Tour uses to dial in their bags. Auto-scoring dart cameras catch every throw, run live brackets across all three bays, and post results to leaderboards mounted in the bar.
+          </p>
+          <p>
+            None of this exists to look impressive. It exists because <strong>deliberate practice</strong> (Anders Ericsson, Psychological Review 1993) is the foundational principle behind every player who's ever gotten meaningfully better at anything: <em class="not-italic text-text-0">immediate feedback, on specific performance parameters, in a controlled, repeatable environment</em>.
+          </p>
+          <p>
+            That's the definition of a simulator bay. It's also what a public range fails at on every count.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISIT -->
+  <section id="visit" class="py-16 sm:py-20 lg:py-28">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="flex items-baseline gap-4 mb-12">
+        <span class="tag-mono text-green-hot">[ // 04 ]</span>
+        <span class="tag-mono text-text-3">VISIT</span>
+      </div>
+      <div class="grid md:grid-cols-2 gap-12 items-start">
+        <div>
+          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[0.95]">
+            127 S Wayne St. <span class="text-green-hot">See you soon.</span>
+          </h2>
+          <div class="mt-10 grid grid-cols-2 gap-y-8 mono text-sm">
+            <div>
+              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Address</div>
+              <div class="text-text-0">127 S Wayne St</div>
+              <div class="text-text-0">Milledgeville, GA 31061</div>
+            </div>
+            <div>
+              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Hours</div>
+              <div class="text-text-0">Sun-Thu  11a → 11p</div>
+              <div class="text-text-0">Fri-Sat   11a → 1a</div>
+            </div>
+            <div>
+              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Phone</div>
+              <div class="text-text-0">(478) 000-0000</div>
+            </div>
+            <div>
+              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Email</div>
+              <div class="text-text-0">hello@theteedrive.com</div>
+            </div>
+          </div>
+          <div class="mt-10 flex flex-wrap gap-3">
+            <a href="simulators.html#book" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">Book a Bay</a>
+            <a href="membership.html" class="text-text-0 hover:text-green-hot font-semibold text-sm px-6 py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">Become a member →</a>
+          </div>
+          <div class="mt-10 pt-8 border-t hairline">
+            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Parking</div>
+            <div class="text-text-1 text-sm leading-relaxed max-w-md">
+              Free 2-hour street parking on S Wayne directly out front. After 5pm, the city lot half a block down is free too.
+            </div>
+          </div>
+        </div>
+        <div class="border hairline p-1 bg-bg-1">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3358.4!2d-83.232!3d33.080!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDA0JzQ4LjAiTiA4M8KwMTMnNTUuMiJX!5e0!3m2!1sen!2sus!4v1700000000000"
+            class="w-full aspect-[4/5] grayscale contrast-125 brightness-75"
+            loading="lazy"
+            allowfullscreen=""
+            referrerpolicy="no-referrer-when-downgrade"
+            title="The Tee Drive · 127 S Wayne St, Milledgeville"></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="border-t hairline py-16 bg-bg-1/30">
+    <div class="max-w-7xl mx-auto px-6">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <a href="index.html" class="flex items-center gap-3 group mb-4">
+            <span class="block w-1 h-7 bg-green-base"></span>
+            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          </a>
+          <div class="text-sm text-text-2 max-w-sm leading-relaxed">
+            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="space-y-2 text-sm">
+            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
+            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+          </div>
+        </div>
+        <div>
+          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2 mono">
+            <div>127 S Wayne St</div>
+            <div>Milledgeville, GA 31061</div>
+            <div>(478) 000-0000</div>
+            <div class="pt-3">Sun-Thu  11a → 11p</div>
+            <div>Fri-Sat   11a → 1a</div>
+          </div>
+        </div>
+      </div>
+      <div class="pt-8 border-t hairline flex flex-wrap items-center justify-between gap-4">
+        <div class="mono text-xs text-text-3">© 2026 THE TEE DRIVE · MILLEDGEVILLE, GA</div>
+        <div class="flex items-center gap-6 mono text-xs text-text-3">
+          <a href="#" class="hover:text-green-hot transition">INSTAGRAM</a>
+          <a href="#" class="hover:text-green-hot transition">FACEBOOK</a>
+          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const sections = document.querySelectorAll('section:not(.no-reveal)');
+      sections.forEach(s => {
+        s.classList.add('reveal');
+        const kids = s.querySelectorAll('.grid > *, [class*="grid-cols"] > *');
+        kids.forEach((k, i) => {
+          k.classList.add('reveal');
+          k.style.transitionDelay = Math.min(i * 70, 480) + 'ms';
+        });
+      });
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); } });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+      document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+    })();
+  </script>
+</body>
+</html>

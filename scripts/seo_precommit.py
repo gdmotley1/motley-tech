@@ -121,6 +121,10 @@ def main():
         rel = f.relative_to(REPO).as_posix()
         if not f.exists():
             continue  # deleted file
+        # Private pitch / lead sites live outside the public SEO surface.
+        # They're noindex by design and don't get freshness stamps.
+        if rel.startswith('prospects/') or rel.startswith('leads/'):
+            continue
         text = f.read_text(encoding='utf-8')
         errors.extend(validate_json_ld(text, rel))
         errors.extend(check_noindex(text, rel))
