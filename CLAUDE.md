@@ -11,7 +11,7 @@ Grant Motley's solo web-dev business site. Targets **small local businesses in M
 
 **Business model**: Build the whole site FREE to earn the work → prospect chooses to keep it (hosting subscription from $49/mo), buy it outright (one-time fee), or walk away. First 5 Milledgeville businesses get free builds.
 
-**Owner-operator**: Grant Motley. Contact: motleytech.ai@gmail.com.
+**Owner-operator**: Grant Motley. Contact: hello@motley-tech.com (Cloudflare Email Routing forwards to gmail backend; never expose the gmail address in user-facing copy).
 
 **Separate from Comvoy/Otto/Fouts work — do NOT cross-reference Otto as a case study on this site** (explicitly forbidden by Grant).
 
@@ -402,7 +402,7 @@ When Grant lands an actual Milledgeville business:
 ## Contact form wiring
 
 `contact.html` → `submit()`:
-- **Default**: opens user's mail client (mailto:) pre-filled to motleytech.ai@gmail.com with business name, type, vibe, problems, contact, suggested domain. Works with zero setup.
+- **Default**: opens user's mail client (mailto:) pre-filled to hello@motley-tech.com (routes to gmail backend) with business name, type, vibe, problems, contact, suggested domain. Works with zero setup.
 - **Formspree swap-in**: set `FORMSPREE_ENDPOINT` (const at top of the script) to the endpoint from https://formspree.io; `submit()` switches to `fetch` POST with mailto as failure fallback. No other code changes.
 
 ## SEO / AEO state (as of 2026-04-29)
