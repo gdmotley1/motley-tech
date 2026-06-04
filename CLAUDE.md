@@ -171,7 +171,7 @@ Full guidelines in `BRAND.md`. Quick reference:
 
 ### Voice / copy
 
-- First-person ("I build...", not "We provide solutions").
+- First-person SINGULAR ("I build...", not "We provide solutions" and not "We build"). Site-wide sweep enforced this on 2026-06-04: every founder-as-subject sentence now uses "I" / "I'll" / "I host" / "I send" / "I quote" / "I help" / etc. Schema descriptions follow the same convention. Collaborative "we" / "our" / "us" is kept ONLY for genuine joint moments where it refers to founder + client together: "We talk for 20 minutes" (the call), "our first call", "our call", "we part ways", "we can meet in person". The "Tell us" / "Email us" / "We'll be in touch" / "We hand-code" patterns are all wrong and were swept out. Default: when in doubt, use "I" / "me" / "I'll" — the brand is one person.
 - Reference **real industry stats** with source citations (BrightLocal, Think with Google, Stanford Web Credibility). Never invent Motley-Tech-specific numbers.
 - Milledgeville / Baldwin County local specifics are fine and encouraged.
 - Developer-studio flavor: file-name-style lists, `$` prefixed commands, `[ // TAGS ]`, `v2.0` version pills, `✓ PASS / ✕ FAIL`.
