@@ -9,7 +9,7 @@ Motley Tech is run by **Grant Motley** and serves small businesses across the Un
 - **Pricing**: Free initial build. Monthly hosting from $49/mo or one-time buyout.
 - **Timeline**: ~14 days from first call to live site, typical.
 - **Stack**: HTML + Tailwind + minimal JS. Portable, fast, easy to hand off if the client ever wants to move.
-- **Contact**: motleytech.ai@gmail.com
+- **Contact**: hello@motley-tech.com
 
 ## Key pages
 
@@ -30,5 +30,4 @@ Motley Tech is run by **Grant Motley** and serves small businesses across the Un
 
 ## Optional
 
-- [Brand guidelines](https://motley-tech.com/BRAND.md) — wordmark, colors, merch rules
 - [Sitemap](https://motley-tech.com/sitemap.xml)

@@ -1,0 +1,24 @@
+# GitHub Pages / Jekyll config — controls what gets served from this repo.
+# Files listed under `exclude:` are NOT published to motley-tech.com.
+
+exclude:
+  # Internal docs (claude/agent instructions, brand book, business notes)
+  - CLAUDE.md
+  - BRAND.md
+  - README.md
+
+  # Build inputs (Tailwind source + config) — only the compiled dist/main.css ships
+  - package.json
+  - package-lock.json
+  - tailwind.config.js
+  - src/
+
+  # Internal design system reference
+  - design-system/
+
+  # Local tooling
+  - scripts/
+  - .githooks/
+  - node_modules/
+  - .vscode/
+  - .idea/
