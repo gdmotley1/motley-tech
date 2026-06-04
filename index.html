@@ -14,12 +14,12 @@
   <meta property="og:title" content="Motley Tech. Custom websites for small business. No bill until you keep it.">
   <meta property="og:description" content="Custom websites built to be found by Google and AI. Live in 14 days. No bill until you keep it.">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="assets/brand/og-image.png">
+  <meta property="og:image" content="https://motley-tech.com/assets/brand/og-image.png">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Motley Tech. Custom websites for small business. No bill until you keep it.">
   <meta name="twitter:description" content="Custom websites built to be found by Google and AI. Live in 14 days. No bill until you keep it.">
-  <meta name="twitter:image" content="assets/brand/og-image.png">
+  <meta name="twitter:image" content="https://motley-tech.com/assets/brand/og-image.png">
 
   <!-- Structured data for search engines (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude) -->
   <script type="application/ld+json">
@@ -28,15 +28,15 @@
     "@graph": [
       {
         "@type": "ProfessionalService",
-        "@id": "#motleytech",
+        "@id": "https://motley-tech.com/#motleytech",
         "name": "Motley Tech",
         "alternateName": "motley.tech",
         "description": "Custom-built websites for small businesses. We build the whole site free; you only pay if you keep it, monthly hosting or one-time buyout.",
         "url": "https://motley-tech.com",
-        "email": "motleytech.ai@gmail.com",
+        "email": "hello@motley-tech.com",
         "image": "https://motley-tech.com/assets/brand/og-image.png",
         "logo": "https://motley-tech.com/assets/brand/wordmark-dark.svg",
-        "founder": {"@type": "Person", "@id": "#grant-motley"},
+        "founder": {"@type": "Person", "@id": "https://motley-tech.com/#grant-motley"},
         "address": {"@type": "PostalAddress", "addressLocality": "Milledgeville", "addressRegion": "GA", "postalCode": "31061", "addressCountry": "US"},
         "geo": {"@type": "GeoCoordinates", "latitude": 33.0801, "longitude": -83.2321},
         "areaServed": [
@@ -50,18 +50,18 @@
       },
       {
         "@type": "Person",
-        "@id": "#grant-motley",
+        "@id": "https://motley-tech.com/#grant-motley",
         "name": "Grant Motley",
         "jobTitle": "Web Developer & Founder",
-        "worksFor": {"@id": "#motleytech"},
-        "email": "motleytech.ai@gmail.com"
+        "worksFor": {"@id": "https://motley-tech.com/#motleytech"},
+        "email": "hello@motley-tech.com"
       },
       {
         "@type": "Service",
-        "@id": "#free-build-service",
+        "@id": "https://motley-tech.com/#free-build-service",
         "name": "Free-First-Build Website Service",
         "serviceType": "Custom Website Design and Development",
-        "provider": {"@id": "#motleytech"},
+        "provider": {"@id": "https://motley-tech.com/#motleytech"},
         "description": "A full custom website built free. Keep it via monthly subscription ($49+/mo hosting & maintenance) or buy the code outright for a one-time fee. No lock-in, no hidden fees.",
         "offers": [
           {"@type": "Offer", "name": "Free Trial Build", "price": "0", "priceCurrency": "USD", "description": "Complete custom website, free until you decide to keep it. No credit card required."},
@@ -471,7 +471,7 @@
               <!-- Top bar (Claude chrome) -->
               <div class="stage stage-1 flex items-center px-5 py-3.5 border-b" style="background:#EDE7DC; border-color:rgba(0,0,0,0.08);">
                 <div class="flex items-center gap-2.5">
-                  <span class="grid place-items-center w-6 h-6 rounded-md text-base leading-none" style="background:#1F1B17; color:#F5F1EA;">✻</span>
+                  <span class="grid place-items-center w-6 h-6 rounded-md text-base leading-none" style="background:#1F1B17; color:#F5F1EA;">.</span>
                   <span class="text-[13px] font-semibold tracking-tight" style="color:#1F1B17; font-family:'Inter',sans-serif;">Claude</span>
                   <span class="text-[11px]" style="color:#8C8378; font-family:'Inter',sans-serif;">· Sonnet</span>
                 </div>
@@ -831,11 +831,11 @@
       <div class="flex flex-wrap items-center gap-x-3 gap-y-1 text-text-2">
         <span class="display font-bold text-base tracking-tight text-text-0">Motley Tech</span>
         <span class="text-text-3">·</span>
-        <a href="mailto:motleytech.ai@gmail.com" class="hover:text-ember transition-colors">motleytech.ai@gmail.com</a>
+        <a href="mailto:hello@motley-tech.com" class="hover:text-ember transition-colors">hello@motley-tech.com</a>
         <span class="text-text-3 hidden sm:inline">·</span>
         <span class="hidden sm:inline">Milledgeville, GA</span>
       </div>
-      <div class="mono text-text-3">© 2026 Motley Tech · v2.0 · <time datetime="2026-05-01">Updated May 1, 2026</time></div>
+      <div class="mono text-text-3">© 2026 Motley Tech · v2.0 · <time datetime="2026-06-04">Updated Jun 4, 2026</time></div>
     </div>
   </footer>
 
@@ -930,7 +930,7 @@
         obs.observe(el);
       });
 
-      // Bar fill — set width from data-bar-fill once visible
+      // Bar fill: set width from data-bar-fill once visible
       document.querySelectorAll('[data-bar-fill]').forEach(el => {
         const pct = parseFloat(el.dataset.barFill);
         if (Number.isNaN(pct)) return;
