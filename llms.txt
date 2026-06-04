@@ -1,12 +1,12 @@
 # Motley Tech
 
-> Solo web-development studio building custom websites for small businesses. First build is free; client chooses to keep it via monthly hosting subscription ($49+/mo) or one-time buyout. No lock-in, no templates, no monthly minimums to get started.
+> Solo web-development studio building custom websites for small businesses. First build is free; client chooses to keep it on Care ($49+/mo monthly hosting) or take a one-time Delivery and own the code outright. No lock-in, no templates, no monthly minimums to get started.
 
 ## About
 
 Motley Tech is run by **Grant Motley** and serves small businesses across the United States, starting with Milledgeville, GA. Every site is hand-built, custom-designed, fast-loading, mobile-first, and optimized for both traditional search (Google, Bing) and AI answer engines (ChatGPT, Perplexity, Gemini, Claude).
 
-- **Pricing**: Free initial build. Monthly hosting from $49/mo or one-time buyout.
+- **Pricing**: Free initial build. Care from $49/mo, or take Delivery once to own the code outright.
 - **Timeline**: ~14 days from first call to live site, typical.
 - **Stack**: HTML + Tailwind + minimal JS. Portable, fast, easy to hand off if the client ever wants to move.
 - **Contact**: hello@motley-tech.com

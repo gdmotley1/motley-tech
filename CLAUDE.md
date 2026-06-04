@@ -9,7 +9,12 @@
 
 Grant Motley's solo web-dev business site. Targets **small local businesses in Milledgeville, GA**. Positions him alongside modern tech studios (Vercel, Linear, Stripe) while staying approachable.
 
-**Business model**: Build the whole site FREE to earn the work → prospect chooses to keep it (hosting subscription from $49/mo), buy it outright (one-time fee), or walk away. First 5 Milledgeville businesses get free builds.
+**Business model**: Build the whole site FREE to earn the work → prospect chooses to keep it on **Care** (hosting subscription from $49/mo), take **Delivery** (one-time fee, they own the code), or walk away. First 5 Milledgeville businesses get free builds.
+
+**Naming conventions (locked, 2026-06-04):**
+- **Care** = the monthly hosting + maintenance subscription ($49/mo Standard, $79/mo Reserve). Never say "hosting plan" in narrative copy; say "Care."
+- **Delivery** = the one-time purchase where the client owns the code outright. NEVER say "buyout," "buy it," or "buy outright" in user-facing copy. Use "take Delivery" as the verb. Keep "own the code" / "own the code outright" as the AEO keyword phrase that comes RIGHT AFTER "Delivery" so AI engines bridge the two.
+- The "Hosting" line-item in the pricing table stays "Hosting" (it's a sub-component of Care, alongside Build fee and Delivery). Don't rename pricing-table rows.
 
 **Owner-operator**: Grant Motley. Contact: hello@motley-tech.com (Cloudflare Email Routing forwards to gmail backend; never expose the gmail address in user-facing copy).
 
@@ -254,7 +259,7 @@ This is treated as a first-class feature — not bolt-on. Locked in since 2026-0
 - Full `<title>` + `<meta name="description">` — unique per page
 - **Open Graph + Twitter Card** meta tags for rich social/iMessage previews (share image at `assets/brand/og-image.svg`)
 - **Schema.org JSON-LD** as `<script type="application/ld+json">` in `<head>`:
-  - `index.html` / `process.html` / `contact.html` → `@graph` with `ProfessionalService`, `Person` (Grant Motley), `Service` (with `Offer` array for free build / subscription / buyout)
+  - `index.html` / `process.html` / `contact.html` → `@graph` with `ProfessionalService`, `Person` (Grant Motley), `Service` (with `Offer` array for free build / Hosted Subscription / Delivery)
   - `faq.html` → `FAQPage` with all 10 Q&A pairs as `mainEntity`
 - `<link rel="icon" ...>` to `assets/brand/favicon.svg`
 
