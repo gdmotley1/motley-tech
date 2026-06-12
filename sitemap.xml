@@ -59,24 +59,24 @@
   </url>
 
   <!-- Sample sites — proof of work -->
-  <url><loc>https://motley-tech.com/demos/restaurant/</loc><lastmod>2026-06-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://motley-tech.com/demos/restaurant/</loc><lastmod>2026-06-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://motley-tech.com/demos/restaurant/menu.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/restaurant/story.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/restaurant/visit.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
 
-  <url><loc>https://motley-tech.com/demos/retail/</loc><lastmod>2026-06-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://motley-tech.com/demos/retail/</loc><lastmod>2026-06-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://motley-tech.com/demos/retail/shop.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/retail/lookbook.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/retail/journal.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/retail/visit.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
 
-  <url><loc>https://motley-tech.com/demos/salon/</loc><lastmod>2026-06-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://motley-tech.com/demos/salon/</loc><lastmod>2026-06-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://motley-tech.com/demos/salon/services.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/salon/barbers.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/salon/gallery.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/salon/book.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
 
-  <url><loc>https://motley-tech.com/demos/trades/</loc><lastmod>2026-06-04</lastmod><priority>0.6</priority></url>
+  <url><loc>https://motley-tech.com/demos/trades/</loc><lastmod>2026-06-11</lastmod><priority>0.6</priority></url>
   <url><loc>https://motley-tech.com/demos/trades/services.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/trades/coverage.html</loc><lastmod>2026-06-04</lastmod><priority>0.4</priority></url>
   <url><loc>https://motley-tech.com/demos/trades/estimate.html</loc><lastmod>2026-05-01</lastmod><priority>0.4</priority></url>
