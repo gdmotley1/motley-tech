@@ -376,7 +376,7 @@
                 x = (85.6 - lng) / 4.6  * 400
                 y = (35.0 - lat) / 4.6  * 480
             -->
-            <svg viewBox="0 0 400 480" class="w-full h-auto block max-h-[640px] mx-auto" role="img"
+            <svg viewBox="-6 -6 422 497" class="w-full h-auto block max-h-[640px] mx-auto" role="img"
                  aria-label="Coverage map of Georgia, with Milledgeville and surrounding service cities marked"
                  style="font-family: 'Barlow Condensed', 'Arial Narrow', sans-serif;">
 
@@ -388,17 +388,13 @@
                 .town:hover .label, .town:focus .label { fill: #0F1F38; font-weight: 900; }
               </style>
 
-              <!-- Georgia outline (simplified polygon, ~20 vertices, geographically proportioned) -->
-              <polygon points="
-                  15,12   105,8   175,5   217,4   240,11
-                  248,30  254,75  275,125  295,170  308,215
-                  322,260  345,310  362,355  362,400  340,425
-                  295,432  220,432  130,428  62,432  35,425
-                  28,355  22,260  18,165  15,80   15,12"
+              <!-- Georgia outline: real US Census state boundary (51 vertices), projected with the
+                   same equirectangular formula as the town dots, so everything stays aligned -->
+              <path d="M216.6,-0.1 L198.0,22.2 L196.6,33.0 L225.6,55.3 L234.7,53.6 L248.0,76.5 L250.9,88.5 L264.7,110.2 L284.7,123.3 L296.1,142.8 L319.5,160.5 L318.5,172.5 L333.8,191.9 L357.1,207.9 L362.8,225.1 L363.8,247.3 L375.7,254.8 L389.5,282.8 L389.9,300.5 L410.0,309.6 L388.5,345.1 L384.7,363.4 L375.7,379.4 L374.7,395.9 L365.2,403.4 L361.4,447.9 L337.6,443.9 L317.6,435.4 L309.5,443.4 L312.8,462.8 L309.0,483.9 L298.5,484.5 L294.2,462.2 L182.8,454.2 L63.7,447.4 L51.8,417.1 L42.3,388.5 L48.5,361.1 L39.9,329.6 L47.5,311.9 L47.0,298.8 L61.8,285.6 L51.8,279.3 L55.6,269.1 L46.1,252.5 L36.1,223.3 L14.7,91.3 L-0.6,1.6 L111.3,1.0 L172.3,1.6 L216.6,-0.1 Z"
                 fill="#FDFBF4" stroke="#0F1F38" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"/>
 
               <!-- Faded "GEORGIA" wordmark inside the state -->
-              <text x="120" y="115" font-weight="900" font-size="32" fill="#0F1F38" letter-spacing="5" opacity="0.12">GEORGIA</text>
+              <text x="90" y="115" font-weight="900" font-size="30" fill="#0F1F38" letter-spacing="5" opacity="0.12">GEORGIA</text>
 
               <!-- 60-minute drive radius around Milledgeville (HQ) -->
               <!-- Milledgeville: 33.08 N, 83.23 W => x=206, y=200 -->
