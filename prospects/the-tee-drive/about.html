@@ -4,26 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>About · The Tee Drive</title>
-  <meta name="description" content="Built in downtown Milledgeville. Why a tour-grade simulator bar makes sense for Baldwin County. The thesis behind The Tee Drive.">
+  <title>About · The Tee Drive · Milledgeville</title>
+  <meta name="description" content="Why downtown Milledgeville is getting a simulator bar: year-round golf, real tracking tech, and a place to hang out while you play. Opening soon at 127 S Wayne St.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'bg-0': '#0A0F1A', 'bg-1': '#0F172A', 'bg-2': '#1E293B', 'bg-3': '#334155',
-            'text-0': '#F8FAFC', 'text-1': '#CBD5E1', 'text-2': '#94A3B8', 'text-3': '#64748B',
-            'line': '#1E293B', 'line-strong': '#334155',
-            'green-base': '#16A34A', 'green-hot': '#22C55E', 'green-glow': '#4ADE80',
+            'bg-0': '#0C0F0D',
+            'bg-1': '#121613',
+            'bg-2': '#1A201C',
+            'text-0': '#F4F6F3',
+            'text-1': '#C8CEC9',
+            'text-2': '#939C95',
+            'text-3': '#647067',
+            'line': '#242B26',
+            'line-strong': '#333D36',
+            'green-base': '#16A34A',
+            'green-hot': '#22C55E',
+            'green-deep': '#0E7A38',
+            'sand': '#E5DFCE',
           },
           fontFamily: {
-            'display': ['DM Serif Display', 'Georgia', 'serif'],
-            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'sans': ['Archivo', 'system-ui', 'sans-serif'],
             'mono': ['JetBrains Mono', 'monospace'],
           }
         }
@@ -33,149 +41,150 @@
   <style>
     [x-cloak] { display: none !important; }
     html { scroll-behavior: smooth; }
-    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    body { background: #0C0F0D; color: #F4F6F3; font-family: 'Archivo', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 116%; font-weight: 800; letter-spacing: -0.015em; line-height: 1.02; }
+    .display-wide { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 125%; font-weight: 800; letter-spacing: 0.01em; }
     .mono { font-family: 'JetBrains Mono', monospace; }
-    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
-    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
-    .hairline { border-color: #1E293B; }
-    .hairline-strong { border-color: #334155; }
+    .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+    .hairline { border-color: #242B26; }
+    .hairline-strong { border-color: #333D36; }
     .num { font-variant-numeric: tabular-nums; }
-    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
-    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .img-fade { background: linear-gradient(180deg, rgba(12,15,13,0.10) 0%, rgba(12,15,13,0.05) 45%, rgba(12,15,13,0.72) 100%); }
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
     .reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
-    .text-balance { text-wrap: balance; }
-    .prose-td p { color: #CBD5E1; font-size: 1.125rem; line-height: 1.75; margin-bottom: 1.5rem; }
-    .prose-td p:last-child { margin-bottom: 0; }
-    .prose-td strong { color: #F8FAFC; font-weight: 600; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
   </style>
 </head>
 <body class="bg-bg-0">
 
-  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-bg-0/85 backdrop-blur border-b hairline">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
-        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+        <span class="block w-1.5 h-6 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display-wide text-base text-text-0 leading-none">THE TEE DRIVE</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="index.html" class="text-text-1 hover:text-green-hot transition">Home</a>
-        <a href="simulators.html" class="text-text-1 hover:text-green-hot transition">Simulators</a>
-        <a href="membership.html" class="text-text-1 hover:text-green-hot transition">Membership</a>
-        <a href="events.html" class="text-text-1 hover:text-green-hot transition">Events</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-text-1 hover:text-text-0 transition">Home</a>
+        <a href="simulators.html" class="text-text-1 hover:text-text-0 transition">The Bays</a>
+        <a href="membership.html" class="text-text-1 hover:text-text-0 transition">Membership</a>
+        <a href="events.html" class="text-text-1 hover:text-text-0 transition">Events</a>
         <a href="about.html" class="text-green-hot">About</a>
       </nav>
-      <a href="#visit" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Visit</a>
+      <a href="mailto:contact@theteedrive.com?subject=Opening%20updates" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full transition">Get updates</a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="relative no-reveal overflow-hidden border-b hairline">
-    <div class="absolute inset-0 dotgrid opacity-60"></div>
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] rounded-full bg-green-base/10 blur-3xl"></div>
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
-        <span class="tag-mono text-green-hot text-[10px]">ABOUT</span>
-      </div>
-      <h1 class="display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
-        Built in Milly. <span class="text-green-hot">For Milly.</span>
+  <section class="relative no-reveal border-b hairline overflow-hidden">
+    <div class="absolute inset-0" style="background: linear-gradient(160deg, #0C0F0D 0%, #121613 60%, #0E1A12 100%);"></div>
+    <img src="https://images.unsplash.com/photo-1505794718076-13e166c01a33?w=2000&q=80&auto=format&fit=crop"
+         alt="A golfer silhouetted against the sky at dusk"
+         class="absolute inset-0 w-full h-full object-cover opacity-50"
+         onerror="this.remove()">
+    <div class="absolute inset-0" style="background: linear-gradient(180deg, rgba(12,15,13,0.65) 0%, rgba(12,15,13,0.35) 50%, rgba(12,15,13,0.94) 100%);"></div>
+
+    <div class="relative max-w-7xl mx-auto px-5 sm:px-6 pt-24 pb-20 md:pt-36 md:pb-28">
+      <div class="kicker text-green-hot mb-4">About</div>
+      <h1 class="display text-3xl sm:text-4xl md:text-6xl lg:text-7xl text-text-0 max-w-3xl">
+        For the love of the game.
       </h1>
-      <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-text-1 leading-relaxed">
-        Powered by passion. Driven by tech. Downtown Milledgeville's first tour-grade simulator bar.
+      <p class="mt-6 max-w-xl text-base md:text-lg text-text-1 leading-relaxed">
+        A simulator bar built by people who think a great round should not require a free afternoon, a trailer hitch, or a ninety-minute drive.
       </p>
     </div>
   </section>
 
-  <!-- WHY THIS EXISTS -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-12 gap-12">
+  <!-- THE WHY -->
+  <section class="border-b hairline py-16 md:py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
         <div class="lg:col-span-4">
-          <div class="flex items-baseline gap-4 mb-6">
-            <span class="tag-mono text-green-hot">[ // 01 ]</span>
-            <span class="tag-mono text-text-3">THESIS</span>
-          </div>
-          <h2 class="display text-3xl sm:text-4xl lg:text-5xl text-text-0 text-balance leading-[0.95]">
-            Why this <span class="text-green-hot">exists</span>.
-          </h2>
+          <div class="kicker text-green-hot mb-4">Why this exists</div>
+          <h2 class="display text-2xl md:text-4xl text-text-0">Milledgeville loves golf. The calendar disagrees.</h2>
         </div>
-        <div class="lg:col-span-8 prose-td">
+        <div class="lg:col-span-8 space-y-6 text-base md:text-lg text-text-1 leading-relaxed">
           <p>
-            The closest tour-grade simulator to Milledgeville is a ninety-minute drive to Atlanta. The closest indoor range that runs year-round is even farther. For a town that loves golf and has nowhere to play it nine months out of the year, that's a problem.
+            The closest tour-grade simulator is a long drive up the highway. Georgia summers hit 95 and humid, spring is rain-delayed half the time, and winter light is gone by 5:30. Add work, family, green fees, and the four-hour round, and most serious golfers around Baldwin County play a fraction of what they want to.
           </p>
           <p>
-            Georgia summers are 95° and humid. Spring is rain-delayed half the time. Winter days are over by 5:30. Add work, family, the price of green fees, the four-hour round, the drive to a course, the bag of clubs you have to keep in your trunk, and the average serious golfer in Baldwin County plays a fraction of the rounds they want to.
+            The Tee Drive is the answer. Four bays, two blocks from the square. Tour-grade ball tracking on every shot and three hundred world-famous courses in the library. Two dart sims, a pool table, a console lounge, and a real bar, so the night does not end when the round does.
           </p>
-          <p>
-            <strong>The Tee Drive is the answer.</strong> Four bays, two blocks from the square, open until midnight five nights a week. Tour-grade ball-flight tracking on every shot. Three hundred world-famous courses in the library. Two dedicated dart sims, a pool table, a console lounge, and a real bar. The same gear PGA pros use to practice at home, sitting on Hancock Street.
+          <p class="text-text-0 font-semibold">
+            Rain or shine, January or July, the course is always open.
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- THE NUMBERS -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 02 ]</span>
-        <span class="tag-mono text-text-3">THE NUMBERS</span>
-      </div>
-      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
-        What we built, <span class="text-green-hot">by the numbers</span>.
-      </h2>
+  <!-- THE SPACE -->
+  <section id="space" class="border-b hairline py-16 md:py-24 lg:py-32 bg-bg-1/40">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="kicker text-green-hot mb-4">The space</div>
+      <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0 max-w-3xl">More than bays.</h2>
+      <p class="mt-6 max-w-2xl text-base md:text-lg text-text-1 leading-relaxed">
+        Half the floor is for swinging. The other half is for everyone else: a pool table, a console lounge with Xbox, PS5, Switch, and Wii, and a bar pouring cold beer and real cocktails with your tab tracked to wherever you're sitting.
+      </p>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line mt-16 border hairline">
-        <div class="bg-bg-0 p-8 flex flex-col h-full">
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">4</div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest">BAYS</div>
-          <div class="mt-4 text-sm text-text-2 leading-relaxed">Each seats 3 to 6. Tour-grade tracking on every shot.</div>
+      <div class="grid md:grid-cols-3 gap-4 md:gap-5 mt-12 md:mt-16 items-stretch">
+        <div class="border hairline bg-bg-0 overflow-hidden flex flex-col h-full">
+          <div class="aspect-[4/3] relative flex-shrink-0" style="background: linear-gradient(160deg, #15201A, #0C0F0D);">
+            <img src="https://images.unsplash.com/photo-1647304418887-7d46dd49167d?w=900&q=80&auto=format&fit=crop"
+                 alt="A pool table in a dim room beside a bar"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+            <div class="absolute inset-0 img-fade"></div>
+          </div>
+          <div class="p-6">
+            <div class="display text-lg text-text-0 mb-1.5">The table</div>
+            <p class="text-sm text-text-2 leading-relaxed">Racked and waiting between rounds.</p>
+          </div>
         </div>
-        <div class="bg-bg-0 p-8 flex flex-col h-full">
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">27</div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest">DATA POINTS / SHOT</div>
-          <div class="mt-4 text-sm text-text-2 leading-relaxed">Ball + club flight parameters. PGA Tour standard.</div>
+        <div class="border hairline bg-bg-0 overflow-hidden flex flex-col h-full">
+          <div class="aspect-[4/3] relative flex-shrink-0" style="background: linear-gradient(160deg, #131318, #0C0F0D);">
+            <img src="https://images.unsplash.com/photo-1482855549413-2a6c9b1955a7?w=900&q=80&auto=format&fit=crop"
+                 alt="A game controller in low light"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+            <div class="absolute inset-0 img-fade"></div>
+          </div>
+          <div class="p-6">
+            <div class="display text-lg text-text-0 mb-1.5">The lounge</div>
+            <p class="text-sm text-text-2 leading-relaxed">Xbox, PS5, Switch, and Wii on the big screens.</p>
+          </div>
         </div>
-        <div class="bg-bg-0 p-8 flex flex-col h-full">
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">300<span class="display text-3xl text-text-2">+</span></div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest">COURSES</div>
-          <div class="mt-4 text-sm text-text-2 leading-relaxed">Pebble, St Andrews, Augusta, Bandon, plus 296 more.</div>
-        </div>
-        <div class="bg-bg-0 p-8 flex flex-col h-full">
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-green-hot num mb-3">12<span class="display text-3xl text-text-2">'</span></div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest">IMPACT SCREEN</div>
-          <div class="mt-4 text-sm text-text-2 leading-relaxed">4K projection. Real-feel turf. Properly absorbed striking.</div>
+        <div class="border hairline bg-bg-0 overflow-hidden flex flex-col h-full">
+          <div class="aspect-[4/3] relative flex-shrink-0" style="background: linear-gradient(160deg, #211C12, #0C0F0D);">
+            <img src="https://images.unsplash.com/photo-1770164491578-09f08156db2d?w=900&q=80&auto=format&fit=crop"
+                 alt="A bartender pouring a drink over ice"
+                 class="absolute inset-0 w-full h-full object-cover"
+                 onerror="this.remove()">
+            <div class="absolute inset-0 img-fade"></div>
+          </div>
+          <div class="p-6">
+            <div class="display text-lg text-text-0 mb-1.5">The 19th hole</div>
+            <p class="text-sm text-text-2 leading-relaxed">Cold beer, real cocktails, no plastic cups.</p>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- THE TECH -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="grid lg:grid-cols-12 gap-12">
+  <section class="border-b hairline py-16 md:py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
         <div class="lg:col-span-4">
-          <div class="flex items-baseline gap-4 mb-6">
-            <span class="tag-mono text-green-hot">[ // 03 ]</span>
-            <span class="tag-mono text-text-3">THE TECH</span>
-          </div>
-          <h2 class="display text-3xl sm:text-4xl lg:text-5xl text-text-0 text-balance leading-[0.95]">
-            Powered by passion. <span class="text-green-hot">Driven by tech.</span>
-          </h2>
+          <div class="kicker text-green-hot mb-4">The tech</div>
+          <h2 class="display text-2xl md:text-4xl text-text-0">Powered by passion. Driven by tech.</h2>
         </div>
-        <div class="lg:col-span-8 prose-td">
+        <div class="lg:col-span-8 space-y-6 text-base md:text-lg text-text-1 leading-relaxed">
           <p>
-            Industry-grade launch monitors track twenty-seven ball- and club-flight parameters in real time. The same standard the PGA Tour uses to dial in their bags. Two dedicated dart sims auto-score every throw, run live brackets on tournament nights, and post results to leaderboards mounted in the bar.
+            Industry-grade launch monitors read twenty-seven ball- and club-flight parameters in real time, the same standard tour players use to dial in their bags. The dart sims score themselves with overhead cameras and post results to leaderboards in the bar.
           </p>
           <p>
-            None of this exists to look impressive. It exists because <strong>deliberate practice</strong> (Anders Ericsson, Psychological Review 1993) is the foundational principle behind every player who's ever gotten meaningfully better at anything: <em class="not-italic text-text-0">immediate feedback, on specific performance parameters, in a controlled, repeatable environment</em>.
-          </p>
-          <p>
-            That's the definition of a simulator bay. It's also what a public range fails at on every count.
+            None of it is there to look impressive. Immediate feedback on every swing, in a controlled environment you can come back to every week, is simply the fastest way anyone gets better at anything. That is what a bay gives you that a public range never will.
           </p>
         </div>
       </div>
@@ -183,52 +192,44 @@
   </section>
 
   <!-- VISIT -->
-  <section id="visit" class="py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 04 ]</span>
-        <span class="tag-mono text-text-3">VISIT</span>
-      </div>
-      <div class="grid md:grid-cols-2 gap-12 items-start">
+  <section id="visit" class="py-16 md:py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="kicker text-green-hot mb-4">Visit</div>
+      <div class="grid md:grid-cols-2 gap-10 md:gap-12 items-start">
         <div>
-          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[0.95]">
-            127 S Wayne St. <span class="text-green-hot">See you soon.</span>
-          </h2>
-          <div class="mt-10 grid grid-cols-2 gap-y-8 mono text-sm">
+          <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0">127 S Wayne St. See you soon.</h2>
+          <div class="mt-8 md:mt-10 grid grid-cols-2 gap-y-6 text-sm">
             <div>
-              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Address</div>
-              <div class="text-text-0">127 S Wayne St</div>
-              <div class="text-text-0">Milledgeville, GA 31061</div>
+              <div class="kicker text-text-3 mb-2">Address</div>
+              <div class="text-text-0 leading-relaxed">127 S Wayne St<br>Milledgeville, GA 31061</div>
             </div>
             <div>
-              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Hours</div>
-              <div class="text-text-0">Sun-Thu  11a → 11p</div>
-              <div class="text-text-0">Fri-Sat   11a → 1a</div>
+              <div class="kicker text-text-3 mb-2">Hours</div>
+              <div class="text-text-0 leading-relaxed">Announced at opening</div>
             </div>
             <div>
-              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Phone</div>
-              <div class="text-text-0">(478) 000-0000</div>
+              <div class="kicker text-text-3 mb-2">Email</div>
+              <a href="mailto:contact@theteedrive.com" class="text-text-0 hover:text-green-hot transition">contact@theteedrive.com</a>
             </div>
             <div>
-              <div class="text-xs text-text-3 uppercase tracking-widest mb-2">Email</div>
-              <div class="text-text-0">contact@theteedrive.com</div>
+              <div class="kicker text-text-3 mb-2">Follow</div>
+              <div class="flex gap-4">
+                <a href="https://www.instagram.com/theteedrive" target="_blank" rel="noopener" class="text-text-0 hover:text-green-hot transition">Instagram</a>
+                <a href="https://www.facebook.com/profile.php?id=61582240520987" target="_blank" rel="noopener" class="text-text-0 hover:text-green-hot transition">Facebook</a>
+              </div>
             </div>
-          </div>
-          <div class="mt-10 flex flex-wrap gap-3">
-            <a href="simulators.html#book" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">Book a Bay</a>
-            <a href="membership.html" class="text-text-0 hover:text-green-hot font-semibold text-sm px-6 py-3.5 border hairline-strong hover:border-green-hot transition uppercase tracking-wide">Become a member →</a>
           </div>
           <div class="mt-10 pt-8 border-t hairline">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Parking</div>
+            <div class="kicker text-text-3 mb-3">Parking</div>
             <div class="text-text-1 text-sm leading-relaxed max-w-md">
-              Free 2-hour street parking on S Wayne directly out front. After 5pm, the city lot half a block down is free too.
+              Street parking on S Wayne out front, with the city lot half a block down.
             </div>
           </div>
         </div>
         <div class="border hairline p-1 bg-bg-1">
           <iframe
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3358.4!2d-83.232!3d33.080!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzPCsDA0JzQ4LjAiTiA4M8KwMTMnNTUuMiJX!5e0!3m2!1sen!2sus!4v1700000000000"
-            class="w-full aspect-[4/5] grayscale contrast-125 brightness-75"
+            class="w-full aspect-[4/3] grayscale contrast-125 brightness-75"
             loading="lazy"
             allowfullscreen=""
             referrerpolicy="no-referrer-when-downgrade"
@@ -239,36 +240,34 @@
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t hairline py-16 bg-bg-1/30">
-    <div class="max-w-7xl mx-auto px-6">
+  <footer class="border-t hairline py-14 md:py-16 bg-bg-1/40">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
       <div class="grid md:grid-cols-4 gap-10 mb-12">
         <div class="md:col-span-2">
-          <a href="index.html" class="flex items-center gap-3 group mb-4">
-            <span class="block w-1 h-7 bg-green-base"></span>
-            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          <a href="index.html" class="flex items-center gap-3 mb-4">
+            <span class="block w-1.5 h-6 bg-green-base"></span>
+            <span class="display-wide text-base text-text-0 leading-none">THE TEE DRIVE</span>
           </a>
           <div class="text-sm text-text-2 max-w-sm leading-relaxed">
-            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+            Powered by passion. Driven by tech. Downtown Milledgeville's home for golf, games, and good company.
           </div>
         </div>
         <div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="kicker text-text-3 mb-4">Navigate</div>
           <div class="space-y-2 text-sm">
-            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
-            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
-            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
-            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
-            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+            <a href="index.html" class="block text-text-1 hover:text-text-0 transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-text-0 transition">The Bays</a>
+            <a href="membership.html" class="block text-text-1 hover:text-text-0 transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-text-0 transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-text-0 transition">About</a>
           </div>
         </div>
         <div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
-          <div class="space-y-1 text-sm text-text-2 mono">
+          <div class="kicker text-text-3 mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2">
             <div>127 S Wayne St</div>
             <div>Milledgeville, GA 31061</div>
-            <div>(478) 000-0000</div>
-            <div class="pt-3">Sun-Thu  11a → 11p</div>
-            <div>Fri-Sat   11a → 1a</div>
+            <a href="mailto:contact@theteedrive.com" class="block pt-3 text-text-1 hover:text-text-0 transition">contact@theteedrive.com</a>
           </div>
         </div>
       </div>
@@ -277,12 +276,12 @@
         <div class="flex items-center gap-6 mono text-xs text-text-3">
           <a href="https://www.instagram.com/theteedrive" target="_blank" rel="noopener" class="hover:text-green-hot transition">INSTAGRAM</a>
           <a href="https://www.facebook.com/profile.php?id=61582240520987" target="_blank" rel="noopener" class="hover:text-green-hot transition">FACEBOOK</a>
-          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- SCROLL REVEAL -->
   <script>
     (function() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;

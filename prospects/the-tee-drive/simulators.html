@@ -4,26 +4,34 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="robots" content="noindex, nofollow">
-  <title>Simulators · The Tee Drive</title>
-  <meta name="description" content="Four tour-grade simulator bays. 27 launch-monitor data points per shot. 300+ courses. Game modes for solo, group, and tournament play.">
+  <title>The Bays · The Tee Drive · Milledgeville</title>
+  <meta name="description" content="Four tour-grade golf simulator bays with 27 data points per shot and 300+ courses, plus two auto-scoring dart sims. Opening soon in downtown Milledgeville.">
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
           colors: {
-            'bg-0': '#0A0F1A', 'bg-1': '#0F172A', 'bg-2': '#1E293B', 'bg-3': '#334155',
-            'text-0': '#F8FAFC', 'text-1': '#CBD5E1', 'text-2': '#94A3B8', 'text-3': '#64748B',
-            'line': '#1E293B', 'line-strong': '#334155',
-            'green-base': '#16A34A', 'green-hot': '#22C55E', 'green-glow': '#4ADE80',
+            'bg-0': '#0C0F0D',
+            'bg-1': '#121613',
+            'bg-2': '#1A201C',
+            'text-0': '#F4F6F3',
+            'text-1': '#C8CEC9',
+            'text-2': '#939C95',
+            'text-3': '#647067',
+            'line': '#242B26',
+            'line-strong': '#333D36',
+            'green-base': '#16A34A',
+            'green-hot': '#22C55E',
+            'green-deep': '#0E7A38',
+            'sand': '#E5DFCE',
           },
           fontFamily: {
-            'display': ['DM Serif Display', 'Georgia', 'serif'],
-            'sans': ['Inter', 'system-ui', 'sans-serif'],
+            'sans': ['Archivo', 'system-ui', 'sans-serif'],
             'mono': ['JetBrains Mono', 'monospace'],
           }
         }
@@ -33,310 +41,204 @@
   <style>
     [x-cloak] { display: none !important; }
     html { scroll-behavior: smooth; }
-    body { background: #0A0F1A; color: #F8FAFC; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
-    .display { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.005em; line-height: 1.05; }
+    body { background: #0C0F0D; color: #F4F6F3; font-family: 'Archivo', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+    .display { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 116%; font-weight: 800; letter-spacing: -0.015em; line-height: 1.02; }
+    .display-wide { font-family: 'Archivo', system-ui, sans-serif; font-stretch: 125%; font-weight: 800; letter-spacing: 0.01em; }
     .mono { font-family: 'JetBrains Mono', monospace; }
-    .tag-mono { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; }
-    .dotgrid { background-image: radial-gradient(rgba(255,255,255,0.04) 1px, transparent 1px); background-size: 24px 24px; }
-    .hairline { border-color: #1E293B; }
-    .hairline-strong { border-color: #334155; }
+    .kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; }
+    .hairline { border-color: #242B26; }
+    .hairline-strong { border-color: #333D36; }
     .num { font-variant-numeric: tabular-nums; }
-    .pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
-    @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.35; } }
-    .glow { box-shadow: 0 0 80px -20px rgba(34, 197, 94, 0.35); }
+    .img-fade { background: linear-gradient(180deg, rgba(12,15,13,0.10) 0%, rgba(12,15,13,0.05) 45%, rgba(12,15,13,0.72) 100%); }
     .reveal { opacity: 0; transform: translateY(14px); transition: opacity 700ms cubic-bezier(0.16,1,0.3,1), transform 700ms cubic-bezier(0.16,1,0.3,1); }
     .reveal.is-in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal, .pulse-dot { animation: none; opacity: 1; transform: none; transition: none; } }
-    .text-balance { text-wrap: balance; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
   </style>
 </head>
 <body class="bg-bg-0">
 
-  <header class="border-b hairline sticky top-0 z-50 bg-bg-0/85 backdrop-blur supports-[backdrop-filter]:bg-bg-0/70">
-    <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+  <!-- NAV -->
+  <header class="sticky top-0 z-50 bg-bg-0/85 backdrop-blur border-b hairline">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 h-16 flex items-center justify-between">
       <a href="index.html" class="flex items-center gap-3 group">
-        <span class="block w-1 h-7 bg-green-base group-hover:bg-green-hot transition"></span>
-        <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+        <span class="block w-1.5 h-6 bg-green-base group-hover:bg-green-hot transition"></span>
+        <span class="display-wide text-base text-text-0 leading-none">THE TEE DRIVE</span>
       </a>
-      <nav class="hidden md:flex items-center gap-8 text-sm">
-        <a href="index.html" class="text-text-1 hover:text-green-hot transition">Home</a>
-        <a href="simulators.html" class="text-green-hot">Simulators</a>
-        <a href="membership.html" class="text-text-1 hover:text-green-hot transition">Membership</a>
-        <a href="events.html" class="text-text-1 hover:text-green-hot transition">Events</a>
-        <a href="about.html" class="text-text-1 hover:text-green-hot transition">About</a>
+      <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <a href="index.html" class="text-text-1 hover:text-text-0 transition">Home</a>
+        <a href="simulators.html" class="text-green-hot">The Bays</a>
+        <a href="membership.html" class="text-text-1 hover:text-text-0 transition">Membership</a>
+        <a href="events.html" class="text-text-1 hover:text-text-0 transition">Events</a>
+        <a href="about.html" class="text-text-1 hover:text-text-0 transition">About</a>
       </nav>
-      <a href="#book" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-5 py-2.5 transition uppercase tracking-wide">Book a Bay</a>
+      <a href="mailto:contact@theteedrive.com?subject=Opening%20updates" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-4 py-2 md:px-5 md:py-2.5 rounded-full transition">Get updates</a>
     </div>
   </header>
 
   <!-- HERO -->
-  <section class="relative no-reveal overflow-hidden border-b hairline">
-    <div class="absolute inset-0 dotgrid opacity-60"></div>
-    <div class="absolute top-1/3 -left-32 w-[500px] h-[500px] rounded-full bg-green-base/10 blur-3xl"></div>
-    <div class="max-w-7xl mx-auto px-5 sm:px-6 pt-10 pb-14 sm:pt-16 sm:pb-20 lg:pt-24 lg:pb-28 relative">
-      <div class="flex items-center gap-3 mb-5">
-        <span class="block w-2 h-2 bg-green-hot pulse-dot rounded-full"></span>
-        <span class="tag-mono text-green-hot text-[10px]">THE BAYS</span>
+  <section class="no-reveal border-b hairline">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6 py-14 md:py-20 lg:py-28">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div>
+          <div class="kicker text-green-hot mb-4">The bays</div>
+          <h1 class="display text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-text-0">
+            Four bays. Tour-grade everything.
+          </h1>
+          <p class="mt-6 max-w-lg text-base md:text-lg text-text-1 leading-relaxed">
+            Launch monitors that read 27 ball- and club-flight parameters per swing. 4K projection on twelve-foot screens. Real-feel turf. Each bay seats three to six and runs your bar tab to the seat.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-3">
+            <a href="#rates" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 rounded-full transition">Bay rates</a>
+            <a href="#darts" class="text-text-0 font-semibold text-sm px-6 py-3.5 rounded-full border hairline-strong hover:border-green-hot transition">Darts</a>
+          </div>
+        </div>
+        <div class="relative aspect-[4/3] lg:aspect-[5/4] border hairline overflow-hidden" style="background: linear-gradient(160deg, #122017, #0C0F0D);">
+          <img src="https://images.unsplash.com/photo-1708906440951-ea706a9c7423?w=1400&q=80&auto=format&fit=crop"
+               alt="A driver behind a golf ball at golden hour"
+               class="absolute inset-0 w-full h-full object-cover"
+               onerror="this.remove()">
+          <div class="absolute inset-0 img-fade"></div>
+          <div class="absolute bottom-4 left-5 kicker text-text-1">Every swing, measured</div>
+        </div>
       </div>
-      <h1 class="display text-[1.75rem] sm:text-4xl md:text-5xl lg:text-6xl xl:text-[4.5rem] text-text-0 text-balance leading-[1.05]">
-        Four bays. <span class="text-green-hot">Zero excuses.</span>
-      </h1>
-      <p class="mt-6 sm:mt-8 max-w-2xl text-base sm:text-lg text-text-1 leading-relaxed">
-        Tour-grade launch monitors. 4K projection on twelve-foot impact screens. Real-feel hitting mats. Each bay seats three to six players and pours the bar tab to the seat. Two dedicated dart sims next door.
-      </p>
     </div>
-  </section>
 
-  <!-- BAY ANATOMY -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 01 ]</span>
-        <span class="tag-mono text-text-3">THE BAY</span>
-      </div>
-      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
-        Anatomy of a <span class="text-green-hot">bay</span>.
-      </h2>
-
-      <div class="grid lg:grid-cols-5 gap-8 mt-16">
-        <div class="lg:col-span-3 border hairline bg-bg-1 p-10 relative overflow-hidden min-h-[400px] flex flex-col">
-          <div class="absolute inset-0 dotgrid opacity-40"></div>
-          <div class="relative flex flex-col h-full">
-            <div class="mono text-xs text-green-hot uppercase tracking-widest mb-6">SCHEMATIC · BAY 01</div>
-
-            <!-- bay schematic SVG -->
-            <svg viewBox="0 0 500 240" class="w-full h-auto mt-auto" xmlns="http://www.w3.org/2000/svg">
-              <!-- ceiling -->
-              <line x1="20" y1="20" x2="480" y2="20" stroke="#334155" stroke-width="1"/>
-              <text x="240" y="14" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748B">PROJECTOR · 4K · CEILING-MOUNTED</text>
-              <line x1="250" y1="22" x2="170" y2="90" stroke="#334155" stroke-width="1" stroke-dasharray="3 3"/>
-
-              <!-- impact screen -->
-              <rect x="40" y="40" width="280" height="140" fill="#0A0F1A" stroke="#22C55E" stroke-width="2"/>
-              <text x="180" y="115" text-anchor="middle" font-family="Anton" font-size="38" fill="#22C55E" opacity="0.5">12' SCREEN</text>
-
-              <!-- mat -->
-              <rect x="60" y="195" width="240" height="20" fill="#1E293B" stroke="#334155" stroke-width="1"/>
-              <text x="180" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748B">HITTING MAT · REAL-FEEL TURF</text>
-
-              <!-- launch monitor -->
-              <rect x="340" y="100" width="80" height="50" fill="#0A0F1A" stroke="#22C55E" stroke-width="1.5"/>
-              <circle cx="380" cy="125" r="8" fill="none" stroke="#22C55E" stroke-width="1.5"/>
-              <circle cx="380" cy="125" r="3" fill="#22C55E"/>
-              <text x="380" y="170" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748B">LAUNCH MONITOR</text>
-              <text x="380" y="183" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748B">TRACKS 27 PARAMETERS</text>
-
-              <!-- seating -->
-              <rect x="430" y="180" width="50" height="35" fill="none" stroke="#334155" stroke-width="1"/>
-              <text x="455" y="232" text-anchor="middle" font-family="JetBrains Mono" font-size="9" fill="#64748B">SEATING · 6</text>
-
-              <!-- annotation arrows -->
-              <line x1="180" y1="195" x2="180" y2="180" stroke="#22C55E" stroke-width="1"/>
-              <circle cx="180" cy="178" r="2" fill="#22C55E"/>
-            </svg>
-          </div>
-        </div>
-        <div class="lg:col-span-2 space-y-px bg-line border hairline">
-          <div class="bg-bg-0 p-6 flex items-baseline justify-between">
-            <span class="mono text-xs text-text-3 uppercase tracking-widest">Screen</span>
-            <span class="display text-3xl text-text-0">12'</span>
-          </div>
-          <div class="bg-bg-0 p-6 flex items-baseline justify-between">
-            <span class="mono text-xs text-text-3 uppercase tracking-widest">Projection</span>
-            <span class="display text-3xl text-text-0">4K</span>
-          </div>
-          <div class="bg-bg-0 p-6 flex items-baseline justify-between">
-            <span class="mono text-xs text-text-3 uppercase tracking-widest">Capacity</span>
-            <span class="display text-3xl text-text-0">3–6</span>
-          </div>
-          <div class="bg-bg-0 p-6 flex items-baseline justify-between">
-            <span class="mono text-xs text-text-3 uppercase tracking-widest">Data points / shot</span>
-            <span class="display text-3xl text-green-hot">27</span>
-          </div>
-          <div class="bg-bg-0 p-6 flex items-baseline justify-between">
-            <span class="mono text-xs text-text-3 uppercase tracking-widest">Courses</span>
-            <span class="display text-3xl text-text-0">300+</span>
-          </div>
-        </div>
+    <!-- spec strip -->
+    <div class="border-t hairline bg-bg-1/50">
+      <div class="max-w-7xl mx-auto px-5 sm:px-6 py-5 grid grid-cols-2 md:grid-cols-5 gap-y-4">
+        <div><span class="display text-lg md:text-xl text-text-0">12'</span> <span class="mono text-[10px] text-text-2 uppercase tracking-widest ml-1.5">Screen</span></div>
+        <div><span class="display text-lg md:text-xl text-text-0">4K</span> <span class="mono text-[10px] text-text-2 uppercase tracking-widest ml-1.5">Projection</span></div>
+        <div><span class="display text-lg md:text-xl text-text-0 num">3-6</span> <span class="mono text-[10px] text-text-2 uppercase tracking-widest ml-1.5">Seats / bay</span></div>
+        <div><span class="display text-lg md:text-xl text-text-0 num">27</span> <span class="mono text-[10px] text-text-2 uppercase tracking-widest ml-1.5">Data points</span></div>
+        <div><span class="display text-lg md:text-xl text-text-0 num">300+</span> <span class="mono text-[10px] text-text-2 uppercase tracking-widest ml-1.5">Courses</span></div>
       </div>
     </div>
   </section>
 
-  <!-- THE TRACKING -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 02 ]</span>
-        <span class="tag-mono text-text-3">THE TRACKING</span>
-      </div>
-      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
-        What gets measured <span class="text-green-hot">gets better</span>.
-      </h2>
-      <p class="mt-8 max-w-2xl text-lg text-text-1 leading-relaxed">
-        Every shot logs ball-flight and club-flight data in real time. Same tracking standard used on the PGA Tour. Eight of the most useful below. Twelve bays of nuance below that.
+  <!-- TRACKING -->
+  <section class="border-b hairline py-16 md:py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="kicker text-green-hot mb-4">The tracking</div>
+      <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0 max-w-3xl">What gets measured gets better.</h2>
+      <p class="mt-6 max-w-2xl text-base md:text-lg text-text-1 leading-relaxed">
+        The same tracking standard used on tour. Every swing is logged in real time, so you leave knowing exactly what to work on. The eight numbers that matter most:
       </p>
 
-      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line mt-16 border hairline">
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">01 / RAW POWER</div>
-          <div class="display text-2xl text-text-0 mb-3">BALL SPEED</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">How fast the ball leaves the face, in mph. The single biggest predictor of distance.</div>
-          <div class="mono text-xs text-green-hot mt-4">~168 MPH · TOUR AVG</div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-line mt-12 md:mt-16 border hairline">
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Ball speed</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">How fast the ball leaves the face. The single biggest predictor of distance.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">168 MPH · TOUR AVG</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">02 / ENGINE</div>
-          <div class="display text-2xl text-text-0 mb-3">CLUB SPEED</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">How fast the club head is moving at impact. The input. Everything else is the output.</div>
-          <div class="mono text-xs text-green-hot mt-4">~113 MPH · TOUR AVG</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Club speed</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Club head velocity at impact. The input that drives every other number.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">113 MPH · TOUR AVG</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">03 / EFFICIENCY</div>
-          <div class="display text-2xl text-text-0 mb-3">SMASH FACTOR</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">Ball speed over club speed. How well you transferred energy. 1.50 is elite. 1.30 means you missed center.</div>
-          <div class="mono text-xs text-green-hot mt-4">1.50 · ELITE</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Smash factor</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Ball speed divided by club speed. How cleanly you found the center.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">1.50 · ELITE</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">04 / TRAJECTORY</div>
-          <div class="display text-2xl text-text-0 mb-3">LAUNCH ANGLE</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">Degrees up. Low launch with high spin equals carry. High launch with low spin equals roll.</div>
-          <div class="mono text-xs text-green-hot mt-4">10–14° · OPTIMAL DRIVER</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Launch angle</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Degrees of climb off the face. The difference between carry and roll.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">10-14° · OPTIMAL DRIVER</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">05 / LIFT</div>
-          <div class="display text-2xl text-text-0 mb-3">SPIN RATE</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">RPM around the ball axis. Too much, you balloon. Too little, you can't hold a green.</div>
-          <div class="mono text-xs text-green-hot mt-4">2,500–2,800 · DRIVER</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Spin rate</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">RPM on the ball. Too much balloons the flight, too little won't hold a green.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">2,500-2,800 · DRIVER</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">06 / SHAPE</div>
-          <div class="display text-2xl text-text-0 mb-3">SPIN AXIS</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">Tilt of the spin axis in degrees. Positive numbers fade. Negative draw. Now you know which is which.</div>
-          <div class="mono text-xs text-green-hot mt-4">±5° · STRAIGHT</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Spin axis</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Tilt of the spin. Positive fades, negative draws. Now you know which is which.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">±5° · STRAIGHT</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">07 / DIRECTION</div>
-          <div class="display text-2xl text-text-0 mb-3">CLUB PATH</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">In-to-out or out-to-in, in degrees. The cause of slices, hooks, and the shot you actually meant to hit.</div>
-          <div class="mono text-xs text-green-hot mt-4">0° · NEUTRAL</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Club path</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">In-to-out or out-to-in through impact. The root cause of slices and hooks.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">0° · NEUTRAL</div>
         </div>
-        <div class="bg-bg-0 p-7 flex flex-col h-full">
-          <div class="mono text-[10px] text-text-3 uppercase tracking-widest mb-2">08 / AIM</div>
-          <div class="display text-2xl text-text-0 mb-3">FACE ANGLE</div>
-          <div class="text-sm text-text-2 leading-relaxed flex-1">Where the face was actually pointing at impact, relative to your target. Spoiler: usually not where you thought.</div>
-          <div class="mono text-xs text-green-hot mt-4">±1° · TOUR LEVEL</div>
+        <div class="bg-bg-0 p-6 md:p-7 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-3">Face angle</div>
+          <div class="text-sm text-text-1 leading-relaxed flex-1">Where the face actually pointed at impact, relative to your target line.</div>
+          <div class="mono text-xs text-green-hot mt-5 num">±1° · TOUR LEVEL</div>
         </div>
       </div>
 
-      <p class="mt-10 mono text-xs text-text-3 max-w-3xl">
-        Plus: carry, total, apex, descent angle, attack angle, dynamic loft, spin loft, swing direction, low point, swing plane, and a dozen more. Toggle on what you want, ignore the rest.
+      <p class="mt-8 mono text-xs text-text-3 max-w-3xl leading-relaxed">
+        Plus carry, total, apex, descent angle, attack angle, dynamic loft, spin loft, swing direction, low point, and more. Toggle on what you want. Ignore the rest.
       </p>
     </div>
   </section>
 
-  <!-- GAME MODES -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 03 ]</span>
-        <span class="tag-mono text-text-3">GAME MODES</span>
-      </div>
-      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
-        Six ways to play. All of them <span class="text-green-hot">fun</span>.
-      </h2>
+  <!-- WAYS TO PLAY -->
+  <section class="border-b hairline py-16 md:py-24 lg:py-32 bg-bg-1/40">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="kicker text-green-hot mb-4">Ways to play</div>
+      <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0 max-w-3xl">From full rounds to fast games.</h2>
 
-      <div class="mt-16 divide-y divide-line border hairline">
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">01</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">STROKE PLAY</div>
-          <div class="text-text-1 text-sm md:col-span-5">A full round on any course in the library. Solo or up to six.</div>
-          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">~1 HR / NINE</div>
+      <div class="mt-12 md:mt-16 divide-y divide-line border hairline bg-bg-0">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Stroke play</div>
+          <div class="text-text-2 text-sm md:col-span-7">A full round on any course in the library. Solo or up to six players.</div>
+          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">1 HR / NINE</div>
         </div>
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">02</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">DRIVING RANGE</div>
-          <div class="text-text-1 text-sm md:col-span-5">Warm up, dial in, walk out swinging. Every shot logged with data.</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Driving range</div>
+          <div class="text-text-2 text-sm md:col-span-7">Warm up and dial in distances with every shot logged.</div>
           <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">UNLIMITED REPS</div>
         </div>
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">03</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">SKILLS CHALLENGE</div>
-          <div class="text-text-1 text-sm md:col-span-5">Targeted drills: carry distance, accuracy, intentional draw, intentional fade.</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Skills challenge</div>
+          <div class="text-text-2 text-sm md:col-span-7">Targeted drills for carry distance, accuracy, and shot shaping.</div>
           <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">5 STATIONS</div>
         </div>
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">04</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">CLOSEST TO PIN</div>
-          <div class="text-text-1 text-sm md:col-span-5">One shot, one pin. Closest wins. Loser buys the next round.</div>
-          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">~15 MIN</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Closest to pin</div>
+          <div class="text-text-2 text-sm md:col-span-7">One shot, one pin. The classic group settler.</div>
+          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">15 MIN</div>
         </div>
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">05</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">LONG DRIVE</div>
-          <div class="text-text-1 text-sm md:col-span-5">Big stick. No mercy. Whoever carries it furthest takes the leaderboard.</div>
-          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">3 SWINGS EACH</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Long drive</div>
+          <div class="text-text-2 text-sm md:col-span-7">Three swings each. Furthest carry takes the leaderboard.</div>
+          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">3 SWINGS</div>
         </div>
-        <div class="grid grid-cols-[auto_1fr] md:grid-cols-12 items-start md:items-center gap-x-4 gap-y-1 p-5 sm:p-6 hover:bg-bg-1/40 transition">
-          <div class="display text-3xl md:text-4xl text-green-hot row-span-3 md:row-span-1 md:col-span-2 self-center md:self-auto">06</div>
-          <div class="display text-lg md:text-2xl text-text-0 md:col-span-3">PRACTICE GREEN</div>
-          <div class="text-text-1 text-sm md:col-span-5">Putting only. Lag, breakers, 3-footers. Yes, it counts. No, it's not boring.</div>
-          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">UNTIL YOU MISS</div>
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-y-1 gap-x-4 p-5 md:p-6 md:items-center">
+          <div class="display text-base md:text-lg text-text-0 md:col-span-3">Putting</div>
+          <div class="text-text-2 text-sm md:col-span-7">Lag work, breakers, and pressure three-footers on the practice green.</div>
+          <div class="mono text-[10px] md:text-xs text-text-3 md:col-span-2 md:text-right">ANY PACE</div>
         </div>
       </div>
     </div>
   </section>
 
   <!-- DARTS -->
-  <section class="border-b hairline py-16 sm:py-20 lg:py-28 bg-bg-1/30 relative overflow-hidden">
-    <div class="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full bg-green-base/10 blur-3xl"></div>
-    <div class="max-w-7xl mx-auto px-6 relative">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 04 ]</span>
-        <span class="tag-mono text-text-3">DARTS</span>
-      </div>
-      <div class="grid lg:grid-cols-2 gap-16 items-start">
-        <div>
-          <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 text-balance leading-[0.95]">
-            Two dedicated <span class="text-green-hot">dart sims</span>.
-          </h2>
-          <p class="mt-8 text-lg text-text-1 leading-relaxed">
-            Overhead cameras catch every throw, auto-score every game, and run brackets across both sims on tournament nights. Six game variants. Live leaderboards.
-          </p>
-          <div class="mt-10 border hairline bg-bg-1 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-3">Standing tradition</div>
-            <div class="display text-3xl text-text-0">THURSDAY NIGHT BRACKETS</div>
-            <div class="mt-3 text-text-1 text-sm">$5 entry. Single-elim. Whoever takes the wall this week takes home the cash and the plaque next week.</div>
-          </div>
+  <section id="darts" class="border-b hairline py-16 md:py-24 lg:py-32">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+        <div class="relative aspect-[4/3] border hairline overflow-hidden order-2 lg:order-1" style="background: linear-gradient(160deg, #1C2420, #0C0F0D);">
+          <img src="https://images.unsplash.com/photo-1629721671030-a83edbb11211?w=1400&q=80&auto=format&fit=crop"
+               alt="Green darts in the bullseye of a dartboard"
+               class="absolute inset-0 w-full h-full object-cover"
+               onerror="this.remove()">
+          <div class="absolute inset-0 img-fade"></div>
+          <div class="absolute bottom-4 left-5 kicker text-text-1">Camera auto-scoring</div>
         </div>
-        <div class="grid grid-cols-2 gap-px bg-line border hairline">
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">01</div>
-            <div class="display text-xl text-text-0">501</div>
-            <div class="text-xs text-text-2 mt-2">Classic. Singles or doubles.</div>
-          </div>
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">02</div>
-            <div class="display text-xl text-text-0">CRICKET</div>
-            <div class="text-xs text-text-2 mt-2">Strategy game. Numbers 15–20 + bull.</div>
-          </div>
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">03</div>
-            <div class="display text-xl text-text-0">AROUND THE WORLD</div>
-            <div class="text-xs text-text-2 mt-2">1 through 20 in order. Fast.</div>
-          </div>
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">04</div>
-            <div class="display text-xl text-text-0">KILLER</div>
-            <div class="text-xs text-text-2 mt-2">Last dart standing. Cutthroat.</div>
-          </div>
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">05</div>
-            <div class="display text-xl text-text-0">COUNT UP</div>
-            <div class="text-xs text-text-2 mt-2">Beginner-friendly. Highest score wins.</div>
-          </div>
-          <div class="bg-bg-0 p-6">
-            <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">06</div>
-            <div class="display text-xl text-text-0">TEAM BATTLE</div>
-            <div class="text-xs text-text-2 mt-2">Two teams. Two sims. One winner.</div>
+        <div class="order-1 lg:order-2">
+          <div class="kicker text-green-hot mb-4">Darts</div>
+          <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0">Two dedicated dart sims.</h2>
+          <p class="mt-6 max-w-lg text-base md:text-lg text-text-1 leading-relaxed">
+            Overhead cameras score every throw automatically. No chalk, no math, no arguments. Six game modes, from classic 501 and cricket to beginner-friendly count-up, with live leaderboards on league nights.
+          </p>
+          <div class="mt-8 flex flex-wrap gap-2">
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">501</span>
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">CRICKET</span>
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">AROUND THE WORLD</span>
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">KILLER</span>
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">COUNT UP</span>
+            <span class="mono text-xs text-text-1 border hairline-strong rounded-full px-4 py-2">TEAM BATTLE</span>
           </div>
         </div>
       </div>
@@ -344,85 +246,70 @@
   </section>
 
   <!-- RATES -->
-  <section id="book" class="border-b hairline py-16 sm:py-20 lg:py-28">
-    <div class="max-w-7xl mx-auto px-6">
-      <div class="flex items-baseline gap-4 mb-12">
-        <span class="tag-mono text-green-hot">[ // 05 ]</span>
-        <span class="tag-mono text-text-3">RATES</span>
-      </div>
-      <h2 class="display text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-text-0 max-w-4xl text-balance leading-[0.95]">
-        Per bay. <span class="text-green-hot">Split it.</span>
-      </h2>
+  <section id="rates" class="border-b hairline py-16 md:py-24 lg:py-32 bg-bg-1/40">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
+      <div class="kicker text-green-hot mb-4">Bay rates</div>
+      <h2 class="display text-3xl md:text-5xl lg:text-6xl text-text-0 max-w-3xl">By the bay, by the hour. Split it with your crew.</h2>
 
-      <div class="grid md:grid-cols-3 gap-6 mt-16">
-        <div class="border hairline bg-bg-1 p-8 flex flex-col">
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">WEEKDAY</div>
-          <div class="text-text-2 text-sm mb-6">Mon–Thu, before 5p</div>
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-text-0 num">$40<span class="display text-2xl text-text-2">/HR</span></div>
-          <div class="mt-auto pt-8 text-sm text-text-2 leading-relaxed">
-            Per bay, up to 6 players. Three players split = <span class="text-green-hot mono">$13.33/hr each</span>.
-          </div>
+      <div class="grid md:grid-cols-3 gap-4 md:gap-5 mt-12 md:mt-16 items-stretch">
+        <div class="border hairline bg-bg-0 p-7 md:p-8 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-2">Weekday</div>
+          <div class="text-text-2 text-sm mb-6">Mon-Thu before 5p</div>
+          <div class="display text-4xl md:text-5xl text-text-0 num">$40<span class="display text-xl text-text-2">/HR</span></div>
+          <div class="mt-auto pt-6 text-sm text-text-2 leading-relaxed">Per bay, up to six players. Three ways even is <span class="text-green-hot mono">$13.33/hr</span> each.</div>
         </div>
-        <div class="border hairline bg-bg-1 p-8 flex flex-col">
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">PRIME TIME</div>
-          <div class="text-text-2 text-sm mb-6">Weeknights + all weekend</div>
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-text-0 num">$55<span class="display text-2xl text-text-2">/HR</span></div>
-          <div class="mt-auto pt-8 text-sm text-text-2 leading-relaxed">
-            Per bay, up to 6 players. Three players split = <span class="text-green-hot mono">$18.33/hr each</span>.
-          </div>
+        <div class="border border-green-base/50 bg-bg-0 p-7 md:p-8 flex flex-col h-full">
+          <div class="kicker text-green-hot mb-2">Prime time</div>
+          <div class="text-text-2 text-sm mb-6">Weeknights and weekends</div>
+          <div class="display text-4xl md:text-5xl text-text-0 num">$55<span class="display text-xl text-text-2">/HR</span></div>
+          <div class="mt-auto pt-6 text-sm text-text-2 leading-relaxed">Per bay, up to six players. Three ways even is <span class="text-green-hot mono">$18.33/hr</span> each.</div>
         </div>
-        <div class="border hairline bg-bg-1 p-8 flex flex-col">
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-2">NIGHT OWL</div>
+        <div class="border hairline bg-bg-0 p-7 md:p-8 flex flex-col h-full">
+          <div class="kicker text-text-3 mb-2">Night owl</div>
           <div class="text-text-2 text-sm mb-6">After 9p, any night</div>
-          <div class="display text-5xl sm:text-6xl lg:text-7xl text-text-0 num">$35<span class="display text-2xl text-text-2">/HR</span></div>
-          <div class="mt-auto pt-8 text-sm text-text-2 leading-relaxed">
-            Per bay, up to 6 players. Three players split = <span class="text-green-hot mono">$11.66/hr each</span>.
-          </div>
+          <div class="display text-4xl md:text-5xl text-text-0 num">$35<span class="display text-xl text-text-2">/HR</span></div>
+          <div class="mt-auto pt-6 text-sm text-text-2 leading-relaxed">Per bay, up to six players. Three ways even is <span class="text-green-hot mono">$11.66/hr</span> each.</div>
         </div>
       </div>
 
-      <div class="mt-12 flex flex-wrap items-center justify-between gap-6 border-t hairline pt-10">
-        <p class="text-text-1 max-w-xl">
-          Members save 20% on Regular, 40% on Founder. League nights and tournament entries included on Founder.
+      <div class="mt-10 md:mt-12 flex flex-wrap items-center justify-between gap-6 border-t hairline pt-8 md:pt-10">
+        <p class="text-text-1 text-sm md:text-base max-w-xl">
+          Opening rates, finalized at launch. Members save on every hour, every visit.
         </p>
-        <div class="flex gap-3">
-          <a href="membership.html" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 transition uppercase tracking-wide">See membership →</a>
-        </div>
+        <a href="membership.html" class="bg-green-base hover:bg-green-hot text-bg-0 font-semibold text-sm px-6 py-3.5 rounded-full transition">See membership</a>
       </div>
     </div>
   </section>
 
   <!-- FOOTER -->
-  <footer class="border-t hairline py-16 bg-bg-1/30">
-    <div class="max-w-7xl mx-auto px-6">
+  <footer class="border-t hairline py-14 md:py-16 bg-bg-1/40">
+    <div class="max-w-7xl mx-auto px-5 sm:px-6">
       <div class="grid md:grid-cols-4 gap-10 mb-12">
         <div class="md:col-span-2">
-          <a href="index.html" class="flex items-center gap-3 group mb-4">
-            <span class="block w-1 h-7 bg-green-base"></span>
-            <span class="display text-xl text-text-0 leading-none">THE TEE DRIVE</span>
+          <a href="index.html" class="flex items-center gap-3 mb-4">
+            <span class="block w-1.5 h-6 bg-green-base"></span>
+            <span class="display-wide text-base text-text-0 leading-none">THE TEE DRIVE</span>
           </a>
           <div class="text-sm text-text-2 max-w-sm leading-relaxed">
-            Powered by passion. Driven by tech. Downtown Milledgeville's first simulator bar.
+            Powered by passion. Driven by tech. Downtown Milledgeville's home for golf, games, and good company.
           </div>
         </div>
         <div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Navigate</div>
+          <div class="kicker text-text-3 mb-4">Navigate</div>
           <div class="space-y-2 text-sm">
-            <a href="index.html" class="block text-text-1 hover:text-green-hot transition">Home</a>
-            <a href="simulators.html" class="block text-text-1 hover:text-green-hot transition">Simulators</a>
-            <a href="membership.html" class="block text-text-1 hover:text-green-hot transition">Membership</a>
-            <a href="events.html" class="block text-text-1 hover:text-green-hot transition">Events</a>
-            <a href="about.html" class="block text-text-1 hover:text-green-hot transition">About</a>
+            <a href="index.html" class="block text-text-1 hover:text-text-0 transition">Home</a>
+            <a href="simulators.html" class="block text-text-1 hover:text-text-0 transition">The Bays</a>
+            <a href="membership.html" class="block text-text-1 hover:text-text-0 transition">Membership</a>
+            <a href="events.html" class="block text-text-1 hover:text-text-0 transition">Events</a>
+            <a href="about.html" class="block text-text-1 hover:text-text-0 transition">About</a>
           </div>
         </div>
         <div>
-          <div class="mono text-xs text-text-3 uppercase tracking-widest mb-4">Visit</div>
-          <div class="space-y-1 text-sm text-text-2 mono">
+          <div class="kicker text-text-3 mb-4">Visit</div>
+          <div class="space-y-1 text-sm text-text-2">
             <div>127 S Wayne St</div>
             <div>Milledgeville, GA 31061</div>
-            <div>(478) 000-0000</div>
-            <div class="pt-3">Sun-Thu  11a → 11p</div>
-            <div>Fri-Sat   11a → 1a</div>
+            <a href="mailto:contact@theteedrive.com" class="block pt-3 text-text-1 hover:text-text-0 transition">contact@theteedrive.com</a>
           </div>
         </div>
       </div>
@@ -431,12 +318,12 @@
         <div class="flex items-center gap-6 mono text-xs text-text-3">
           <a href="https://www.instagram.com/theteedrive" target="_blank" rel="noopener" class="hover:text-green-hot transition">INSTAGRAM</a>
           <a href="https://www.facebook.com/profile.php?id=61582240520987" target="_blank" rel="noopener" class="hover:text-green-hot transition">FACEBOOK</a>
-          <a href="#" class="hover:text-green-hot transition">GOOGLE</a>
         </div>
       </div>
     </div>
   </footer>
 
+  <!-- SCROLL REVEAL -->
   <script>
     (function() {
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
