@@ -67,15 +67,27 @@ img{display:block;max-width:100%}
 .phead h1{font-size:44px;margin-top:4px}
 .phead p{color:#ddd;max-width:46ch;margin-top:8px}
 
-/* hours / location / order ticket */
-.ticket{margin-top:-8px;position:relative;z-index:2;background:#fff;border:2px solid var(--ink);border-radius:12px;display:grid;box-shadow:0 8px 0 var(--ink)}
-.ticket > div{padding:16px;border-bottom:2px dashed var(--line)}
-.ticket > div:last-child{border-bottom:0}
-.ticket .lbl{font-family:Anton;text-transform:uppercase;font-size:16px;color:var(--orange);margin-bottom:4px}
+/* hours / location / order tiles (Old Bay trio) */
+.info{display:grid;gap:12px;margin-top:-8px;position:relative;z-index:2}
+.tile{position:relative;overflow:hidden;border-radius:16px;padding:20px;display:flex;flex-direction:column;gap:6px}
+.tile .script{font-size:22px}
+.tile .big{font-size:28px;line-height:1.05;position:relative}
+.tile p{font-size:15px;position:relative}
+.tile .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;position:relative}
+.t-blue{background:var(--ink);color:#fff}
+.t-blue .script{color:var(--yellow)}
+.t-blue p{color:#cfd8e6}
+.t-blue::after{content:"";position:absolute;right:-36px;bottom:-30px;width:170px;height:130px;background:url(img/sea/blue-crab-b.webp) center/contain no-repeat;opacity:.22;pointer-events:none}
+.t-blue [data-open]{padding-left:22px}
+.t-blue [data-open]::before{content:"";position:absolute;left:0;top:.52em;width:12px;height:12px;margin-top:-6px;border-radius:50%;background:#4ADE80;box-shadow:0 0 0 4px rgba(74,222,128,.25)}
+.t-blue [data-open].closed::before{background:#FF8A8A;box-shadow:0 0 0 4px rgba(255,138,138,.22)}
+.t-yellow{background:var(--yellow);color:var(--ink)}
+.t-yellow .script{color:var(--orange-d)}
+.t-red{background:var(--orange);color:#fff}
+.t-red .script{color:var(--yellow)}
+.t-red p{color:var(--cream)}
 .status{display:inline-block;margin-left:8px;font-family:"Work Sans";font-weight:700;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:999px;background:#E6F4EA;color:#1E7B3A;vertical-align:middle}
 .status.closed{background:#FDECEC;color:#B42318}
-.ticket a.u{text-decoration:underline}
-.ticket .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 
 /* sections */
 .section{padding:48px 0}
@@ -189,9 +201,8 @@ footer .credit{border-top:1px solid #262c38;padding-top:16px;font-size:12px}
   .hero .frame{width:60%}
   .hero h1{font-size:64px}
   .hero .ctas .btn{flex:0 0 auto}
-  .ticket{grid-template-columns:repeat(3,1fr)}
-  .ticket > div{border-bottom:0;border-right:2px dashed var(--line)}
-  .ticket > div:last-child{border-right:0}
+  .info{grid-template-columns:repeat(3,1fr);align-items:stretch}
+  .tile .row{margin-top:auto;padding-top:10px}
   .rail{overflow:visible;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,1fr)}
   .swipe{display:none}
   .sauce .wrap{grid-template-columns:1fr 1.3fr;gap:48px}
